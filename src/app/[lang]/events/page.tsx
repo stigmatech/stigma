@@ -40,6 +40,8 @@ export default async function EventsPage(props: { params: Promise<{ lang: string
     }
 
     console.log(`Total events fetched from Supabase: ${events?.length || 0}`);
+    const buildTime = new Date().toISOString();
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'Not Set';
 
     const dict = (dictionary as any).common.events || {
         tag: isFr ? "ÉVÉNEMENTS & WEBINAIRES" : "EVENTS & WEBINARS",
@@ -121,6 +123,10 @@ export default async function EventsPage(props: { params: Promise<{ lang: string
                                 {isFr ? "REJOINDRE LA COMMUNAUTÉ" : "JOIN THE COMMUNITY"}
                                 <span className="material-symbols-outlined">alternate_email</span>
                             </a>
+                        </div>
+                        {/* DEBUG DATA */}
+                        <div className="mt-8 text-[8px] text-white/5 opacity-50 font-mono text-center">
+                            BUILD: {buildTime} | DB: {supabaseUrl} | COUNT: {events?.length || 0}
                         </div>
                     </div>
                 </section>
