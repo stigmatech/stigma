@@ -22,11 +22,19 @@ interface EventCardProps {
 
 export function EventCard({ event, lang }: EventCardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [imgSrc, setImgSrc] = useState(event.image_url || "/images/event-placeholder.webp");
     const date = new Date(event.event_date);
     const isFr = lang === "fr";
 
     const formattedDate = date.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
     const formattedTime = date.toLocaleTimeString(isFr ? 'fr-FR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+
+    const handleImageError = () => {
+        if (imgSrc !== "/images/event-placeholder.webp") {
+            console.warn(`Failed to load image for event "${event.title}": ${event.image_url}`);
+            setImgSrc("/images/event-placeholder.webp");
+        }
+    };
 
     return (
         <>
@@ -34,8 +42,9 @@ export function EventCard({ event, lang }: EventCardProps) {
                 {/* Image Section */}
                 <div className="relative h-64 overflow-hidden">
                     <img 
-                        src={event.image_url || "/images/event-placeholder.webp"} 
+                        src={imgSrc} 
                         alt={event.title}
+                        onError={handleImageError}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/80 to-transparent" />
