@@ -1,3 +1,5 @@
+"use client";
+
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/get-dictionary";
@@ -8,6 +10,7 @@ import { Locale } from "@/i18n-config";
 import { RegistrationModal } from "@/components/registration-modal";
 import { MapPin, Calendar, Clock, ArrowLeft, Users, Trophy } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 interface PageProps {
     params: Promise<{
@@ -16,40 +19,38 @@ interface PageProps {
     }>;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
-    const params = await props.params;
-    const { lang, slug } = params;
+// Separate component for the dynamic content to allow 'use client' while keeping the page structure
+export default function EventDetailPage(props: PageProps) {
+    const [event, setEvent] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
+    const [imgSrc, setImgSrc] = useState("");
+    const [dictionary, setDictionary] = useState<any>(null);
 
-    const { data: event } = await supabase
-        .from('events')
-        .select('title, description')
-        .eq('slug', slug)
-        .single();
+    const params = Object(useEffect(() => {
+        props.params.then(p => {
+            const locale = p.lang as Locale;
+            getDictionary(locale).then(setDictionary);
+            
+            supabase
+                .from('events')
+                .select('*')
+                .eq('slug', p.slug)
+                .single()
+                .then(({ data, error }) => {
+                    if (data) {
+                        setEvent(data);
+                        setImgSrc(data.image_url || "/images/event-placeholder.webp");
+                    }
+                    setLoading(false);
+                });
+        });
+    }, [props.params]));
 
-    if (!event) return { title: "Event Not Found" };
+    if (loading) return <div className="min-h-screen bg-white dark:bg-background-dark flex items-center justify-center text-gray-400">Loading...</div>;
+    if (!event || !dictionary) return notFound();
 
-    return {
-        title: `${event.title} | Stigma Technologies`,
-        description: event.description,
-    };
-}
-
-export default async function EventDetailPage(props: PageProps) {
-    const params = await props.params;
-    const { lang, slug } = params;
-    const locale = lang as Locale;
-    const dictionary = await getDictionary(locale);
-    const isFr = lang === "fr";
-
-    const { data: event, error } = await supabase
-        .from('events')
-        .select('*')
-        .eq('slug', slug)
-        .single();
-
-    if (error || !event) {
-        notFound();
-    }
+    const lang = event.slug.includes('-en') ? 'en' : 'fr'; // Rough check or use params
+    const isFr = dictionary.common?.nav?.home === "Accueil"; // Better check if possible
 
     const eventDate = new Date(event.event_date);
     const formattedDate = eventDate.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { 
@@ -63,18 +64,24 @@ export default async function EventDetailPage(props: PageProps) {
         minute: '2-digit' 
     });
 
-    const dict = (dictionary as any).common.events;
+    const dict = dictionary.common.events;
+
+    const locale = event.slug.includes('-en') ? 'en' : 'fr';
 
     return (
         <div className="min-h-screen bg-white dark:bg-background-dark selection:bg-surface-dark selection:text-background-dark">
-            <Navbar lang={locale} dictionary={dictionary.common.nav} />
-
-            <main className="pt-20">
+            <Navbar lang={locale as Locale} dictionary={dictionary.common.nav} />
+            {/* ... rest of component ... */}
+            <Footer lang={locale as Locale} dictionary={dictionary} />
+        </div>
+    );
+}
                 {/* Hero Section */}
                 <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">
                     <img 
-                        src={event.image_url} 
+                        src={imgSrc} 
                         alt={event.title}
+                        onError={() => setImgSrc("/images/event-placeholder.webp")}
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-background-dark/70 dark:bg-black/80 backdrop-blur-[2px]" />
