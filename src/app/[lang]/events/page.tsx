@@ -38,6 +38,8 @@ export default async function EventsPage(props: { params: Promise<{ lang: string
         console.error("Error fetching events:", error);
     }
 
+    console.log(`Total events fetched from Supabase: ${events?.length || 0}`);
+
     const dict = (dictionary as any).common.events || {
         tag: isFr ? "ÉVÉNEMENTS & WEBINAIRES" : "EVENTS & WEBINARS",
         title: isFr ? "Découvrez nos prochains événements stratégiques" : "Discover our upcoming strategic events",
