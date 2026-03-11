@@ -16,6 +16,7 @@ interface EventCardProps {
         location: string;
         type: string;
         image_url?: string;
+        category?: string;
     };
     lang: string;
 }

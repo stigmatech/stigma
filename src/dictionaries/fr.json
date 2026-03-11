@@ -155,6 +155,29 @@
                 "company": "Entreprise",
                 "website": "Site Web",
                 "submit": "S'enregistrer maintenant"
+            },
+            "filters": {
+                "all": "Tous les Événements",
+                "categories": {
+                    "all": "Toutes catégories",
+                    "cybersecurity": "Cybersécurité",
+                    "managed-it": "IT Géré"
+                },
+                "months": {
+                    "all": "Tous les mois",
+                    "january": "Janvier",
+                    "february": "Février",
+                    "march": "Mars",
+                    "april": "Avril",
+                    "may": "Mai",
+                    "june": "Juin",
+                    "july": "Juillet",
+                    "august": "Août",
+                    "september": "Septembre",
+                    "october": "Octobre",
+                    "november": "Novembre",
+                    "december": "Décembre"
+                }
             }
         }
     },

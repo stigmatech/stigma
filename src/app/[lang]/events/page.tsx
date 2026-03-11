@@ -1,10 +1,10 @@
 import { getDictionary } from "@/get-dictionary";
 import { supabase } from "@/lib/supabase";
-import { EventCard } from "@/components/event-card";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Locale } from "@/i18n-config";
 import { Metadata } from "next";
+import { EventsGallery } from "@/components/events-gallery";
 
 // Force dynamic rendering so Supabase data is always fresh (no SSG)
 export const dynamic = 'force-dynamic';
@@ -39,17 +39,14 @@ export default async function EventsPage(props: { params: Promise<{ lang: string
         console.error("Error fetching events:", error);
     }
 
-    console.log(`Total events fetched from Supabase: ${events?.length || 0}`);
     const buildTime = new Date().toISOString();
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'Not Set';
 
     const dict = (dictionary as any).common.events || {
         tag: isFr ? "ÉVÉNEMENTS & WEBINAIRES" : "EVENTS & WEBINARS",
-        title: isFr ? "Découvrez nos prochains événements stratégiques" : "Discover our upcoming strategic events",
         description: isFr 
             ? "Rejoignez nos experts pour des sessions approfondies sur l'IA, la cybersécurité et l'innovation technologique."
             : "Join our experts for deep-dive sessions on AI, cybersecurity, and technological innovation.",
-        noEvents: isFr ? "Aucun événement prévu pour le moment." : "No upcoming events scheduled at the moment."
     };
 
     return (
@@ -58,7 +55,7 @@ export default async function EventsPage(props: { params: Promise<{ lang: string
             
             <main className="pt-24 min-h-screen">
                 {/* Hero Section */}
-                <section className="relative py-24 overflow-hidden">
+                <section className="relative py-24 overflow-hidden border-b border-gray-100 dark:border-white/10">
                     <div className="absolute top-0 right-0 w-1/3 h-full bg-surface-dark/5 dark:bg-white/5 -skew-x-12 transform origin-right" />
                     
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -82,23 +79,13 @@ export default async function EventsPage(props: { params: Promise<{ lang: string
                     </div>
                 </section>
 
-                {/* Events Grid */}
-                <section className="py-24 border-t border-gray-100 dark:border-white/10">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        {!events || events.length === 0 ? (
-                            <div className="text-center py-24 border border-dashed border-gray-200 dark:border-white/10">
-                                <p className="text-gray-400 font-light italic">
-                                    {dict.noEvents}
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {events.map((event) => (
-                                    <EventCard key={event.id} event={event} lang={lang} />
-                                ))}
-                            </div>
-                        )}
-                    </div>
+                {/* Events Gallery (Filters + Grid) */}
+                <section className="py-12 bg-gray-50/50 dark:bg-transparent">
+                    <EventsGallery 
+                        events={events || []} 
+                        lang={lang} 
+                        dictionary={dictionary} 
+                    />
                 </section>
 
                 {/* Premium CTA / Newsletter CTA */}

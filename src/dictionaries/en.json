@@ -155,6 +155,29 @@
                 "company": "Company",
                 "website": "Website",
                 "submit": "Register now"
+            },
+            "filters": {
+                "all": "All Events",
+                "categories": {
+                    "all": "All Categories",
+                    "cybersecurity": "Cybersecurity",
+                    "managed-it": "Managed IT"
+                },
+                "months": {
+                    "all": "All Months",
+                    "january": "January",
+                    "february": "February",
+                    "march": "March",
+                    "april": "April",
+                    "may": "May",
+                    "june": "June",
+                    "july": "July",
+                    "august": "August",
+                    "september": "September",
+                    "october": "October",
+                    "november": "November",
+                    "december": "December"
+                }
             }
         }
     },
