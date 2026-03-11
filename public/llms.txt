@@ -1,0 +1,23 @@
+# Stigma Technologies
+
+Stigma Technologies simplifies IT for a complex world. We are a Canadian managed IT and cybersecurity provider based in Montreal, Quebec.
+
+## Core Services
+- **Managed IT Services**: End-to-end IT management, support, and infrastructure.
+- **Cybersecurity**: Advanced protection, audit, and compliance (Loi 25, PIPEDA).
+- **AI & Machine Learning**: Custom AI models, data pipelines, and LLM fine-tuning.
+- **AI Training**: Corporate workshops on ChatGPT, Copilot, and AI strategy.
+- **Digital Transformation**: Modernizing business processes through technology.
+
+## Subsidies & Funding
+We help Canadian businesses access grants (Scale AI, ESSOR, PCAN) to fund up to 85% of their AI and digital projects.
+
+## Contact Information
+- **Website**: https://stigmatech.ca
+- **Phone**: +1 (844) 978-4462
+- **Email**: info@stigmatech.ca
+- **Booking**: https://cal.com/stigmatech/30min
+- **Address**: Montreal, QC, Canada
+
+## Target Audience
+Canadian SMEs and large enterprises looking for secure, scalable, and innovative IT solutions.

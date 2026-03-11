@@ -1,0 +1,2598 @@
+{
+    "common": {
+        "nav": {
+            "about": "About",
+            "services": "Services",
+            "caseStudies": "Case Studies",
+            "blog": "Blog",
+            "contact": "Contacts",
+            "events": "EVENTS",
+            "requestQuote": "Request Quote",
+            "ourStory": "Our Story",
+            "expertise": "Expertise",
+            "values": "Values",
+            "viewAllInsights": "View All Insights",
+            "products": "Products",
+            "disasterRecovery": "Disaster Recovery",
+            "backup": "Backup",
+            "cybersecurity": "Cybersecurity",
+            "sentinelOne": "SentinelOne",
+            "humanRiskManagement": "Human Risk Management",
+            "training": "Training",
+            "support360": "Support 360",
+            "industries": "Solutions by Industry",
+            "marketplace": {
+                "label": "Marketplace",
+                "hero": {
+                    "tag": "Cloud Solutions",
+                    "title": "The Stigma Cloud Marketplace",
+                    "description": "Access the world's leading technology solutions, curated by our experts and managed for your success."
+                },
+                "filters": {
+                    "searchPlaceholder": "Search for a solution or vendor...",
+                    "all": "All Products",
+                    "categories": {
+                        "productivity": "Productivity",
+                        "security": "Security",
+                        "infrastructure": "Infrastructure",
+                        "continuity": "Continuity",
+                        "business": "Business Apps",
+                        "communication": "Communication"
+                    }
+                },
+                "productCard": {
+                    "details": "View Details",
+                    "getStarted": "Request Demo"
+                },
+                "products": {
+                    "m365": {
+                        "name": "Microsoft 365",
+                        "tagline": "The leading productivity suite for modern business."
+                    },
+                    "azure": {
+                        "name": "Microsoft Azure",
+                        "tagline": "Scalable cloud platform for innovation and growth."
+                    },
+                    "acronis": {
+                        "name": "Acronis Cyber Protect",
+                        "tagline": "Integrated cyber threat protection and backup."
+                    },
+                    "sentinelone": {
+                        "name": "SentinelOne",
+                        "tagline": "Autonomous AI-powered threat detection and response."
+                    },
+                    "googleworkspace": {
+                        "name": "Google Workspace",
+                        "tagline": "Seamless collaboration and intelligent communication."
+                    },
+                    "bitdefender": {
+                        "name": "Bitdefender",
+                        "tagline": "World-class endpoint and server security."
+                    },
+                    "veeam": {
+                        "name": "Veeam",
+                        "tagline": "Cloud data availability and protection."
+                    },
+                    "fortinet": {
+                        "name": "Fortinet",
+                        "tagline": "Converged network security and next-gen firewalls."
+                    },
+                    "support360": {
+                        "name": "Support 360",
+                        "tagline": "Your complete IT department managed by Stigma."
+                    },
+                    "odoo": {
+                        "name": "Odoo",
+                        "tagline": "All-in-one ERP solution for business management."
+                    },
+                    "erpnext": {
+                        "name": "ERPNext",
+                        "tagline": "Modern open-source ERP for agile businesses."
+                    }
+                }
+            }
+        },
+        "footer": {
+            "description": "Premier IT Support and Cybersecurity for businesses in Montreal & Laval. We simplify IT for a complex world, securing your future.",
+            "solutions": "Solutions",
+            "company": "Company",
+            "stayConnected": "Stay Connected",
+            "newsletterText": "Subscribe to our newsletter for the latest cyber threat insights and IT strategies.",
+            "emailPlaceholder": "Email address",
+            "rights": "All rights reserved.",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service",
+            "cookies": "Cookie Policy",
+            "aboutUs": "About Us",
+            "contactUs": "Contact Us",
+            "allServices": "All Services",
+            "training": "Training"
+        },
+        "contactForm": {
+            "tag": "Technological Innovation",
+            "title": "Ready to scale securely?",
+            "description": "Our experts are ready to audit your current systems and architect a roadmap for your digital-first future.",
+            "hub": {
+                "bookTitle": "Need a Strategic Session?",
+                "bookCta": "Schedule Call (15 min)",
+                "bookDescription": "Speak directly with a senior architect to evaluate your technological needs.",
+                "directTitle": "Direct Channels",
+                "emailLabel": "Email",
+                "phoneLabel": "Phone",
+                "officeLabel": "Montreal Headquarters"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email Address",
+            "subject": "Subject",
+            "message": "Message",
+            "submit": "Send Message",
+            "firstNamePlaceholder": "John",
+            "lastNamePlaceholder": "Doe",
+            "emailPlaceholder": "john@company.com",
+            "phone": "Phone",
+            "phonePlaceholder": "+1 (514) 000-0000",
+            "subjectPlaceholder": "How can we help?",
+            "messagePlaceholder": "Please describe your needs...",
+            "required": "required"
+        },
+        "events": {
+            "tag": "EVENTS & WEBINARS",
+            "title": "Discover our upcoming strategic events",
+            "description": "Join our experts for deep-dive sessions on AI, cybersecurity, and technological innovation.",
+            "noEvents": "No upcoming events scheduled at the moment.",
+            "register": "Register for Event",
+            "viewDetails": "View Details",
+            "backToEvents": "Back to Events",
+            "agenda": "Agenda",
+            "speakers": "Speakers",
+            "success": "Registration Successful !",
+            "successDesc": "You will soon receive a confirmation email with the details.",
+            "form": {
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "email": "Email",
+                "company": "Company",
+                "website": "Website",
+                "submit": "Register now"
+            }
+        }
+    },
+    "home": {
+        "hero": {
+            "tag": "Trusted Enterprise Partner",
+            "title": "Simplifying IT for a Complex World",
+            "description": "We architect strategic technology solutions that empower businesses to scale securely and efficiently in the digital-first economy.",
+            "ctaPrimary": "Explore Our Solutions",
+            "ctaSecondary": "Talk to an Expert"
+        },
+        "coreValues": {
+            "tag": "BEST VALUES",
+            "title": "We exist to drive",
+            "titleBold": "measurable outcomes",
+            "items": [
+                {
+                    "title": "Strategic Innovation",
+                    "description": "We integrate artificial intelligence and emerging technologies to propel your business to the forefront of your industry."
+                },
+                {
+                    "title": "Operational Resilience",
+                    "description": "Robust infrastructure and proactive managed services ensure your business continuity, no matter what tomorrow's challenges bring."
+                },
+                {
+                    "title": "Compromiseless Security",
+                    "description": "We protect your most valuable digital assets through multi-layered defenses and 24/7 active vigilance."
+                }
+            ]
+        },
+        "solutions": {
+            "tag": "HOW WE DO",
+            "title": "Solutions",
+            "learnMore": "Learn more",
+            "items": [
+                {
+                    "title": "Managed Services",
+                    "description": "Managed IT services are designed to provide consistent and reliable IT support to businesses of different sizes while allowing them to focus on their core activities."
+                },
+                {
+                    "title": "Cybersecurity",
+                    "description": "Cybersecurity is a critical aspect of ensuring the safety and security of our digital world. It involves putting in place strong measures to protect devices, networks, and datas."
+                },
+                {
+                    "title": "Governance & Compliance",
+                    "description": "The dynamic nature of risk and compliance requirements poses an ongoing challenge for enterprises, as they grapple with the task of effectively overseeing compliance."
+                },
+                {
+                    "title": "AI & Machine Learning",
+                    "description": "In today's rapidly evolving business landscape, the strategic implementation of AI and Machine Learning has become the key to staying competitive and innovative."
+                },
+                {
+                    "title": "Digital Transformation",
+                    "description": "Unlock your organization's potential by letting our experts guide your digital transformation and create a custom plan to elevate your business. Contact us today to get started!"
+                },
+                {
+                    "title": "Cloud computing",
+                    "description": "Instead of owning and maintaining physical servers or infrastructure, users can access these resources on-demand from cloud service providers."
+                }
+            ]
+        },
+        "partners": {
+            "tag": "OUR PARTNERS",
+            "title": "The companies",
+            "titleBold": "we work with",
+            "description": "to optimise our services."
+        },
+        "consultancy": {
+            "tag": "OUR STRONGHOLD",
+            "title": "Enterprise Security Strategic Consulting",
+            "description": "We unlock the true potential of your infrastructure with secure, scalable, and resilient technological architectural solutions.",
+            "cta": "Contact Us"
+        },
+        "caseStudies": {
+            "title": "Case",
+            "titleLight": "Studies",
+            "categories": {
+                "all": "All Cases",
+                "DIGITAL TRANSFORMATION": "Digital Transformation",
+                "MANAGED IT": "Managed IT",
+                "CYBERSECURITY": "Cybersecurity",
+                "CLOUD COMPUTING": "Cloud Computing",
+                "AI / ML": "AI & ML"
+            },
+            "hero": {
+                "tag": "Expertise in Action",
+                "title": "Success Stories & Innovations",
+                "description": "Discover how we help our clients transform technological challenges into sustainable competitive advantages."
+            },
+            "labels": {
+                "viewReport": "View Report",
+                "keyResult": "Key Result"
+            },
+            "items": [
+                {
+                    "title": "AI to detect and prevent theft",
+                    "description": "In-store video surveillance is essential for shoplifting prevention. Discover our software, which detects shoplifting incidents automatically in real-time."
+                },
+                {
+                    "title": "Guard Suite",
+                    "description": "The combination of trusted Microsoft Office applications, professional email services, cloud storage, intelligent tools for streamlining operations and advanced analytics."
+                }
+            ]
+        },
+        "about": {
+            "title": "About",
+            "titleLight": "Stigma",
+            "sections": [
+                {
+                    "title": "The Vision.",
+                    "content": "Stigma Technologies was established by unifying cutting-edge technology and deep industry expertise, driven by a singular goal: to mitigate risk and simplify complexity through the continuous development of enterprise-grade technology platforms."
+                },
+                {
+                    "title": "Mission.",
+                    "content": "Our mission is to empower organizations by modernizing and managing their core operations through strategic technological innovation. We are dedicated to unlocking the full potential of IT to drive sustainable growth and resilience."
+                },
+                {
+                    "title": "Values.",
+                    "content": "Our values are the bedrock upon which Stigma was built. We aim to lead the evolution of the digital landscape by promoting transparency, proactive defense, and rigorous technological research."
+                }
+            ]
+        },
+        "news": {
+            "tag": "LATEST INSIGHTS",
+            "title": "Stay ahead of the curve.",
+            "viewAll": "View all insights"
+        },
+        "innovation": {
+            "tag": "LOCAL EXPERTISE",
+            "title": "AI Leadership in Quebec",
+            "description": "We don't just implement AI, we shape it for your business reality.",
+            "cta": "Explore our AI Approach",
+            "framework": {
+                "title": "The Stigma Framework",
+                "subtitle": "Precision engineering for concrete results.",
+                "pillars": [
+                    {
+                        "title": "LLM Fine-tuning",
+                        "description": "Training models on your private data for absolute precision and total confidentiality."
+                    },
+                    {
+                        "title": "Autonomous Agents",
+                        "description": "Deploying agents capable of reasoning and executing complex tasks without constant supervision."
+                    },
+                    {
+                        "title": "Cognitive Automation",
+                        "description": "Fusing traditional RPA and generative AI to transform your business processes."
+                    }
+                ]
+            }
+        },
+        "marketplaceSpotlight": {
+            "tag": "SPOTLIGHT",
+            "title": "Featured Cloud Solutions",
+            "description": "Discover the most powerful tools to transform your business. Selected by our experts, managed by Stigma.",
+            "cta": "Explore our Cloud Marketplace"
+        },
+        "localCredibility": {
+            "tag": "LOCAL PRIDE",
+            "title": "Powered in Quebec",
+            "description": "World-class technological expertise, proudly rooted in Montreal, Laval, and Quebec City.",
+            "stats": {
+                "efficiency": {
+                    "value": "95%",
+                    "label": "efficiency gain for our clients"
+                },
+                "support": {
+                    "value": "24/7",
+                    "label": "Technical support based in Montreal"
+                },
+                "presence": "Montreal • Laval • Quebec"
+            }
+        },
+        "aiAudit": {
+            "tag": "DIAGNOSTIC",
+            "title": "Is your business ready for AI?",
+            "description": "Take our free 2-minute audit and discover your automation potential. Receive a personalized roadmap.",
+            "cta": "Start my AI Audit",
+            "form": {
+                "steps": [
+                    {
+                        "question": "What is your industry?",
+                        "options": [
+                            "Finance / Insurance",
+                            "Healthcare / Dental",
+                            "Manufacturing",
+                            "Logistics / Distribution",
+                            "Aerospace",
+                            "Retail & E-commerce",
+                            "Professional Services (Legal, Accounting)",
+                            "Creative Industries & Video Games",
+                            "Construction & Real Estate",
+                            "Other"
+                        ]
+                    },
+                    {
+                        "question": "What is your current priority?",
+                        "options": [
+                            "Operational cost reduction",
+                            "Customer experience improvement",
+                            "Repetitive task automation",
+                            "Data security & compliance"
+                        ]
+                    },
+                    {
+                        "question": "Where is your data primarily stored?",
+                        "options": [
+                            "Cloud (Azure, AWS, Google)",
+                            "Local servers",
+                            "Hybrid",
+                            "No centralized storage"
+                        ]
+                    },
+                    {
+                        "question": "What is your readiness level?",
+                        "options": [
+                            "We have a dedicated IT team",
+                            "We use external tools",
+                            "We are starting our transformation",
+                            "We don't know where to start"
+                        ]
+                    }
+                ],
+                "contact": {
+                    "title": "Final Step!",
+                    "description": "Leave us your details to receive your personalized AI audit report by email.",
+                    "namePlaceholder": "Full Name",
+                    "emailPlaceholder": "Professional Email",
+                    "phonePlaceholder": "Phone Number",
+                    "companyPlaceholder": "Company Name",
+                    "submit": "Get my Report"
+                },
+                "success": {
+                    "title": "Audit Complete!",
+                    "message": "Thank you! Our experts are analyzing your responses. You will receive your strategic roadmap within the next 24 hours."
+                },
+                "back": "Back",
+                "next": "Next"
+            }
+        }
+    },
+    "services": {
+        "industries": {
+            "tag": "INDUSTRY SOLUTIONS",
+            "title": "Tailored Technology for Your Sector",
+            "description": "We architect specialized IT and AI solutions designed to solve the unique challenges of your industry, from construction sites to retail floors.",
+            "cta": "Get a Sector Audit",
+            "sectors": [
+                {
+                    "title": "Construction & Real Estate",
+                    "description": "Smart connectivity and safety monitoring for high-stakes physical sites.",
+                    "icon": "construction",
+                    "services": {
+                        "ai": "AI safety monitoring and real-time PPE detection.",
+                        "it": "BIM support and robust remote site high-speed connectivity.",
+                        "cyber": "Secure blueprint data protection and encrypted remote access.",
+                        "compliance": "Adherence to safety regulations and local security protocols.",
+                        "digital": "Transition to project dashboards and hybrid cloud workflows.",
+                        "support": "Support 360: Proactive site equipment maintenance and 24/7 assistance."
+                    },
+                    "caseStudy": {
+                        "slug": "enterprise-it-modernization",
+                        "title": "Enterprise Infrastructure Modernization",
+                        "cta": "Read Case Study"
+                    }
+                },
+                {
+                    "title": "Advanced Manufacturing",
+                    "description": "Reliable uptime and precision automation for the smart factory.",
+                    "icon": "factory",
+                    "services": {
+                        "ai": "Predictive maintenance and AI-driven quality inspection vision.",
+                        "it": "IIoT sensor integration and high-availability production servers.",
+                        "cyber": "OT/IT network segmentation to prevent ransomware spread.",
+                        "compliance": "ISO 27001 certification and material traceability standards.",
+                        "digital": "Real-time production dashboards and workflow automation.",
+                        "support": "Support 360: Preventive industrial server monitoring and hardware maintenance."
+                    },
+                    "caseStudy": {
+                        "slug": "aerospace-vision-inspection",
+                        "title": "Aerospace AI Inspection",
+                        "cta": "Read Case Study"
+                    }
+                },
+                {
+                    "title": "Health & Dental Clinics",
+                    "description": "Patient data protection and clinical operational efficiency.",
+                    "icon": "medical_services",
+                    "services": {
+                        "ai": "AI-assisted diagnostics and predictive scheduling.",
+                        "it": "EMR management and ultra-secure clinical WiFi networks.",
+                        "cyber": "Identity theft prevention and encrypted healthcare data storage.",
+                        "compliance": "Strict Law 25/GDPR/HIPAA confidentiality compliance.",
+                        "digital": "Telemedicine integration and interactive patient portals.",
+                        "support": "Support 360: Immediate assistance for medical equipment and EMR systems."
+                    },
+                    "caseStudy": {
+                        "slug": "pharma-demand-forecasting",
+                        "title": "Predictive Pharma Supply Chain",
+                        "cta": "Read Case Study"
+                    }
+                },
+                {
+                    "title": "Accounting & Finance",
+                    "description": "Automated auditing and absolute financial data confidentiality.",
+                    "icon": "account_balance_wallet",
+                    "services": {
+                        "ai": "Automated auditing and intelligent document classification.",
+                        "it": "Secure accounting software hosting and immutable backups.",
+                        "cyber": "Ultra-secure client file exchange portals with MFA.",
+                        "compliance": "Compliance with CPA standards and regional data laws.",
+                        "digital": "Online client collaboration and tax workflow automation.",
+                        "support": "Support 360: Operational continuity during tax seasons and critical backups."
+                    },
+                    "caseStudy": {
+                        "slug": "financial-security-overhaul",
+                        "title": "Financial Sector Security Overhaul",
+                        "cta": "Read Case Study"
+                    }
+                },
+                {
+                    "title": "Legal Services",
+                    "description": "Attorney-client privilege guaranteed by AI-driven research and research.",
+                    "icon": "gavel",
+                    "services": {
+                        "ai": "Contract analysis and legal research via private LLMs.",
+                        "it": "High-performance Document Management (DMS) and mobile support.",
+                        "cyber": "End-to-end encryption for total case confidentiality.",
+                        "compliance": "Bar Association compliant archiving and data sovereignty.",
+                        "digital": "Digital signatures and secure virtual law offices.",
+                        "support": "Support 360: Document management troubleshooting and proactive legal support."
+                    },
+                    "caseStudy": {
+                        "slug": "legal-semantic-search",
+                        "title": "Legal Semantic Search Innovation",
+                        "cta": "Read Case Study"
+                    }
+                },
+                {
+                    "title": "Retail & E-commerce",
+                    "description": "Unified commerce and intelligent theft prevention for modern retail.",
+                    "icon": "shopping_cart",
+                    "services": {
+                        "ai": "Vision-based loss prevention and AI personalized recommendations.",
+                        "it": "Omnichannel POS and centralized inventory for multiple sites.",
+                        "cyber": "PCI-DSS transaction security and client account protection.",
+                        "compliance": "Secure handling of transactional data (Law 25/GDPR).",
+                        "digital": "Store-to-web integration and automated logistics.",
+                        "support": "Support 360: Real-time POS assistance and retail infrastructure maintenance."
+                    },
+                    "caseStudy": {
+                        "slug": "ai-loss-prevention",
+                        "title": "AI Loss Prevention Architecture",
+                        "cta": "Read Case Study"
+                    }
+                }
+            ],
+            "benefits": {
+                "title": "Architecture Built for Your Reality",
+                "p1": "We don't believe in generic solutions. Every industry has its own regulatory constraints, security imperatives, and production rhythms.",
+                "p2": "Whether you are on a construction site or in a financial services firm, we integrate AI and IT infrastructure as a strategic lever, not a technical burden.",
+                "p3": "Our approach combines sectoral expertise and technological innovation to create resilient environments that propel your growth."
+            },
+            "testimonial": {
+                "quote": "Stigma Technologies has transformed our approach to safety on our sites using AI. They are more than an IT vendor; they are a strategic partner who understands the real challenges of construction.",
+                "author": "Jean-François Moreau",
+                "role": "Director of Operations",
+                "company": "Elite Construction"
+            },
+            "questions": {
+                "title": "Industry-Specific FAQ",
+                "p1": "Technological integration raises questions specific to each profession. We are here to answer them with clarity and precision.",
+                "p2": "Here are the most common concerns we address during our sectoral audits.",
+                "items": [
+                    {
+                        "q": "How do you ensure compliance with data protection laws (Law 25/GDPR)?",
+                        "a": "We integrate compliance by design (Privacy by Design) with regular audits and state-of-the-art encryption systems."
+                    },
+                    {
+                        "q": "Can your AI solutions work offline on remote sites?",
+                        "a": "Yes, we deploy 'Edge Computing' solutions that allow local data processing without relying on a stable internet connection."
+                    },
+                    {
+                        "q": "Do your systems integrate with our existing business software (ERP, BIM)?",
+                        "a": "Absolutely. Our architects specialize in system interoperability to ensure a smooth data flow between your tools."
+                    }
+                ]
+            }
+        },
+        "managedIt": {
+            "tag": "Solutions",
+            "title": "Complete Managed IT Services",
+            "description": "Ensure absolute resilience and seamless operational continuity while leveraging the strategic advantages of professional managed infrastructure.",
+            "globalStats": [
+                {
+                    "value": "15,000+",
+                    "label": "Endpoints Managed Globally"
+                },
+                {
+                    "value": "99.999%",
+                    "label": "Core Network SLA"
+                },
+                {
+                    "value": "24/7/365",
+                    "label": "Security Operations Center"
+                },
+                {
+                    "value": "10 min",
+                    "label": "Average Response Time"
+                }
+            ],
+            "cta": "Get a Free Consultation",
+            "benefits": {
+                "title": "Predictable Scale with Managed Continuity",
+                "p1": "Managed Services is not just about keeping the lights on. It's about building a predictable, scalable infrastructure that removes technical debt.",
+                "p2": "We integrate deeply with your existing teams, acting as an extension of your organization. Every initiative is benchmarked against reliability and security.",
+                "p3": "By leveraging our advanced automation and 24/7 monitoring, you gain the freedom to focus on core innovation while we handle the operational complexity. We ensure your technology bedrock is always audit-ready and resilient to any market disruption."
+            },
+            "expertise": {
+                "title": "Proactive Management of Your IT Ecosystem",
+                "description": "We don't just fix problems; we optimize your infrastructure for growth.",
+                "infrastructure": {
+                    "title": "Infrastructure Management",
+                    "description": "24/7 monitoring and maintenance of your servers, networks, and cloud environments to ensure maximum uptime."
+                },
+                "support": {
+                    "title": "24/7 Help Desk Support",
+                    "description": "Fast and effective technical assistance for your employees, minimizing downtime and maximizing productivity."
+                },
+                "strategy": {
+                    "title": "Strategic Consulting (vCIO)",
+                    "description": "Alignment of your technology investments with your business goals through strategic IT planning."
+                }
+            },
+            "testimonial": {
+                "quote": "Since partnering with Stigma Technologies for our IT management, our system uptime has been flawless and our IT costs have become entirely predictable. They aren't just a vendor; they are a critical extension of our executive team.",
+                "author": "Sarah Jenkins",
+                "role": "Chief Operating Officer",
+                "company": "Global Logistics Corp"
+            },
+            "capabilities": {
+                "tag": "Capabilities",
+                "title": "Enterprise IT Framework",
+                "description": "A holistic approach to managing your technology bedrock, from endpoint resilience to strategic vendor governance.",
+                "items": [
+                    {
+                        "slug": "cloud-backup-disaster-recovery",
+                        "title": "Cloud Backup & DR",
+                        "description": "Immutable backups and automated disaster recovery protocols to ensure zero data loss.",
+                        "icon": "cloud_sync"
+                    },
+                    {
+                        "slug": "network-management",
+                        "title": "Network Management",
+                        "description": "Strategic architecture and 24/7 monitoring of your global network footprint.",
+                        "icon": "settings_input_component"
+                    },
+                    {
+                        "slug": "endpoint-resilience",
+                        "title": "Endpoint Resilience",
+                        "description": "Securing every device in your fleet with automated patches and advanced threat detection.",
+                        "icon": "laptop_mac"
+                    },
+                    {
+                        "slug": "cloud-administration",
+                        "title": "Cloud Administration",
+                        "description": "Optimizing Azure, AWS, and Hybrid environments for peak performance and cost control.",
+                        "icon": "dns"
+                    },
+                    {
+                        "slug": "procurement-assets",
+                        "title": "Procurement & Assets",
+                        "description": "Lifecycle management of your hardware and software assets from acquisition to retirement.",
+                        "icon": "inventory_2"
+                    },
+                    {
+                        "slug": "it-strategy-vcio",
+                        "title": "IT Strategy & vCIO",
+                        "description": "Aligning technology investments with long-term business scale and operational goals.",
+                        "icon": "radar"
+                    },
+                    {
+                        "slug": "support-360",
+                        "title": "Support 360 (Outsourcing)",
+                        "description": "Comprehensive IT impartition for Canadian SMEs, including vCISO strategic security governance.",
+                        "icon": "all_inclusive"
+                    }
+                ]
+            },
+            "details": {
+                "cloud-backup-disaster-recovery": {
+                    "title": "Cloud Backup & Disaster Recovery",
+                    "hero": "Your Partner in Business Resilience",
+                    "description": "The threat landscape facing your data is exploding. From natural disasters and system failures to human error and malicious attacks, your business continuity depends on recovery services that keep you protected and running 24x7. We provide comprehensive, flawlessly delivered DRaaS (Disaster Recovery as a Service) and BaaS (Backup as a Service) solutions.",
+                    "features": [
+                        "Fully Managed Disaster Recovery as a Service (DRaaS)",
+                        "Cloud, Virtual, and Physical Backup as a Service (BaaS)",
+                        "Secure Backup for Microsoft 365 and SaaS Platforms",
+                        "Strategic Business Continuity & DR Planning (BCP/DR)",
+                        "Automated Failover Minimizing Downtime and Data Loss",
+                        "Ransomware-Proof Immutable Storage Offsite"
+                    ],
+                    "benefits": {
+                        "title": "Stay Protected with Comprehensive Crisis Management",
+                        "p1": "Thwart disasters of any kind and ensure your critical data is always available and protected. We don't just provide storage; our strategic consultants work with you to develop and test comprehensive business continuity plans.",
+                        "p2": "By combining cutting-edge infrastructure with managed recovery, we take your disaster recovery to new levels, allowing you to expect the unexpected and keep your business moving forward confidently."
+                    },
+                    "stats": [
+                        {
+                            "value": "99.999%",
+                            "label": "Guaranteed Uptime SLA"
+                        },
+                        {
+                            "value": "< 15 Min",
+                            "label": "Recovery Time Objective (RTO)"
+                        },
+                        {
+                            "value": "Zero",
+                            "label": "Tolerance for Data Loss"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Global Data Vault Approach",
+                        "steps": [
+                            {
+                                "title": "Strategic Assessment",
+                                "description": "We analyze your infrastructure, data criticality, and regulatory requirements to define customized RPO and RTO metrics."
+                            },
+                            {
+                                "title": "Resilient Architecture",
+                                "description": "Implementation of immutable, air-gapped storage and automated failover protocols tailored to your specific ecosystem."
+                            },
+                            {
+                                "title": "Continuous Testing",
+                                "description": "We don't wait for a disaster. We conduct regular, non-disruptive DR simulations to guarantee recovery readiness."
+                            }
+                        ]
+                    }
+                },
+                "network-management": {
+                    "title": "Enterprise Network Management",
+                    "hero": "Zero-Latency Connectivity",
+                    "description": "We architect and maintain high-performance networks that serve as the nervous system of your digital enterprise. From SD-WAN to global VPN infrastructures, we ensure security and speed at every node.",
+                    "features": [
+                        "24/7 Proactive Traffic Analysis",
+                        "Next-Gen Firewall Orchestration",
+                        "High-Density Wireless Optimization",
+                        "Secure SD-WAN Architecture",
+                        "Global VPN & Remote Access Infrastructure",
+                        "Zero-Trust Network Access (ZTNA) Integration"
+                    ],
+                    "benefits": {
+                        "title": "Uninterrupted Digital Operations",
+                        "p1": "Your network is the foundation of your digital initiatives. We ensure it's not simply running, but critically optimized to eliminate bottlenecks and latency for your global workforce.",
+                        "p2": "With continuous monitoring and proactive threat mitigation at the edge, we transform your network from a vulnerability into a strategic, highly resilient corporate asset."
+                    },
+                    "stats": [
+                        {
+                            "value": "99.99%",
+                            "label": "Network Availability SLA"
+                        },
+                        {
+                            "value": "< 5ms",
+                            "label": "Average Edge Latency"
+                        },
+                        {
+                            "value": "24/7",
+                            "label": "Active NOC Monitoring"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Network Orchestration Model",
+                        "steps": [
+                            {
+                                "title": "Infrastructure Audit",
+                                "description": "Comprehensive mapping of your existing topology to identify latency bottlenecks, security gaps, and obsolete legacy hardware."
+                            },
+                            {
+                                "title": "Modernization & Deployment",
+                                "description": "Seamless rollout of SD-WAN, next-gen firewalls, and optimized routing paths with zero operational disruption to your team."
+                            },
+                            {
+                                "title": "Continuous Optimization",
+                                "description": "Real-time traffic analysis and automated failover adjustments to dynamically maintain peak performance during high-load periods."
+                            }
+                        ]
+                    }
+                },
+                "endpoint-resilience": {
+                    "title": "Endpoint Resilience & Security",
+                    "hero": "Secure Every Touchpoint",
+                    "description": "The modern perimeter is your employee's laptop. We secure every device in your fleet with automated management, advanced threat protection, and real-time response capabilities.",
+                    "features": [
+                        "Master Asset Life-cycle Management",
+                        "Automated OS & Third-Party Patching",
+                        "EDR (Endpoint Detection & Response)",
+                        "Mobile Device Management (MDM) Enrolment",
+                        "Silent Software Deployment & Configuration",
+                        "Remote Lock & Data Wipe Protocols"
+                    ],
+                    "benefits": {
+                        "title": "Empower a Secure, Hybrid Workforce",
+                        "p1": "As your team distributes globally, the traditional firewall is no longer sufficient. We push enterprise-grade security directly to the devices your team relies on daily.",
+                        "p2": "By automating device compliance, patches, and threat isolation, we drastically reduce IT tickets and eliminate the friction between stringent corporate security and seamless end-user productivity."
+                    },
+                    "stats": [
+                        {
+                            "value": "100%",
+                            "label": "Automated Patch Compliance"
+                        },
+                        {
+                            "value": "< 1 Min",
+                            "label": "Threat Isolation Time"
+                        },
+                        {
+                            "value": "Zero",
+                            "label": "Intrusive Downtime"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Endpoint Management Lifecycle",
+                        "steps": [
+                            {
+                                "title": "Zero-Touch Provisioning",
+                                "description": "Devices are shipped directly to employees worldwide, automatically configuring applications, policies, and VPNs on first boot."
+                            },
+                            {
+                                "title": "Automated Vanguard",
+                                "description": "Silent background deployment of critical security patches and enterprise applications without disrupting user workflows."
+                            },
+                            {
+                                "title": "Active Response",
+                                "description": "In the event of anomalous behavior, our EDR systems instantly quarantine the affected device, protecting the broader network."
+                            }
+                        ]
+                    }
+                },
+                "cloud-administration": {
+                    "title": "Cloud Administration & Governance",
+                    "hero": "Maximum Cloud Efficiency",
+                    "description": "Stop overpaying for underutilized cloud resources. We provide expert, hands-on management for AWS, Azure, and Google Cloud, focusing relentlessly on performance optimization, security compliance, and comprehensive cost containment.",
+                    "features": [
+                        "Resource Right-Sizing & Cost Analysis",
+                        "Security Posture Management (CSPM)",
+                        "Hybrid Cloud Orchestration & Migration",
+                        "Automated Scaling & Load Balancing",
+                        "Cloud Spend Forecasting & Audits",
+                        "Identity and Access Management (IAM)"
+                    ],
+                    "benefits": {
+                        "title": "Transform Cloud Chaos into Predictable ROI",
+                        "p1": "Cloud migration is just the beginning. Without active governance, cloud environments rapidly spiral into complex, costly ecosystems full of security blind spots.",
+                        "p2": "We act as your dedicated cloud operations team, applying FinOps and SecOps principles to ensure every dollar spent directly contributes to scalable performance and rigorous security."
+                    },
+                    "stats": [
+                        {
+                            "value": "30%",
+                            "label": "Average Cost Reduction"
+                        },
+                        {
+                            "value": "CIS",
+                            "label": "Benchmark Compliance"
+                        },
+                        {
+                            "value": "24/7",
+                            "label": "Cloud Incident Response"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Cloud Governance Framework",
+                        "steps": [
+                            {
+                                "title": "FinOps Audit",
+                                "description": "Deep-dive analysis of your current cloud spend to identify zombie instances, over-provisioned resources, and architectural inefficiencies."
+                            },
+                            {
+                                "title": "Security Hardening",
+                                "description": "Implementation of least-privilege IAM, encryption at rest, and automated compliance checks against industry benchmarks."
+                            },
+                            {
+                                "title": "Automated Governance",
+                                "description": "Deployment of self-healing infrastructure rules and dynamic cost-allocation alerts to prevent future architectural drift."
+                            }
+                        ]
+                    }
+                },
+                "procurement-assets": {
+                    "title": "IT Procurement & Asset Management",
+                    "hero": "Strategic Resource Lifecycle",
+                    "description": "Maximize the value of every technology investment. We handle the entire end-to-end lifecycle of your IT assets, from strategic vendor selection and bulk procurement to compliance tracking and secure decommissioning.",
+                    "features": [
+                        "Global Vendor Relationship Management",
+                        "Asset Tracking & Warranty Compliance",
+                        "Strategic Hardware Refresh Cycles",
+                        "Software License Optimization",
+                        "Secure Data Sanitization & Disposals",
+                        "Just-in-Time Inventory for New Hires"
+                    ],
+                    "benefits": {
+                        "title": "Eliminate Bloat and Maintain Compliance",
+                        "p1": "Managing hardware and software licenses across a distributed workforce is a logistical nightmare. We centralize procurement, ensuring you only pay for what you use and need.",
+                        "p2": "From leveraging global buying power for hardware discounts to reclaiming unused software licenses automatically, we turn asset management from a chaotic chore into a streamlined cost-saver."
+                    },
+                    "stats": [
+                        {
+                            "value": "100%",
+                            "label": "License Compliance"
+                        },
+                        {
+                            "value": "Global",
+                            "label": "Hardware Sourcing Reach"
+                        },
+                        {
+                            "value": "Zero",
+                            "label": "Ghost Assets"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Asset Lifecycle Paradigm",
+                        "steps": [
+                            {
+                                "title": "Inventory Baseline",
+                                "description": "Thorough discovery of all physical hardware and SaaS licenses to create a unified, accurate digital 'Single Source of Truth'."
+                            },
+                            {
+                                "title": "Optimization Strategy",
+                                "description": "Reclaiming unused software seats and standardizing hardware profiles by role to maximize bulk buying power."
+                            },
+                            {
+                                "title": "Lifecycle Automation",
+                                "description": "Establishing predictive timelines for hardware replacements and automated alerts for upcoming warrantee expirations."
+                            }
+                        ]
+                    }
+                },
+                "it-strategy-vcio": {
+                    "title": "IT Strategy & vCIO Services",
+                    "hero": "Strategic Technology Leadership",
+                    "description": "Technology should be a primary growth engine, not merely a cost center. Our Virtual Chief Information Officer (vCIO) services provide the executive-level technical leadership necessary to align your IT roadmap flawlessly with your business's 3-to-5-year vision.",
+                    "features": [
+                        "Quarterly Tactical & Strategic Reviews",
+                        "IT Budgeting & Forecast Planning",
+                        "Digital Transformation Roadmaps",
+                        "Mergers & Acquisitions Tech Audits",
+                        "Compliance & Risk Governance Board",
+                        "Technology Vendor Contract Negotiations"
+                    ],
+                    "benefits": {
+                        "title": "Executive Insight Without Executive Overhead",
+                        "p1": "Scaling companies often lack deep technical leadership at the executive table, leading to misaligned technology investments and stalled growth initiatives.",
+                        "p2": "We bring decades of CIO-level experience directly into your board meetings, translating complex technical challenges into clear business decisions, budgets, and actionable long-term strategies."
+                    },
+                    "stats": [
+                        {
+                            "value": "3-5 Yrs",
+                            "label": "Technology Roadmapping"
+                        },
+                        {
+                            "value": "Quarterly",
+                            "label": "Strategic Alignment Reviews"
+                        },
+                        {
+                            "value": "Board",
+                            "label": "Level Executive Representation"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Strategic Alignment Process",
+                        "steps": [
+                            {
+                                "title": "Business Discovery",
+                                "description": "Deep engagement with your executive team to understand revenue goals, operational challenges, and market differentiators."
+                            },
+                            {
+                                "title": "Roadmap Generation",
+                                "description": "Developing a multi-year technology plan encompassing budgeting, resource allocation, and key digital transformation milestones."
+                            },
+                            {
+                                "title": "Ongoing Leadership",
+                                "description": "Conducting quarterly strategic reviews to adjust to pivoting market conditions and ensuring technology projects stay on track and under budget."
+                            }
+                        ]
+                    }
+                },
+                "odoo": {
+                    "title": "Odoo ERP",
+                    "hero": "Modern ERP for Quebec Businesses",
+                    "description": "Odoo is a suite of business applications covering all your company needs: from CRM and e-commerce to accounting, inventory, and beyond.",
+                    "features": [
+                        "Integrated project management",
+                        "Quebec-compliant local accounting",
+                        "CRM & Sales pipeline",
+                        "Real-time inventory management",
+                        "E-commerce & Website",
+                        "Marketing automation"
+                    ],
+                    "benefits": {
+                        "title": "One platform, infinite possibilities",
+                        "p1": "As a specialized partner, we help you implement and customize Odoo to fit your business processes perfectly.",
+                        "p2": "No more data silos. With Odoo, every department works on the same base, ensuring total consistency and increased efficiency."
+                    },
+                    "stats": [
+                        {
+                            "value": "30+",
+                            "label": "Integrated apps"
+                        },
+                        {
+                            "value": "12M+",
+                            "label": "Global users"
+                        },
+                        {
+                            "value": "100%",
+                            "label": "Scalable"
+                        }
+                    ],
+                    "process": {
+                        "title": "Our Implementation Process",
+                        "steps": [
+                            {
+                                "title": "Needs Analysis",
+                                "description": "Audit of your current processes and identification of critical modules."
+                            },
+                            {
+                                "title": "Configuration & Import",
+                                "description": "Odoo parameterization and secure migration of your existing data."
+                            },
+                            {
+                                "title": "Training & Support",
+                                "description": "Guiding your teams for smooth adoption and ongoing support."
+                            }
+                        ]
+                    }
+                },
+                "erpnext": {
+                    "title": "ERPNext",
+                    "hero": "Open Source Operational Excellence",
+                    "description": "ERPNext is a robust and flexible ERP designed for agile companies that want total transparency and absolute control over their operations.",
+                    "features": [
+                        "Global financial management",
+                        "Manufacturing & MRP",
+                        "Human resource management",
+                        "Customer support & Helpdesk",
+                        "Asset management",
+                        "Custom reports"
+                    ],
+                    "benefits": {
+                        "title": "Unleash your industrial potential",
+                        "p1": "ERPNext offers a 360-degree view of your business, from supply chain to final billing.",
+                        "p2": "Thanks to its modular architecture, you only pay for what you need, while keeping the ability to grow without technical limits."
+                    },
+                    "stats": [
+                        {
+                            "value": "100%",
+                            "label": "Open Source"
+                        },
+                        {
+                            "value": "150+",
+                            "label": "Supported countries"
+                        },
+                        {
+                            "value": "360°",
+                            "label": "Total Visibility"
+                        }
+                    ],
+                    "process": {
+                        "title": "Agile Deployment",
+                        "steps": [
+                            {
+                                "title": "Mapping",
+                                "description": "Definition of workflows and control points."
+                            },
+                            {
+                                "title": "Cloud Deployment",
+                                "description": "Installation on your infrastructure or ours, optimized for performance."
+                            },
+                            {
+                                "title": "Pure Optimization",
+                                "description": "Final adjustments and automation of recurring tasks."
+                            }
+                        ]
+                    }
+                },
+                "microsoft-365": {
+                    "title": "Microsoft 365",
+                    "hero": "The Ultimate Productivity Ecosystem",
+                    "description": "Go beyond simple emails. Microsoft 365 combines the best productivity apps with powerful cloud services, enhanced security, and unmatched collaboration capabilities.",
+                    "features": [
+                        "Premium Office Apps (Word, Excel, PPT)",
+                        "Microsoft Teams for collaboration",
+                        "Hybrid cloud with OneDrive & SharePoint",
+                        "Advanced Security & Compliance",
+                        "Identity management with Azure AD",
+                        "Copilot AI for productivity"
+                    ],
+                    "benefits": {
+                        "title": "Work smart, anywhere",
+                        "p1": "We don't just sell licenses. We orchestrate your environment to ensure your data is secure and your team is efficient.",
+                        "p2": "Benefit from expert administration that optimizes your costs and ensures every feature is configured according to industry best practices."
+                    },
+                    "stats": [
+                        {
+                            "value": "1 TB",
+                            "label": "Storage per user"
+                        },
+                        {
+                            "value": "99.9%",
+                            "label": "Uptime SLA"
+                        },
+                        {
+                            "value": "24/7",
+                            "label": "Expert Support"
+                        }
+                    ],
+                    "process": {
+                        "title": "Migration and Modernization",
+                        "steps": [
+                            {
+                                "title": "Tenant Audit",
+                                "description": "Analysis of your current environment and planning the migration path."
+                            },
+                            {
+                                "title": "Secure Migration",
+                                "description": "Transfer of your emails, files, and settings to the cloud without interruption."
+                            },
+                            {
+                                "title": "Governance & Security",
+                                "description": "Implementing security and compliance policies to protect your digital assets."
+                            }
+                        ]
+                    }
+                },
+                "google-workspace": {
+                    "title": "Google Workspace",
+                    "hero": "Real-Time Collaboration",
+                    "description": "Reinvent how your team works together with cloud-native tools that foster creativity and speed, while maintaining a global security standard.",
+                    "features": [
+                        "Custom Professional Gmail",
+                        "Google Drive & Shared Drives",
+                        "Google Meet for video conferencing",
+                        "Collaborative editing on Docs, Sheets, Slides",
+                        "Enterprise Security & MDM Management",
+                        "Seamless third-party integration"
+                    ],
+                    "benefits": {
+                        "title": "Unleash your team's creativity",
+                        "p1": "Google Workspace removes barriers to collaboration. Multiple users can edit the same document simultaneously, regardless of their location.",
+                        "p2": "Our expertise helps you secure this open workflow, implementing granular access controls and Data Loss Prevention (DLP)."
+                    },
+                    "stats": [
+                        {
+                            "value": "Zero",
+                            "label": "Collaboration latency"
+                        },
+                        {
+                            "value": "99.9%",
+                            "label": "Guaranteed uptime"
+                        },
+                        {
+                            "value": "Global",
+                            "label": "Delivery network"
+                        }
+                    ],
+                    "process": {
+                        "title": "Adoption and Transformation",
+                        "steps": [
+                            {
+                                "title": "Cloud Native Strategy",
+                                "description": "Aligning your collaboration tools with your agile company culture."
+                            },
+                            {
+                                "title": "Assisted Migration",
+                                "description": "Smooth transition to Workspace with special attention to data integrity."
+                            },
+                            {
+                                "title": "Change Training",
+                                "description": "Workshops to maximize adoption of collaboration tools by your employees."
+                            }
+                        ]
+                    }
+                }
+            },
+            "questions": {
+                "title": "Modern IT for Modern Scale",
+                "p1": "Managed Services is not just about keeping the lights on. It's about building a predictable, scalable infrastructure that removes technical debt and allows your team to focus on core business innovation.",
+                "p2": "We integrate deeply with your existing teams, acting as an extension of your organization. Every initiative is benchmarked against reliability, security, and measurable ROI.",
+                "items": [
+                    {
+                        "q": "How does Managed IT reduce my operational risk?",
+                        "a": "By introducing 24/7 monitoring, automated patching, and immutable backups, we shift your posture from reactive 'break-fix' to a state of continuous operational readiness."
+                    },
+                    {
+                        "q": "Can we scale our support as we grow?",
+                        "a": "Absolutely. Our infrastructure is designed to be elastic. Whether you are adding 10 or 100 employees, our support frameworks scale without friction."
+                    },
+                    {
+                        "q": "What about my existing legacy systems?",
+                        "a": "We specialize in 'bridging' legacy infrastructure with modern cloud solutions, ensuring you gain the benefits of modernization without the risks of total rebuilds."
+                    }
+                ]
+            }
+        },
+        "managedCybersecurity": {
+            "tag": "Security",
+            "title": "Managed Cybersecurity Services",
+            "description": "Defend your enterprise against sophisticated threats with our multi-layered security architecture and proactive defense strategies.",
+            "cta": "Request Security Audit",
+            "benefits": {
+                "title": "Transform Reactive Defense into Proactive Resilience",
+                "p1": "In today's cyber landscape, perimeter defense is no longer enough. Sophisticated actors bypass standard firewalls with ease, often remaining undetected for months.",
+                "p2": "Our MDR and SOC teams provide the constant vigilance needed to identify zero-day threats and lateral movement before they turn into critical breaches, ensuring your data remains sovereign and secure.",
+                "p3": "We deploy advanced behavioral analytics and AI-driven automation to isolate threats in milliseconds. By adopting a zero-trust architecture, we minimize your attack surface and provide continuous compliance auditing to meet stringent regulatory requirements seamlessly."
+            },
+            "stats": [
+                {
+                    "value": "< 1 hr",
+                    "label": "Mean Time to Detect (MTTD)"
+                },
+                {
+                    "value": "100%",
+                    "label": "Threat Response Accuracy"
+                },
+                {
+                    "value": "24/7",
+                    "label": "SOC Monitoring"
+                },
+                {
+                    "value": "Global",
+                    "label": "SIEM Coverage"
+                }
+            ],
+            "process": {
+                "title": "Our Adaptive Defense Strategy",
+                "steps": [
+                    {
+                        "title": "Threat Discovery",
+                        "description": "Continuous 24/7 scanning of network traffic and log behavior using advanced SIEM and XDR telemetry to identify anomalies."
+                    },
+                    {
+                        "title": "Security Remediation",
+                        "description": "Immediate automated containment of suspicious activity followed by deep-dive investigation by our senior security analysts."
+                    },
+                    {
+                        "title": "Defense Hardening",
+                        "description": "Application of tactical lessons learned to update firewall rules and security policies, proactively immunizing your stack against future iterations."
+                    }
+                ]
+            },
+            "testimonial": {
+                "quote": "The peace of mind knowing Stigma's SOC is monitoring our infrastructure 24/7/365 is invaluable. They've stopped multiple credential-stuffing attacks before they could impact us.",
+                "author": "David Thorne",
+                "role": "Director of Security",
+                "company": "FinTech Alliance"
+            },
+            "expertise": {
+                "title": "Multi-Layered Enterprise Defense",
+                "description": "A holistic approach to securing your most valuable digital assets.",
+                "soc": {
+                    "title": "Security Operations (SOC)",
+                    "description": "Continuous monitoring and real-time incident response to neutralize threats before they impact your business."
+                },
+                "vulnerability": {
+                    "title": "Vulnerability Management",
+                    "description": "Proactive identification and remediation of security flaws within your infrastructure and applications."
+                },
+                "awareness": {
+                    "title": "Human Risk Management",
+                    "description": "Training programs and phishing simulations to transform your employees into your first line of defense."
+                }
+            },
+            "capabilities": {
+                "tag": "Capabilities",
+                "title": "Holistic Defense Framework",
+                "description": "Our multi-layered security stack provides comprehensive protection from core infrastructure to the digital edge.",
+                "items": [
+                    {
+                        "title": "MDR & 24/7 SOC",
+                        "description": "Managed Detection and Response backed by a specialized SOC for real-time threat hunting.",
+                        "icon": "shield"
+                    },
+                    {
+                        "title": "Threat Intelligence",
+                        "description": "Global signal intelligence integration to preemptively block emerging attack vectors.",
+                        "icon": "biotech"
+                    },
+                    {
+                        "title": "Zero Trust Architecture",
+                        "description": "Identity-centric security models ensuring every access request is verified and least-privilege enforced.",
+                        "icon": "lock_open"
+                    },
+                    {
+                        "title": "Cloud Security Posture",
+                        "description": "Continuous monitoring and configuration hardening for Azure, AWS, and SaaS environments.",
+                        "icon": "cloud_done"
+                    },
+                    {
+                        "title": "Incident Response",
+                        "description": "Rapid containment and forensic analysis protocols to minimize business impact during an event.",
+                        "icon": "emergency_home"
+                    },
+                    {
+                        "title": "Email & Identity Defense",
+                        "description": "Advanced phishing protection and MFA orchestration to secure your most targeted vectors.",
+                        "icon": "person_search"
+                    }
+                ]
+            },
+            "questions": {
+                "title": "Resilient Security for the Modern Enterprise",
+                "p1": "Cybersecurity is no longer a set-and-forget checklist. It requires continuous adaptation to an evolving threat landscape.",
+                "p2": "We act as your strategic security partner, deeply integrating with your operations to build a culture of resilience and proactive defense.",
+                "items": [
+                    {
+                        "q": "How does your SOC handle high-volume threat alerts?",
+                        "a": "Our SOAR platform filters out the noise, allowing our elite analysts to focus exclusively on confirmed, high-fidelity threats that require human intervention."
+                    },
+                    {
+                        "q": "Can you help us achieve specific compliance standards?",
+                        "a": "Yes. Our security frameworks are mapped against NIST, SOC2, and ISO standards, ensuring your defense posture also meets your regulatory requirements."
+                    },
+                    {
+                        "q": "What is the typical response time for a critical incident?",
+                        "a": "Critical threats are acknowledged within 15 minutes, with containment protocols initiated immediately by our 24/7 rapid response team."
+                    }
+                ]
+            }
+        },
+        "aiMachineLearning": {
+            "tag": "Quebec AI Experts",
+            "title": "AI Consulting & Expertise",
+            "description": "Propel your Quebec business into the future. Our experts guide your transition to artificial intelligence with concrete and strategic solutions.",
+            "technologies": {
+                "tag": "OUR TECH STACK",
+                "title": "Technologies we develop",
+                "description": "We master the most advanced technologies to create solutions that transform your business.",
+                "items": [
+                    {
+                        "title": "AI automation",
+                        "description": "Intelligent automation of business processes for exponential efficiency.",
+                        "icon": "auto_awesome_motion"
+                    },
+                    {
+                        "title": "Computer vision",
+                        "description": "AI-powered image and video stream analysis for inspection and security.",
+                        "icon": "visibility"
+                    },
+                    {
+                        "title": "AI Agent",
+                        "description": "Autonomous systems capable of executing complex tasks and reasoning.",
+                        "icon": "smart_toy"
+                    },
+                    {
+                        "title": "Cybersecurity",
+                        "description": "Advanced infrastructure protection and real-time threat detection.",
+                        "icon": "security"
+                    },
+                    {
+                        "title": "Data intelligence",
+                        "description": "Leveraging your data for informed strategic decision-making.",
+                        "icon": "insights"
+                    }
+                ]
+            },
+            "cta": "Book Your AI Consultation",
+            "benefits": {
+                "title": "Accelerate Your AI Transition with Local Experts",
+                "p1": "The transition to AI is no longer optional—it's a strategic necessity for Quebec businesses. The challenge is as much operational as it is technological.",
+                "p2": "We bridge that gap with seasoned AI consultants who transform your technological potential into a driver for local and sustainable growth.",
+                "p3": "From intelligent automation to predictive analytics, our models are built by local experts to deliver measurable business results, simplifying your AI adoption."
+            },
+            "stats": [
+                {
+                    "value": "85%",
+                    "label": "Automation Efficiency"
+                },
+                {
+                    "value": "3.5x",
+                    "label": "Data ROI Improvement"
+                },
+                {
+                    "value": "24/7",
+                    "label": "Predictive Monitoring"
+                },
+                {
+                    "value": "99%",
+                    "label": "Model Accuracy Avg"
+                }
+            ],
+            "process": {
+                "title": "From Data to Intelligence",
+                "steps": [
+                    {
+                        "title": "Data Engineering",
+                        "description": "Consolidating fragmented data into a unified, high-quality feature store optimized for model training."
+                    },
+                    {
+                        "title": "Model Synthesis",
+                        "description": "Training and fine-tuning custom LLMs or predictive scripts tailored for your specific business objectives."
+                    },
+                    {
+                        "title": "Ops Integration",
+                        "description": "Seamlessly embedding AI within your existing workflows with continuous feedback loops for ongoing refinement."
+                    }
+                ]
+            },
+            "testimonial": {
+                "quote": "The predictive maintenance model Stigma built for us has practically eliminated unexpected downtime. It's like having a crystal ball for our operations.",
+                "author": "Elena Rodriguez",
+                "role": "Head of Digital Transformation",
+                "company": "Apex Manufacturing"
+            },
+            "expertise": {
+                "title": "AI Consulting & Strategic Support",
+                "description": "Our AI consultants work alongside you to identify and deploy the solutions that will transform your productivity in Quebec.",
+                "predictive": {
+                    "title": "Predictive Analytics",
+                    "description": "Leverage advanced algorithms to forecast future trends, customer behavior, and operational performance."
+                },
+                "nlp": {
+                    "title": "Natural Language Processing",
+                    "description": "Automate document analysis and enhance customer interaction through advanced understanding of natural language."
+                },
+                "vision": {
+                    "title": "Computer Vision",
+                    "description": "Deploy systems capable of analyzing images and videos for industrial automation and security."
+                }
+            },
+            "capabilities": {
+                "tag": "Capabilities",
+                "title": "Artificial Intelligence Framework",
+                "description": "Deploy specialized neural architectures and mathematical models that transform raw data into a competitive asset.",
+                "items": [
+                    {
+                        "slug": "llm-fine-tuning",
+                        "title": "LLM Fine-Tuning",
+                        "description": "Optimizing Large Language Models with specialized organizational knowledge for context-aware automation.",
+                        "icon": "psychology"
+                    },
+                    {
+                        "slug": "anomaly-detection",
+                        "title": "Anomaly Detection",
+                        "description": "Real-time identification of statistical outliers for fraud prevention or industrial predictive maintenance.",
+                        "icon": "query_stats"
+                    },
+                    {
+                        "slug": "semantic-search",
+                        "title": "Semantic Search",
+                        "description": "Implementing vector-based search engines that understand user intent beyond simple keyword matching.",
+                        "icon": "manage_search"
+                    },
+                    {
+                        "slug": "vision-systems",
+                        "title": "Vision Systems",
+                        "description": "Automating visual inspections and object recognition using advanced computer vision neural networks.",
+                        "icon": "visibility"
+                    },
+                    {
+                        "slug": "demand-forecasting",
+                        "title": "Demand Forecasting",
+                        "description": "Predicting future market fluctuations and resource requirements through multivariate time-series analysis.",
+                        "icon": "trending_up"
+                    },
+                    {
+                        "slug": "data-pipelines",
+                        "title": "Data Pipelines",
+                        "description": "Architecting robust ETL/ELT flows to ensure high-fidelity data input for your production AI models.",
+                        "icon": "account_tree"
+                    },
+                    {
+                        "slug": "ai-training",
+                        "title": "Corporate AI Training",
+                        "description": "1-Day intensive workshop to master AI productivity and strategic adoption for your team ($2,500/day).",
+                        "icon": "school"
+                    }
+                ]
+            },
+            "useCases": {
+                "tag": "Concrete Use Cases",
+                "title": "AI Tailored to Your Industry",
+                "description": "Discover how our AI solutions adapt to the specific realities of your profession in Quebec.",
+                "items": [
+                    {
+                        "sector": "Dentists",
+                        "case": "Automated appointment scheduling and imaging analysis for early detection.",
+                        "icon": "medical_services"
+                    },
+                    {
+                        "sector": "Accountants",
+                        "case": "Automated data extraction, fiscal anomaly detection, and cash flow forecasting.",
+                        "icon": "account_balance"
+                    },
+                    {
+                        "sector": "Lawyers",
+                        "case": "Complex contract analysis, automated legal research, and intelligent classification.",
+                        "icon": "gavel"
+                    },
+                    {
+                        "sector": "Plumbers & Electricians",
+                        "case": "Route optimization, automated quoting via image, and predictive maintenance.",
+                        "icon": "engineering"
+                    },
+                    {
+                        "sector": "Manufacturing Sector",
+                        "case": "Predictive maintenance, computer vision quality control, and production line optimization.",
+                        "icon": "factory"
+                    },
+                    {
+                        "sector": "Construction",
+                        "case": "Construction site monitoring via computer vision and smart logistics management.",
+                        "icon": "architecture"
+                    },
+                    {
+                        "sector": "Retail",
+                        "case": "Predictive inventory management and real-time customer experience personalization.",
+                        "icon": "storefront"
+                    }
+                ]
+            },
+            "useCaseDetails": {
+                "ui": {
+                    "cta": "Request specific demo",
+                    "benefitsTitle": "Key Benefits of the Stigma AI Framework",
+                    "whyChooseTitle": "Why choose us for your industry?",
+                    "teamTitle": "Stigma Technologies Team",
+                    "consultantLabel": "AI Consultants Montreal",
+                    "learnMore": "Learn more"
+                },
+                "dentists": {
+                    "title": "Artificial Intelligence for Dental Clinics in Quebec",
+                    "hero": "Optimize care and management through AI.",
+                    "description": "From intelligent appointment booking to computer-aided early detection, we help dental clinics in Montreal and Laval enter the digital dentistry era.",
+                    "benefits": [
+                        "Reduction in no-shows through predictive confirmation.",
+                        "AI-assisted imaging analysis for increased diagnostic precision.",
+                        "Automation of billing and insurance tracking.",
+                        "Intelligent emergency appointment management."
+                    ]
+                },
+                "accountants": {
+                    "title": "Artificial Intelligence for Quebec Accounting Firms",
+                    "hero": "Automate data processing and enhance your advisory services.",
+                    "description": "Eliminate repetitive entry and classification tasks. Our AI solutions allow Montreal accountants to focus on strategic analysis and client growth.",
+                    "benefits": [
+                        "Automated data extraction with a 99% accuracy rate.",
+                        "Proactive anomaly detection and tax fraud prevention.",
+                        "Real-time cash flow forecasting for your SME clients.",
+                        "Intelligent classification of documents and supporting vouchers."
+                    ]
+                },
+                "lawyers": {
+                    "title": "Legal AI for Law Firms in Quebec",
+                    "hero": "AI at the service of legal efficiency.",
+                    "description": "Speed up your research and contract analysis. We deploy secure, private AI tools for law firms in Montreal and throughout Quebec.",
+                    "benefits": [
+                        "Analysis and review of complex contracts in seconds.",
+                        "Automated legal research in Quebec databases.",
+                        "Intelligent classification and indexing of thousands of documents.",
+                        "Case outcome prediction based on historical jurisprudence."
+                    ]
+                },
+                "plumbers-electricians": {
+                    "title": "AI Solutions for Plumbing & Electrical Contractors",
+                    "hero": "Maximize fieldwork team productivity.",
+                    "description": "Optimize routes and automate quotes. Our AI solutions help construction contractors in Quebec better manage their time and resources.",
+                    "benefits": [
+                        "Intelligent route optimization to reduce travel time.",
+                        "Automated quote generation from field-captured photos.",
+                        "Predictive equipment maintenance for your industrial clients.",
+                        "Automated inventory management and parts ordering."
+                    ]
+                },
+                "manufacturing": {
+                    "title": "Artificial Intelligence for the Manufacturing Sector in Quebec",
+                    "hero": "Towards Industry 4.0: Performance and Quality Through AI.",
+                    "description": "Optimize your production lines and reduce maintenance costs. Our industrial AI solutions allow manufacturers in Montreal and beyond to increase their global competitiveness.",
+                    "benefits": [
+                        "Predictive maintenance to eliminate unplanned production downtime.",
+                        "Automated quality control via computer vision (high-speed defect detection).",
+                        "Real-time optimization of factory energy consumption.",
+                        "Demand forecasting and intelligent raw material inventory management."
+                    ]
+                }
+            },
+            "questions": {
+                "title": "From Raw Data to Strategic Intelligence",
+                "p1": "AI is not a silver bullet; it's a precision instrument. Success depends on data quality, model alignment, and operational integration.",
+                "p2": "We help you bridge the gap between academic theory and industrial application, deploying AI that solves move-the-needle business problems.",
+                "items": [
+                    {
+                        "q": "How do you ensure AI models stay accurate over time?",
+                        "a": "We implement MLOps frameworks with continuous monitoring for model drift, ensuring automated retraining when performance degrades."
+                    },
+                    {
+                        "q": "Can we use AI without compromising our data privacy?",
+                        "a": "Yes. We specialize in private, on-premise AI deployments and differential privacy techniques that allow model training on sensitive data."
+                    },
+                    {
+                        "q": "What is the typical timeline for an AI production deployment?",
+                        "a": "A high-fidelity MVP typically takes 4-8 weeks, followed by iterative refinement and full-scale operational integration."
+                    }
+                ]
+            },
+            "booking": {
+                "tag": "AI Consultation",
+                "title": "Evaluate your",
+                "titleHighlight": "Machine Learning Potential",
+                "description": "Analyze your data and processes with our experts to identify the best AI use cases for your enterprise.",
+                "schedulerTitle": "Schedule your AI Exploratory Call",
+                "schedulerDescription": "Choose a time to discuss your data sources, growth objectives, and automation opportunities.",
+                "secureBooking": "Confidential & Secure Session",
+                "onboardingFlow": "Analysis Methodology",
+                "supportLine": "AI Direct Line",
+                "steps": {
+                    "schedule": "Schedule",
+                    "consult": "Data Audit",
+                    "propose": "Architecture"
+                },
+                "values": {
+                    "client": "ROI-Centric",
+                    "results": "Predictive",
+                    "independent": "Agnostic",
+                    "transparency": "Absolute Confidentiality"
+                }
+            },
+            "contactForm": {
+                "tag": "Artificial Intelligence Expertise",
+                "title": "Ready to automate your operations?",
+                "description": "Our Data Scientists and Machine Learning Engineers are ready to assess your data maturity and design your AI strategy.",
+                "hub": {
+                    "bookTitle": "Need a technical session?",
+                    "bookCta": "Schedule Call (15 min)",
+                    "bookDescription": "Speak directly with a Senior Data Scientist about your challenges.",
+                    "directTitle": "Direct Contact",
+                    "emailLabel": "Email",
+                    "phoneLabel": "Phone",
+                    "officeLabel": "AI Laboratory (Montreal)"
+                }
+            }
+        },
+        "grc": {
+            "tag": "Governance",
+            "title": "Governance, Risk & Compliance",
+            "description": "Navigate the complex regulatory landscape with confidence. We provide strategic GRC frameworks that mitigate risk and ensure sustainable compliance.",
+            "cta": "Consult an Expert",
+            "benefits": {
+                "title": "Transform Compliance into a Competitive Sharpness",
+                "p1": "Compliance is often viewed as a burden—a checkbox exercise that slows down innovation. This perspective leaves businesses vulnerable to systemic risk.",
+                "p2": "We redefine GRC as a strategic engine. By automating trust and codifying policy, we enable you to enter new markets with confidence and institutional-grade security.",
+                "p3": "Our comprehensive approach aligns your technical infrastructure with evolving regulatory demands. We implement continuous monitoring and automated evidence collection, ensuring you remain permanently audit-ready while significantly reducing the administrative overhead of compliance."
+            },
+            "stats": [
+                {
+                    "value": "100%",
+                    "label": "Compliance Integrity"
+                },
+                {
+                    "value": "0",
+                    "label": "Regulatory Penalties"
+                },
+                {
+                    "value": "12+",
+                    "label": "Frameworks Covered"
+                },
+                {
+                    "value": "24/7",
+                    "label": "Evidence Collection"
+                }
+            ],
+            "process": {
+                "title": "Proactive Risk Shield",
+                "steps": [
+                    {
+                        "title": "Regulatory Blueprint",
+                        "description": "Deep mapping of your operational footprint against global standards like SOC2, ISO, and GDPR."
+                    },
+                    {
+                        "title": "Control Engineering",
+                        "description": "Designing and deploying technical controls and robust policies to bridge identified security and compliance gaps."
+                    },
+                    {
+                        "title": "Continuous Assurance",
+                        "description": "Automated monitoring and evidence collection to maintain a permanent 'audit-ready' status and mitigate risk."
+                    }
+                ]
+            },
+            "testimonial": {
+                "quote": "Stigma transformed our compliance posture from a chaotic annual scramble into a streamlined, automated process. We've never been more prepared for an audit.",
+                "author": "David Thorne",
+                "role": "Compliance Officer",
+                "company": "Veritas FinTech"
+            },
+            "expertise": {
+                "title": "Mastery of Compliance and Risk",
+                "description": "We transform regulatory constraints into competitive advantages.",
+                "audit": {
+                    "title": "Compliance Audit",
+                    "description": "Deep assessments against industry standards (SOC2, ISO 27001, HIPAA) to ensure you are always audit-ready."
+                },
+                "risk": {
+                    "title": "Risk Management",
+                    "description": "Identification, analysis, and prioritization of business risks to ensure operational continuity and data protection."
+                },
+                "governance": {
+                    "title": "Policy Governance",
+                    "description": "Establishment of robust policy frameworks and internal controls to maintain a consistent security posture."
+                }
+            },
+            "capabilities": {
+                "tag": "Governance",
+                "title": "Risk & Compliance Framework",
+                "description": "Align your technology operations with global regulatory standards while mitigating systemic risk.",
+                "items": [
+                    {
+                        "title": "Regulatory Mapping",
+                        "description": "Cross-mapping internal controls against GDPR, HIPAA, NIST, and industry-specific regulations.",
+                        "icon": "vignette"
+                    },
+                    {
+                        "title": "Vendor Risk Mgmt",
+                        "description": "Quantifying and managing the risk profile of your third-party supply chain and SaaS partners.",
+                        "icon": "hub"
+                    },
+                    {
+                        "title": "Internal Controls",
+                        "description": "Continuous monitoring and testing of IT general controls to ensure operational integrity.",
+                        "icon": "rule_folder"
+                    },
+                    {
+                        "title": "Business Continuity",
+                        "description": "Developing robust disaster recovery and resilience plans for mission-critical operations.",
+                        "icon": "rebase_edit"
+                    },
+                    {
+                        "title": "Security Privacy",
+                        "description": "Protecting data sovereignty and implementing privacy-by-design frameworks site-wide.",
+                        "icon": "admin_panel_settings"
+                    },
+                    {
+                        "title": "ESG & Governance",
+                        "description": "Advising on corporate governance structures and technical ESG reporting requirements.",
+                        "icon": "assured_workload"
+                    }
+                ]
+            },
+            "questions": {
+                "title": "Sustainable Compliance for Global Operations",
+                "p1": "Legacy infrastructure limits your ability to scale and adapt to market demands. Maintaining physical servers is costly and diverts your focus from innovation.",
+                "p2": "We guide your transition to the cloud, architecting solutions that provide limitless scalability and enterprise-grade resilience.",
+                "p3": "By abstracting your hardware layer, we enable rapid deployment of new services and optimize your operational expenditure. Our proactive monitoring ensures high availability and disaster recovery readiness, allowing your teams to innovate without infrastructure constraints.",
+                "items": [
+                    {
+                        "q": "How do you help us prepare for a SOC2 or ISO audit?",
+                        "a": "We perform gap analyses, assist in remediation, and manage the evidence collection process via automated GRC platforms to ensure audit success."
+                    },
+                    {
+                        "q": "Can you manage data privacy requirements for global users?",
+                        "a": "Yes. We specialize in cross-border data transfer compliance and implementing localized privacy controls for disparate regulatory zones."
+                    },
+                    {
+                        "q": "What is the ROI of a robust GRC strategy?",
+                        "a": "Beyond risk mitigation, GRC optimizes operational efficiency, reduces cyber insurance premiums, and accelerates sales cycles with enterprise customers."
+                    }
+                ]
+            }
+        },
+        "shared": {
+            "capabilities": "Enterprise Capabilities",
+            "learnMore": "Learn more",
+            "backToSolutions": "Back to Managed IT",
+            "processTag": "OUR METHODOLOGY"
+        },
+        "llmFineTuning": {
+            "tag": "Technical Expertise",
+            "title": "Private LLM Fine-Tuning",
+            "description": "Train cutting-edge language models on your own enterprise data. Secure, accurate, and guaranteeing strict confidentiality.",
+            "cta": "Speak to an AI Engineer",
+            "booking": {
+                "tag": "AI Consultation",
+                "title": "Start your Custom",
+                "titleHighlight": "LLM Project",
+                "description": "Evaluate the feasibility of your use case with our Artificial Intelligence engineering team.",
+                "schedulerTitle": "Schedule your AI Strategic Call",
+                "schedulerDescription": "Choose a time to discuss your data security, models, and business objectives.",
+                "secureBooking": "Confidential & Secure Session",
+                "onboardingFlow": "Analysis Methodology",
+                "supportLine": "AI Support Line",
+                "steps": {
+                    "schedule": "Schedule",
+                    "consult": "Scoping",
+                    "propose": "Architecture"
+                },
+                "values": {
+                    "client": "Custom-fit",
+                    "results": "Performant",
+                    "independent": "Agnostic",
+                    "transparency": "Absolute Confidentiality"
+                }
+            },
+            "contactForm": {
+                "tag": "Secure & Sovereign AI",
+                "title": "Ready to deploy your private AI?",
+                "description": "Our engineers are ready to evaluate your data architecture and design an ultra-secure LLM training pipeline with you.",
+                "hub": {
+                    "bookTitle": "Need a technical session?",
+                    "bookCta": "Schedule Call (15 min)",
+                    "bookDescription": "Speak directly with a Senior AI Architect about your challenges.",
+                    "directTitle": "Direct Contact",
+                    "emailLabel": "Email",
+                    "phoneLabel": "Phone",
+                    "officeLabel": "AI Laboratory (Montreal)"
+                }
+            },
+            "benefits": {
+                "title": "Your AI, Your Rules",
+                "p1": "Public LLMs are generalists, but your business needs specialized expertise. Fine-tuning captures the nuances of your terminology, processes, and policies.",
+                "p2": "We build secure pipelines to adjust open-source or commercial models so they speak your business language while preserving the secrecy of your data.",
+                "p3": "The result? Hyper-contextualized automation without sending your sensitive information to large Cloud providers. Your data remains yours."
+            },
+            "stats": [
+                {
+                    "value": "100%",
+                    "label": "Data Confidentiality"
+                },
+                {
+                    "value": "10x",
+                    "label": "Contextual Accuracy"
+                },
+                {
+                    "value": "Zero",
+                    "label": "Data Leaks"
+                },
+                {
+                    "value": "24/7",
+                    "label": "Inference Capacity"
+                }
+            ],
+            "process": {
+                "title": "Fine-Tuning Methodology",
+                "steps": [
+                    {
+                        "title": "Data Curation",
+                        "description": "Cleaning, annotating, and structuring your internal documentary corpus (PDFs, manuals, historical logs)."
+                    },
+                    {
+                        "title": "Iterative Training",
+                        "description": "Parameter-efficient fine-tuning (PEFT/LoRA) on secure servers to maximize semantic retention."
+                    },
+                    {
+                        "title": "RAG Deployment",
+                        "description": "Combining the tuned model with a vector search base (RAG) to limit hallucinations."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Enterprise LLM Applications",
+                "description": "Advanced use cases requiring deep understanding of your data.",
+                "support": {
+                    "title": "Support Copilot",
+                    "description": "An internal assistant knowing all your technical procedures, capable of guiding your teams."
+                },
+                "sales": {
+                    "title": "Quote Generation",
+                    "description": "Instant, accurate responses to RFPs based on hundreds of past submissions."
+                },
+                "search": {
+                    "title": "Semantic Search",
+                    "description": "Find concepts, not just keywords, across millions of corporate documents."
+                }
+            }
+        },
+        "anomalyDetection": {
+            "tag": "Algorithmic Expertise",
+            "title": "Environment-Triggered Anomaly Detection",
+            "description": "Identify aberrant behaviors in real-time across your complex data streams to prevent fraud, anticipate failures, and secure your operations.",
+            "cta": "Speak to an Expert",
+            "benefits": {
+                "title": "Precision Meets Prevention",
+                "p1": "Traditional rule-based systems generate too many false positives and miss emerging threats. Machine learning adapts to the evolving normality of your business.",
+                "p2": "Our models isolate atypical statistical patterns in massive data environments (transactions, IoT sensors, network logs) for immediate intervention.",
+                "p3": "The result? A drastic reduction in fraud losses and a shift from reactive maintenance to an optimized predictive strategy."
+            },
+            "stats": [
+                {
+                    "value": "< 10ms",
+                    "label": "Inference Latency"
+                },
+                {
+                    "value": "99.8%",
+                    "label": "Detection Accuracy"
+                },
+                {
+                    "value": "-85%",
+                    "label": "False Positives"
+                },
+                {
+                    "value": "24/7",
+                    "label": "Real-Time Analysis"
+                }
+            ],
+            "process": {
+                "title": "Detection Methodology",
+                "steps": [
+                    {
+                        "title": "Baseline Modeling",
+                        "description": "Deep learning on your historical data to establish a dynamic baseline of normal behavior."
+                    },
+                    {
+                        "title": "Unsupervised Training",
+                        "description": "Usage of advanced algorithms (Isolation Forests, Autoencoders) capable of identifying previously unseen anomalies."
+                    },
+                    {
+                        "title": "Integration and Alerts",
+                        "description": "Deploying the model in your production pipelines with a real-time scoring and alert escalation system."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Detection Applications",
+                "description": "Secure your critical operations through relentless algorithmic monitoring.",
+                "support": {
+                    "title": "Fraud Prevention",
+                    "description": "Analysis of financial transactions to block suspicious behaviors before impact."
+                },
+                "sales": {
+                    "title": "Predictive Maintenance",
+                    "description": "Detection of IoT sensor micro-variations signaling imminent mechanical failures."
+                },
+                "search": {
+                    "title": "System Security",
+                    "description": "Identification of network intrusions or data exfiltrations via traffic behavior models."
+                }
+            }
+        },
+        "semanticSearch": {
+            "tag": "Knowledge Engineering",
+            "title": "Enterprise Semantic Search",
+            "description": "Move beyond keyword search. Empower your teams to query your corporate documents in natural language and get relevant answers based on meaning.",
+            "cta": "Speak to an AI Architect",
+            "benefits": {
+                "title": "Understand the Intent, Not Just the Words",
+                "p1": "Traditional lexical search fails against synonyms, internal jargon, and complex queries, wasting valuable time for your employees.",
+                "p2": "Semantic search uses language models to vectorize your documents. It understands the meaning and intent behind the user's question.",
+                "p3": "The result? Instant access to institutional knowledge. Your experts find exactly what they're looking for, even if they don't know the exact terminology."
+            },
+            "stats": [
+                {
+                    "value": "10x",
+                    "label": "Search Speed"
+                },
+                {
+                    "value": "+80%",
+                    "label": "Result Relevance"
+                },
+                {
+                    "value": "Multi",
+                    "label": "Multilingual Support"
+                },
+                {
+                    "value": "Zero",
+                    "label": "Training Required"
+                }
+            ],
+            "process": {
+                "title": "Vector Search Architecture",
+                "steps": [
+                    {
+                        "title": "Document Indexing",
+                        "description": "Extraction and processing of your data silos (PDFs, Confluence, SharePoint) into a unified source."
+                    },
+                    {
+                        "title": "Vectorization (Embeddings)",
+                        "description": "Transforming text into dense mathematical vectors capturing the semantics of your industry."
+                    },
+                    {
+                        "title": "RAG Engine",
+                        "description": "Retrieval-Augmented Generation: coupling the vector database with an LLM for synthetic and sourced answers."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Semantic Use Cases",
+                "description": "Unlock the value of your informational capital.",
+                "support": {
+                    "title": "Technical Assistance",
+                    "description": "Accelerate ticket resolution via instant search in knowledge bases and incident histories."
+                },
+                "sales": {
+                    "title": "Legal Search & Compliance",
+                    "description": "Intelligent navigation through thousands of contracts to extract specific clauses or obligations."
+                },
+                "search": {
+                    "title": "Intelligent E-Commerce",
+                    "description": "Product search engines capable of understanding vague descriptive queries from your customers."
+                }
+            }
+        },
+        "visionSystems": {
+            "tag": "Visual Intelligence",
+            "title": "Computer Vision Systems",
+            "description": "Automate inspection, classification, and monitoring using cutting-edge convolutional neural networks capable of 'seeing' and interpreting your environment.",
+            "cta": "Speak to a Vision Expert",
+            "benefits": {
+                "title": "Tireless Eyes for Your Operations",
+                "p1": "Human visual inspection is prone to fatigue, subjectivity, and lacks scalability. Computer vision offers mechanical consistency and precision.",
+                "p2": "We deploy models capable of detecting microscopic defects, tracking complex objects in real time, or reading dense documents with superhuman accuracy.",
+                "p3": "The result? Unmatched production quality, a traceable supply chain, and a major reduction in costs related to manual visual errors."
+            },
+            "stats": [
+                {
+                    "value": "99.9%",
+                    "label": "Inspection Accuracy"
+                },
+                {
+                    "value": "Ms",
+                    "label": "Real-Time Processing"
+                },
+                {
+                    "value": "100%",
+                    "label": "Inspection Coverage"
+                },
+                {
+                    "value": "Edge",
+                    "label": "On-Site Deployment"
+                }
+            ],
+            "process": {
+                "title": "Computer Vision Methodology",
+                "steps": [
+                    {
+                        "title": "Strategic Acquisition",
+                        "description": "Defining hardware setups (cameras, lighting) and collecting representative image datasets."
+                    },
+                    {
+                        "title": "CNN Model Training",
+                        "description": "Using modern architectures (YOLO, ResNet) specialized for object detection, segmentation, or classification."
+                    },
+                    {
+                        "title": "Edge/Cloud Inference",
+                        "description": "Deploying optimized models directly onto the production line (Edge AI) for ultra-low latency decisions."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Industrial Visual Applications",
+                "description": "Artificial intelligence serving the physical world.",
+                "support": {
+                    "title": "Manufacturing Quality Control",
+                    "description": "Detecting scratches, assembly defects, or packaging anomalies on high-speed lines."
+                },
+                "sales": {
+                    "title": "Document Extraction (OCR)",
+                    "description": "Intelligent digitization and structured data extraction from invoices, blueprints, and handwritten forms."
+                },
+                "search": {
+                    "title": "Logistics Tracking",
+                    "description": "Automated reading of license plates, damaged barcodes, and volumetric stock tracking."
+                }
+            }
+        },
+        "demandForecasting": {
+            "tag": "Predictive Intelligence",
+            "title": "AI-Driven Demand Forecasting",
+            "description": "Anticipate market fluctuations and optimize your supply chain by using machine learning to accurately predict future needs.",
+            "cta": "Speak to a Data Scientist",
+            "benefits": {
+                "title": "Move from Reaction to Anticipation",
+                "p1": "Traditional forecasting methods (moving averages) cannot capture complex interactions between weather, economy, promotions, and social trends.",
+                "p2": "AI analyzes your historical time series and integrates dozens of external signals to model predictions highly resilient to market volatility.",
+                "p3": "The result? No more costly stockouts and unsellable surpluses. Your business precisely aligns its operations with actual demand."
+            },
+            "stats": [
+                {
+                    "value": "+40%",
+                    "label": "Accuracy Gains"
+                },
+                {
+                    "value": "-30%",
+                    "label": "Inventory Surplus"
+                },
+                {
+                    "value": "-25%",
+                    "label": "Stockouts Avoided"
+                },
+                {
+                    "value": "Global",
+                    "label": "Signal Integration"
+                }
+            ],
+            "process": {
+                "title": "Predictive Methodology",
+                "steps": [
+                    {
+                        "title": "Feature Engineering",
+                        "description": "Merging internal sales data with macroeconomic indicators, marketing calendars, and weather data."
+                    },
+                    {
+                        "title": "Time-Series Modeling",
+                        "description": "Deploying recurrent networks (LSTM) and Gradient Boosting models to capture deep seasonalities."
+                    },
+                    {
+                        "title": "Decision Dashboards",
+                        "description": "Providing forecasts via APIs or BI interfaces to directly steer purchasing and production."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Operational Impact",
+                "description": "Optimize every link in your value chain.",
+                "support": {
+                    "title": "Retail Management",
+                    "description": "Store-by-store assortment optimization based on hyper-local sales predictions."
+                },
+                "sales": {
+                    "title": "Manufacturing Optimization",
+                    "description": "Industrial production planning aligned with adjusted demand to minimize material storage costs."
+                },
+                "search": {
+                    "title": "HR Planning",
+                    "description": "Predicting call or foot traffic volumes to optimize staff scheduling and reduce labor costs."
+                }
+            }
+        },
+        "dataPipelines": {
+            "tag": "Data Architecture",
+            "title": "Data Pipeline Engineering",
+            "description": "Build the solid foundations of your AI strategy. We design robust, scalable, and secure ETL/ELT architectures to route your data.",
+            "cta": "Speak to a Data Engineer",
+            "benefits": {
+                "title": "From Data Chaos to Actionable Intelligence",
+                "p1": "There is no AI without structured data. Most AI initiatives fail due to data silos, incompatible formats, and poor quality.",
+                "p2": "We engineer the critical 'plumbing' infrastructure: modern Data Lakes and Data Warehouses that unify your heterogeneous sources into an organized, purified stream.",
+                "p3": "The result? Your data scientists and AI models are fed by a single, clean, and updated source of truth, ensuring optimal performance in production."
+            },
+            "stats": [
+                {
+                    "value": "Peta",
+                    "label": "Scalability (Bytes)"
+                },
+                {
+                    "value": "100%",
+                    "label": "Fault Tolerance"
+                },
+                {
+                    "value": "Real-time",
+                    "label": "Data Streaming"
+                },
+                {
+                    "value": "Compliant",
+                    "label": "Governance & Security"
+                }
+            ],
+            "process": {
+                "title": "Data Flow Architecture",
+                "steps": [
+                    {
+                        "title": "Modernized Ingestion",
+                        "description": "Secure connection to your ERPs, CRMs, APIs, and SQL/NoSQL databases via robust connectors (batch or streaming)."
+                    },
+                    {
+                        "title": "Transformation & Quality",
+                        "description": "In-flight data cleaning, standardization, and enrichment to ensure absolute integrity before storage."
+                    },
+                    {
+                        "title": "Optimized Storage (Lakehouse)",
+                        "description": "Setting up data structures (Snowflake, Databricks, BigQuery) optimized for AI analysis and business intelligence."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Data Ecosystem Foundations",
+                "description": "The necessary infrastructure for the modern data-driven enterprise.",
+                "support": {
+                    "title": "Cloud Data Migration",
+                    "description": "Securely transferring your aging on-premise data infrastructures to the agile cloud."
+                },
+                "sales": {
+                    "title": "360 Customer View",
+                    "description": "Reconciling identities spread across multiple systems to create a unified, actionable customer profile."
+                },
+                "search": {
+                    "title": "Compliance Enforcement",
+                    "description": "Complete data traceability, anonymization, and consent management directly within the pipeline."
+                }
+            }
+        },
+        "aiTraining": {
+            "tag": "Executive Training",
+            "title": "Enterprise AI Workshop",
+            "description": "Equip your leaders and teams with practical knowledge to leverage generative AI tools, identify ROI use cases, and navigate risks.",
+            "cta": "Book a Workshop",
+            "benefits": {
+                "title": "Become an AI-Powered Organization",
+                "p1": "Acquiring technology is only the first step; adoption dictates ROI. Too often, AI is underutilized due to a lack of understanding or fear.",
+                "p2": "Our condensed workshops ($2,500/day) demystify artificial intelligence. We train your teams on Prompt Engineering, workflow automation, and data security.",
+                "p3": "The result? A transformed corporate culture. Your employees become early adopters capable of safely multiplying their daily productivity."
+            },
+            "stats": [
+                {
+                    "value": "1 Day",
+                    "label": "Intensive Workshop"
+                },
+                {
+                    "value": "+30%",
+                    "label": "Productivity Gain"
+                },
+                {
+                    "value": "Tailored",
+                    "label": "Custom Content"
+                },
+                {
+                    "value": "Secure",
+                    "label": "Risk Awareness"
+                }
+            ],
+            "process": {
+                "title": "Transformation Curriculum",
+                "steps": [
+                    {
+                        "title": "Maturity Assessment",
+                        "description": "Preliminary analysis of your teams' technological fluency to calibrate the technical level of the intervention."
+                    },
+                    {
+                        "title": "Hands-On Workshops",
+                        "description": "Interactive 'hands-on-keyboard' sessions focused on ChatGPT Enterprise, Copilot, and your business tools."
+                    },
+                    {
+                        "title": "Use Case Strategy",
+                        "description": "Guided brainstorming workshop to identify and prioritize internal processes ready for AI automation."
+                    }
+                ]
+            },
+            "expertise": {
+                "title": "Learning Pathways",
+                "description": "Trainings designed for immediate workplace impact.",
+                "support": {
+                    "title": "Executive Literacy (C-Level)",
+                    "description": "Strategic understanding of AI, ROI evaluation, risk management, and legal considerations."
+                },
+                "sales": {
+                    "title": "Operational Mastery",
+                    "description": "Advanced prompt engineering for marketing, sales, and administrative teams."
+                },
+                "search": {
+                    "title": "Secure AI Deployment",
+                    "description": "Data security best practices: what to never share with public LLMs."
+                }
+            }
+        },
+        "cloudComputing": {
+            "tag": "Infrastructure",
+            "title": "Cloud Computing Solutions",
+            "description": "Scale your business with resilient, highly-available cloud infrastructure. We manage the complexity of migration and optimization for you.",
+            "cta": "Explore Cloud Options",
+            "benefits": {
+                "title": "Leverage the Infinite Scale of Global Infrastructure",
+                "p1": "On-premise hardware is a liability in a fast-moving market. Scaling is slow, and disaster recovery is often an afterthought, leaving you vulnerable to outages.",
+                "p2": "We transform your IT into a flexible, software-defined utility, enabling your business to expand globally in minutes and maintain 99.999% availability.",
+                "p3": "By abstracting your hardware layer, we enable rapid deployment of new services and optimize your operational expenditure. Our proactive monitoring ensures high availability and disaster recovery readiness, allowing your teams to innovate without infrastructure constraints."
+            },
+            "stats": [
+                {
+                    "value": "99.999%",
+                    "label": "Uptime Guarantee"
+                },
+                {
+                    "value": "15 min",
+                    "label": "Mean Recovery Time"
+                },
+                {
+                    "value": "50 ms",
+                    "label": "Global Latency Avg"
+                },
+                {
+                    "value": "24/7",
+                    "label": "Cloud Ops Support"
+                }
+            ],
+            "process": {
+                "title": "Seamless Cloud Transformation",
+                "steps": [
+                    {
+                        "title": "Infrastructure Audit",
+                        "description": "Full mapping of your current workloads, data dependencies, and security requirements to baseline performance."
+                    },
+                    {
+                        "title": "Cloud Orchestration",
+                        "description": "Architecting and deploying a resilient, auto-scaling multi-cloud environment tailored for maximum efficiency."
+                    },
+                    {
+                        "title": "Continuous Growth",
+                        "description": "Ongoing right-sizing and FinOps governance to ensure your cloud spend scales strictly with your actual business needs."
+                    }
+                ]
+            },
+            "testimonial": {
+                "quote": "Our transition to Stigma's cloud framework cut our operational overhead by 40% while improving our global app performance. Their migration team was clinical.",
+                "author": "Marcus Chen",
+                "role": "CTO",
+                "company": "SwiftLogistics NA"
+            },
+            "expertise": {
+                "title": "Enterprise Cloud Excellence",
+                "description": "Optimize your performance, security, and costs through our advanced cloud architectures.",
+                "migration": {
+                    "title": "Cloud Migration",
+                    "description": "Seamless migration strategies for moving your critical workloads to Azure, AWS, or hybrid clouds without disruption."
+                },
+                "optimization": {
+                    "title": "Cost & Perf Optimization",
+                    "description": "Continuous analysis of costs and performance to ensure your cloud infrastructure is both agile and cost-effective."
+                },
+                "strategy": {
+                    "title": "Multi-Cloud Strategy",
+                    "description": "Design of resilient architectures across multiple providers to avoid vendor lock-in and maximize availability."
+                }
+            },
+            "capabilities": {
+                "tag": "Architecture",
+                "title": "Cloud Ecosystem Framework",
+                "description": "Deploy and manage specialized cloud environments designed for performance, resilience, and horizontal scale.",
+                "items": [
+                    {
+                        "title": "Hybrid Cloud Design",
+                        "description": "Orchestrating seamless resource fluidity between private infrastructure and public cloud providers.",
+                        "icon": "cloud_sync"
+                    },
+                    {
+                        "title": "Serverless Patterns",
+                        "description": "Architecting event-driven logic to eliminate infrastructure overhead and optimize execution costs.",
+                        "icon": "bolt"
+                    },
+                    {
+                        "title": "Container Orchestration",
+                        "description": "Deploying Kubernetes and Docker frameworks for consistent, portable, and scalable microservices.",
+                        "icon": "grid_view"
+                    },
+                    {
+                        "title": "FinOps & Efficiency",
+                        "description": "Continuous cost modeling and resource rightsizing to ensure maximum ROI on cloud spend.",
+                        "icon": "payments"
+                    },
+                    {
+                        "title": "Cloud Native Storage",
+                        "description": "High-performance, distributed storage architectures with automated geo-replication and durability.",
+                        "icon": "database"
+                    },
+                    {
+                        "title": "Edge Computing",
+                        "description": "Deploying compute resources closer to users to reduce latency and improve real-time decision making.",
+                        "icon": "lan"
+                    }
+                ]
+            },
+            "questions": {
+                "title": "Modern Infrastructure for Tomorrow's Demand",
+                "p1": "The cloud is no longer a destination; it's an operating model. Successful migration requires deep rethinking of how systems interact.",
+                "p2": "We specialize in 'Cloud Native' transformations, helping you leverage advanced scaling and automation patterns that legacy systems cannot match.",
+                "items": [
+                    {
+                        "q": "How do you handle multi-cloud data consistency?",
+                        "a": "We use distributed consensus protocols and cloud-agnostic data planes to ensure ACID compliance across disparate cloud regions."
+                    },
+                    {
+                        "q": "Can you help us reduce our monthly cloud bill?",
+                        "a": "Yes. Our FinOps audits typically reveal 20-35% waste through orphan resources, over-provisioning, and inefficient licensing models."
+                    },
+                    {
+                        "q": "Is our data truly secure in a public cloud environment?",
+                        "a": "By using client-side encryption and Hardware Security Modules (HSM), we ensure that even your cloud provider cannot access your raw data."
+                    }
+                ]
+            }
+        },
+        "booking": {
+            "tag": "Expert Consultation",
+            "title": "Partner with Us for",
+            "titleHighlight": "Comprehensive IT",
+            "description": "Unlock your digital potential with enterprise-grade solutions.",
+            "schedulerTitle": "Initialize Your Strategy Call",
+            "schedulerDescription": "Choose a time that works best for your team.",
+            "secureBooking": "Secure & Encrypted Booking Environment",
+            "onboardingFlow": "Onboarding Flow",
+            "supportLine": "Support Line",
+            "steps": {
+                "schedule": "Schedule",
+                "consult": "Consult",
+                "propose": "Propose"
+            },
+            "values": {
+                "client": "Client-oriented",
+                "results": "Results-driven",
+                "independent": "Independent",
+                "transparency": "Transparency"
+            }
+        },
+        "digitalTransformation": {
+            "tag": "Evolution",
+            "title": "Digital Transformation",
+            "description": "Overcome stagnation and outpace the competition. We bridge the gap between where you are and where you need to be in the digital-first economy.",
+            "cta": "Start Your Transformation",
+            "benefits": {
+                "title": "Legacy is a Cost, Transformation is an Investment",
+                "p1": "In the digital-first economy, the fastest-moving companies aren't just built on better ideas; they are built on more agile foundations.",
+                "p2": "We help you shed the weight of monolithic systems. By modernizing your core, we turn your technology from a slow-moving utility into a high-speed innovation engine.",
+                "p3": "We integrate modern API layers and scalable microservices to ensure your legacy data becomes a liquid asset. This architectural shift allows for rapid feature deployment and seamless cross-platform synchronization, directly increasing your organizational agility and market responsiveness."
+            },
+            "stats": [
+                {
+                    "value": "50%",
+                    "label": "OpEx Reduction Avg"
+                },
+                {
+                    "value": "3x",
+                    "label": "Deployment Speed"
+                },
+                {
+                    "value": "90%",
+                    "label": "Legacy App Retirement"
+                },
+                {
+                    "value": "24/7",
+                    "label": "Global Operations"
+                }
+            ],
+            "process": {
+                "title": "The Evolution Matrix",
+                "steps": [
+                    {
+                        "title": "Digital Audit",
+                        "description": "Comprehensive mapping of tech debt, fragmented data, and manual friction points in your current stack."
+                    },
+                    {
+                        "title": "Modernization Sprint",
+                        "description": "Surgically replacing legacy modules with cloud-native architectures and automated business logic."
+                    },
+                    {
+                        "title": "Agile Scale",
+                        "description": "Continuous integration of new digital capabilities while maintaining institutional stability and security."
+                    }
+                ]
+            },
+            "testimonial": {
+                "quote": "Stigma's transformation framework didn't just 'update' our software—it rebuilt our entire operational DNA. We're now shipping customer features 4x faster.",
+                "author": "Sarah Jenkins",
+                "role": "COO",
+                "company": "Nexus Global"
+            },
+            "expertise": {
+                "title": "Expertise in Enterprise Solutions",
+                "description": "We specialize in the high-stakes integration and modernization of the core systems that power your business.",
+                "crm": {
+                    "title": "CRM Integration",
+                    "description": "We don't just connect tools; we architect your entire customer lifecycle. From deep-level Salesforce customizations and Microsoft Dynamics business logic to building bespoke CRM platforms, we ensure your sales, marketing, and support teams operate from a single, high-fidelity source of truth."
+                },
+                "erp": {
+                    "title": "ERP Solutions",
+                    "description": "Streamline your entire back-office with enterprise-grade resource planning. We specialize in the deployment and optimization of SAP, Oracle, and NetSuite environments. Our approach focuses on breaking down organizational silos and automating complex supply chain workflows."
+                },
+                "modernization": {
+                    "title": "System Modernization",
+                    "description": "Legacy systems shouldn't be a liability. We perform 'surgical' modernization of technical debt, migrating monolithic applications to agile, microservices-based architectures. We ensure your core infrastructure gains the scalability and security required for the digital era."
+                }
+            },
+            "capabilities": {
+                "tag": "Capabilities",
+                "title": "Transformation Framework",
+                "description": "A holistic approach to modernizing your operations, customer experience, and technological foundation.",
+                "items": [
+                    {
+                        "title": "Legacy Modernization",
+                        "description": "Transform outdated systems into agile, cloud-native applications that drive business value.",
+                        "icon": "rocket_launch"
+                    },
+                    {
+                        "title": "Data Strategy",
+                        "description": "Turn raw data into a strategic asset with modern data architectures and governance.",
+                        "icon": "hub"
+                    },
+                    {
+                        "title": "Customer Experience",
+                        "description": "Design and implement digital journeys that delight customers and increase retention.",
+                        "icon": "groups_3"
+                    },
+                    {
+                        "title": "Operational Efficiency",
+                        "description": "Streamline workflows and eliminate bottlenecks through intelligent automation and integration.",
+                        "icon": "bolt"
+                    },
+                    {
+                        "title": "Cloud Native Adoption",
+                        "description": "Harness the power of AWS, Azure, and Google Cloud for maximum scalability and productivity.",
+                        "icon": "architecture"
+                    },
+                    {
+                        "title": "Agile Culture",
+                        "description": "Empower your teams with the mindsets and tools needed for continuous innovation.",
+                        "icon": "psychology"
+                    }
+                ]
+            },
+            "questions": {
+                "title": "Evolution, Not Just Implementation",
+                "p1": "Digital transformation is 20% about the technology and 80% about your people and processes. We focus on building the infrastructure that allows your business to adapt and thrive.",
+                "p2": "From containerizing your applications to redefining your customer touchpoints, we ensure that every digital initiative is measured against hard business results.",
+                "items": [
+                    {
+                        "q": "What is the ROI of Digital Transformation?",
+                        "a": "ROI is found in three areas: direct cost savings through automation, increased revenue through better customer experiences, and long-term viability."
+                    }
+                ]
+            }
+        }
+    },
+    "caseStudies": {
+        "title": "Case",
+        "titleLight": "Studies",
+        "categories": {
+            "all": "All Cases",
+            "DIGITAL TRANSFORMATION": "Digital Transformation",
+            "MANAGED IT": "Managed IT",
+            "CYBERSECURITY": "Cybersecurity",
+            "CLOUD COMPUTING": "Cloud Computing",
+            "AI / ML": "AI & ML"
+        },
+        "hero": {
+            "tag": "Expertise in Action",
+            "title": "Success Stories & Innovations",
+            "description": "Discover how we help our clients transform technological challenges into sustainable competitive advantages."
+        },
+        "labels": {
+            "viewReport": "View Full Report",
+            "keyResult": "Key Result"
+        }
+    },
+    "blog": {
+        "hero": {
+            "tag": "Knowledge Hub",
+            "title": "Blog & Insights",
+            "description": "Stay informed with the latest trends in technology, cybersecurity, and digital transformation directly from our experts."
+        },
+        "labels": {
+            "readArticle": "READ ARTICLE"
+        }
+    },
+    "about": {
+        "hero": {
+            "tag": "Who We Are",
+            "title": "About Stigma Technologies",
+            "description": "More than just an IT provider, we are your strategic partner in navigating the complexities of the digital landscape."
+        },
+        "story": {
+            "title": "The Beginning",
+            "p1": "In 2011, the founders of Stigma Technologies—a team of elite cybersecurity and infrastructure experts—identified a critical gap in the market. They witnessed firsthand how the increasing complexity of IT and the rapidly evolving threat landscape were paralyzing organizational growth and depleting vital resources.",
+            "p2": "Driven by this vision, Stigma Technologies was founded with a singular mission: to simplify IT for an increasingly complex world. From our inception, the focus has remained on architecting tailored systems that empower businesses to operate with confidence in the digital-first economy.",
+            "p3": "Through organic growth and a commitment to excellence, Stigma Technologies has attracted world-class talent, expanding our capabilities to provide a truly comprehensive suite of modern IT and security services."
+        },
+        "mission": {
+            "title": "Mission",
+            "quote": "\"Our mission is to simplify IT for a complex world.\"",
+            "description": "We believe that technology should be an enabler, not a hindrance. By providing innovative, reliable, and secure IT solutions, we empower businesses to focus on what they do best while we handle the rest. We are committed to building long-term partnerships with our clients, guided by our core values of rationality, initiative, and innovation."
+        },
+        "values": {
+            "title": "Our Values",
+            "rationality": {
+                "title": "Rationality",
+                "description": "We approach problems with clear, logical thinking to provide solutions that make sense for your business long-term."
+            },
+            "initiative": {
+                "title": "Initiative",
+                "description": "We don't wait for things to break. We proactively monitor and manage your systems to prevent issues before they occur."
+            },
+            "innovation": {
+                "title": "Innovation",
+                "description": "We constantly explore and integrate the latest technologies to ensure our clients have competitive advantages in their respective markets."
+            }
+        },
+        "expertise": {
+            "title": "A team built on experience",
+            "description": "Our team of certified professionals brings decades of combined experience across various IT domains, ensuring that no technical challenge is too great."
+        }
+    },
+    "contact": {
+        "hero": {
+            "tag": "Get In Touch",
+            "title": "Contact Us",
+            "description": "We'd love to talk about how we can help you mitigate risk and simplify complexity in your organization."
+        },
+        "info": {
+            "title": "Contact Information",
+            "office": "Office",
+            "phone": "Phone",
+            "email": "Email",
+            "hours": "Hours",
+            "mondayFriday": "Monday - Friday",
+            "montrealArea": "Montreal Area"
+        },
+        "process": {
+            "tag": "The Process",
+            "title": "What happens next?",
+            "steps": [
+                {
+                    "title": "Analysis",
+                    "description": "An expert analyzes your urgent needs and current challenges."
+                },
+                {
+                    "title": "Contact (24h)",
+                    "description": "We call you for a 15-min discovery exchange (no obligation)."
+                },
+                {
+                    "title": "Proposal",
+                    "description": "We present you with a tailored and priced action plan."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "items": [
+                {
+                    "question": "Is this first contact free and without obligation?",
+                    "answer": "Yes, absolutely. By filling out this form, you are simply starting a conversation. Our team will reach out to understand your needs, with no commitment required."
+                },
+                {
+                    "question": "Is my information confidential?",
+                    "answer": "Yes, we strictly comply with Law 25 and the most rigorous security protocols. Your data is encrypted and protected."
+                },
+                {
+                    "question": "What is the response time?",
+                    "answer": "We commit to responding within a maximum of 24 business hours."
+                }
+            ]
+        },
+        "badges": {
+            "secure": "Encrypted Data",
+            "confidential": "100% Confidential",
+            "compliance": "Law 25 Compliant"
+        },
+        "urgent": {
+            "text": "Too urgent for a form?",
+            "cta": "Book directly in our calendar"
+        }
+    }
+}
