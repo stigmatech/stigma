@@ -8,6 +8,7 @@ import { Metadata } from "next";
 
 // Force dynamic rendering so Supabase data is always fresh (no SSG)
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const params = await props.params;
