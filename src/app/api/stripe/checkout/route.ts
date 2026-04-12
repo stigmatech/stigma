@@ -5,7 +5,7 @@ import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
 
 // Toggle to trigger provisioning directly without Stripe for local testing
-const BYPASS_STRIPE_FOR_TESTING = true;
+const BYPASS_STRIPE_FOR_TESTING = false;
 
 export async function POST(req: Request) {
     try {
