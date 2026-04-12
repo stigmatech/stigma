@@ -41,124 +41,168 @@ export default async function ManagedITServices(props: {
 }) {
     const params = await props.params;
     const lang = params.lang as Locale;
+    const isFr = lang === 'fr';
     const dictionary = await getDictionary(lang);
     const dict = dictionary.services.managedIt;
     const shared = dictionary.services.shared;
 
     const expertiseItems = [
         {
-            icon: "lan",
+            icon: "smart_toy",
             title: dict.expertise.infrastructure.title,
             description: dict.expertise.infrastructure.description
         },
         {
-            icon: "headset_mic",
+            icon: "psychology",
             title: dict.expertise.support.title,
             description: dict.expertise.support.description
         },
         {
-            icon: "query_stats",
+            icon: "engineering",
             title: dict.expertise.strategy.title,
             description: dict.expertise.strategy.description
         }
     ];
 
     return (
-        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white pt-24">
+        <div className="min-h-screen bg-white selection:bg-slate-950 selection:text-white">
             <Navbar lang={lang} dictionary={dictionary.common.nav} />
 
             <main>
                 {/* Hero Section */}
-                <section className="bg-[#0b0c10] text-white py-14 lg:py-16 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-10 background-grid pointer-events-none"></div>
+                <section className="bg-slate-950 text-white py-20 lg:py-32 relative overflow-hidden">
+                    {/* ELITE ANIMATION: SCAN LINE */}
+                    <div className="absolute top-0 left-0 w-full h-px bg-white/10 animate-[scan_4s_linear_infinite] shadow-[0_0_15px_rgba(255,255,255,0.2)] z-20"></div>
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes scan {
+                            0% { transform: translateY(-100%); opacity: 0; }
+                            5% { opacity: 1; }
+                            95% { opacity: 1; }
+                            100% { transform: translateY(100vh); opacity: 0; }
+                        }
+                    `}} />
+
+                    {/* NOISE OVERLAY */}
+                    <div className="absolute inset-0 pointer-events-none z-30 opacity-[0.05]" 
+                         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+                    />
+
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                        <div className="max-w-3xl">
-                            <span className="inline-block bg-white/10 text-white text-[11px] font-bold tracking-widest uppercase px-3 py-1 mb-6 rounded-none">
-                                {dict.tag}
-                            </span>
-                            <h1 className="text-5xl lg:text-7xl font-display font-extrabold tracking-tight mb-8">
+                        <div className="max-w-4xl">
+                            <div className="flex flex-wrap items-center gap-4 mb-10">
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+                                    {dict.tag}
+                                </span>
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                                    {lang === 'fr' ? "STIGMA STACK AGENTIQUE 2.0" : "STIGMA AGENTIC STACK 2.0"}
+                                </span>
+                            </div>
+                            
+                            <h1 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-[0.9] text-white mb-10">
                                 {dict.title}
                             </h1>
-                            <p className="text-xl text-gray-300 font-light leading-relaxed mb-10">
+                            
+                            <p className="text-xl text-slate-400 font-light leading-relaxed mb-12 max-w-2xl tracking-tight">
                                 {dict.description}
                             </p>
-                            <Button asChild className="bg-white text-[#0b0c10] hover:bg-gray-100 rounded-none px-8 py-6 uppercase tracking-wider text-xs font-bold">
-                                <a href="#booking">{dict.cta}</a>
-                            </Button>
+                            
+                            <div className="flex flex-col sm:flex-row gap-6">
+                                <Button asChild size="lg" className="rounded-none px-10 py-7 text-[10px] uppercase tracking-[0.3em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none">
+                                    <a href="#booking">{dict.cta}</a>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Capabilities Grid */}
-                <section className="py-24 bg-gray-50 relative">
-                    <div className="absolute top-0 left-0 w-full h-[500px] bg-linear-to-b from-gray-200/50 to-transparent pointer-events-none"></div>
-
+                <section className="py-32 sm:py-40 bg-white relative selection:bg-blue-500/30">
                     <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                        <div className="text-center max-w-3xl mx-auto mb-20 block">
-                            <span className="inline-block px-4 py-1.5 rounded-none bg-blue-100 text-blue-700 text-xs font-bold tracking-wider uppercase mb-6">
-                                {dict.capabilities.tag}
+                        <div className="flex flex-col items-start gap-4 mb-24 pointer-events-none text-left">
+                            <span className="inline-flex items-center gap-3 bg-slate-950 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2">
+                                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+                                {dict.capabilities.tag || "NOS SERVICES"}
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0b0c10] mb-6 tracking-tight">
-                                {dict.capabilities.title}
+                            <h2 className="font-display text-5xl lg:text-7xl text-slate-950 tracking-tighter uppercase font-black leading-[0.9]">
+                                {dict.capabilities.title}<br/>
+                                <span className="text-slate-200">{lang === 'fr' ? "OPÉRATIONNELS" : "OPERATIONAL"}</span>
                             </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed">
+                            <p className="mt-8 text-xl text-slate-500 font-light max-w-2xl text-left tracking-tight">
                                 {dict.capabilities.description}
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {dict.capabilities.items.map((feature: any, index: number) => (
                                 <Link
                                     key={index}
                                     href={feature.slug === "support-360" ? `/${lang}/products/support-360` : `/${lang}/solutions/managed-it-services/${feature.slug}`}
-                                    className="group bg-white p-8 rounded-none shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-blue-200 hover:shadow-[0_20px_40px_-15px_rgba(10,15,44,0.12)] transition-all duration-500 relative overflow-hidden flex flex-col h-full transform hover:-translate-y-1 cursor-pointer"
+                                    className="group bg-slate-50 border border-slate-100 p-10 hover:bg-slate-950 transition-all duration-500 relative flex flex-col justify-between min-h-[380px]"
                                 >
-                                    <div className="absolute -right-4 -bottom-4 opacity-0 group-hover:opacity-[0.03] transform group-hover:scale-150 transition-all duration-700 pointer-events-none">
-                                        <span className="material-symbols-outlined text-[120px] text-[#0b0c10]">{feature.icon}</span>
-                                    </div>
+                                    <div className="grow space-y-8">
+                                        <div className="flex justify-between items-start">
+                                            <span className="text-[10px] font-mono text-slate-400 group-hover:text-blue-500/50 transition-colors uppercase tracking-widest font-black">
+                                                0{index + 1} //
+                                            </span>
+                                            <div className="w-12 h-12 bg-white group-hover:bg-white/5 border border-slate-200 group-hover:border-white/10 flex items-center justify-center transition-all duration-500">
+                                                <span className="material-symbols-outlined text-[24px] text-slate-400 group-hover:text-blue-500 transition-colors">{feature.icon}</span>
+                                            </div>
+                                        </div>
 
-                                    <div className="w-14 h-14 bg-gray-50 group-hover:bg-blue-600 text-[#0b0c10] group-hover:text-white rounded-none flex items-center justify-center mb-8 transition-colors duration-500 relative z-10 shrink-0">
-                                        <span className="material-symbols-outlined text-[26px] drop-shadow-sm">{feature.icon}</span>
-                                    </div>
-
-                                    <div className="grow relative z-10">
-                                        <h3 className="text-[17px] font-bold text-[#0b0c10] mb-3 group-hover:text-blue-600 transition-colors duration-300">{feature.title}</h3>
-                                        <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
-                                    </div>
-
-                                    <div className="mt-6 pt-6 border-t border-gray-100/0 group-hover:border-gray-100 transition-colors duration-500">
-                                        <div className="flex items-center text-xs font-bold text-blue-600 opacity-0 transform translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
-                                            {shared.learnMore}
-                                            <span className="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+                                        <div className="space-y-4">
+                                            <h3 className="text-2xl font-black text-slate-950 group-hover:text-white transition-colors leading-tight uppercase tracking-tight">
+                                                {feature.title}
+                                            </h3>
+                                            <p className="text-[15px] text-slate-500 group-hover:text-slate-400 transition-colors leading-relaxed font-light">
+                                                {feature.description}
+                                            </p>
                                         </div>
                                     </div>
+
+                                    <div className="mt-8 pt-8 border-t border-slate-100 group-hover:border-white/10 transition-colors duration-500">
+                                        <div className="flex items-center text-[10px] font-black uppercase tracking-[0.3em] text-blue-600 group-hover:text-blue-400 transition-all duration-300">
+                                            {shared.learnMore}
+                                            <span className="material-symbols-outlined text-[16px] ml-4 group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-700 shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
                                 </Link>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                <PartnersMarquee />
+                <PartnersMarquee dictionary={dictionary.home.partners} />
 
                 {/* Detailed Expertise Section */}
-                <section className="py-24 bg-white relative overflow-hidden">
+                <section className="py-32 bg-white relative overflow-hidden border-t border-slate-100">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-4xl mx-auto text-center mb-16">
-                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-6">{dict.expertise.title}</h2>
-                            <p className="text-lg text-gray-600">{dict.expertise.description}</p>
+                        <div className="max-w-4xl mx-auto text-center mb-24">
+                            <h2 className="text-5xl lg:text-6xl font-display font-black text-slate-950 uppercase tracking-tighter mb-8 leading-none">
+                                {dict.expertise.title}
+                            </h2>
+                            <p className="text-xl text-slate-500 font-light tracking-tight">
+                                {dict.expertise.description}
+                            </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                            <div className="absolute top-16 left-0 w-full h-px bg-gray-200 hidden md:block z-0"></div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                            {/* Technical Connecting Line */}
+                            <div className="absolute top-12 left-0 w-full h-px bg-slate-100 hidden md:block z-0"></div>
+                            
                             {expertiseItems.map((item, index) => (
-                                <div key={index} className="relative z-10 flex flex-col items-center text-center bg-white group hover:-translate-y-2 transition-transform duration-500 cursor-default">
-                                    <div className="w-20 h-20 rounded-none bg-white border-2 border-gray-100 flex items-center justify-center mb-8 shadow-sm group-hover:border-blue-600 group-hover:shadow-[0_10px_30px_-15px_rgba(37,99,235,0.3)] transition-all duration-500 relative bg-clip-padding">
-                                        {/* Inner colored circle replacement */}
-                                        <div className="absolute inset-2 rounded-none bg-gray-50 group-hover:bg-blue-50 transition-colors duration-500"></div>
-                                        <span className="material-symbols-outlined text-[32px] text-gray-400 group-hover:text-blue-600 relative z-10 transition-colors duration-500">{item.icon}</span>
+                                <div key={index} className="relative z-10 flex flex-col items-center text-center group">
+                                    <div className="w-24 h-24 bg-white border border-slate-200 flex items-center justify-center mb-10 group-hover:border-slate-950 transition-all duration-700 scale-100 group-hover:scale-105 relative">
+                                        {/* Corner Accents */}
+                                        <div className="absolute -top-1 -left-1 w-3 h-3 border-l border-t border-slate-300 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <div className="absolute -bottom-1 -right-1 w-3 h-3 border-r border-b border-slate-300 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        
+                                        <span className="material-symbols-outlined text-4xl text-slate-300 group-hover:text-slate-950 transition-colors duration-700">{item.icon}</span>
                                     </div>
-                                    <h3 className="text-xl font-bold text-[#0b0c10] mb-4 group-hover:text-blue-600 transition-colors duration-500">{item.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed px-2">{item.description}</p>
+                                    <h3 className="text-xl font-black text-slate-950 uppercase tracking-tight mb-5">{item.title}</h3>
+                                    <p className="text-sm text-slate-500 leading-relaxed font-light px-4 tracking-tight">{item.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -166,76 +210,68 @@ export default async function ManagedITServices(props: {
                 </section>
 
                 {/* Testimonial Section */}
-                <section className="py-16 bg-white relative">
+                <section className="py-32 bg-slate-50 relative border-y border-slate-100">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <span className="material-symbols-outlined text-[60px] text-gray-200 mb-6 block">format_quote</span>
-                        <h2 className="text-2xl md:text-3xl font-display font-medium text-[#0b0c10] leading-relaxed mb-8 italic">
+                        <span className="material-symbols-outlined text-[60px] text-slate-200 mb-10 block italic">format_quote</span>
+                        <h2 className="text-3xl md:text-4xl font-display font-black text-slate-950 leading-tight mb-12 italic tracking-tighter">
                             "{dict.testimonial.quote}"
                         </h2>
                         <div className="flex flex-col items-center justify-center">
-                            <h4 className="text-lg font-bold text-[#0b0c10] tracking-wide">{dict.testimonial.author}</h4>
-                            <p className="text-blue-600 font-medium text-sm mt-1">{dict.testimonial.role}</p>
-                            <p className="text-gray-500 text-sm mt-1">{dict.testimonial.company}</p>
+                            <div className="w-16 h-16 bg-slate-950 text-white flex items-center justify-center font-black mb-6 text-xl">
+                                {dict.testimonial.author.charAt(0)}
+                            </div>
+                            <h4 className="text-xl font-black text-slate-950 uppercase tracking-tight">{dict.testimonial.author}</h4>
+                            <p className="text-blue-600 font-bold text-xs mt-2 uppercase tracking-widest">{dict.testimonial.role}</p>
+                            <p className="text-slate-400 text-xs mt-1 uppercase tracking-[0.2em]">{dict.testimonial.company}</p>
                         </div>
                     </div>
                 </section>
 
-                {/* Value Prop Section (Enriched Layout) */}
-                <section className="py-24 bg-gray-50 border-y border-gray-100">
-                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                            {/* Left Content */}
-                            <div className="order-2 lg:order-1">
-                                <div className="max-w-xl">
-                                    <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0b0c10] mb-10 tracking-tight leading-[1.1]">
-                                        {dict.benefits.title}
-                                    </h2>
-                                    <div className="space-y-6">
-                                        <p className="text-lg text-gray-600 leading-relaxed font-light">
-                                            {dict.benefits.p1}
-                                        </p>
-                                        <p className="text-lg text-gray-600 leading-relaxed font-light">
-                                            {dict.benefits.p2}
-                                        </p>
-                                        <p className="text-lg text-gray-600 leading-relaxed font-light">
-                                            {dict.benefits.p3}
-                                        </p>
+                {/* Value Prop Section */}
+                <section className="py-32 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                            <div className="space-y-10">
+                                <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter leading-[0.9]">
+                                    {dict.benefits.title}
+                                </h2>
+                                <div className="space-y-8">
+                                    <p className="text-slate-500 text-xl font-light leading-relaxed tracking-tight">
+                                        {dict.benefits.p1}
+                                    </p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                        <div className="p-8 bg-slate-50 border border-slate-100 rounded-none group hover:bg-slate-950 transition-all duration-500">
+                                            <p className="text-sm text-slate-600 group-hover:text-slate-400 leading-relaxed font-medium transition-colors">
+                                                {dict.benefits.p2}
+                                            </p>
+                                        </div>
+                                        <div className="p-8 bg-slate-50 border border-slate-100 rounded-none group hover:bg-slate-950 transition-all duration-500">
+                                            <p className="text-sm text-slate-600 group-hover:text-slate-400 leading-relaxed font-medium transition-colors">
+                                                {dict.benefits.p3}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Right Image */}
-                            <div className="order-1 lg:order-2 relative">
-                                <div className="aspect-4/3 bg-white border border-gray-100 shadow-2xl relative overflow-hidden group rounded-none">
+                            <div className="relative">
+                                <div className="aspect-4/3 border border-slate-200 rounded-none relative overflow-hidden group shadow-2xl">
                                     <Image
                                         src="/images/it-expert-v2.png"
-                                        alt="Managed IT Services Professional"
+                                        alt="IT Expert"
                                         fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                        priority
+                                        className="object-cover transition-transform duration-1000 group-hover:scale-105 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100"
                                     />
-                                    <div className="absolute inset-0 bg-linear-to-tr from-[#0b0c10]/10 to-transparent opacity-60"></div>
+                                    <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all duration-700"></div>
                                 </div>
-
-                                {/* Floating Badge */}
-                                <div className="absolute -bottom-6 -left-6 bg-[#0b0c10] p-8 hidden xl:block shadow-2xl border border-white/10">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-none bg-blue-500/20 flex items-center justify-center">
-                                            <span className="material-symbols-outlined text-blue-400">verified</span>
-                                        </div>
-                                        <div>
-                                            <p className="text-white font-bold text-lg leading-tight tracking-tight">Enterprise</p>
-                                            <p className="text-blue-400 text-sm font-medium">Core Resilience</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/* Elite Technical Accents */}
+                                <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-slate-100 border border-slate-200 -z-10 rotate-12"></div>
+                                <div className="absolute -top-8 -left-8 w-24 h-24 border-l border-t border-slate-300 -z-10"></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <BookingSection dictionary={dictionary.services.booking} />
+                <BookingSection lang={lang} dictionary={dictionary.services.booking} />
                 <ContactForm lang={lang} dictionary={dictionary} />
             </main>
 

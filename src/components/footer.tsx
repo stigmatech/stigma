@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Facebook, Youtube, Twitter } from "lucide-react";
+import { NewsletterForm } from "@/components/newsletter-form";
 
 import { Locale } from "@/i18n-config";
 
@@ -30,8 +31,8 @@ export function Footer({ lang, dictionary }: { lang: Locale; dictionary: any }) 
                                     <span className="material-symbols-outlined text-gray-400 text-[20px]">location_on</span>
                                 </div>
                                 <p className="text-sm text-gray-300">
-                                    6205, Boul des Grandes-Prairies<br />
-                                    St-Léonard, Qc, H1P1A5
+                                    {dictionary.common.footer.address}<br />
+                                    {dictionary.common.footer.addressSubtitle}
                                 </p>
                             </div>
 
@@ -39,7 +40,7 @@ export function Footer({ lang, dictionary }: { lang: Locale; dictionary: any }) 
                                 <div className="shrink-0">
                                     <span className="material-symbols-outlined text-gray-400 text-[20px]">call</span>
                                 </div>
-                                <a href="tel:+18449784462" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">+1 (844) 978-4462</a>
+                                <a href="tel:+18555521005" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">+1 855-552-1005</a>
                             </div>
 
                             <div className="flex items-center gap-4">
@@ -52,7 +53,7 @@ export function Footer({ lang, dictionary }: { lang: Locale; dictionary: any }) 
                     </div>
 
                     {/* Solutions */}
-                    <div className="lg:col-span-2 lg:col-start-5">
+                    <div className="lg:col-span-2 lg:col-start-4">
                         <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em] mb-8">{dictionary.common.footer.solutions}</h4>
                         <ul className="space-y-4">
                             <li>
@@ -122,31 +123,31 @@ export function Footer({ lang, dictionary }: { lang: Locale; dictionary: any }) 
                             <li>
                                 <Link href={`/${lang}/products/ai-training/ia-decouverte`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                                     <span className="material-symbols-outlined text-[14px] mr-2 opacity-0 -ml-5 group-hover:opacity-100 transition-all text-gray-400">arrow_right_alt</span>
-                                    <span className="group-hover:translate-x-1 transition-transform duration-300">IA Découverte</span>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.footer.aiDiscovery}</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={`/${lang}/products/ai-training/ia-booster`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                                     <span className="material-symbols-outlined text-[14px] mr-2 opacity-0 -ml-5 group-hover:opacity-100 transition-all text-gray-400">arrow_right_alt</span>
-                                    <span className="group-hover:translate-x-1 transition-transform duration-300">IA Booster</span>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.footer.aiBooster}</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={`/${lang}/products/ai-training/microsoft-copilot`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                                     <span className="material-symbols-outlined text-[14px] mr-2 opacity-0 -ml-5 group-hover:opacity-100 transition-all text-gray-400">arrow_right_alt</span>
-                                    <span className="group-hover:translate-x-1 transition-transform duration-300">Microsoft Copilot</span>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.footer.msCopilot}</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/${lang}/products/ai-training/chatgpt-expert`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
+                                <Link href={`/${lang}/products/ai-training/ia-performer`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                                     <span className="material-symbols-outlined text-[14px] mr-2 opacity-0 -ml-5 group-hover:opacity-100 transition-all text-gray-400">arrow_right_alt</span>
-                                    <span className="group-hover:translate-x-1 transition-transform duration-300">ChatGPT Expert</span>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.footer.chatgptExpert}</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={`/${lang}/products/ai-training`} className="group flex items-center text-sm font-bold text-gray-400 hover:text-white transition-colors pt-2">
                                     <span className="material-symbols-outlined text-[14px] mr-2 opacity-0 -ml-5 group-hover:opacity-100 transition-all">arrow_right_alt</span>
-                                    <span className="group-hover:translate-x-1 transition-transform duration-300">Catalogue complet</span>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.footer.fullCatalog}</span>
                                 </Link>
                             </li>
                         </ul>
@@ -175,9 +176,9 @@ export function Footer({ lang, dictionary }: { lang: Locale; dictionary: any }) 
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/${lang}/blog`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
+                                <Link href={`/${lang}/insights`} className="group flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                                     <span className="material-symbols-outlined text-[14px] mr-2 opacity-0 -ml-5 group-hover:opacity-100 transition-all text-gray-400">arrow_right_alt</span>
-                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.nav.blog}</span>
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">{dictionary.common.insights?.title || (lang === "fr" ? "Ressources" : "Insights")}</span>
                                 </Link>
                             </li>
                             <li>
@@ -197,17 +198,7 @@ export function Footer({ lang, dictionary }: { lang: Locale; dictionary: any }) 
                             {dictionary.common.footer.newsletterText}
                         </p>
 
-                        <form className="mb-10 relative">
-                            <input
-                                type="email"
-                                placeholder={dictionary.common.footer.emailPlaceholder || "Email"}
-                                className="w-full bg-white/5 border border-white/10 rounded-none py-3 pl-5 pr-12 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-all font-sans"
-                                required
-                            />
-                            <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-surface-dark rounded-none flex items-center justify-center hover:bg-surface-dark/80 transition-colors">
-                                <span className="material-symbols-outlined text-white text-[16px]">arrow_forward</span>
-                            </button>
-                        </form>
+                        <NewsletterForm dictionary={dictionary} />
 
                         <div className="flex items-center space-x-4">
                             <a href="https://www.linkedin.com/company/stigmatech/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-none bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-all transform hover:-translate-y-1" aria-label="LinkedIn">

@@ -5,15 +5,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { TurnstileWidget } from "./turnstile-widget";
 import { X } from "lucide-react";
+import posthog from "posthog-js";
 
 interface RegistrationModalProps {
     eventId: string;
     eventTitle: string;
     lang: string;
+    dictionary: any;
     children?: React.ReactNode;
 }
 
-export function RegistrationModal({ eventId, eventTitle, lang, children }: RegistrationModalProps) {
+export function RegistrationModal({ eventId, eventTitle, lang, dictionary, children }: RegistrationModalProps) {
     const [isOpen, setIsOpen] = useState(false);
     const onClose = () => setIsOpen(false);
     const isFr = lang === "fr";
@@ -21,6 +23,21 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const formDict = dictionary?.common?.events?.form || {
+        firstName: "First Name",
+        lastName: "Last Name",
+        email: "Email",
+        company: "Company",
+        website: "Website",
+        submit: "Register",
+        placeholders: {
+            firstName: "John",
+            lastName: "Doe",
+            email: "john@example.com",
+            website: "https://example.com"
+        }
+    };
+    const dict = formDict;
 
     const [form, setForm] = useState({
         firstName: "",
@@ -46,12 +63,24 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
             const res = await fetch("/api/events/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...form, eventId: eventId, turnstileToken }),
+                body: JSON.stringify({ ...form, eventId: eventId, lang, turnstileToken }),
             });
 
             if (!res.ok) throw new Error("registration_failed");
+            posthog.identify(form.email, {
+                email: form.email,
+                first_name: form.firstName,
+                last_name: form.lastName,
+                company: form.company,
+            });
+            posthog.capture('event_registration_completed', {
+                event_id: eventId,
+                event_title: eventTitle,
+                lang,
+            });
             setSubmitted(true);
         } catch {
+            posthog.captureException(new Error('event_registration_failed'));
             setError(isFr ? "Une erreur s'est produite. Veuillez réessayer." : "An error occurred. Please try again.");
         } finally {
             setLoading(false);
@@ -110,22 +139,22 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                    {isFr ? "Prénom" : "First Name"}
+                                    {dict.firstName}
                                 </label>
                                 <Input 
                                     required 
-                                    placeholder="Jean" 
+                                    placeholder={dict.placeholders.firstName} 
                                     value={form.firstName} 
                                     onChange={(e) => setForm({...form, firstName: e.target.value})}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                    {isFr ? "Nom" : "Last Name"}
+                                    {dict.lastName}
                                 </label>
                                 <Input 
                                     required 
-                                    placeholder="Dupont" 
+                                    placeholder={dict.placeholders.lastName} 
                                     value={form.lastName} 
                                     onChange={(e) => setForm({...form, lastName: e.target.value})}
                                 />
@@ -134,12 +163,12 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
 
                         <div className="space-y-2">
                             <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                Email
+                                {dict.email}
                             </label>
                             <Input 
                                 required 
                                 type="email" 
-                                placeholder="jean.dupont@hexagone.ca" 
+                                placeholder={dict.placeholders.email} 
                                 value={form.email} 
                                 onChange={(e) => setForm({...form, email: e.target.value})}
                             />
@@ -147,10 +176,10 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
 
                         <div className="space-y-2">
                             <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                {isFr ? "Entreprise" : "Company"}
+                                {dict.company}
                             </label>
                             <Input 
-                                placeholder="Stigma Technologies" 
+                                placeholder="Your Company" 
                                 value={form.company} 
                                 onChange={(e) => setForm({...form, company: e.target.value})}
                             />
@@ -158,11 +187,11 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
 
                         <div className="space-y-2">
                             <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                {isFr ? "Site Web" : "Website"}
+                                {dict.website}
                             </label>
                             <Input 
                                 type="url"
-                                placeholder="https://stigmatech.ca" 
+                                placeholder={dict.placeholders.website} 
                                 value={form.websiteUrl} 
                                 onChange={(e) => setForm({...form, websiteUrl: e.target.value})}
                             />
@@ -181,7 +210,7 @@ export function RegistrationModal({ eventId, eventTitle, lang, children }: Regis
                             disabled={loading} 
                             className="w-full bg-background-dark dark:bg-white dark:text-background-dark hover:bg-gray-800 dark:hover:bg-gray-200 h-12 text-xs uppercase tracking-[0.2em] font-black"
                         >
-                            {loading ? (isFr ? "Chargement..." : "Loading...") : (isFr ? "S'enregistrer maintenant" : "Register now")}
+                            {loading ? (isFr ? "Chargement..." : "Loading...") : dict.submit}
                         </Button>
                     </form>
                 </div>

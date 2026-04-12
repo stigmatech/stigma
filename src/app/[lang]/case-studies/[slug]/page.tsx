@@ -5,8 +5,12 @@ import { BookingSection } from "@/components/booking-section";
 import { ContactForm } from "@/components/contact-form";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
-import { getCaseStudyBySlug, caseStudies } from "@/lib/case-studies-data";
+import { getCaseStudyBySlug, caseStudies, CaseStudy } from "@/lib/case-studies-data";
 import { blogPosts } from "@/lib/blog-posts-data";
+import { caseStudyType } from "@/sanity/schemaTypes/caseStudyType";
+import { client } from "@/sanity/lib/client";
+import { getCaseStudyBySlugQuery } from "@/sanity/lib/queries";
+import { CaseStudyChart } from "@/components/case-study-chart";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -38,7 +42,7 @@ export async function generateMetadata(props: {
 export async function generateStaticParams() {
     const langs = ["en", "fr"];
     return langs.flatMap((lang) =>
-        caseStudies.map((cs) => ({ lang, slug: cs.slug }))
+        caseStudies.map((cs: any) => ({ lang, slug: cs.slug }))
     );
 }
 
@@ -48,37 +52,75 @@ export default async function CaseStudyDetailPage(props: {
     const params = await props.params;
     const lang = params.lang as Locale;
     const dictionary = await getDictionary(lang);
-    const caseStudy = getCaseStudyBySlug(params.slug);
+    const t = (field: { en: string; fr: string } | string | undefined) => {
+        if (!field) return "";
+        if (typeof field === "string") return field;
+        return lang === "fr" ? (field.fr || field.en) : (field.en || field.fr);
+    };
+
+    let sanityCS = null;
+    try {
+        sanityCS = await client.fetch(getCaseStudyBySlugQuery, { slug: params.slug });
+    } catch (e) {
+        console.error("Sanity fetch error:", e);
+    }
+
+    let caseStudy: any = null;
+
+    if (sanityCS) {
+        caseStudy = {
+            slug: sanityCS.slug?.current || params.slug,
+            title: sanityCS.title || { en: "Untitled", fr: "Sans titre" },
+            description: sanityCS.description || { en: "", fr: "" },
+            heroImage: sanityCS.heroImage || "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
+            category: sanityCS.category || "IT",
+            categoryIcon: "rocket",
+            industry: sanityCS.industry || "B2B",
+            result: sanityCS.result || { en: "Global Optimization", fr: "Optimisation Globale" },
+            stats: sanityCS.stats || [],
+            challenge: sanityCS.challenge || { en: "", fr: "" },
+            solution: sanityCS.solution || { en: "", fr: "" },
+            impact: sanityCS.impact || { en: "", fr: "" },
+            timeline: [], // Not supported in MVP CMS
+            testimonial: sanityCS.testimonial || {
+                quote: { en: "Amazing.", fr: "Incroyable." },
+                author: "Client",
+                role: "CEO",
+                company: "Stigma Client"
+            },
+            tags: [],
+            relatedSlugs: [],
+            relatedBlogPosts: []
+        };
+    } else {
+        caseStudy = getCaseStudyBySlug(params.slug);
+    }
 
     if (!caseStudy) {
         notFound();
     }
 
-    const t = (field: { en: string; fr: string }) =>
-        lang === "fr" ? field.fr : field.en;
-
     // Refined related projects logic
     // 1. Priority: Manual overrides
-    let relatedStudies = (caseStudy.relatedSlugs || [])
-        .map(slug => caseStudies.find(cs => cs.slug === slug))
-        .filter((cs): cs is any => !!cs && cs.slug !== caseStudy.slug);
+    let relatedStudies: CaseStudy[] = (caseStudy.relatedSlugs || [])
+        .map((s: string) => caseStudies.find((cs: CaseStudy) => cs.slug === s))
+        .filter((cs: CaseStudy | undefined): cs is CaseStudy => !!cs && cs.slug !== caseStudy.slug);
 
     // 2. Secondary: Tag-based similarity (matching tag count)
     if (relatedStudies.length < 2) {
-        const remainingNeeded = 2 - relatedStudies.length;
-        const others = caseStudies.filter(cs =>
+        const others = caseStudies.filter((cs: CaseStudy) =>
             cs.slug !== caseStudy.slug &&
-            !relatedStudies.find(r => r.slug === cs.slug)
+            !relatedStudies.find((r: CaseStudy) => r.slug === cs.slug)
         );
 
         const byTags = others
-            .map(cs => ({
+            .map((cs: any) => ({
                 study: cs,
-                matches: cs.tags.filter(tag => caseStudy.tags.includes(tag)).length
+                matches: cs.tags.filter((tag: string) => (caseStudy as any).tags.includes(tag)).length
             }))
-            .filter(item => item.matches > 0)
-            .sort((a, b) => b.matches - a.matches)
-            .map(item => item.study);
+            .filter((item: any) => item.matches > 0)
+            .sort((a: any, b: any) => b.matches - a.matches)
+            .map((item: any) => item.study);
 
         relatedStudies = [...relatedStudies, ...byTags].slice(0, 2);
     }
@@ -86,10 +128,10 @@ export default async function CaseStudyDetailPage(props: {
     // 3. Fallback: Category-based matching
     if (relatedStudies.length < 2) {
         const remainingNeeded = 2 - relatedStudies.length;
-        const byCategory = caseStudies.filter(cs =>
-            cs.category === caseStudy.category &&
-            cs.slug !== caseStudy.slug &&
-            !relatedStudies.find(r => r.slug === cs.slug)
+        const byCategory = caseStudies.filter((cs: any) =>
+            cs.category === (caseStudy as any).category &&
+            cs.slug !== (caseStudy as any).slug &&
+            !relatedStudies.find((r: any) => r.slug === cs.slug)
         );
         relatedStudies = [...relatedStudies, ...byCategory].slice(0, 2);
     }
@@ -155,7 +197,7 @@ export default async function CaseStudyDetailPage(props: {
                 <section className="bg-[#0b0c10] border-t border-white/10">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
-                            {caseStudy.stats.map((stat, i) => (
+                            {caseStudy.stats.map((stat: any, i: number) => (
                                 <div key={i} className="py-8 px-6 text-center">
                                     <p className="text-3xl md:text-4xl font-display font-extrabold text-white mb-1 tracking-tight">
                                         {stat.value}
@@ -221,6 +263,16 @@ export default async function CaseStudyDetailPage(props: {
                                     </p>
                                 </div>
 
+                                {/* Interactive Data Visualization */}
+                                {caseStudy.chart && (
+                                    <CaseStudyChart 
+                                        type={caseStudy.chart.type}
+                                        data={caseStudy.chart.data}
+                                        title={t(caseStudy.chart.title)}
+                                        valueSuffix={caseStudy.chart.valueSuffix}
+                                    />
+                                )}
+
                                 {/* Impact */}
                                 <div>
                                     <div className="flex items-center gap-3 mb-6">
@@ -237,38 +289,40 @@ export default async function CaseStudyDetailPage(props: {
                                 </div>
 
                                 {/* Timeline */}
-                                <div>
-                                    <h2 className="text-2xl font-display font-bold text-[#0b0c10] mb-10">
-                                        {lang === "fr" ? "Chronologie du Projet" : "Project Timeline"}
-                                    </h2>
-                                    <div className="space-y-0">
-                                        {caseStudy.timeline.map((step, i) => (
-                                            <div key={i} className="flex gap-6 group">
-                                                {/* Left — phase indicator */}
-                                                <div className="flex flex-col items-center">
-                                                    <div className="w-10 h-10 rounded-none bg-[#0b0c10] text-white flex items-center justify-center font-bold text-sm shrink-0 z-10">
-                                                        {i + 1}
+                                {caseStudy.timeline && caseStudy.timeline.length > 0 && (
+                                    <div>
+                                        <h2 className="text-2xl font-display font-bold text-[#0b0c10] mb-10">
+                                            {lang === "fr" ? "Chronologie du Projet" : "Project Timeline"}
+                                        </h2>
+                                        <div className="space-y-0">
+                                            {caseStudy.timeline.map((step: any, i: number) => (
+                                                <div key={i} className="flex gap-6 group">
+                                                    {/* Left — phase indicator */}
+                                                    <div className="flex flex-col items-center">
+                                                        <div className="w-10 h-10 rounded-none bg-[#0b0c10] text-white flex items-center justify-center font-bold text-sm shrink-0 z-10">
+                                                            {i + 1}
+                                                        </div>
+                                                        {i < caseStudy.timeline.length - 1 && (
+                                                            <div className="w-px flex-1 bg-gray-200 my-2" />
+                                                        )}
                                                     </div>
-                                                    {i < caseStudy.timeline.length - 1 && (
-                                                        <div className="w-px flex-1 bg-gray-200 my-2" />
-                                                    )}
+                                                    {/* Right — content */}
+                                                    <div className="pb-10">
+                                                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                                            {t(step.phase)}
+                                                        </span>
+                                                        <h3 className="text-xl font-bold text-[#0b0c10] mt-1 mb-2">
+                                                            {t(step.title)}
+                                                        </h3>
+                                                        <p className="text-gray-600 leading-relaxed">
+                                                            {t(step.description)}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                {/* Right — content */}
-                                                <div className="pb-10">
-                                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                                                        {t(step.phase)}
-                                                    </span>
-                                                    <h3 className="text-xl font-bold text-[#0b0c10] mt-1 mb-2">
-                                                        {t(step.title)}
-                                                    </h3>
-                                                    <p className="text-gray-600 leading-relaxed">
-                                                        {t(step.description)}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
 
                             {/* Sidebar — 1 col */}
@@ -294,8 +348,8 @@ export default async function CaseStudyDetailPage(props: {
                                             {lang === "fr" ? "Insights Relatés" : "Related Insights"}
                                         </h3>
                                         <div className="space-y-6">
-                                            {caseStudy.relatedBlogPosts.map((blogSlug) => {
-                                                const post = blogPosts.find(p => p.slug === blogSlug);
+                                            {caseStudy.relatedBlogPosts.map((blogSlug: string) => {
+                                                const post = blogPosts.find((p: any) => p.slug === blogSlug);
                                                 if (!post) return null;
                                                 return (
                                                     <Link
@@ -331,7 +385,7 @@ export default async function CaseStudyDetailPage(props: {
                                         {lang === "fr" ? "Technologies & Domaines" : "Technologies & Domains"}
                                     </h3>
                                     <div className="flex flex-wrap gap-2">
-                                        {caseStudy.tags.map((tag) => (
+                                        {caseStudy.tags.map((tag: string) => (
                                             <span
                                                 key={tag}
                                                 className="bg-gray-100 text-[#0b0c10] text-[11px] font-bold px-3 py-1.5 uppercase tracking-wider"
@@ -397,7 +451,7 @@ export default async function CaseStudyDetailPage(props: {
                                 </Link>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {relatedStudies.map((study) => (
+                                {relatedStudies.map((study: any) => (
                                     <Link
                                         key={study.slug}
                                         href={`/${lang}/case-studies/${study.slug}`}
@@ -429,7 +483,7 @@ export default async function CaseStudyDetailPage(props: {
                     </section>
                 )}
 
-                <BookingSection dictionary={dictionary.services.booking} overrides={bookingOverrides} />
+                <BookingSection lang={lang} dictionary={dictionary.services.booking} overrides={bookingOverrides} />
                 <ContactForm lang={lang} dictionary={dictionary} />
             </main>
 

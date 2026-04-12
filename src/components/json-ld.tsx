@@ -9,7 +9,7 @@ export function JsonLd() {
         "logo": "https://stigmatech.ca/logoStigmaTechnologies188x64.png",
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+1-844-978-4462",
+            "telephone": "+1-855-552-1005",
             "contactType": "customer service",
             "areaServed": "CA",
             "availableLanguage": ["English", "French"]

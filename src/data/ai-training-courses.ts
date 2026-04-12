@@ -24,7 +24,7 @@ export type CourseData = {
 const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     "ia-decouverte": {
         en: {
-            slug: "ia-decouverte",
+            slug: "ai-discovery",
             title: "AI Discovery",
             subtitle: "Acculturation and Foundations of Generative AI",
             description: "A comprehensive session to demystify AI and identify high-impact use cases for your specific business sector.",
@@ -80,7 +80,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-booster": {
         en: {
-            slug: "ia-booster",
+            slug: "ai-booster",
             title: "AI Booster",
             subtitle: "Master Everyday Productivity with Generative AI",
             description: "Turn AI into your most efficient assistant. Focus on practical tools and advanced prompting to save hours every week.",
@@ -88,7 +88,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Workshop Style",
             tag: "PRODUCTIVITY",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Advanced Prompting", "Workflows Automation", "Content Creation", "Data Analysis"],
             outcomes: [
                 "Create advanced prompt chains for complex tasks",
@@ -136,7 +136,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-performer": {
         en: {
-            slug: "ia-performer",
+            slug: "ai-performer",
             title: "AI Performer",
             subtitle: "Expert Automation and Custom AI Agents",
             description: "Move beyond chat interfaces. Learn to build custom agents and integrate AI directly into your business operations.",
@@ -144,7 +144,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Intensive Tech Workshop",
             tag: "AUTOMATION",
-            prerequisiteSlug: "ia-booster",
+            prerequisiteSlug: "ai-booster",
             skills: ["Custom GPTs", "AI Agents", "API Integration", "Process Re-engineering"],
             outcomes: [
                 "Build and deploy custom GPTs with specific organizational knowledge",
@@ -192,7 +192,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-crea": {
         en: {
-            slug: "ia-crea",
+            slug: "ai-crea",
             title: "AI Creative",
             subtitle: "Visual Design and Marketing Content with AI",
             description: "Master visual creation tools like Midjourney and Canva AI. Perfect for marketing, designers, and creative teams.",
@@ -200,7 +200,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Creative Lab",
             tag: "CREATIVE",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Midjourney Mastery", "Canva AI", "Visual Branding", "Video/Audio GenAI"],
             outcomes: [
                 "Generate hyper-realistic branded imagery with Midjourney",
@@ -256,7 +256,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Corporate Hands-on",
             tag: "OFFICE 365",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Office 365 AI", "Excel with Copilot", "AI-Powered Presentations", "Meeting Summarization"],
             outcomes: [
                 "Automate document drafting and refinement in Word",
@@ -304,7 +304,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "atelier-sur-mesure": {
         en: {
-            slug: "atelier-sur-mesure",
+            slug: "custom-workshop",
             title: "Custom AI Workshop",
             subtitle: "Industry-Specific AI Training tailored to you",
             description: "You choose the modules, we build the training. Targeted solutions for Real Estate, Legal, HR, Finance, and more.",
@@ -356,7 +356,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-strategie": {
         en: {
-            slug: "ia-strategie",
+            slug: "ai-strategy",
             title: "AI Strategy & Leadership",
             subtitle: "Vision, Risk, and ROI for Decision Makers",
             description: "Beyond individual tools. Learn how AI transforms business models, manage risks, and build a strategic adoption roadmap.",
@@ -364,7 +364,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Leadership Seminar",
             tag: "STRATEGY",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Strategic Planning", "Change Management", "AI Governance", "Risk Assessment"],
             outcomes: [
                 "Evaluate AI maturity in your organization",
@@ -414,7 +414,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-ventes": {
         en: {
-            slug: "ia-ventes",
+            slug: "ai-sales",
             title: "AI for Sales & Growth",
             subtitle: "Automate Prospecting and Close More Deals",
             description: "Turn your sales team into an outbound machine. Master AI-driven personalization and automation to scale your pipeline.",
@@ -422,7 +422,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Hands-on Workshop",
             tag: "SALES",
-            prerequisiteSlug: "ia-booster",
+            prerequisiteSlug: "ai-booster",
             skills: ["Outbound Automation", "CRM Optimization", "Generative Copywriting", "Lead Scoring"],
             outcomes: [
                 "Automate hyper-personalized cold outreach",
@@ -472,7 +472,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-rh": {
         en: {
-            slug: "ia-rh",
+            slug: "ai-hr",
             title: "AI for HR & Talent",
             subtitle: "Streamline Recruitment and Improve Retention",
             description: "Bring AI to your people operations. From screening to engagement, learn how to use AI ethically and effectively in HR.",
@@ -480,7 +480,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Practical Workshop",
             tag: "HR",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Talent Acquisition", "Employee Experience", "Process Automation", "Ethical HR AI"],
             outcomes: [
                 "Automate initial CV screening and analysis",
@@ -530,7 +530,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-finance": {
         en: {
-            slug: "ia-finance",
+            slug: "ai-finance",
             title: "AI for Accounting & Finance",
             subtitle: "Automate Reports, Analysis & Financial Decisions with AI Agents",
             description: "Transform your financial operations with intelligent AI agents. From automated bookkeeping to real-time cash flow analysis, master the AI tools reshaping the CFO's office.",
@@ -538,7 +538,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Practical Workshop",
             tag: "FINANCE",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Financial Analysis Automation", "AI Agents for Accounting", "Cash Flow Forecasting", "Expense Intelligence"],
             outcomes: [
                 "Deploy an AI agent to automate invoice processing and reconciliation",
@@ -590,7 +590,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-marketing-agents": {
         en: {
-            slug: "ia-marketing-agents",
+            slug: "ai-marketing-agents",
             title: "AI for Marketing",
             subtitle: "Automate Campaigns, Content & Analytics with AI Agents",
             description: "Scale your marketing without scaling your team. Leverage AI agents to autonomously generate content, run A/B tests, analyze campaign data, and personalize customer journeys at scale.",
@@ -598,7 +598,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Creative & Hands-on Workshop",
             tag: "MARKETING",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["AI Content Automation", "Campaign Intelligence Agents", "Personalization at Scale", "Marketing Analytics AI"],
             outcomes: [
                 "Build a content generation agent that produces on-brand copy in minutes",
@@ -650,7 +650,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-production": {
         en: {
-            slug: "ia-production",
+            slug: "ai-production",
             title: "AI for Operations & Production",
             subtitle: "Optimize Workflows, Quality Control & Process Efficiency with AI Agents",
             description: "Deploy intelligent agents on your production floor and operations center. From predictive maintenance to real-time quality control, learn how AI redefines operational excellence.",
@@ -658,7 +658,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Technical Hands-on Workshop",
             tag: "OPERATIONS",
-            prerequisiteSlug: "ia-booster",
+            prerequisiteSlug: "ai-booster",
             skills: ["Predictive Maintenance AI", "Process Optimization Agents", "Quality Control Automation", "Operational Intelligence"],
             outcomes: [
                 "Design an AI agent for predictive maintenance scheduling",
@@ -710,7 +710,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-logistique": {
         en: {
-            slug: "ia-logistique",
+            slug: "ai-logistics",
             title: "AI for Logistics & Transport",
             subtitle: "Optimize Routes, Fleet & Supply Chain with AI Agents",
             description: "Deploy AI agents to revolutionize your logistics. From real-time route optimization to demand forecasting and automated dispatch, learn how to build a smarter, leaner supply chain.",
@@ -718,7 +718,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Technical Hands-on Workshop",
             tag: "LOGISTICS",
-            prerequisiteSlug: "ia-booster",
+            prerequisiteSlug: "ai-booster",
             skills: ["Route Optimization AI", "Supply Chain Intelligence", "Fleet Automation Agents", "Demand Forecasting"],
             outcomes: [
                 "Build an AI agent for dynamic route optimization and traffic prediction",
@@ -770,7 +770,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "ia-juridique": {
         en: {
-            slug: "ia-juridique",
+            slug: "ai-legal",
             title: "AI for Legal & Compliance",
             subtitle: "Automate Contract Review, Risk Analysis & Compliance with AI Agents",
             description: "Empower your legal and compliance teams with AI agents. From automated contract analysis to regulatory monitoring, learn how to drastically reduce legal workload while improving accuracy and risk management.",
@@ -778,7 +778,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Practical Workshop",
             tag: "LEGAL",
-            prerequisiteSlug: "ia-decouverte",
+            prerequisiteSlug: "ai-discovery",
             skills: ["Contract Analysis AI", "Regulatory Compliance Agents", "Legal Document Automation", "Risk & Due Diligence AI"],
             outcomes: [
                 "Build an AI agent to review and redline contracts in minutes",
@@ -830,7 +830,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "cyber-sensibilisation": {
         en: {
-            slug: "cyber-sensibilisation",
+            slug: "cyber-awareness",
             title: "Cybersecurity Awareness",
             subtitle: "Train Every Employee to Be Your First Line of Defense",
             description: "Human error is behind 95% of security breaches. Equip all your employees with the reflexes, knowledge, and habits to resist phishing, social engineering, and everyday cyber threats.",
@@ -890,7 +890,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
     },
     "cyber-loi25": {
         en: {
-            slug: "cyber-loi25",
+            slug: "cyber-compliance",
             title: "Data Security & Privacy Compliance",
             subtitle: "Meet Loi 25, PIPEDA & GDPR Requirements with Confidence",
             description: "Navigate Canadian privacy laws with confidence. Understand your obligations under Loi 25 and PIPEDA, build a compliant data governance framework, and avoid costly fines.",
@@ -958,7 +958,7 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
             duration: "7 Hours",
             format: "Technical Workshop",
             tag: "CYBER IT",
-            prerequisiteSlug: "cyber-sensibilisation",
+            prerequisiteSlug: "cyber-awareness",
             skills: ["Threat Hunting", "SIEM & Log Analysis", "Vulnerability Management", "Incident Response"],
             outcomes: [
                 "Conduct structured threat hunting exercises on your own environment",
@@ -1011,9 +1011,21 @@ const courses: Record<string, { en: CourseData; fr: CourseData }> = {
 };
 
 export const getCourseData = (slug: string, lang: string): CourseData | null => {
-    return courses[slug]?.[lang as "en" | "fr"] || null;
+    const l = lang as "en" | "fr";
+    const courseEntry = Object.values(courses).find(c => c[l].slug === slug);
+    return courseEntry ? courseEntry[l] : null;
 };
 
-export const getAllCourseSlugs = (): string[] => {
-    return Object.keys(courses);
+export const getAllCoursesData = (lang: string): CourseData[] => {
+    const l = lang as "en" | "fr";
+    return Object.values(courses).map(c => c[l]);
+};
+
+export const getAllCourseParams = (): { lang: string; slug: string }[] => {
+    const params: { lang: string; slug: string }[] = [];
+    Object.values(courses).forEach(c => {
+        params.push({ lang: "en", slug: c.en.slug });
+        params.push({ lang: "fr", slug: c.fr.slug });
+    });
+    return params;
 };

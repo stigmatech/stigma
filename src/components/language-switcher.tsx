@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { i18n } from '@/i18n-config';
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ scrolled = true }: { lang?: string, scrolled?: boolean }) {
     const pathname = usePathname();
 
     const redirectedPathname = (locale: string) => {
@@ -17,15 +17,16 @@ export default function LanguageSwitcher() {
     const currentLocale = pathname.split('/')[1] || i18n.defaultLocale;
 
     return (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
             {i18n.locales.map((locale) => (
                 <Link
                     key={locale}
                     href={redirectedPathname(locale)}
-                    className={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-none transition-colors ${currentLocale === locale
-                        ? 'bg-[#0b0c10] text-white'
-                        : 'text-gray-500 hover:text-[#0b0c10] hover:bg-gray-100'
-                        }`}
+                    className={`text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1.5 transition-all duration-500 rounded-none ${
+                        currentLocale === locale
+                        ? (scrolled ? 'bg-slate-950 text-white' : 'bg-white text-slate-950')
+                        : (scrolled ? 'text-gray-400 hover:text-slate-950 hover:bg-gray-100' : 'text-white/50 hover:text-white hover:bg-white/10')
+                    }`}
                 >
                     {locale}
                 </Link>

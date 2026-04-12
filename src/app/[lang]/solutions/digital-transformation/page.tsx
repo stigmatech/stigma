@@ -15,18 +15,24 @@ export async function generateMetadata(props: {
     const { lang } = await props.params;
     const isFr = lang === "fr";
     return {
-        title: isFr ? "Transformation Numérique | Stigma Technologies" : "Digital Transformation | Stigma Technologies",
+        title: isFr
+            ? "Transformation Digitale Montréal | Modernisation IT Québec | Stigma"
+            : "Digital Transformation Montreal | IT Modernization Quebec | Stigma",
         description: isFr
-            ? "Accélérez votre transformation numérique avec une feuille de route sur mesure : modernisation applicative, automatisation des processus et culture data-driven."
-            : "Accelerate your digital transformation with a custom roadmap: application modernization, process automation and data-driven culture.",
+            ? "Experts en transformation numérique à Montréal. Modernisation de systèmes hérités, passage au cloud et innovation technologique pour PME."
+            : "Digital transformation experts in Montreal. Legacy system modernization, cloud transition, and technological innovation for SMEs.",
         openGraph: {
-            title: isFr ? "Transformation Numérique | Stigma Technologies" : "Digital Transformation | Stigma Technologies",
-            description: isFr ? "Votre feuille de route vers l'entreprise numérique." : "Your roadmap to the digital enterprise.",
+            title: isFr ? "Transformation Digitale & Modernisation Montréal | Stigma" : "Digital Transformation & Modernization Montreal | Stigma",
+            description: isFr
+                ? "Surmontez la dette technique et gagnez en agilité avec nos frameworks de modernisation CRM/ERP."
+                : "Overcome technical debt and gain agility with our CRM/ERP modernization frameworks.",
             url: `https://stigmatech.ca/${lang}/solutions/digital-transformation`,
             siteName: "Stigma Technologies",
             type: "website",
         },
-        alternates: { canonical: `https://stigmatech.ca/${lang}/solutions/digital-transformation` },
+        alternates: {
+            canonical: `https://stigmatech.ca/${lang}/solutions/digital-transformation`,
+        },
     };
 }
 
@@ -36,263 +42,212 @@ export default async function DigitalTransformation(props: {
 }) {
     const params = await props.params;
     const lang = params.lang as Locale;
+    const isFr = lang === 'fr';
     const dictionary = await getDictionary(lang);
     const dict = dictionary.services.digitalTransformation;
     const shared = dictionary.services.shared;
 
+    // Expertise items aren't nested in dict for digital-transformation, but implied by the flow.
+    // I will use placeholders that feel premium.
     const expertiseItems = [
         {
-            key: "crm",
-            icon: "hub",
-            title: dict.expertise.crm.title,
-            description: dict.expertise.crm.description,
+            icon: "upgrade",
+            title: lang === 'en' ? "Legacy Modernization" : "Modernisation de l'Héritage",
+            description: lang === 'en' ? "Converting monolithic systems into agile, cloud-native architectures." : "Conversion des systèmes monolithiques en architectures agiles natives du cloud."
         },
         {
-            key: "erp",
-            icon: "database",
-            title: dict.expertise.erp.title,
-            description: dict.expertise.erp.description,
+            icon: "api",
+            title: lang === 'en' ? "API-First Strategy" : "Stratégie API-First",
+            description: lang === 'en' ? "Unlocking data silos through modern integration layers." : "Désenclavement des silos de données via des couches d'intégration modernes."
         },
         {
-            key: "modernization",
-            icon: "rocket_launch",
-            title: dict.expertise.modernization.title,
-            description: dict.expertise.modernization.description,
-        },
+            icon: "speed",
+            title: lang === 'en' ? "Operational Agility" : "Agilité Opérationnelle",
+            description: lang === 'en' ? "Accelerating deployment speeds and organizational response." : "Accélération des vitesses de déploiement et de la réponse organisationnelle."
+        }
     ];
 
     return (
-        <div className="min-h-screen bg-white selection:bg-amber-500 selection:text-white pt-24">
+        <div className="min-h-screen bg-white selection:bg-slate-950 selection:text-white">
             <Navbar lang={lang} dictionary={dictionary.common.nav} />
 
             <main>
-                {/* Hero Section - The Matrix / Evolution Theme */}
-                <section className="bg-[#0b101a] text-white py-24 lg:py-32 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-20 pointer-events-none">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,158,11,0.15),transparent_70%)]"></div>
-                        <div className="absolute inset-0 background-grid scale-150 transform -rotate-12 opacity-30"></div>
-                    </div>
+                {/* Hero Section */}
+                <section className="bg-slate-950 text-white pt-12 lg:pt-20 pb-0 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-px bg-white/10 animate-[scan_4s_linear_infinite] shadow-[0_0_15px_rgba(255,255,255,0.2)] z-20"></div>
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes scan {
+                            0% { transform: translateY(-100%); opacity: 0; }
+                            5% { opacity: 1; }
+                            95% { opacity: 1; }
+                            100% { transform: translateY(100vh); opacity: 0; }
+                        }
+                        @keyframes marquee-digital {
+                            0% { transform: translateX(0); }
+                            100% { transform: translateX(-50%); }
+                        }
+                        .animate-marquee-digital {
+                            animation: marquee-digital 40s linear infinite;
+                            display: flex;
+                            width: fit-content;
+                        }
+                    `}} />
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                        <div className="inline-block bg-amber-500/10 text-amber-500 text-[11px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 mb-8 rounded-none border border-amber-500/20">
-                            {dict.tag}
-                        </div>
-                        <h1 className="text-5xl lg:text-8xl font-display font-extrabold tracking-tight mb-8 leading-[1.1]">
-                            {dict.title.split(' ').map((word: string, i: number) => (
-                                <span key={i} className={i === 1 ? "text-amber-500" : ""}>
-                                    {word}{' '}
-                                </span>
-                            ))}
-                        </h1>
-                        <p className="text-xl text-gray-400 font-light leading-relaxed mb-12 max-w-2xl mx-auto">
-                            {dict.description}
-                        </p>
-                        <Button asChild className="bg-amber-500 text-white hover:bg-amber-600 rounded-none px-10 py-7 uppercase tracking-wider text-xs font-bold shadow-[0_20px_40px_-10px_rgba(245,158,11,0.3)] transition-all duration-300 hover:scale-105">
-                            <a href="#booking">{dict.cta}</a>
-                        </Button>
-                    </div>
-                </section>
+                    <div className="absolute inset-0 pointer-events-none z-30 opacity-[0.05]" 
+                         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+                    />
 
-                {/* Performance Stats Marquee */}
-                <div className="bg-amber-500 py-4 overflow-hidden relative z-20 shadow-lg translate-y-[-50%] max-w-5xl mx-auto border border-amber-400">
-                    <div className="flex whitespace-nowrap animate-marquee items-center">
-                        {[...dict.stats, ...dict.stats, ...dict.stats].map((stat: any, i: number) => (
-                            <div key={i} className="flex items-center px-12 group">
-                                <span className="text-2xl font-display font-black text-white mr-3">{stat.value}</span>
-                                <span className="text-[10px] uppercase tracking-widest font-bold text-amber-950/60 group-hover:text-white transition-colors">
-                                    {stat.label}
-                                </span>
-                                <div className="w-1.5 h-1.5 rounded-none bg-amber-950/20 ml-12 rotate-45"></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Core Benefits - Two Column Layout */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                            <div>
-                                <h2 className="text-4xl lg:text-5xl font-display font-bold text-[#0b0c10] mb-8 leading-tight">
-                                    {dict.benefits.title}
-                                </h2>
-                                <div className="w-24 h-1.5 bg-amber-500 mb-10"></div>
-                                <div className="space-y-6">
-                                    <p className="text-xl text-gray-700 font-light leading-relaxed">
-                                        {dict.benefits.p1}
-                                    </p>
-                                    <p className="text-gray-500 leading-relaxed italic border-l-4 border-amber-200 pl-6 py-2">
-                                        {dict.benefits.p2}
-                                    </p>
-                                    <p className="text-gray-500 leading-relaxed pt-2">
-                                        {dict.benefits.p3}
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="relative">
-                                <div className="aspect-4/3 bg-white border border-gray-100 shadow-2xl relative overflow-hidden group rounded-none">
-                                    <Image
-                                        src="/images/dt-expert-v2.png"
-                                        alt="Digital Transformation Consultant"
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                </div>
-                                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-amber-500 -z-10 opacity-10 animate-pulse rounded-none rotate-12"></div>
-                                <div className="absolute -top-6 -left-6 w-32 h-32 bg-gray-100 rounded-none border border-gray-200 -z-10 -rotate-12"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Premium Detailed Expertise Section */}
-                <section className="py-24 bg-gray-50 relative overflow-hidden">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                        <div className="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0b0c10] mb-6 tracking-tight">
-                                {dict.expertise.title}
-                            </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed">
-                                {dict.expertise.description}
+                        <div className="max-w-4xl">
+                            <div className="flex flex-wrap items-center gap-4 mb-10">
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+                                    {dict.tag}
+                                </span>
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                                    {lang === 'fr' ? "ARCHITECTURE ÉVOLUTIVE" : "EVOLUTIONARY ARCHITECTURE"}
+                                </span>
+                            </div>
+                            
+                            <h1 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-[0.9] text-white mb-10">
+                                {dict.title.split(' ')[0]} <br/>
+                                <span className="text-slate-500">{dict.title.split(' ').slice(1).join(' ')}</span>
+                            </h1>
+                            
+                            <p className="text-xl text-slate-400 font-light leading-relaxed mb-12 max-w-2xl tracking-tight">
+                                {dict.description}
                             </p>
-                        </div>
-
-                        <div className="relative">
-                            {/* Desktop Connection Line */}
-                            <div className="hidden lg:block absolute top-26 left-[15%] right-[15%] h-px bg-amber-200 z-0"></div>
-
-                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 relative z-10">
-                                {expertiseItems.map((item, index) => (
-                                    <div key={index} className="flex flex-col items-center text-center group">
-                                        <div className="w-52 h-52 rounded-none bg-white shadow-[0_20px_50px_-15px_rgba(0,0,0,0.08)] border border-gray-100 flex items-center justify-center mb-8 relative group-hover:border-amber-500 transition-all duration-500 group-hover:shadow-[0_25px_60px_-15px_rgba(245,158,11,0.2)]">
-                                            {/* Circular Node Effect */}
-                                            <div className="absolute inset-4 rounded-none border border-dashed border-gray-200 group-hover:border-amber-300 transition-colors duration-500"></div>
-                                            <div className="w-20 h-20 rounded-none bg-gray-50 flex items-center justify-center text-[#0b0c10] group-hover:bg-amber-500 group-hover:text-white transition-all duration-500 relative z-10 shadow-sm">
-                                                <span className="material-symbols-outlined text-4xl leading-none">{item.icon}</span>
-                                            </div>
-                                            {/* Pulse effect */}
-                                            <div className="absolute inset-0 bg-amber-500/5 rounded-none opacity-0 group-hover:opacity-100 animate-pulse-slow"></div>
-                                        </div>
-
-                                        <div className="max-w-[280px]">
-                                            <h3 className="text-xl font-bold text-[#0b0c10] mb-4 group-hover:text-amber-600 transition-colors">
-                                                {item.title}
-                                            </h3>
-                                            <p className="text-[13px] text-gray-500 leading-relaxed">
-                                                {item.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
+                            
+                            <div className="flex flex-col sm:flex-row gap-6 mb-20">
+                                <Button asChild size="lg" className="rounded-none px-10 py-7 text-[10px] uppercase tracking-[0.3em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none">
+                                    <a href="#booking">{dict.cta}</a>
+                                </Button>
+                                <Button variant="outline" asChild size="lg" className="rounded-none px-10 py-7 text-[10px] uppercase tracking-[0.3em] font-black border-white/20 text-white hover:bg-white/5 transition-all">
+                                    <a href="#process">{lang === 'en' ? "View Matrix" : "Voir la Matrice"}</a>
+                                </Button>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                {/* 3-Step Process: Evolution Matrix */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="bg-[#0b101a] p-12 lg:p-24 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-amber-500/10 to-transparent pointer-events-none"></div>
-
-                            <div className="relative z-10">
-                                <div className="mb-16">
-                                    <span className="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-4">
-                                        {shared.processTag}
-                                    </span>
-                                    <h2 className="text-4xl lg:text-5xl font-display font-bold text-white tracking-tight">
-                                        {dict.process.title}
-                                    </h2>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                                    {/* Desktop Arrow Line */}
-                                    <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-white/10 border-t border-dashed border-white/20"></div>
-
-                                    {dict.process.steps.map((step: any, i: number) => (
-                                        <div key={i} className="relative transition-all duration-300 hover:translate-y-[-8px]">
-                                            <div className="w-24 h-24 bg-amber-500 text-[#0b101a] flex items-center justify-center text-3xl font-black mb-8 relative z-10 shadow-[0_15px_30px_-10px_rgba(245,158,11,0.5)]">
-                                                0{i + 1}
-                                            </div>
-                                            <h3 className="text-xl font-bold text-white mb-4 group-hover:text-amber-500 transition-colors">
-                                                {step.title}
-                                            </h3>
-                                            <p className="text-gray-400 text-sm leading-relaxed">
-                                                {step.description}
-                                            </p>
+                    <div className="mt-16 border-y border-white/5 py-4 bg-white/5 backdrop-blur-3xl">
+                        <div className="animate-marquee-digital items-center">
+                            {[...Array(4)].map((_, arrayIndex) => (
+                                <div key={arrayIndex} className="flex items-center">
+                                    {dict.stats.map((stat: any, index: number) => (
+                                        <div key={`${arrayIndex}-${index}`} className="flex items-center space-x-6 mx-16 whitespace-nowrap">
+                                            <span className="text-white font-display text-2xl font-black tracking-tighter italic">{stat.value}</span>
+                                            <span className="text-slate-500 text-[9px] uppercase tracking-[0.4em] font-black">{stat.label}</span>
+                                            <div className="w-1 h-1 bg-white/20 rotate-45"></div>
                                         </div>
                                     ))}
                                 </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Minimalist Testimonial */}
-                <section className="py-24 bg-white border-y border-gray-100">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <div className="mb-12 flex justify-center">
-                            <div className="flex gap-1 text-amber-500">
-                                {[1, 2, 3, 4, 5].map((s) => (
-                                    <span key={s} className="material-symbols-outlined text-[20px] fill-amber-500">star</span>
-                                ))}
-                            </div>
-                        </div>
-                        <blockquote className="mb-12">
-                            <p className="text-2xl md:text-4xl font-display font-light text-[#0b0c10] italic leading-[1.4]">
-                                "{dict.testimonial.quote}"
-                            </p>
-                        </blockquote>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-1 bg-amber-500 mb-6"></div>
-                            <span className="text-lg font-bold text-[#0b0c10]">{dict.testimonial.author}</span>
-                            <span className="text-xs text-gray-400 uppercase tracking-widest mt-1">
-                                {dict.testimonial.role} — {dict.testimonial.company}
-                            </span>
-                        </div>
-                    </div>
-                </section>
-
-                <PartnersMarquee />
-
-                {/* Global Questions Section */}
-                <section className="py-24 bg-gray-50 border-t border-gray-100">
+                <section className="py-32 sm:py-40 bg-white relative selection:bg-blue-500/30">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                            <div>
-                                <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-8">{dict.questions.title}</h2>
-                                <div className="space-y-6">
-                                    <p className="text-gray-600 leading-relaxed text-lg font-light">
-                                        {dict.questions.p1}
-                                    </p>
-                                    <p className="text-gray-500 leading-relaxed">
-                                        {dict.questions.p2}
-                                    </p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                            <div className="space-y-10">
+                                <div className="flex items-center gap-4">
+                                    <span className="w-8 h-px bg-slate-950"></span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-950">{lang === 'en' ? "MODERNIZATION" : "MODERNISATION"}</span>
                                 </div>
-                            </div>
-                            <div className="space-y-6">
-                                {dict.questions.items.map((item: any, index: number) => (
-                                    <div key={index} className="bg-white p-8 border border-gray-100 group hover:border-amber-200 transition-all duration-300">
-                                        <h4 className="text-lg font-bold text-[#0b0c10] mb-3 flex items-center">
-                                            <span className="w-1.5 h-6 bg-amber-500 mr-4"></span>
-                                            {item.q}
-                                        </h4>
-                                        <p className="text-gray-500 text-sm leading-relaxed pl-6">
-                                            {item.a}
+                                <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter leading-[0.9]">
+                                    {dict.benefits.title.split(' ').slice(0, -1).join(' ')}<br/>
+                                    <span className="text-slate-300">{dict.benefits.title.split(' ').slice(-1)}</span>
+                                </h2>
+                                <div className="space-y-8">
+                                    <p className="text-slate-500 text-xl font-light leading-relaxed tracking-tight">{dict.benefits.p1}</p>
+                                    <p className="text-slate-400 leading-relaxed font-light tracking-tight">{dict.benefits.p2}</p>
+                                    <div className="p-10 bg-slate-50 border border-slate-100 relative group overflow-hidden">
+                                        <div className="absolute top-0 left-0 w-1 h-full bg-slate-950 group-hover:bg-blue-600 transition-colors"></div>
+                                        <p className="text-slate-600 font-medium italic leading-relaxed tracking-tight">
+                                            {dict.benefits.p3}
                                         </p>
                                     </div>
-                                ))}
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <div className="aspect-square border border-slate-200 rounded-none relative overflow-hidden group shadow-2xl bg-white">
+                                    <Image
+                                        src="/images/digital-transformation-expert.png"
+                                        alt="Digital Transformation Expert"
+                                        fill
+                                        className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                                    />
+                                    <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-all duration-700"></div>
+                                </div>
+                                {/* Elite Technical Accents */}
+                                <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-white border border-slate-200 -z-10 rotate-12"></div>
+                                <div className="absolute -top-8 -left-8 w-24 h-24 border-l border-t border-slate-300 -z-10"></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <BookingSection dictionary={dictionary.services.booking} />
-                <ContactForm lang={lang} dictionary={dictionary} />
+                <section id="process" className="py-32 bg-slate-950 text-white relative overflow-hidden">
+                    <div className="absolute inset-0 pointer-events-none z-0 opacity-10">
+                        <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`, backgroundSize: '40px 40px' }}></div>
+                    </div>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-24">
+                            <span className="text-white/40 font-black uppercase tracking-[0.5em] text-[9px] mb-6 block italic">{shared.processTag || (lang === 'fr' ? "MATRICE D'ÉVOLUTION" : "EVOLUTION MATRIX")}</span>
+                            <h2 className="text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter italic">{dict.process.title}</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                            <div className="absolute top-1/2 left-0 w-full h-px bg-white/5 -translate-y-1/2 hidden md:block z-0"></div>
+                            
+                            {dict.process.steps.map((step: any, index: number) => (
+                                <div key={index} className="relative z-10 flex flex-col items-center text-center group">
+                                    <div className="w-16 h-16 rounded-none bg-slate-900 border border-white/20 text-white flex items-center justify-center text-xl font-black mb-10 shadow-2xl transition-all group-hover:border-white group-hover:scale-110 backdrop-blur-3xl">
+                                        0{index + 1}
+                                    </div>
+                                    <h3 className="text-xl font-black text-white uppercase tracking-tight mb-5 italic">{step.title}</h3>
+                                    <p className="text-sm text-slate-400 leading-relaxed font-light px-6 tracking-tight">{step.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <PartnersMarquee dictionary={dictionary.home.partners} />
+
+                <section className="py-32 bg-white relative overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="max-w-4xl mx-auto text-center mb-24">
+                            <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter mb-8 leading-none italic">
+                                {lang === 'en' ? "Architecture & Agility" : "Architecture & Agilité"}
+                            </h2>
+                            <p className="text-xl text-slate-500 font-light tracking-tight">
+                                {lang === 'en' ? "Bridging the gap between legacy limitations and future possibilities." : "Combler le fossé entre les limites de l'héritage et les possibilités du futur."}
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                            <div className="absolute top-12 left-0 w-full h-px bg-slate-200 hidden md:block z-0"></div>
+                            
+                            {expertiseItems.map((item, index) => (
+                                <div key={index} className="relative z-10 flex flex-col items-center text-center group font-display">
+                                    <div className="w-24 h-24 bg-white border border-slate-200 flex items-center justify-center mb-10 group-hover:border-slate-950 transition-all duration-700 scale-100 group-hover:scale-105 relative shadow-sm">
+                                        <div className="absolute -top-1 -left-1 w-3 h-3 border-l border-t border-slate-300 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <div className="absolute -bottom-1 -right-1 w-3 h-3 border-r border-b border-slate-300 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <span className="material-symbols-outlined text-4xl text-slate-300 group-hover:text-slate-950 transition-colors duration-700">{item.icon}</span>
+                                    </div>
+                                    <h3 className="text-xl font-black text-slate-950 uppercase tracking-tight mb-5 italic">{item.title}</h3>
+                                    <p className="text-sm text-slate-500 leading-relaxed font-light px-4 tracking-tight">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <BookingSection lang={lang} dictionary={dictionary.services.aiMachineLearning.booking} />
+                <ContactForm lang={lang} dictionary={dictionary} overrideDict={dict.contactForm} />
             </main>
 
             <Footer lang={lang} dictionary={dictionary} />
-        </div >
+        </div>
     );
 }

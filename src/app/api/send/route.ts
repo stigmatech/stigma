@@ -1,5 +1,7 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { createTwentyLead } from "@/lib/twenty-crm";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,6 +12,7 @@ export async function POST(req: NextRequest) {
             firstName, lastName, email, subject, message,
             phone, company, jobTitle, companySize,
             service, specificNeeds, industry, itSetup, timeline,
+            tier, orchestration,
             turnstileToken
         } = body;
 
@@ -134,11 +137,121 @@ export async function POST(req: NextRequest) {
         });
 
         if (error) {
-            console.error("Resend error:", error);
-            return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+            console.error("Internal Resend error:", error);
+            // Even if email fails, we attempt to save to CRM and send auto-responder
         }
 
-        return NextResponse.json({ success: true, id: data?.id });
+        // ==========================================
+        // AUTO-RESPONDER (External Email to Prospect)
+        // ==========================================
+        const isGatedContent = service?.startsWith("[Téléchargement Insight]");
+        
+        if (isGatedContent && email) {
+            const resourceName = service.replace("[Téléchargement Insight]", "").trim();
+            const autoResponderResult = await resend.emails.send({
+                from: 'Fleury Koyo - Stigma Technologies <fleurykoyo@stigmatech.ca>',
+                to: [email],
+                subject: `Votre accès exclusif : ${resourceName}`,
+                html: `
+                    <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #ffffff; border: 1px solid #e5e7eb;">
+                        <h1 style="color: #0a0f2c; font-size: 22px; margin-bottom: 24px; font-weight: 800;">Bonjour ${firstName},</h1>
+                        
+                        <p style="color: #374151; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">
+                            Merci pour votre intérêt envers l'expertise de <strong>Stigma Technologies</strong>. Comme convenu, veuillez trouver ci-dessous l'accès sécurisé à votre document exclusif :
+                        </p>
+                        
+                        <div style="background: #f9fafb; border-left: 4px solid #0a0f2c; padding: 16px 20px; margin-bottom: 32px;">
+                            <p style="margin: 0; font-size: 16px; font-weight: bold; color: #0a0f2c;">${resourceName}</p>
+                        </div>
+                        
+                        <div style="text-align: center; margin-bottom: 40px;">
+                            <a href="https://stigmatech.ca" 
+                               style="background: #0a0f2c; color: #ffffff; padding: 14px 28px; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">
+                               Accéder au Document
+                            </a>
+                        </div>
+                        
+                        <p style="color: #4b5563; font-size: 14px; line-height: 1.6; margin-bottom: 32px;">
+                            Chez Stigma Technologies, nous implémentons ces architectures sécurisées chaque jour pour les entreprises d'envergure. Si la mise en œuvre technique de ces concepts vous questionne vis-à-vis de l'infrastructure de <strong>${company || "votre organisation"}</strong>, n'hésitez pas à me répondre directement.
+                        </p>
+                        
+                        <hr style="border: none; border-top: 1px solid #e5e7eb; margin-bottom: 24px;" />
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 50px; padding-right: 16px;">
+                                    <div style="width: 40px; height: 40px; background: #0a0f2c; border-radius: 50%; display: inline-block;"></div>
+                                </td>
+                                <td>
+                                    <p style="color: #111827; font-size: 14px; margin: 0; font-weight: bold;">Fleury Koyo</p>
+                                    <p style="color: #6b7280; font-size: 12px; margin: 2px 0 0 0;">Direction de l'Ingénierie & Architecture B2B</p>
+                                    <p style="margin: 4px 0 0 0;"><a href="https://stigmatech.ca" style="color: #2563eb; text-decoration: none; font-size: 12px; font-weight: bold;">stigmatech.ca</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                `
+            });
+
+            if (autoResponderResult.error) {
+                console.error("Resend Auto-Responder Failed:", autoResponderResult.error);
+            } else {
+                console.log("Auto-Responder Email sent successfully to:", email);
+            }
+        }
+
+        // ==========================================
+        // CRM INGESTION (Twenty CRM Pipeline)
+        // ==========================================
+        await createTwentyLead({
+            firstName,
+            lastName,
+            email,
+            phone,
+            company,
+            jobTitle,
+            message,
+            service,
+            specificNeeds,
+            industry,
+            companySize,
+            itSetup,
+            timeline,
+            tier,
+            orchestration
+        });
+
+        // ==========================================
+        // POSTHOG SERVER-SIDE EVENT
+        // ==========================================
+        const posthog = getPostHogClient();
+        posthog.identify({
+            distinctId: email,
+            properties: {
+                email,
+                first_name: firstName,
+                last_name: lastName,
+                company,
+                job_title: jobTitle,
+            },
+        });
+        posthog.capture({
+            distinctId: email,
+            event: 'lead_captured',
+            properties: {
+                service: service || null,
+                specific_needs: specificNeeds || null,
+                industry: industry || null,
+                company_size: companySize || null,
+                it_setup: itSetup || null,
+                timeline: timeline || null,
+                company: company || null,
+                source: 'api',
+            },
+        });
+        await posthog.shutdown();
+
+        return NextResponse.json({ success: true, id: data?.id || "crm_synced" });
     } catch (err) {
         console.error("Unexpected error:", err);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });

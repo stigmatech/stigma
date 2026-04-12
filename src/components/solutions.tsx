@@ -9,7 +9,7 @@ export function Solutions({ lang, dictionary }: { lang: Locale; dictionary: any 
             title: dict.items[0].title,
             description: dict.items[0].description,
             link: `/${lang}/solutions/managed-it-services`,
-            badge: "EXCLUSIVE"
+            badge: "CORE"
         },
         {
             title: dict.items[1].title,
@@ -39,16 +39,18 @@ export function Solutions({ lang, dictionary }: { lang: Locale; dictionary: any 
     ];
 
     return (
-        <section id="solutions" className="bg-background-light py-24 sm:py-32">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="solutions" className="bg-white py-32 sm:py-40 relative selection:bg-blue-500/30">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-                {/* Header Section */}
-                <div className="mb-16">
-                    <span className="inline-block bg-surface-dark/5 text-surface-dark text-[11px] font-bold tracking-widest uppercase px-3 py-1 mb-6">
-                        {dict.tag}
+                {/* ELITE SECTION HEADER */}
+                <div className="flex flex-col items-start gap-4 mb-24 pointer-events-none">
+                    <span className="inline-flex items-center gap-3 bg-slate-950 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2">
+                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+                        {dict.tag || "NOS EXPERTISES"}
                     </span>
-                    <h2 className="text-background-dark font-display text-5xl md:text-6xl font-extrabold tracking-tight">
-                        {dict.title}
+                    <h2 className="font-display text-6xl lg:text-8xl text-slate-950 tracking-tighter uppercase font-black leading-[0.9]">
+                        {dict.title}<br/>
+                        <span className="text-slate-200">OPÉRATIONNELLES</span>
                     </h2>
                 </div>
 
@@ -57,37 +59,40 @@ export function Solutions({ lang, dictionary }: { lang: Locale; dictionary: any 
                     {solutions.map((solution, index) => (
                         <div
                             key={index}
-                            className="bg-white hover:shadow-xl transition-shadow duration-300 relative flex flex-col justify-between"
+                            className="group bg-slate-50 border border-slate-100 p-10 hover:bg-slate-950 transition-all duration-500 relative flex flex-col justify-between min-h-[380px]"
                         >
-                            {/* Exclusive Badge */}
-                            {solution.badge && (
-                                <div className="absolute top-0 left-0 bg-[#ff0066] text-white text-[10px] font-bold uppercase px-3 py-1.5 z-10">
-                                    {solution.badge}
-                                </div>
-                            )}
-
                             {/* Card Content Top */}
-                            <div className={cn(
-                                "p-10 pb-12 grow",
-                                solution.badge && "pt-12"
-                            )}>
-                                <h3 className="text-[22px] font-bold text-background-dark mb-4 leading-tight">
+                            <div className="grow space-y-6">
+                                <div className="flex justify-between items-start">
+                                    <span className="text-[10px] font-mono text-slate-400 group-hover:text-blue-500/50 transition-colors uppercase tracking-widest font-black">
+                                        0{index + 1} //
+                                    </span>
+                                    {solution.badge && (
+                                        <span className="text-[9px] font-black bg-blue-600 text-white px-3 py-1 tracking-widest group-hover:bg-blue-500 transition-colors">
+                                            {solution.badge}
+                                        </span>
+                                    )}
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-950 group-hover:text-white transition-colors leading-[1.1] uppercase tracking-tight">
                                     {solution.title}
                                 </h3>
-                                <p className="text-[15px] text-gray-500 leading-relaxed">
+                                <p className="text-[15px] text-slate-500 group-hover:text-slate-400 transition-colors leading-relaxed font-light">
                                     {solution.description}
                                 </p>
                             </div>
 
                             {/* Card Footer */}
-                            <div className="border-t border-gray-100 p-8 py-6">
-                                <Link href={solution.link} className="group/btn inline-flex items-center gap-2">
-                                    <span className="text-background-dark text-[14px] font-bold hover:text-gray-600 transition-colors">
-                                        {dict.learnMore}
+                            <div className="pt-8 group-hover:pt-10 transition-all duration-500">
+                                <Link href={solution.link} className="inline-flex items-center gap-4 group/link">
+                                    <span className="text-slate-950 group-hover:text-white text-[10px] font-black tracking-[0.3em] uppercase transition-colors">
+                                        {dict.learnMore || "DÉCOUVRIR"}
                                     </span>
-                                    <span className="material-symbols-outlined text-[18px] text-background-dark group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                    <span className="material-symbols-outlined text-[18px] text-blue-500 group-hover/link:translate-x-2 transition-transform">arrow_forward</span>
                                 </Link>
                             </div>
+                            
+                            {/* Hover Reveal Line */}
+                            <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-700 shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
                         </div>
                     ))}
                 </div>

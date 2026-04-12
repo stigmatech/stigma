@@ -23,11 +23,11 @@ export async function generateMetadata(props: {
   const isFr = lang === "fr";
   return {
     title: isFr
-      ? "Stigma Technologies | Simplifier la TI pour un monde complexe"
-      : "Stigma Technologies | Simplifying IT for a Complex World",
+      ? "Stigma Technologies | Managed Intelligence Provider (MIP)"
+      : "Stigma Technologies | Managed Intelligence Provider (MIP)",
     description: isFr
-      ? "Stigma Technologies offre des solutions IT gérées, cybersécurité, IA et transformation numérique sur mesure pour les entreprises canadiennes."
-      : "Stigma Technologies delivers managed IT, cybersecurity, AI and digital transformation solutions tailored for Canadian enterprises.",
+      ? "Managed Intelligence Provider (MIP). Solutions IT gérées, cybersécurité adaptive, infrastructure IA et conformité Loi 25 pour entreprises."
+      : "Managed Intelligence Provider (MIP). Adaptive cybersecurity, AI-ready infrastructure, and Law 25 compliance for global enterprises.",
     openGraph: {
       title: isFr ? "Stigma Technologies | Solutions IT & Cybersécurité" : "Stigma Technologies | Managed IT & Cybersecurity",
       description: isFr
@@ -41,6 +41,7 @@ export async function generateMetadata(props: {
       canonical: `https://stigmatech.ca/${lang}`,
       languages: { en: "https://stigmatech.ca/en", fr: "https://stigmatech.ca/fr" },
     },
+    category: "technology",
   };
 }
 
@@ -54,16 +55,20 @@ export default async function Home(props: {
 
   return (
     <div className="min-h-screen bg-white selection:bg-surface-dark selection:text-background-dark">
-      <Navbar lang={lang} dictionary={dictionary.common.nav} />
+      <Navbar lang={lang} dictionary={dictionary} />
       <main>
-        <Hero dictionary={dictionary.home.hero} />
-        <CoreValues dictionary={dictionary.home.coreValues} />
+        <div className="bg-slate-950">
+          <Hero lang={lang} dictionary={dictionary.home.hero} />
+          <CoreValues dictionary={dictionary.home.coreValues} />
+        </div>
         <Solutions lang={lang} dictionary={dictionary.home.solutions} />
-        <AIInnovation lang={lang} dictionary={dictionary.home.innovation} auditDictionary={dictionary.home.aiAudit} />
+        <AIInnovation lang={lang} dictionary={dictionary.home.innovation} />
         <MarketplaceSpotlight lang={lang} dictionary={dictionary.home.marketplaceSpotlight} />
-        <LocalCredibility dictionary={dictionary.home.localCredibility} />
-        <Consultancy dictionary={dictionary.home.consultancy} />
-        <Partners dictionary={dictionary.home.partners} />
+        <div className="bg-slate-50 py-20">
+          <LocalCredibility dictionary={dictionary.home.localCredibility} />
+          <Consultancy dictionary={dictionary.home.consultancy} />
+          <Partners dictionary={dictionary.home.partners} />
+        </div>
         <CaseStudies lang={lang} dictionary={dictionary.home.caseStudies} />
         <About dictionary={dictionary.home.about} />
         <News lang={lang} dictionary={dictionary.home.news} />

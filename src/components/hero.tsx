@@ -1,88 +1,121 @@
-import { Button } from "@/components/ui/button";
+"use client";
 
-export function Hero({ dictionary }: { dictionary: any }) {
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
+
+export function Hero({ lang, dictionary }: { lang: any; dictionary: any }) {
+    const heroData = {
+        tag: "MANAGED INTELLIGENCE PROVIDER",
+        badge2: "STIGMA MIP FRAMEWORK 2.0",
+        title: lang === "fr" ? "L'ÉVOLUTION DE\nL'INTELLIGENCE" : "THE EVOLUTION OF\nINTELLIGENCE",
+        titleAccent: lang === "fr" ? "MANAGÉE" : "MANAGED",
+        description: lang === "fr"
+            ? "Nous fusionnons une infrastructure souveraine, une cybersécurité adaptative et l'intelligence artificielle pour propulser les entreprises à l'avant-garde du numérique."
+            : "We merge sovereign infrastructure, adaptive cybersecurity, and artificial intelligence to propel enterprises to the digital forefront.",
+        ctaPrimary: lang === "fr" ? "Découvrir le Modèle MIP" : "Discover the MIP Model",
+        ctaSecondary: lang === "fr" ? "Parler à un Expert" : "Talk to an Expert",
+    };
+
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({ "namespace": "30min" });
+            cal("ui", {
+                "theme": "dark",
+                "styles": { "branding": { "brandColor": "#ffffff" } },
+                "hideEventTypeDetails": false,
+                "layout": "month_view"
+            });
+        })();
+    }, []);
+
     return (
-        <section className="relative pt-28 pb-12 lg:pt-36 lg:pb-16 bg-surface-dark overflow-hidden">
-            {/* Subtle light glow at the top for depth */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[800px] bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06)_0%,transparent_60%)]"></div>
+        <section className="relative min-h-[90vh] flex flex-col justify-center bg-slate-950 overflow-hidden selection:bg-blue-500/30">
+
+            {/* NOISE TEXTURE */}
+            <div
+                className="absolute inset-0 pointer-events-none z-0 opacity-[0.08]"
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+            />
+
+            {/* MESH GRADIENTS */}
+            <div className="absolute inset-0 pointer-events-none z-0 opacity-20">
+                <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[600px] bg-blue-500/10 blur-[120px] rounded-none rotate-12" />
+                <div className="absolute bottom-[20%] right-[5%] w-[500px] h-[700px] bg-purple-600/5 blur-[140px] rounded-none" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div className="lg:col-span-7 space-y-8 order-2 lg:order-1 relative z-20">
-                        <span className="inline-flex items-center gap-2 border border-white/20 text-white text-[10px] font-bold tracking-[0.3em] uppercase px-5 py-2 bg-white/5 backdrop-blur-md rounded-full shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
-                            {dictionary.tag}
+            {/* TECHNICAL GRID */}
+            <div
+                className="absolute inset-0 z-0 opacity-[0.03]"
+                style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`, backgroundSize: '60px 60px' }}
+            />
+
+            {/* SCAN LINE ANIMATION */}
+            <div
+                className="absolute top-0 left-0 w-full h-px bg-white/10 shadow-[0_0_15px_rgba(255,255,255,0.2)] z-20"
+                style={{ animation: 'scan-home 5s linear infinite' }}
+            />
+
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @keyframes scan-home {
+                    0% { transform: translateY(-100%); opacity: 0; }
+                    5% { opacity: 1; }
+                    95% { opacity: 1; }
+                    100% { transform: translateY(100vh); opacity: 0; }
+                }
+            `}} />
+
+            {/* HERO CONTENT */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-32 pb-24">
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
+                >
+                    {/* DUAL BADGE ROW */}
+                    <div className="flex flex-wrap items-center gap-4 mb-10">
+                        <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+                            {heroData.tag}
                         </span>
-                        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.1] text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/70 drop-shadow-2xl">
-                            <span className="font-bold tracking-tight">{dictionary.title}</span>
-                        </h1>
-                        <p className="text-lg lg:text-xl text-white/70 max-w-xl font-light leading-relaxed">
-                            {dictionary.description}
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button asChild size="lg" className="rounded-none px-8 py-6 text-sm uppercase tracking-wider font-bold bg-white text-surface-dark hover:bg-gray-100 transition-colors shadow-xl shadow-black/20">
-                                <a href="#solutions">{dictionary.ctaPrimary}</a>
-                            </Button>
-                            <Button asChild variant="outline" size="lg" className="rounded-none px-8 py-6 text-sm uppercase tracking-wider font-bold border-2 border-white/30 bg-transparent text-white hover:bg-white hover:text-surface-dark transition-colors backdrop-blur-sm">
-                                <a href="#contact">{dictionary.ctaSecondary}</a>
-                            </Button>
-                        </div>
+                        <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                            {heroData.badge2}
+                        </span>
                     </div>
 
-                    <div className="lg:col-span-5 relative h-[500px] lg:h-[700px] w-full flex items-center justify-center lg:justify-end order-1 lg:order-2">
-                        {/* Custom SVG matching the exact reference image */}
-                        <div className="relative w-full h-full max-w-lg">
-                            <svg className="w-full h-full text-white/10" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* MASSIVE TITLE */}
+                    <h1 className="text-6xl sm:text-7xl lg:text-[7rem] xl:text-[8.5rem] font-display font-black tracking-tighter uppercase leading-[0.88] text-slate-300 mb-10">
+                        {heroData.title.split('\n').map((line, i) => (
+                            <span key={i} className="block">{line}</span>
+                        ))}
+                        <span className="text-white block">{heroData.titleAccent}</span>
+                    </h1>
 
-                                {/* Background watermark paths */}
-                                <path d="M50 0 L50 450 L100 500 L100 600" stroke="rgba(255,255,255,0.05)" strokeWidth="20" strokeLinecap="square" strokeLinejoin="bevel" />
-                                <path d="M150 200 L150 350 L200 400 L200 600" stroke="rgba(255,255,255,0.05)" strokeWidth="20" strokeLinecap="square" strokeLinejoin="bevel" />
-                                <path d="M300 0 L300 300 L350 350 L350 600" stroke="rgba(255,255,255,0.05)" strokeWidth="20" strokeLinecap="square" strokeLinejoin="bevel" />
-                                <path d="M380 150 L380 450" stroke="rgba(255,255,255,0.05)" strokeWidth="20" strokeLinecap="square" strokeLinejoin="bevel" />
+                    {/* DESCRIPTION */}
+                    <p className="text-xl text-slate-400 font-light leading-relaxed mb-12 max-w-2xl tracking-tight">
+                        {heroData.description}
+                    </p>
 
-                                {/* Main thick glowing paths */}
-                                {/* Left branch */}
-                                <path d="M80 50 L80 150 L140 220 L160 220" stroke="rgba(255,255,255,0.25)" strokeWidth="10" strokeLinecap="square" strokeLinejoin="miter" className="geo-line" />
-
-                                {/* Center/Right main vertical */}
-                                <path d="M260 50 L260 200" stroke="rgba(255,255,255,0.25)" strokeWidth="10" strokeLinecap="square" strokeLinejoin="miter" className="geo-line" />
-                                <path d="M260 250 L260 330" stroke="rgba(255,255,255,0.25)" strokeWidth="10" strokeLinecap="square" strokeLinejoin="miter" className="geo-line" style={{ animationDelay: "0.2s" }} />
-
-                                {/* Bottom angled path */}
-                                <path d="M260 360 L200 440 L160 440 L100 520 L100 600" stroke="rgba(255,255,255,0.25)" strokeWidth="10" strokeLinecap="square" strokeLinejoin="miter" className="geo-line" style={{ animationDelay: "0.4s" }} />
-                            </svg>
-
-                            {/* Overlay HTML Pills to match the design perfectly with drop shadows */}
-
-                            {/* 1. Advanced Security */}
-                            <div className="absolute top-[20%] left-[10%] bg-white/90 backdrop-blur-md rounded-none py-2 px-4 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] border border-white flex items-center gap-2 transform hover:scale-105 transition-transform cursor-default">
-                                <span className="material-symbols-outlined text-surface-dark text-xl">admin_panel_settings</span>
-                                <span className="font-sans font-bold text-surface-dark text-sm">Advanced Security</span>
-                            </div>
-
-                            {/* 2. Performance */}
-                            <div className="absolute top-[35%] right-[10%] bg-white/90 backdrop-blur-md rounded-none py-2 px-4 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] border border-white flex items-center gap-2 transform hover:scale-105 transition-transform cursor-default">
-                                <span className="material-symbols-outlined text-surface-dark text-xl">speed</span>
-                                <span className="font-sans font-bold text-surface-dark text-sm">Performance</span>
-                            </div>
-
-                            {/* 3. Uptime */}
-                            <div className="absolute top-[55%] left-[25%] bg-white/90 backdrop-blur-md rounded-none py-2 px-4 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] border border-white flex items-center gap-2 transform hover:scale-105 transition-transform cursor-default">
-                                <span className="material-symbols-outlined text-surface-dark text-xl">verified</span>
-                                <span className="font-sans font-bold text-surface-dark text-sm">99.99% Uptime</span>
-                            </div>
-
-                            {/* 4. Unlimited Scaling */}
-                            <div className="absolute bottom-[15%] right-[5%] bg-white/90 backdrop-blur-md rounded-none py-2 px-4 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] border border-white flex items-center gap-2 transform hover:scale-105 transition-transform cursor-default">
-                                <span className="material-symbols-outlined text-surface-dark text-xl">monitoring</span>
-                                <span className="font-sans font-bold text-surface-dark text-sm">Unlimited Scaling</span>
-                            </div>
-
-                        </div>
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-6">
+                        <Button asChild size="lg" className="rounded-none px-10 py-7 text-[10px] uppercase tracking-[0.3em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none">
+                            <Link href={`/${lang}/mip`}>{heroData.ctaPrimary}</Link>
+                        </Button>
+                        <Button 
+                            variant="ghost" 
+                            size="lg" 
+                            className="rounded-none px-8 py-7 text-[10px] uppercase tracking-[0.3em] font-bold text-white/50 hover:text-white hover:bg-white/5 transition-all"
+                            data-cal-namespace="30min"
+                            data-cal-link="stigmatech/30min"
+                            data-cal-config='{"layout":"month_view","theme":"dark"}'
+                        >
+                            {heroData.ctaSecondary}
+                        </Button>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

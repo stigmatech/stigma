@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stigmatech - Solutions de Cybersécurité Avancées</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111827",
+                        "primary-hover": "#374151",
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#0B0C10",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1F2937",
+                        "text-light": "#111827",
+                        "text-dark": "#F3F4F6",
+                        "text-muted-light": "#6B7280",
+                        "text-muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                        '2xl': "1.5rem",
+                        '3xl': "2rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        .geo-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear forwards;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .active-nav-link {
+            @apply text-primary dark:text-white border-b-2 border-primary dark:border-white;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+        .tooltip {
+            @apply invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-primary dark:bg-white text-white dark:text-black text-[10px] py-1 px-3 rounded whitespace-nowrap transition-all duration-300 pointer-events-none font-bold uppercase tracking-wider z-50;
+        }
+        .tooltip::after {
+            content: '';
+            @apply absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-primary dark:border-t-white;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 font-sans antialiased overflow-x-hidden">
+<div class="fixed inset-0 bg-black/40 z-40 backdrop-blur-[2px]"></div>
+<header class="fixed w-full top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl text-primary dark:text-white">security</span>
+<span class="font-display font-bold text-2xl tracking-tight text-primary dark:text-white">stigmatech</span>
+</div>
+<nav class="hidden md:flex space-x-8 items-center h-full">
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-white transition-colors h-full flex items-center" href="#">Services</a>
+<a class="text-sm font-bold text-primary dark:text-white border-b-2 border-primary dark:border-white h-full flex items-center px-1" href="#">Solutions</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-white transition-colors h-full flex items-center" href="#">À propos</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-white transition-colors h-full flex items-center" href="#">Contact</a>
+</nav>
+<div class="hidden md:flex items-center space-x-4">
+<span class="text-xs font-semibold text-text-muted-light dark:text-text-muted-dark cursor-pointer">FR / EN</span>
+<a class="inline-flex items-center px-4 py-2 border border-primary dark:border-white text-sm font-medium rounded-full text-primary dark:text-white bg-transparent hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300" href="#">
+                    Demander un devis
+                </a>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-primary dark:text-white hover:text-primary-hover focus:outline-none">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute top-full left-0 w-full bg-white dark:bg-surface-dark shadow-2xl border-b border-gray-200 dark:border-gray-700 animate-in fade-in slide-in-from-top-2 duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-12">
+<a class="flex items-start gap-5 group" href="#">
+<div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl group-hover:bg-primary group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-2xl">settings_suggest</span>
+</div>
+<div>
+<p class="font-display font-bold text-primary dark:text-white mb-1">Managed IT</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">Infrastructure management and proactive support.</p>
+</div>
+</a>
+<a class="flex items-start gap-5 group" href="#">
+<div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl group-hover:bg-primary group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-2xl">shield_lock</span>
+</div>
+<div>
+<p class="font-display font-bold text-primary dark:text-white mb-1">Cybersecurity</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">Advanced protection against modern digital threats.</p>
+</div>
+</a>
+<a class="flex items-start gap-5 group" href="#">
+<div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl group-hover:bg-primary group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-2xl">psychology</span>
+</div>
+<div>
+<p class="font-display font-bold text-primary dark:text-white mb-1">AI &amp; ML</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">Innovation through data and intelligent automation.</p>
+</div>
+</a>
+<a class="flex items-start gap-5 group" href="#">
+<div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl group-hover:bg-primary group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-2xl">fact_check</span>
+</div>
+<div>
+<p class="font-display font-bold text-primary dark:text-white mb-1">Governance &amp; Risk</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">Ensuring compliance and strategic risk oversight.</p>
+</div>
+</a>
+<a class="flex items-start gap-5 group" href="#">
+<div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl group-hover:bg-primary group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-2xl">cloud_upload</span>
+</div>
+<div>
+<p class="font-display font-bold text-primary dark:text-white mb-1">Cloud Computing</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">Scalable and secure cloud infrastructure solutions.</p>
+</div>
+</a>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark uppercase tracking-widest font-bold">Explore our ecosystem</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-primary dark:text-white hover:gap-3 transition-all" href="#">
+                    View All Solutions
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main>
+<section class="relative pt-32 pb-16 lg:pt-48 lg:pb-20 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-xs font-medium text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider">Sécurité Active 24/7</span>
+</div>
+<h1 class="font-display font-bold text-5xl lg:text-7xl leading-tight text-primary dark:text-white">
+                        Sécurité.<br/>
+                        Performance.<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-900 dark:from-gray-400 dark:to-white">Innovation.</span>
+</h1>
+<p class="text-lg lg:text-xl text-text-muted-light dark:text-text-muted-dark max-w-lg leading-relaxed">
+                        Libérez le potentiel de votre infrastructure technologique avec des solutions simples, sûres et innovantes conçues pour l'avenir.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<a class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-primary hover:bg-primary-hover dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-300 shadow-lg" href="#">
+                            Découvrir nos solutions
+                        </a>
+<a class="inline-flex justify-center items-center px-8 py-4 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-full text-primary dark:text-white bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300" href="#">
+                            Contactez-nous
+                        </a>
+</div>
+</div>
+<div class="relative h-96 lg:h-[600px] w-full flex items-center justify-center">
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gray-200 dark:bg-gray-700 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gray-300 dark:bg-gray-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000 ml-20 -mt-20"></div>
+<svg class="w-full h-full text-primary dark:text-white opacity-80" viewBox="0 0 400 400">
+<path class="geo-line" d="M50,200 Q100,50 200,50 T350,200" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path class="geo-line" d="M50,200 Q100,350 200,350 T350,200" fill="none" stroke="currentColor" stroke-width="2" style="animation-delay: 0.5s"></path>
+<path class="geo-line" d="M200,50 L200,350" fill="none" stroke="currentColor" stroke-dasharray="5,5" stroke-width="1" style="animation-delay: 1s"></path>
+<circle cx="50" cy="200" fill="currentColor" r="6"></circle>
+<text class="text-[10px] font-mono fill-current opacity-60" x="30" y="230">SOURCE</text>
+<circle cx="200" cy="50" fill="currentColor" r="6"></circle>
+<text class="text-[10px] font-mono fill-current opacity-60" x="180" y="35">CLOUD</text>
+<circle cx="200" cy="350" fill="currentColor" r="6"></circle>
+<text class="text-[10px] font-mono fill-current opacity-60" x="180" y="380">DATA</text>
+<circle cx="350" cy="200" fill="currentColor" r="6"></circle>
+<text class="text-[10px] font-mono fill-current opacity-60" x="330" y="230">USER</text>
+<circle class="animate-pulse" cx="200" cy="200" fill="none" r="40" stroke="currentColor" stroke-width="1"></circle>
+<circle class="opacity-10" cx="200" cy="200" fill="currentColor" r="20"></circle>
+<text class="text-[12px] font-bold font-display fill-current" x="185" y="205">CORE</text>
+</svg>
+<div class="absolute top-20 right-10 bg-white dark:bg-gray-800 shadow-xl rounded-lg p-3 flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+<div>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Système</p>
+<p class="text-sm font-bold text-primary dark:text-white">Opérationnel</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+</section>
+<section class="bg-primary dark:bg-surface-dark border-y border-white/10 relative z-20 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10 items-center">
+<div class="flex flex-col items-center md:items-start md:px-8 space-y-1">
+<div class="flex items-center gap-3 text-white">
+<span class="text-3xl lg:text-4xl font-display font-extrabold tracking-tight">99.9%</span>
+<span class="material-symbols-outlined text-green-400 animate-pulse text-xl">speed</span>
+</div>
+<p class="text-xs lg:text-sm font-medium uppercase tracking-widest text-gray-400">Uptime Moyen</p>
+</div>
+<div class="flex flex-col items-center md:items-start md:px-8 space-y-1 pt-8 md:pt-0">
+<div class="flex items-center gap-3 text-white">
+<span class="text-3xl lg:text-4xl font-display font-extrabold tracking-tight">1.2M+</span>
+<span class="material-symbols-outlined text-red-400 animate-pulse text-xl">gpp_maybe</span>
+</div>
+<p class="text-xs lg:text-sm font-medium uppercase tracking-widest text-gray-400">Menaces Bloquées</p>
+</div>
+<div class="flex flex-col items-center md:items-start md:px-8 space-y-1 pt-8 md:pt-0">
+<div class="flex items-center gap-3 text-white">
+<span class="text-3xl lg:text-4xl font-display font-extrabold tracking-tight">500+</span>
+<span class="material-symbols-outlined text-blue-400 animate-pulse text-xl">rocket_launch</span>
+</div>
+<p class="text-xs lg:text-sm font-medium uppercase tracking-widest text-gray-400">Projets Déployés</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-16 text-center md:text-left">
+<h4 class="text-xs font-bold uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark mb-4">Nos Services</h4>
+<h2 class="font-display font-medium text-4xl lg:text-5xl text-primary dark:text-white">
+                    Nous existons pour <br/>
+<span class="font-bold">générer des résultats</span> pour vous.
+                </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+<div class="lg:col-span-2 group relative bg-primary dark:bg-surface-dark rounded-3xl p-8 overflow-hidden h-96 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2">
+<div class="absolute top-0 right-0 p-6 opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-white">settings_suggest</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs backdrop-blur-sm mb-4">01</span>
+<h3 class="text-2xl font-display font-bold text-white mb-2">Managed IT</h3>
+</div>
+<div class="relative z-10">
+<p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Optimisez votre infrastructure avec une gestion proactive.
+                        </p>
+<a class="inline-flex items-center text-white text-sm font-bold hover:underline" href="#">
+                            En savoir plus <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+</div>
+<div class="lg:col-span-2 group relative bg-primary dark:bg-surface-dark rounded-3xl p-8 overflow-hidden h-96 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2">
+<div class="absolute top-0 right-0 p-6 opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-white">shield_lock</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs backdrop-blur-sm mb-4">02</span>
+<h3 class="text-2xl font-display font-bold text-white mb-2">Managed Cybersecurity</h3>
+</div>
+<div class="relative z-10">
+<p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Protégez vos actifs les plus précieux contre les menaces modernes.
+                        </p>
+<a class="inline-flex items-center text-white text-sm font-bold hover:underline" href="#">
+                            En savoir plus <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+</div>
+<div class="lg:col-span-2 group relative bg-primary dark:bg-surface-dark rounded-3xl p-8 overflow-hidden h-96 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2">
+<div class="absolute top-0 right-0 p-6 opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-white">psychology</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs backdrop-blur-sm mb-4">03</span>
+<h3 class="text-2xl font-display font-bold text-white mb-2">AI &amp; Machine Learning</h3>
+</div>
+<div class="relative z-10">
+<p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Exploitez la puissance de vos données avec l'IA.
+                        </p>
+<a class="inline-flex items-center text-white text-sm font-bold hover:underline" href="#">
+                            En savoir plus <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-teal-600 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+</div>
+<div class="lg:col-start-2 lg:col-span-2 group relative bg-primary dark:bg-surface-dark rounded-3xl p-8 overflow-hidden h-96 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2">
+<div class="absolute top-0 right-0 p-6 opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-white">fact_check</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs backdrop-blur-sm mb-4">04</span>
+<h3 class="text-2xl font-display font-bold text-white mb-2">GRC</h3>
+</div>
+<div class="relative z-10">
+<p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Assurez la conformité et gérez les risques stratégiques.
+                        </p>
+<a class="inline-flex items-center text-white text-sm font-bold hover:underline" href="#">
+                            En savoir plus <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-600 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+</div>
+<div class="lg:col-span-2 group relative bg-primary dark:bg-surface-dark rounded-3xl p-8 overflow-hidden h-96 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2">
+<div class="absolute top-0 right-0 p-6 opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-white">cloud_upload</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs backdrop-blur-sm mb-4">05</span>
+<h3 class="text-2xl font-display font-bold text-white mb-2">Cloud Computing</h3>
+</div>
+<div class="relative z-10">
+<p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Migrez vers des solutions cloud évolutives et sécurisées.
+                        </p>
+<a class="inline-flex items-center text-white text-sm font-bold hover:underline" href="#">
+                            En savoir plus <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-600 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark border-y border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark mb-8">Expertise Mondiale</h4>
+<p class="text-2xl lg:text-4xl font-display font-light leading-tight text-primary dark:text-white">
+                        Le <span class="font-bold">succès</span> des solutions proposées par <span class="font-bold">Stigmatech</span> nous a amenés à conquérir de nouveaux marchés. Notre présence mondiale nous permet d'être plus proches des entreprises de demain.
+                    </p>
+</div>
+<div class="relative bg-white dark:bg-surface-dark p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+<h4 class="text-xs font-bold uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark mb-4">Votre Cybersécurité</h4>
+<h3 class="text-3xl font-display font-bold text-primary dark:text-white mb-4">Corporate <span class="font-light text-text-muted-light dark:text-text-muted-dark">IT security</span> consultancy</h3>
+<p class="text-text-muted-light dark:text-text-muted-dark mb-8 text-sm">
+                        Avec nos tests de pénétration continus automatiques et nos services de protection des points finaux, nous accompagnons les entreprises dans la définition des meilleures stratégies.
+                    </p>
+<button class="bg-primary text-white dark:bg-white dark:text-primary px-6 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all">
+                        Contactez-nous
+                    </button>
+<div class="absolute bottom-0 right-0 w-1/2 h-1/2 overflow-hidden opacity-10 dark:opacity-20 pointer-events-none">
+<svg class="w-full h-full stroke-primary dark:stroke-white fill-none stroke-2" viewBox="0 0 200 200">
+<path d="M0,200 L50,150 L50,100 L100,100 L100,50 L150,50 L150,0"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-background-dark overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+<h3 class="text-2xl font-display font-bold text-primary dark:text-white max-w-md">
+                Les entreprises avec qui nous travaillons pour optimiser nos services.
+            </h3>
+</div>
+<div class="relative">
+<div class="flex animate-scroll whitespace-nowrap">
+<div class="flex items-center gap-24 min-w-full px-12">
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Partenaire Certifié Gold</div>
+<span class="text-2xl font-bold font-display tracking-tighter text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-blue-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">ZERO.</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Collaboration Stratégique</div>
+<span class="text-2xl font-bold font-display tracking-widest text-gray-400 border-2 border-gray-400 grayscale group-hover:grayscale-0 group-hover:text-red-600 group-hover:border-red-600 px-3 transition-all duration-300 group-hover:scale-110 cursor-pointer">CYBER</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Partenaire Certifié Gold</div>
+<div class="flex items-center gap-1 text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-indigo-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">
+<span class="material-symbols-outlined">token</span>
+<span class="font-bold text-2xl">NETURIX</span>
+</div>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Collaboration Stratégique</div>
+<span class="text-2xl font-serif italic font-bold text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-cyan-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">Imprivata</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Partenaire Certifié Gold</div>
+<span class="text-2xl font-mono font-bold text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-blue-500 transition-all duration-300 group-hover:scale-110 cursor-pointer">CISCO</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Collaboration Stratégique</div>
+<span class="text-2xl font-sans font-black text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-green-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">PROOF</span>
+</div>
+</div>
+<div class="flex items-center gap-24 min-w-full px-12">
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Partenaire Certifié Gold</div>
+<span class="text-2xl font-bold font-display tracking-tighter text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-blue-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">ZERO.</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Collaboration Stratégique</div>
+<span class="text-2xl font-bold font-display tracking-widest text-gray-400 border-2 border-gray-400 grayscale group-hover:grayscale-0 group-hover:text-red-600 group-hover:border-red-600 px-3 transition-all duration-300 group-hover:scale-110 cursor-pointer">CYBER</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Partenaire Certifié Gold</div>
+<div class="flex items-center gap-1 text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-indigo-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">
+<span class="material-symbols-outlined">token</span>
+<span class="font-bold text-2xl">NETURIX</span>
+</div>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Collaboration Stratégique</div>
+<span class="text-2xl font-serif italic font-bold text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-cyan-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">Imprivata</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Partenaire Certifié Gold</div>
+<span class="text-2xl font-mono font-bold text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-blue-500 transition-all duration-300 group-hover:scale-110 cursor-pointer">CISCO</span>
+</div>
+<div class="relative group flex-shrink-0">
+<div class="tooltip">Collaboration Stratégique</div>
+<span class="text-2xl font-sans font-black text-gray-400 grayscale group-hover:grayscale-0 group-hover:text-green-600 transition-all duration-300 group-hover:scale-110 cursor-pointer">PROOF</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark mb-4">Projets Récents</h4>
+<h2 class="font-display font-medium text-4xl lg:text-5xl text-primary dark:text-white">
+                        Nos <span class="font-bold">Études de Cas</span>
+</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-3 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 text-primary dark:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="p-3 rounded-full bg-primary text-white dark:bg-white dark:text-primary hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-2xl mb-6 relative">
+<img alt="Global Network Visualization" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7kS0A73dC76nsggjCZN6fzmoafmgzm6jSNShTave-TatTF29iSK2Q3WrUd5EQo1aNURflbLl7tFr7JH0RjFzrNsd8kc0ynyUQVOQSGq8juLd7BPGSONHww1Zy_TRDksX7H_weYUmE111Kc2wA5BBdEjX0jX8RyOmOVH6OMW6hMmDwl6_1S0rqvl-hQJNsxulf0D2hJ6YuLlVKwGYsG1LUFx5RORpr6qgy4onFE2Iaj_nxCvTwOpst8iXQybGZqttGCWdYHQbBZa0"/>
+<div class="absolute top-4 right-4 bg-white dark:bg-black px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide">Infrastructure</div>
+</div>
+<h3 class="text-2xl font-bold text-primary dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Refonte de l'Architecture Réseau Globale</h3>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm mb-4 line-clamp-2">
+                        Optimisation complète des flux de données pour une multinationale, réduisant la latence de 40% et sécurisant les points d'accès critiques.
+                    </p>
+<span class="text-xs font-bold uppercase tracking-wide border-b border-primary dark:border-white pb-1 inline-block">Lire l'étude</span>
+</div>
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-2xl mb-6 relative">
+<img alt="Cybersecurity Shield Concept" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBq8-TZx7Cu63Hn4eieL_ZMUThXLjhOnJvjUQqpSZkLCgo1rENzOT-bLJ-FIwk5nVKdj0fnmVLjRtVpPW-k6yDCKxKwwlN27a-a1FK3zM-hzBE9Danu11RN4zS_oGSpHRgenijeovgXiFOYd7fvah_GKDh_U70FZMaA3mPcmU_ykEyNniVV8j30DtYTVIas5Xod91ICqoyyfDlMZ7EcmC1532ZHF1FTPLf5zrnK6khSG5yDWsDTIqHNcSULt63n246dIQ6YApi0b4"/>
+<div class="absolute top-4 right-4 bg-white dark:bg-black px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide">Sécurité</div>
+</div>
+<h3 class="text-2xl font-bold text-primary dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Partenariat Zero Trust - Finance</h3>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm mb-4 line-clamp-2">
+                        Implémentation d'une architecture Zero Trust pour une banque majeure, assurant la conformité GDPR et la protection contre les ransomwares.
+                    </p>
+<span class="text-xs font-bold uppercase tracking-wide border-b border-primary dark:border-white pb-1 inline-block">Lire l'étude</span>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-full text-sm font-medium text-primary dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+                    Voir tous les cas
+                </a>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-4">
+<h2 class="font-display text-5xl font-light text-primary dark:text-white leading-tight">
+                        À propos de <br/><span class="font-bold">Stigmatech</span>
+</h2>
+</div>
+<div class="lg:col-span-8 space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="font-bold text-lg mb-2 text-primary dark:text-white">Notre Vision</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                                Avec nos services de protection automatique continue, nous aidons les entreprises à définir les meilleures stratégies pour évaluer les risques liés à la cybersécurité.
+                            </p>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2 text-primary dark:text-white">Le choix de l'IT</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                                Nous avons transformé notre passion pour la technologie en un moyen d'offrir une sécurité sans limites à nos clients à travers le monde.
+                            </p>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2 text-primary dark:text-white">Promesse</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                                Avec une approche rationnelle et une concentration constante sur les solutions les plus innovantes, nous aidons nos clients à simplifier et améliorer leur infrastructure.
+                            </p>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2 text-primary dark:text-white">Relations</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                                Nous construisons des relations basées sur la confiance et la collaboration, offrant les meilleures solutions pour relever les défis d'aujourd'hui et de demain.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-surface-dark relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none"></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<h2 class="font-display text-4xl lg:text-5xl font-bold text-primary dark:text-white mb-4">
+                Restez en sécurité !
+            </h2>
+<p class="text-2xl font-light text-text-muted-light dark:text-text-muted-dark mb-12">
+                Restez à l'affût des dernières <span class="font-bold text-primary dark:text-white">innovations.</span>
+</p>
+<form class="bg-white dark:bg-background-dark p-8 rounded-3xl shadow-lg max-w-lg mx-auto border border-gray-100 dark:border-gray-700">
+<div class="space-y-4">
+<div>
+<input class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border-none rounded-lg text-primary dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary dark:focus:ring-white transition-shadow" placeholder="Nom" type="text"/>
+</div>
+<div>
+<input class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border-none rounded-lg text-primary dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary dark:focus:ring-white transition-shadow" placeholder="Prénom" type="text"/>
+</div>
+<div>
+<input class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border-none rounded-lg text-primary dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary dark:focus:ring-white transition-shadow" placeholder="Email*" type="email"/>
+</div>
+<button class="w-full bg-primary text-white dark:bg-white dark:text-black font-bold py-3 rounded-lg hover:opacity-90 transition-opacity mt-4" type="submit">
+                        Envoyer
+                    </button>
+<div class="flex items-start mt-4">
+<div class="flex items-center h-5">
+<input class="focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded" id="privacy" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm">
+<label class="font-light text-text-muted-light dark:text-text-muted-dark text-xs text-left block" for="privacy">
+                                J'ai lu et j'accepte la politique de confidentialité relative au traitement des données personnelles.*
+                            </label>
+</div>
+</div>
+</div>
+</form>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-2xl text-primary dark:text-white">security</span>
+<span class="font-display font-bold text-xl tracking-tight text-primary dark:text-white">stigmatech</span>
+</div>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-4">
+                    Choisissez les solutions innovantes de Stigmatech pour votre entreprise.
+                </p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">
+                    © 2024 Stigmatech. Design d'excellence.
+                </p>
+</div>
+<div>
+<h5 class="font-bold text-sm text-primary dark:text-white mb-4">Liens Rapides</h5>
+<ul class="space-y-2 text-xs text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Études de Cas</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Services</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Blog</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm text-primary dark:text-white mb-4">Social</h5>
+<ul class="space-y-2 text-xs text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary dark:hover:text-white" href="#">LinkedIn</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Twitter / X</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Instagram</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm text-primary dark:text-white mb-4">Légal</h5>
+<ul class="space-y-2 text-xs text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Politique de confidentialité</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Conditions d'utilisation</a></li>
+<li><a class="hover:text-primary dark:hover:text-white" href="#">Mentions légales</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-xs text-gray-400 dark:text-gray-600">
+                © 2023 Stigmatech Inc. Tous droits réservés.
+            </p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-xs text-gray-400 dark:text-gray-600">Tous les systèmes opérationnels</span>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

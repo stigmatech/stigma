@@ -1,0 +1,11 @@
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Icon -->
+  <path d="M40 20C40 20 70 18 85 10C100 18 130 20 130 20V60C130 85 85 110 85 110C85 110 40 85 40 60V20Z" fill="black" fill-opacity="0.9"/>
+  <!-- Cross inside shield -->
+  <path d="M85 35V85" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M60 60H110" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Text -->
+  <text x="150" y="75" fill="black" font-family="Inter, sans-serif" font-weight="800" font-size="42" letter-spacing="-0.02em">MEDIC</text>
+  <text x="290" y="75" fill="black" font-family="Inter, sans-serif" font-weight="300" font-size="42" letter-spacing="-0.02em">BACKUP</text>
+</svg>

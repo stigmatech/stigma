@@ -25,6 +25,70 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
     {
+        slug: "aaas-nvidia-gtc-2025-smb",
+        date: { en: "March 22, 2026", fr: "22 mars 2026" },
+        tag: { en: "AI TRENDS", fr: "TENDANCES IA" },
+        readTime: "6",
+        title: {
+            en: "From SaaS to AaaS: Why Your SMB Needs an AI Agent Strategy in 2026",
+            fr: "Du SaaS à l'AaaS : Pourquoi votre PME a besoin d'une stratégie d'agents d'IA en 2026",
+        },
+        excerpt: {
+            en: "Following NVIDIA's GTC 2025 keynote, the shift from Software-as-a-Service to Agents-as-a-Service is here. Discover how Stigma Technologies is pionneering A(A)GaaS for SMBs.",
+            fr: "Suite à la conférence NVIDIA GTC 2025, le passage du Software-as-a-Service aux Agents-as-a-Service est en marche. Découvrez comment Stigma Technologies pionne l'A(A)GaaS pour les PME.",
+        },
+        image: "/images/aaas-gtc.png",
+        content: {
+            intro: {
+                en: "When NVIDIA CEO Jensen Huang took the stage at GTC, he delivered a clear message: AI agents are no longer a research project—they are the next operating model for enterprise computing. We are entering the era of Agents as a Service (AaaS), where software doesn't just wait for human input, but actively works on behalf of the business. At Stigma Technologies, we are taking this vision further with our Managed A(A)GaaS offering.",
+                fr: "Lorsque le PDG de NVIDIA, Jensen Huang, est monté sur scène au GTC, il a délivré un message clair : les agents d'IA ne sont plus un projet de recherche — ils sont le prochain modèle d'exploitation de l'informatique d'entreprise. Nous entrons dans l'ère des Agents as a Service (AaaS), où le logiciel n'attend plus une commande humaine, mais travaille activement pour l'entreprise. Chez Stigma Technologies, nous portons cette vision plus loin avec notre offre managée A(A)GaaS.",
+            },
+            sections: [
+                {
+                    heading: {
+                        en: "From Tools to Digital Teammates",
+                        fr: "Des Outils aux Équipiers Numériques",
+                    },
+                    body: {
+                        en: "Traditional SaaS requires a human to log in and perform tasks. AaaS flips this logic. Instead of your team using tools, AI agents use the tools to achieve outcomes. Whether it's monitoring cybersecurity threats, qualifying sales leads, or automating invoice reconciliation, these agents act as autonomous teammates integrated directly into your existing IT managed infrastructure.",
+                        fr: "Le SaaS traditionnel nécessite qu'un humain se connecte pour effectuer des tâches. L'AaaS inverse cette logique. Au lieu que votre équipe utilise des outils, les agents d'IA utilisent les outils pour atteindre des résultats. Qu'il s'agisse de surveiller les menaces de cybersécurité, de qualifier des prospects ou d'automatiser le rapprochement des factures, ces agents agissent comme des équipiers autonomes intégrés à votre infrastructure IT managée.",
+                    },
+                },
+                {
+                    heading: {
+                        en: "Introducing A(A)GaaS: Managed Agent Excellence",
+                        fr: "Présentation de l'A(A)GaaS : L'Excellence des Agents Managés",
+                    },
+                    body: {
+                        en: "At Stigma Technologies, we believe SMBs shouldn't have to manage the complexity of AI alone. Our 'Agent (as a) Géré as a Service' (AAGaaS) model provides end-to-end management of your digital workforce. We handle the provisioning, security updates, and performance optimization of your agents, ensuring they evolve as your business grows—all seamlessly synchronized with your Microsoft 365 and Azure environments.",
+                        fr: "Chez Stigma Technologies, nous pensons que les PME ne devraient pas avoir à gérer seules la complexité de l'IA. Notre modèle 'Agent (as a) Géré as a Service' (AAGaaS) assure la gestion de bout en bout de votre main-d'œuvre numérique. Nous nous occupons du provisionnement, des mises à jour de sécurité et de l'optimisation des performances de vos agents, garantissant qu'ils évoluent avec votre entreprise.",
+                    },
+                },
+                {
+                    heading: {
+                        en: "The Economic Edge for SMBs",
+                        fr: "L'Avantage Économique pour les PME",
+                    },
+                    body: {
+                        en: "Scalability used to mean hiring more staff. In the era of AaaS, it means provisioning more agents. For an SMB, this offers an unprecedented competitive advantage: the ability to handle the 80% of repetitive, predictable tasks with near-infinite scale, allowing your human talent to focus on the 20% of high-value, strategic decisions that require genuine human judgment.",
+                        fr: "Auparavant, changer d'échelle signifiait embaucher. À l'ère de l'AaaS, cela signifie provisionner plus d'agents. Pour une PME, cela offre un avantage concurrentiel sans précédent : la capacité de gérer 80 % des tâches répétitives avec une échelle quasi infinie, permettant à vos talents humains de se concentrer sur les 20 % de décisions stratégiques à haute valeur ajoutée.",
+                    },
+                },
+            ],
+            conclusion: {
+                en: "The shift from SaaS to AaaS isn't just a trend—it's a fundamental change in how businesses operate. Stigma Technologies is here to be your partner in this transition, ensuring your AI agent strategy is robust, secure, and performance-driven. Are you ready to provision your first digital teammate?",
+                fr: "Le passage du SaaS à l'AaaS n'est pas qu'une tendance — c'est un changement fondamental dans le fonctionnement des entreprises. Stigma Technologies est là pour être votre partenaire dans cette transition, garantissant que votre stratégie d'agents d'IA est robuste et sécurisée. Êtes-vous prêt à provisionner votre premier équipier numérique ?",
+            },
+        },
+        author: {
+            name: "Stigma Strategy",
+            role: { en: "AI Innovation Team", fr: "Équipe Innovation IA" },
+            avatar: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=200&auto=format&fit=crop",
+        },
+        relatedSlugs: ["bienvenue-openclaw-directeur-operations", "ai-frontier-business"],
+        relatedCaseStudies: ["ai-loss-prevention", "pharma-demand-forecasting"],
+    },
+    {
         slug: "bienvenue-openclaw-directeur-operations",
         date: { en: "March 10, 2026", fr: "10 mars 2026" },
         tag: { en: "INNOVATION & FUTURE", fr: "INNOVATION & FUTUR" },

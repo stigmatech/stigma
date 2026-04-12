@@ -13,8 +13,8 @@ export async function generateMetadata(props: {
     return {
         title: isFr ? "Politique de Cookies | Stigma Technologies" : "Cookie Policy | Stigma Technologies",
         description: isFr
-            ? "Politique de cookies de Stigma Technologies — conforme à la Loi 25 du Québec sur la protection des renseignements personnels."
-            : "Cookie Policy of Stigma Technologies — compliant with Quebec's Law 25 on the protection of personal information.",
+            ? "Politique de cookies de Stigma Technologies — engagement envers la protection de la vie privée et la conformité aux standards internationaux (RGPD, Loi 25)."
+            : "Cookie Policy of Stigma Technologies — committed to privacy and international compliance standards (GDPR, Law 25).",
         alternates: { canonical: `https://stigmatech.ca/${lang}/cookie-policy` },
     };
 }
@@ -28,12 +28,12 @@ export default async function CookiePolicy(props: {
     const isFr = lang === "fr";
 
     return (
-        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white pt-24">
-            <Navbar lang={lang} dictionary={dictionary.common.nav} />
+        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white">
+            <Navbar lang={lang} dictionary={dictionary} />
 
             <main>
                 {/* Hero */}
-                <section className="bg-[#0b0c10] text-white py-20 lg:py-28 relative overflow-hidden">
+                <section className="bg-[#0b0c10] text-white pt-36 lg:pt-40 pb-20 lg:pb-28 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 background-grid pointer-events-none"></div>
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                         <div className="flex items-center gap-3 mb-6">
@@ -41,7 +41,7 @@ export default async function CookiePolicy(props: {
                                 {isFr ? "Transparence & Confidentialité" : "Transparency & Privacy"}
                             </span>
                             <span className="inline-block bg-green-500/20 text-green-400 text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded border border-green-500/30">
-                                {isFr ? "Conforme Loi 25" : "Law 25 Compliant"}
+                                {isFr ? "Confidentialité Globale" : "Privacy Compliant"}
                             </span>
                         </div>
                         <h1 className="text-5xl lg:text-6xl font-display font-extrabold tracking-tight mb-6">
@@ -60,8 +60,8 @@ export default async function CookiePolicy(props: {
                             <span className="material-symbols-outlined text-white/70 text-[22px] shrink-0 mt-0.5">gavel</span>
                             <p className="text-sm text-white/90 leading-relaxed">
                                 {isFr
-                                    ? <>Cette politique est conforme à la <strong>Loi 25 du Québec</strong> (<em>Loi modernisant des dispositions législatives en matière de protection des renseignements personnels</em>, L.Q. 2021, c. 25). En tant qu'entreprise québécoise, Stigma Technologies s'engage à respecter vos droits en matière de vie privée.</>
-                                    : <>This policy complies with <strong>Quebec's Law 25</strong> (<em>Act to modernize legislative provisions as regards the protection of personal information</em>, S.Q. 2021, c. 25). As a Quebec company, Stigma Technologies is committed to respecting your privacy rights.</>
+                                    ? <>Cette politique est conforme aux plus hauts standards de protection des données, incluant le <strong>RGPD</strong>, la <strong>Loi 25</strong> et les normes internationales. Stigma Technologies s'engage à respecter votre vie privée partout dans le monde.</>
+                                    : <>This policy complies with the highest data protection standards, including <strong>GDPR</strong>, <strong>Law 25</strong>, and international regulations. Stigma Technologies is committed to respecting your privacy worldwide.</>
                                 }
                             </p>
                         </div>
@@ -79,8 +79,8 @@ export default async function CookiePolicy(props: {
                             </h2>
                             <p className="text-gray-600 leading-relaxed">
                                 {isFr
-                                    ? "Un cookie est un petit fichier texte déposé sur votre appareil (ordinateur, tablette ou téléphone) lorsque vous visitez notre site. Conformément à la Loi 25, tout dépôt de cookie non essentiel nécessite votre consentement préalable, libre, éclairé et spécifique."
-                                    : "A cookie is a small text file placed on your device (computer, tablet, or phone) when you visit our website. In accordance with Law 25, any placement of non-essential cookies requires your prior, free, informed and specific consent."}
+                                    ? "Un cookie est un petit fichier texte déposé sur votre appareil. Conformément aux standards de protection des données, tout dépôt de cookie non essentiel nécessite votre consentement préalable, libre, éclairé et spécifique."
+                                    : "A cookie is a small text file placed on your device. In accordance with data protection standards, any placement of non-essential cookies requires your prior, free, informed and specific consent."}
                             </p>
                         </div>
 
@@ -89,13 +89,13 @@ export default async function CookiePolicy(props: {
                         {/* 2. Consent */}
                         <div>
                             <h2 className="text-2xl font-display font-bold text-[#0b0c10] border-l-4 border-[#0b0c10] pl-4 mb-5">
-                                {isFr ? "2. Votre consentement (Loi 25, art. 12)" : "2. Your consent (Law 25, art. 12)"}
+                                {isFr ? "2. Votre consentement" : "2. Your consent"}
                             </h2>
                             <div className="space-y-4 text-gray-600 leading-relaxed">
                                 <p>
                                     {isFr
-                                        ? "Conformément à la Loi 25, nous vous demandons votre consentement explicite avant de déposer tout cookie non strictement nécessaire au fonctionnement du site. Votre consentement doit être :"
-                                        : "In accordance with Law 25, we ask for your explicit consent before placing any cookie not strictly necessary for the site to function. Your consent must be:"}
+                                        ? "Conformément aux réglementations internationales (RGPD/Loi 25), nous vous demandons votre consentement explicite avant de déposer tout cookie non strictement nécessaire. Votre consentement doit être :"
+                                        : "In accordance with international regulations (GDPR/Law 25), we ask for your explicit consent before placing any cookie not strictly necessary. Your consent must be:"}
                                 </p>
                                 <ul className="space-y-2 pl-4">
                                     {(isFr
@@ -190,12 +190,12 @@ export default async function CookiePolicy(props: {
                         {/* 4. Your rights */}
                         <div>
                             <h2 className="text-2xl font-display font-bold text-[#0b0c10] border-l-4 border-[#0b0c10] pl-4 mb-5">
-                                {isFr ? "4. Vos droits (Loi 25, sections III et IV)" : "4. Your rights (Law 25, sections III and IV)"}
+                                {isFr ? "4. Vos droits" : "4. Your rights"}
                             </h2>
                             <p className="text-gray-600 leading-relaxed mb-5">
                                 {isFr
-                                    ? "Conformément à la Loi 25, vous disposez des droits suivants à l'égard de vos renseignements personnels :"
-                                    : "In accordance with Law 25, you have the following rights regarding your personal information:"}
+                                    ? "Conformément aux normes RGPD et Loi 25, vous disposez des droits suivants à l'égard de vos renseignements personnels :"
+                                    : "In accordance with GDPR and Law 25 standards, you have the following rights regarding your personal information:"}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {(isFr
@@ -248,12 +248,12 @@ export default async function CookiePolicy(props: {
                         {/* 5. Third-party transfers */}
                         <div>
                             <h2 className="text-2xl font-display font-bold text-[#0b0c10] border-l-4 border-[#0b0c10] pl-4 mb-5">
-                                {isFr ? "5. Transferts de données hors Québec (Loi 25, art. 17)" : "5. Data transfers outside Quebec (Law 25, art. 17)"}
+                                {isFr ? "5. Transferts internationaux de données" : "5. International data transfers"}
                             </h2>
                             <p className="text-gray-600 leading-relaxed mb-5">
                                 {isFr
-                                    ? "Certains de nos fournisseurs tiers sont établis à l'extérieur du Québec. Conformément à l'article 17 de la Loi 25, nous avons évalué le niveau de protection offert dans ces pays et avons mis en place des ententes de protection adéquates :"
-                                    : "Some of our third-party providers are located outside Quebec. In accordance with article 17 of Law 25, we have assessed the level of protection offered in these countries and have put in place adequate protection agreements:"}
+                                    ? "Certains de nos fournisseurs tiers sont établis à l'extérieur de votre région locale. En conformité avec les articles de protection des données (RGPD/Loi 25), nous avons évalué le niveau de protection et mis en place des ententes adéquates :"
+                                    : "Some of our third-party providers are located outside your local region. In compliance with data protection articles (GDPR/Law 25), we have assessed the level of protection and implemented adequate agreements:"}
                             </p>
                             <table className="w-full text-sm border-collapse">
                                 <thead>
@@ -342,7 +342,7 @@ export default async function CookiePolicy(props: {
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-gray-600">
                                     <span className="material-symbols-outlined text-[18px] text-gray-400">call</span>
-                                    <a href="tel:+18449784462" className="hover:text-[#0b0c10] transition-colors">+1 (844) 978-4462</a>
+                                    <a href="tel:+18555521005" className="hover:text-[#0b0c10] transition-colors">+1 855-552-1005</a>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-gray-600">
                                     <span className="material-symbols-outlined text-[18px] text-gray-400">schedule</span>

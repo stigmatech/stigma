@@ -28,12 +28,12 @@ export default async function PrivacyPolicy(props: {
     const isFr = lang === "fr";
 
     return (
-        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white pt-24">
-            <Navbar lang={lang} dictionary={dictionary.common.nav} />
+        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white">
+            <Navbar lang={lang} dictionary={dictionary} />
 
             <main>
                 {/* Hero */}
-                <section className="bg-[#0b0c10] text-white py-20 lg:py-28 relative overflow-hidden">
+                <section className="bg-[#0b0c10] text-white pt-36 lg:pt-40 pb-20 lg:pb-28 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 background-grid pointer-events-none"></div>
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                         <div className="flex items-center gap-3 mb-6">
@@ -276,7 +276,7 @@ export default async function PrivacyPolicy(props: {
                                     </div>
                                     <div className="flex items-center gap-3 text-sm text-gray-700">
                                         <span className="material-symbols-outlined text-[20px] text-gray-400">call</span>
-                                        <a href="tel:+18449784462" className="hover:text-blue-600 transition-colors">+1 (844) 978-4462</a>
+                                        <a href="tel:+18555521005" className="hover:text-blue-600 transition-colors">+1 855-552-1005</a>
                                     </div>
                                 </div>
                             </div>

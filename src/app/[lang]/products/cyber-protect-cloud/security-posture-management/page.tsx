@@ -1,9 +1,12 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
+import { Button } from "@/components/ui/button";
 import { BookingSection } from "@/components/booking-section";
+import { PartnersMarquee } from "@/components/partners-marquee";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -17,8 +20,8 @@ export async function generateMetadata(props: {
             ? "Gestion de la Posture de Sécurité (SPM) | Stigma Cyber Protect Cloud"
             : "Security Posture Management (SPM) | Stigma Cyber Protect Cloud",
         description: isFr
-            ? "Optimisez et renforcez la sécurité de Microsoft 365 avec Stigma SPM. Détection proactive des risques, remédiation automatisée et gestion multitenant."
-            : "Optimize and harden Microsoft 365 security with Stigma SPM. Proactive risk detection, automated remediation, and multitenant management.",
+            ? "Optimisez et renforcez la sécurité de Microsoft 365 avec Stigma SPM. Détection proactive des risques et remédiation automatisée."
+            : "Optimize and harden Microsoft 365 security with Stigma SPM. Proactive risk detection and automated remediation.",
         openGraph: {
             title: isFr ? "SPM | Stigma Cyber Protect Cloud" : "SPM | Stigma Cyber Protect Cloud",
             description: isFr
@@ -40,7 +43,7 @@ const content = {
         tag: "SECURITY MODULE",
         heroTitle: "Security Posture\nManagement (SPM)",
         heroDesc:
-            "Microsoft 365 is the primary target for modern cyberattacks. Stigma SPM continuously assesses your M365 environment against security best practices, automatically closing gaps and identifying hidden risks before they are exploited.",
+            "Microsoft 365 is the primary target for modern cyberattacks. Stigma SPM continuously assesses your M365 environment against security best practices, automatically closing gaps.",
         cta1: "Get a Security Scan",
         cta2: "Back to Platform",
         stats: [
@@ -49,59 +52,25 @@ const content = {
             { value: "9+", label: "Hidden Risks" },
             { value: "1-Click", label: "Tenant View" },
         ],
-
         whatIsTitle: "What is SPM?",
         whatIsText:
-            "Security Posture Management (SPM) is the practice of continuously monitoring IT environments to identify, assess, and mitigate security risks. For Microsoft 365, it means moving beyond default settings to establish a hardened security baseline, ensuring that user configurations, permissions, and service settings are always aligned with industry-standard security frameworks.",
-
+            "Security Posture Management (SPM) is the practice of continuously monitoring IT environments to mitigate risks. For Microsoft 365, it means established a hardened security baseline across configurations.",
         coreValue: [
-            {
-                icon: "dashboard_customize",
-                title: "Centralized Multitenant Management",
-                desc: "Manage multiple Microsoft 365 tenants from a single console. No more switching between accounts or consoles to assess your organization's security health.",
-            },
-            {
-                icon: "verified_user",
-                title: "Automated Risk Remediation",
-                desc: "Don't wait for the next audit. Our system monitors for baseline deviations in real-time and can automatically revert insecure changes to shrink your vulnerability window.",
-            },
-            {
-                icon: "person_remove",
-                title: "Secure User Lifecycle",
-                desc: "Simplify complex user onboarding and offboarding. Ensure that new users are protected from day one and that departing users are offboarded securely and completely.",
-            },
-            {
-                icon: "analytics",
-                title: "Deep Risk Detection",
-                desc: "Standard tools often miss complex vulnerabilities. On average, Stigma SPM identifies 8 to 9 critical security gaps that were previously undetected in standard M365 environments.",
-            },
+            { icon: "dashboard_customize", title: "Multitenant Management", desc: "Manage multiple Microsoft 365 tenants from a single console. Assessment of organization health in seconds." },
+            { icon: "verified_user", title: "Automated Remediation", desc: "Our system monitors for baseline deviations in real-time and can automatically revert insecure changes." },
+            { icon: "person_remove", title: "Secure User Lifecycle", desc: "Simplify complex user onboarding and offboarding. Ensure new users are protected from day one." },
+            { icon: "analytics", title: "Deep Risk Detection", desc: "Stigma SPM identifies 8 to 9 critical security gaps typically undetected in standard M365 environments." },
         ],
-
         baselineTitle: "Continuous Baseline Enforcement",
         baselineDesc: "Stay compliant and secure with always-on monitoring of your security posture.",
         baselineItems: [
             { title: "Configuration Audits", desc: "Automated checks against security best practices for Exchange, SharePoint, Teams, and Azure AD." },
             { title: "Drift Prevention", desc: "Detect when a configuration is changed to an insecure state and optionally auto-remediate it." },
-            { title: "Security Score Enhancement", desc: "Actionable steps to reach a 'Green' security status that you can proudly share with your stakeholders." },
+            { title: "Security Score Enhancement", desc: "Actionable steps to reach a 'Green' security status that you can share with stakeholders." },
         ],
-
         faq: [
-            {
-                q: "Why do I need SPM if Microsoft 365 has built-in security?",
-                a: "Microsoft provides the tools, but configurations are often left at default or changed insecurely. SPM identifies the 8-9 critical vulnerabilities typically missed by standard methods and ensures policies are consistently enforced.",
-            },
-            {
-                q: "How does it improve operational efficiency?",
-                a: "By centralizing multitenant management and automating risk remediation, SPM allows your IT team to manage complex security tasks in minutes rather than hours, reducing the need for senior security specialists for routine hardening.",
-            },
-            {
-                q: "What is 'Secure User Offboarding'?",
-                a: "Offboarding a user involves multiple steps—removing licenses, resetting passwords, delegating mailbox access, etc. SPM automates these steps into a single, secure workflow to ensure no 'orphaned' accounts or data leaks remain.",
-            },
-            {
-                q: "Can I manage different security levels for different clients?",
-                a: "Yes. You can define custom security baselines per tenant, ensuring that each client or department has the appropriate level of protection for their specific regulatory needs.",
-            },
+            { q: "Why SPM if M365 has security?", a: "Microsoft provides tools, but default settings are often weak. SPM identifies critical vulnerabilities missed by standard methods." },
+            { q: "How does it improve efficiency?", a: "By centralizing multitenant management and automating remediation, SPM reduces routine hardening time from hours to minutes." },
         ],
     },
     fr: {
@@ -109,7 +78,7 @@ const content = {
         tag: "MODULE DE SÉCURITÉ",
         heroTitle: "Gestion de la Posture\nde Sécurité (SPM)",
         heroDesc:
-            "Microsoft 365 est la cible principale des cyberattaques modernes. Stigma SPM évalue en continu votre environnement M365 par rapport aux meilleures pratiques, comblant les lacunes et identifiant les risques cachés avant leur exploitation.",
+            "Microsoft 365 est la cible principale des cyberattaques. Stigma SPM évalue votre environnement M365 en continu, comblant les lacunes et identifiant les risques cachés.",
         cta1: "Lancer un Scan de Sécurité",
         cta2: "Retour à la Plateforme",
         stats: [
@@ -118,59 +87,25 @@ const content = {
             { value: "9+", label: "Risques Cachés" },
             { value: "1-Clic", label: "Vue Tenant" },
         ],
-
         whatIsTitle: "Qu'est-ce que le SPM ?",
         whatIsText:
-            "La Gestion de la Posture de Sécurité (SPM) consiste à surveiller en continu les environnements IT pour identifier et atténuer les risques. Pour Microsoft 365, cela signifie aller au-delà des paramètres par défaut pour établir une base de sécurité renforcée, garantissant que les configurations, permissions et paramètres de service sont toujours alignés avec les standards du secteur.",
-
+            "Le SPM consiste à surveiller en continu les environnements IT. Pour M365, cela signifie établir une base de sécurité renforcée alignée avec les standards du secteur.",
         coreValue: [
-            {
-                icon: "dashboard_customize",
-                title: "Gestion Multitenant Centralisée",
-                desc: "Gérez plusieurs tenants Microsoft 365 depuis une seule console. Plus besoin de basculer entre les comptes pour évaluer la santé sécuritaire de votre organisation.",
-            },
-            {
-                icon: "verified_user",
-                title: "Remédiation Automatisée des Risques",
-                desc: "N'attendez pas le prochain audit. Notre système surveille les écarts en temps réel et peut annuler automatiquement les modifications non sécurisées.",
-            },
-            {
-                icon: "person_remove",
-                title: "Cycle de Vie Utilisateur Sécurisé",
-                desc: "Simplifiez l'onboarding et l'offboarding des utilisateurs. Assurez-vous que les nouveaux comptes sont protégés dès le premier jour et que les départs sont gérés sans faille.",
-            },
-            {
-                icon: "analytics",
-                title: "Détection Profonde des Risques",
-                desc: "Les outils standards ignorent souvent des vulnérabilités complexes. Stigma SPM identifie en moyenne 8 à 9 lacunes critiques non détectées auparavant.",
-            },
+            { icon: "dashboard_customize", title: "Gestion Centralisée", desc: "Gérez plusieurs tenants Microsoft 365 depuis une seule console. Évaluez la santé sécuritaire en un instant." },
+            { icon: "verified_user", title: "Remédiation Auto", desc: "Notre système surveille les écarts en temps réel et peut annuler automatiquement les modifications non sécurisées." },
+            { icon: "person_remove", title: "Cycle Utilisateur", desc: "Simplifiez l'onboarding et l'offboarding. Assurez-vous que les comptes sont protégés dès le premier jour." },
+            { icon: "analytics", title: "Détection Profonde", desc: "Stigma SPM identifie en moyenne 8 à 9 lacunes critiques non détectées par les outils de sécurité standards." },
         ],
-
         baselineTitle: "Application Continue des Règles",
         baselineDesc: "Restez conforme et sécurisé grâce à une surveillance constante de votre posture.",
         baselineItems: [
             { title: "Audits de Configuration", desc: "Vérifications automatisées pour Exchange, SharePoint, Teams et Azure AD." },
-            { title: "Prévention de Dérive", desc: "Détectez lorsqu'une configuration devient non sécurisée et remédiez-y automatiquement si besoin." },
-            { title: "Amélioration du Score de Sécurité", desc: "Des étapes concrètes pour atteindre un statut 'Vert' et rassurer vos parties prenantes." },
+            { title: "Prévention de Dérive", desc: "Détectez lorsqu'une configuration devient non sécurisée et remédiez-y automatiquement." },
+            { title: "Amélioration du Score", desc: "Des étapes concrètes pour atteindre un statut 'Vert' et rassurer vos parties prenantes." },
         ],
-
         faq: [
-            {
-                q: "Pourquoi ai-je besoin du SPM si Microsoft 365 a déjà une sécurité intégrée ?",
-                a: "Microsoft fournit les outils, mais les configurations sont souvent laissées par défaut. Le SPM identifie les 8-9 vulnérabilités critiques généralement manquées et assure l'application constante des politiques.",
-            },
-            {
-                q: "Comment cela améliore-t-il l'efficacité ?",
-                a: "En centralisant la gestion multitenant et en automatisant la remédiation, le SPM permet à vos équipes de gérer la sécurité en quelques minutes, réduisant le besoin de spécialistes seniors pour les tâches de routine.",
-            },
-            {
-                q: "C'est quoi l'offboarding sécurisé ?",
-                a: "Le départ d'un utilisateur implique plusieurs étapes (retrait de licences, délégation de boîte mail, etc.). Le SPM automatise ces étapes pour éviter les comptes 'orphelins' et les fuites de données.",
-            },
-            {
-                q: "Puis-je gérer différents niveaux de sécurité par client ?",
-                a: "Oui. Vous pouvez définir des bases de sécurité personnalisées par tenant, garantissant que chaque entité dispose de la protection adaptée à ses besoins réglementaires.",
-            },
+            { q: "Pourquoi le SPM avec Microsoft ?", a: "Microsoft fournit les outils, mais les paramètres par défaut sont souvent faibles. Le SPM comble les lacunes critiques." },
+            { q: "Comment cela aide-t-il ?", a: "En automatisant la remédiation, le SPM permet à vos équipes de gérer la sécurité en quelques minutes seulement." },
         ],
     },
 };
@@ -180,146 +115,190 @@ export default async function SPMPage(props: {
 }) {
     const params = await props.params;
     const lang = params.lang as Locale;
+    const isFr = lang === "fr";
     const dictionary = await getDictionary(lang);
     const d = lang === "fr" ? content.fr : content.en;
 
     return (
-        <div className="min-h-screen bg-white selection:bg-amber-900 selection:text-white pt-24">
+        <div className="min-h-screen bg-slate-950 selection:bg-amber-500/30 font-sans">
             <Navbar lang={lang} dictionary={dictionary.common.nav} />
 
-            <main>
-                {/* ─── Hero ─────────────────────────────────────────── */}
-                <section className="bg-[#0a1233] text-white pt-14 lg:pt-16 pb-0 relative overflow-hidden">
-                    <div className="absolute inset-0 pointer-events-none" style={{
-                        backgroundImage: "radial-gradient(circle at 2px 2px, rgba(245,158,11,0.08) 1px, transparent 0)",
-                        backgroundSize: "40px 40px",
-                    }} />
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-600/10 blur-[150px] rounded-none pointer-events-none" />
+            <main className="relative overflow-hidden font-sans">
+                {/* Hero Section */}
+                <section className="bg-slate-950 text-white pt-12 lg:pt-20 pb-0 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-px bg-white/10 animate-[scan_4s_linear_infinite] shadow-[0_0_15px_rgba(255,255,255,0.2)] z-20"></div>
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes scan {
+                            0% { transform: translateY(-100%); opacity: 0; }
+                            5% { opacity: 1; }
+                            95% { opacity: 1; }
+                            100% { transform: translateY(100vh); opacity: 0; }
+                        }
+                        @keyframes marquee-spm {
+                            0% { transform: translateX(0); }
+                            100% { transform: translateX(-50%); }
+                        }
+                        .animate-marquee-spm {
+                            animation: marquee-spm 40s linear infinite;
+                            display: flex;
+                            width: fit-content;
+                        }
+                    `}} />
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-16">
-                        <div className="flex items-center gap-2 text-white/30 text-xs font-bold uppercase tracking-widest mb-6">
-                            <Link href={`/${lang}/products/cyber-protect-cloud`} className="hover:text-white/60 transition-colors">{d.breadcrumb}</Link>
-                            <span className="material-symbols-outlined text-[14px]">chevron_right</span>
-                            <span className="text-white/60">SPM</span>
-                        </div>
+                    <div className="absolute inset-0 pointer-events-none z-30 opacity-[0.05]" 
+                         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+                    />
 
-                        <span className="inline-flex items-center gap-2 border border-amber-500/40 text-amber-500 text-[10px] font-bold tracking-[0.25em] uppercase px-3 py-1 mb-8 bg-amber-500/10">
-                            <span className="material-symbols-outlined text-[12px]">security_update_good</span>
-                            {d.tag}
-                        </span>
-
-                        <h1 className="text-5xl lg:text-7xl font-display font-extrabold tracking-tight leading-tight mb-8 max-w-4xl whitespace-pre-line">
-                            {d.heroTitle}
-                        </h1>
-                        <p className="text-xl text-blue-100/60 font-light leading-relaxed mb-10 max-w-3xl">{d.heroDesc}</p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Link href={`/${lang}/contact`} className="inline-flex items-center gap-2 bg-amber-600 text-white font-bold uppercase tracking-wider text-xs px-8 py-4 hover:bg-amber-700 transition-colors shadow-[0_0_30px_rgba(245,158,11,0.3)]">
-                                {d.cta1}
-                                <span className="material-symbols-outlined text-[16px]">search</span>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="max-w-4xl">
+                            {/* Elite Breadcrumb Badge */}
+                            <Link href={`/${lang}/products/cyber-protect-cloud`} className="group inline-flex items-center gap-4 bg-white/5 border border-white/10 px-4 py-2 mb-10 backdrop-blur-3xl hover:bg-white/10 transition-all font-sans">
+                                <span className="text-white/40 group-hover:text-amber-400 transition-colors">
+                                    <span className="material-symbols-outlined text-[14px]">arrow_back</span>
+                                </span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 group-hover:text-white transition-colors font-sans">{d.breadcrumb}</span>
                             </Link>
-                            <Link href={`/${lang}/products/cyber-protect-cloud`} className="inline-flex items-center gap-2 border border-white/20 text-white/70 font-bold uppercase tracking-wider text-xs px-8 py-4 hover:bg-white/5 transition-colors">
-                                <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-                                {d.cta2}
-                            </Link>
+
+                            <div className="flex flex-wrap items-center gap-4 mb-10 font-sans">
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl font-sans">
+                                    <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                                    {d.tag}
+                                </span>
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl font-sans">
+                                    {isFr ? "LIGNE DE BASE DE DURCISSEMENT M365" : "M365 HARDENING BASELINE"}
+                                </span>
+                            </div>
+                            
+                            <h1 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-[0.9] text-white mb-10 whitespace-pre-line">
+                                {d.heroTitle.split('\n')[0]}<span className="text-slate-500 block font-sans">{d.heroTitle.split('\n')[1]}</span>
+                            </h1>
+                            
+                            <p className="text-xl text-slate-400 font-light leading-relaxed mb-12 max-w-2xl tracking-tight font-sans">
+                                {d.heroDesc}
+                            </p>
+                            
+                            <div className="flex flex-col sm:flex-row gap-6 mb-20 font-sans">
+                                <Button asChild size="lg" className="rounded-none px-10 py-7 text-[10px] uppercase tracking-[0.3em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none font-sans shadow-[0_20px_60px_-15px_rgba(255,255,255,0.1)]">
+                                    <Link href={`/${lang}/contact`}>{d.cta1}</Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="border-t border-white/5 bg-black/30 backdrop-blur-sm">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
-                                {d.stats.map((s, i) => (
-                                    <div key={i} className="py-5 px-6 text-center">
-                                        <div className="text-2xl font-bold text-amber-500 font-mono">{s.value}</div>
-                                        <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold mt-1">{s.label}</div>
+                    {/* Elite Stats Marquee */}
+                    <div className="mt-16 border-y border-white/5 py-4 bg-white/5 backdrop-blur-3xl overflow-hidden relative">
+                        <div className="animate-marquee-spm items-center">
+                            {[...Array(4)].map((_, arrayIndex) => (
+                                <div key={arrayIndex} className="flex items-center font-sans">
+                                    {d.stats.map((stat, index) => (
+                                        <div key={`${arrayIndex}-${index}`} className="flex items-center space-x-6 mx-16 whitespace-nowrap">
+                                            <span className="text-white font-display text-2xl font-black tracking-tighter italic">{stat.value}</span>
+                                            <span className="text-slate-500 text-[9px] uppercase tracking-[0.4em] font-black font-sans">{stat.label}</span>
+                                            <div className="w-1 h-1 bg-white/20 rotate-45"></div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Perspective Section - Elite Light Treatment */}
+                <section className="py-32 bg-white relative selection:bg-amber-500/30 font-sans">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans">
+                        <div className="max-w-4xl mx-auto text-center font-sans">
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 block font-sans">{isFr ? "VULNÉRABILITÉ DE CONFIGURATION" : "CONFIG VULNERABILITY"}</span>
+                            <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter leading-none mb-10 italic">
+                                {d.whatIsTitle}
+                            </h2>
+                            <p className="text-2xl text-slate-500 font-light leading-relaxed tracking-tight italic border-l-4 border-slate-100 pl-10 max-w-3xl mx-auto text-left font-sans">
+                                {d.whatIsText}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Features Grid - Elite Light Interactive */}
+                <section className="py-32 bg-slate-50 border-y border-slate-100 relative selection:bg-amber-500/30 font-sans">
+                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 font-sans">
+                            {d.coreValue.map((f, i) => (
+                                <div key={i} className="group bg-white p-12 hover:bg-slate-950 transition-all duration-500 relative flex flex-col justify-between min-h-[340px] border border-slate-100 shadow-sm font-sans">
+                                    <div className="grow space-y-8 font-sans">
+                                        <div className="w-16 h-16 bg-slate-50 group-hover:bg-white/5 border border-slate-100 group-hover:border-white/10 flex items-center justify-center transition-all duration-500 font-sans">
+                                            <span className="material-symbols-outlined text-[32px] text-slate-400 group-hover:text-amber-500 transition-colors uppercase font-sans">{f.icon}</span>
+                                        </div>
+                                        <div className="font-sans">
+                                            <h3 className="text-2xl font-black text-slate-950 group-hover:text-white transition-colors uppercase tracking-tight mb-4 italic font-sans">
+                                                {f.title}
+                                            </h3>
+                                            <p className="text-base text-slate-500 group-hover:text-slate-400 leading-relaxed font-light transition-colors font-sans">
+                                                {f.desc}
+                                            </p>
+                                        </div>
                                     </div>
-                                ))}
+                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-amber-500 group-hover:w-full transition-all duration-700 font-sans" />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <PartnersMarquee dictionary={dictionary.home.partners} />
+
+                {/* Baseline - Elite Dark Framework */}
+                <section className="py-32 bg-slate-950 text-white relative overflow-hidden font-sans">
+                    <div className="absolute inset-0 opacity-10 font-sans" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`, backgroundSize: '40px 40px' }}></div>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-sans">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center font-sans">
+                            <div className="font-sans">
+                                <h2 className="text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter italic mb-12">{d.baselineTitle}</h2>
+                                <div className="space-y-12 font-sans">
+                                    {d.baselineItems.map((item, i) => (
+                                        <div key={i} className="group relative border-l-2 border-white/5 pl-8 hover:border-amber-500 transition-colors font-sans">
+                                            <h4 className="text-2xl font-black uppercase tracking-tight mb-4 italic leading-tight group-hover:text-amber-400 transition-colors font-sans">{item.title}</h4>
+                                            <p className="text-slate-400 group-hover:text-slate-200 transition-colors font-light leading-relaxed tracking-tight font-sans">{item.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="relative font-sans">
+                                <div className="bg-white/5 p-16 border border-white/10 backdrop-blur-3xl shadow-2xl relative overflow-hidden group font-sans">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rotate-45 translate-x-16 translate-y-[-16px] font-sans"></div>
+                                    <div className="flex gap-4 mb-8 font-sans">
+                                        <div className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-[9px] uppercase tracking-[0.3em] font-black text-amber-400 font-sans">{isFr ? "SPM Actif" : "SPM Active"}</div>
+                                        <div className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] uppercase tracking-[0.3em] font-black text-white/40 font-sans">{isFr ? "Protection Anti-Dérive" : "Full Drift Shield"}</div>
+                                    </div>
+                                    <h4 className="text-3xl font-display font-black text-white uppercase tracking-tight mb-8 italic">Drift Prevention</h4>
+                                    <p className="text-xl text-slate-400 leading-relaxed font-light italic transition-colors group-hover:text-slate-200 font-sans">
+                                        {lang === "fr"
+                                            ? "Notre système surveille les écarts de configuration en temps réel et peut annuler automatiquement les modifications non sécurisées."
+                                            : "Our system monitors configuration drift in real-time and can automatically revert insecure changes to shrink your vulnerability window."}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* ─── What is SPM ─────────────────────────────────── */}
-                <section className="py-24 bg-gray-50 border-b border-gray-100">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mb-3 block">Perspective</span>
-                        <h2 className="text-3xl font-display font-bold text-[#0a1233] mb-6">{d.whatIsTitle}</h2>
-                        <p className="text-gray-600 leading-relaxed text-lg font-light">{d.whatIsText}</p>
-                    </div>
-                </section>
-
-                {/* ─── Core Values ──────────────────────────────────── */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            {d.coreValue.map((item, i) => (
-                                <div key={i} className="flex gap-6 group">
-                                    <div className="w-16 h-16 bg-blue-50 text-blue-900 flex items-center justify-center shrink-0 rounded-none group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                                        <span className="material-symbols-outlined text-[32px]">{item.icon}</span>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-[#0a1233] mb-3">{item.title}</h3>
-                                        <p className="text-gray-500 leading-relaxed text-sm">{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ─── Baseline ─────────────────────────────────────── */}
-                <section className="py-24 bg-[#0a1233] text-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl font-display font-bold mb-4">{d.baselineTitle}</h2>
-                            <p className="text-blue-100/40 text-lg max-w-2xl mx-auto">{d.baselineDesc}</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {d.baselineItems.map((item, i) => (
-                                <div key={i} className="p-10 border border-white/5 bg-white/5 hover:bg-white/8 transition-colors">
-                                    <div className="text-amber-500 font-black text-xs uppercase tracking-[0.2em] mb-4">Stage {i + 1}</div>
-                                    <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                                    <p className="text-blue-100/50 text-sm leading-relaxed font-light">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ─── FAQ ─────────────────────────────────────────── */}
-                <section className="py-24 bg-gray-50 uppercase-headings">
-                    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-3xl font-display font-bold text-[#0a1233] mb-12 text-center">FAQ</h2>
-                        <div className="space-y-6">
-                            {d.faq.map((item, i) => (
-                                <div key={i} className="bg-white border border-gray-100 p-8 shadow-sm">
-                                    <h3 className="text-base font-bold text-[#0a1233] mb-4">{item.q}</h3>
-                                    <p className="text-gray-500 text-sm leading-relaxed font-light">{item.a}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ─── CTA ─────────────────────────────────────────── */}
-                <section className="py-24 bg-amber-600 text-white text-center relative overflow-hidden">
-                    <div className="max-w-3xl mx-auto px-4 relative z-10">
-                        <h2 className="text-4xl font-display font-bold mb-6">
-                            {lang === "fr" ? "Durcissez votre environnement Microsoft 365." : "Harden your Microsoft 365 environment today."}
+                {/* Final CTA - Elite Minimal Dark */}
+                <section className="py-32 bg-slate-950 text-white relative overflow-hidden border-t border-white/5 font-sans">
+                    <div className="absolute inset-0 opacity-10 font-sans" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`, backgroundSize: '40px 40px' }}></div>
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 font-sans">
+                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-400 mb-12 block italic font-sans">{isFr ? "SCAN DE PROTOCOLE DE DURCISSEMENT" : "HARDENING PROTOCOL SCAN"}</span>
+                        <h2 className="text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter leading-none mb-10 italic">
+                            {lang === "fr" ? "Durcissez Microsoft 365 dès aujourd'hui." : "Harden your Microsoft 365 today."}
                         </h2>
-                        <p className="text-amber-100 leading-relaxed mb-10 max-w-xl mx-auto font-light">
-                            {lang === "fr"
-                                ? "Faites le premier pas vers une posture de sécurité infaillible avec notre audit SPM automatisé."
-                                : "Take the first step towards an unshakeable security posture with our automated SPM audit."}
+                        <p className="text-xl text-slate-400 font-light leading-relaxed mb-16 max-w-2xl mx-auto tracking-tight font-sans">
+                            {lang === "fr" ? "Faites le premier pas vers une posture de sécurité infaillible avec notre audit SPM automatisé." : "Take the first step towards an unshakeable security posture with our automated SPM audit."}
                         </p>
-                        <Link href={`/${lang}/contact`} className="inline-flex items-center gap-2 bg-[#0a1233] text-white font-bold uppercase tracking-wider text-xs px-10 py-5 hover:bg-black transition-colors shadow-2xl">
-                            {lang === "fr" ? "Demander mon Audit Gratuit" : "Request my Free Audit"}
-                            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                        </Link>
+                        <Button asChild size="lg" className="rounded-none px-12 py-8 text-[11px] uppercase tracking-[0.4em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none font-sans">
+                            <Link href={`/${lang}/contact`}>{lang === "fr" ? "Demander mon Audit Gratuit" : "Request my Free Audit"}</Link>
+                        </Button>
                     </div>
                 </section>
 
-                <BookingSection dictionary={dictionary.services.booking} />
+                <BookingSection lang={lang} dictionary={dictionary.services.booking} />
                 <ContactForm lang={lang} dictionary={dictionary} />
             </main>
 

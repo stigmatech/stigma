@@ -1,9 +1,12 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
+import { Button } from "@/components/ui/button";
 import { BookingSection } from "@/components/booking-section";
+import { PartnersMarquee } from "@/components/partners-marquee";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -17,8 +20,8 @@ export async function generateMetadata(props: {
             ? "Détection & Réponse Étendue (XDR) | Stigma Cyber Protect Cloud"
             : "Extended Detection & Response (XDR) | Stigma Cyber Protect Cloud",
         description: isFr
-            ? "Stigma XDR corrèle les données d'endpoints, d'emails, d'identité et de réseau pour détecter et répondre aux cyberattaques sophistiquées — guidé par l'IA, en quelques minutes."
-            : "Stigma XDR correlates telemetry from endpoints, email, identity and network to detect and respond to sophisticated cyberattacks — AI-guided, in minutes not hours.",
+            ? "Stigma XDR corrèle les données d'endpoints, d'emails, d'identité et de réseau pour détecter et répondre aux cyberattaques sophistiquées."
+            : "Stigma XDR correlates telemetry from endpoints, email, identity and network to detect and respond to sophisticated cyberattacks.",
         openGraph: {
             title: isFr ? "XDR | Stigma Cyber Protect Cloud" : "XDR | Stigma Cyber Protect Cloud",
             description: isFr
@@ -40,155 +43,56 @@ const content = {
         tag: "CYBERSECURITY MODULE",
         heroTitle: "Extended Detection\n& Response (XDR)",
         heroDesc:
-            "Cyberattacks no longer stop at the endpoint. With Stigma XDR, correlate telemetry from endpoints, email, identity, Microsoft 365 and network into a unified threat view — guided by AI to respond in minutes, not hours.",
+            "Cyberattacks no longer stop at the endpoint. With Stigma XDR, correlate telemetry from endpoints, email, identity, Microsoft 365 and network into a unified threat view — guided by AI to respond in minutes.",
         cta1: "Book a Free Demo",
         cta2: "Back to Platform",
         stats: [
             { value: "AI", label: "Guided Analysis" },
             { value: "NIST", label: "Framework Aligned" },
             { value: "M365", label: "Native Integration" },
-            { value: "Minutes", label: "Mean Time to Respond" },
+            { value: "Min.", label: "Time to Respond" },
         ],
-
         whatIsTitle: "What is XDR?",
         whatIsText:
-            "Extended Detection and Response (XDR) is a cybersecurity approach that goes beyond the endpoint — integrating and correlating telemetry data from multiple sources including endpoints, email, identity, network and cloud applications. This holistic visibility enables faster analysis, better context and more complete remediation than traditional endpoint-only, or siloed, security tools.",
-
-        xdrVsEdr: {
-            title: "XDR vs EDR — What's the difference?",
-            edr: {
-                label: "EDR",
-                title: "Endpoint Detection & Response",
-                points: [
-                    "Focused exclusively on endpoints (laptops, servers, workstations)",
-                    "Event correlation and analysis within the endpoint perimeter",
-                    "Isolate and remediate threats on the device",
-                    "Deep endpoint forensics and threat hunting",
-                ],
-            },
-            xdr: {
-                label: "XDR",
-                title: "Extended Detection & Response",
-                points: [
-                    "All EDR capabilities — plus email, identity, network, cloud",
-                    "Cross-surface telemetry correlation in a single incident view",
-                    "Block malicious emails, suspend accounts, isolate endpoints — in one workflow",
-                    "AI-guided analysis aligned to MITRE ATT&CK framework",
-                    "Faster resolution: minutes, not hours",
-                ],
-            },
-        },
-
+            "Extended Detection and Response (XDR) is a cybersecurity approach that goes beyond the endpoint — integrating and correlating telemetry data from multiple sources including endpoints, email, identity, network and cloud applications. This holistic visibility enables faster analysis, better context and more complete remediation than traditional siloed security tools.",
         nist: {
             title: "Complete Protection Across the NIST Lifecycle",
             subtitle:
-                "Stigma XDR maps to every phase of the NIST Cybersecurity Framework — so you're covered before, during, and after an incident.",
+                "Stigma XDR maps to every phase of the NIST Cybersecurity Framework — covering you before, during, and after an incident.",
             phases: [
-                {
-                    icon: "policy",
-                    label: "Govern",
-                    color: "slate",
-                    desc: "Rapidly establish cybersecurity strategies, define roles, enforce policies, and maintain continuous oversight from a single integrated platform.",
-                },
-                {
-                    icon: "search",
-                    label: "Identify",
-                    color: "blue",
-                    desc: "Identify vulnerable assets and data across all endpoints in your organization. Understand your exposure before attackers do.",
-                },
-                {
-                    icon: "security",
-                    label: "Protect",
-                    color: "indigo",
-                    desc: "Proactively protect IT assets with integrated backup, behavioral DLP, patch management, and endpoint management capabilities.",
-                },
-                {
-                    icon: "radar",
-                    label: "Detect",
-                    color: "violet",
-                    desc: "Continuously monitor via AI and ML-based threat detection and behavioral analysis to catch advanced threats and data exfiltration attempts.",
-                },
-                {
-                    icon: "crisis_alert",
-                    label: "Respond",
-                    color: "red",
-                    desc: "AI guides you through incident analysis in minutes. Automate remediation actions: isolate endpoints, block emails, suspend accounts, remove threats.",
-                },
-                {
-                    icon: "settings_backup_restore",
-                    label: "Recover",
-                    color: "green",
-                    desc: "Deliver unmatched data protection and business continuity with no data loss — integrated recovery is part of the response, not an afterthought.",
-                },
+                { icon: "policy", label: "Govern", color: "slate", desc: "Establish strategies, define roles, enforce policies, and maintain oversight from an integrated platform." },
+                { icon: "search", label: "Identify", color: "blue", desc: "Identify vulnerable assets across all endpoints. Understand your exposure before attackers do." },
+                { icon: "security", label: "Protect", color: "indigo", desc: "Proactively protect IT assets with integrated backup, behavioral DLP, and patch management." },
+                { icon: "radar", label: "Detect", color: "violet", desc: "Continuously monitor via AI and ML-based threat detection to catch advanced threats and exfiltration." },
+                { icon: "crisis_alert", label: "Respond", color: "red", desc: "AI guides you through analysis in minutes. Automate remediation: isolate, block, and suspend." },
+                { icon: "settings_backup_restore", label: "Recover", color: "green", desc: "Unmatched data protection and business continuity — integrated recovery is part of the response." },
             ],
         },
-
         ai: {
             title: "AI at the Core of XDR",
             subtitle: "Reduce Mean Time to Respond from hours to minutes — without needing a security PhD.",
             capabilities: [
-                {
-                    icon: "smart_toy",
-                    title: "AI Copilot",
-                    desc: "Conduct richer investigations and respond faster using natural language. Ask your AI assistant about an incident and get a clear, actionable answer — no complex query language required.",
-                },
-                {
-                    icon: "analytics",
-                    title: "AI-Guided Incident Analysis",
-                    desc: "Leverage AI-generated incident summaries and interpretations aligned with the MITRE ATT&CK framework. Understand attack origin, progression, and impact at a glance.",
-                },
-                {
-                    icon: "low_priority",
-                    title: "AI-Prioritized Incident Queue",
-                    desc: "Never miss what matters. AI ranks incidents by risk level so your team focuses on the highest-priority threats first — not a flat, overwhelming list of alerts.",
-                },
-                {
-                    icon: "bolt",
-                    title: "Automated Response Actions",
-                    desc: "Automate remediation playbooks for instantaneous mitigation. Isolate endpoints, block sender domains, suspend compromised accounts — all triggered automatically.",
-                },
+                { icon: "smart_toy", title: "AI Copilot", desc: "Conduct investigations and respond faster using natural language. Ask questions and get clear, actionable answers." },
+                { icon: "analytics", title: "AI-Guided Analysis", desc: "Leverage AI-generated incident summaries aligned with the MITRE ATT&CK framework at a glance." },
+                { icon: "low_priority", title: "AI-Prioritized Queue", desc: "Never miss what matters. AI ranks incidents by risk level so your team focuses on high-priority threats first." },
+                { icon: "bolt", title: "Automated Response", desc: "Automate remediation playbooks for mitigation. Isolate endpoints, block domains, suspend accounts — automatically." },
             ],
         },
-
         surfaces: {
-            title: "Visibility Across Your Most Vulnerable Attack Surfaces",
+            title: "Visibility Across Vulnerable Attack Surfaces",
             items: [
-                { icon: "mail", label: "Email", desc: "Detect phishing, BEC, malicious attachments and lateral movement via email. Block threats at source." },
-                { icon: "fingerprint", label: "Identity / Entra ID", desc: "Monitor Azure Active Directory for account compromise, privilege escalation and suspicious sign-ins." },
-                { icon: "apps", label: "Microsoft 365", desc: "Protect SharePoint, OneDrive, Teams and Exchange — detect insider threats, malware propagation and data exfiltration." },
-                { icon: "devices", label: "Endpoints", desc: "Windows, macOS, Linux servers and workstations. Full EDR capabilities embedded within XDR." },
-                { icon: "lan", label: "Network", desc: "Network telemetry and FortiGate integration for lateral movement detection and anomalous traffic analysis." },
-                { icon: "cloud", label: "Cloud Workloads", desc: "Extend detection to cloud instances and SaaS environments — see the full attack chain from cloud to endpoint." },
+                { icon: "mail", label: "Email", desc: "Detect phishing, BEC, and lateral movement via email. Block threats at source." },
+                { icon: "fingerprint", label: "Identity / Entra ID", desc: "Monitor Azure AD for account compromise, privilege escalation and suspicious sign-ins." },
+                { icon: "apps", label: "Microsoft 365", desc: "Protect Teams/SharePoint — detect insider threats and malwares." },
+                { icon: "devices", label: "Endpoints", desc: "Windows, macOS, Linux — full EDR capabilities embedded within XDR." },
+                { icon: "lan", label: "Network", desc: "Network telemetry and FortiGate integration for lateral movement detection." },
+                { icon: "cloud", label: "Cloud Workloads", desc: "Extend detection to cloud instances and SaaS environments via unified chain." },
             ],
         },
-
-        integrations: {
-            title: "300+ Integrations. Zero Tool Sprawl.",
-            subtitle: "XDR fits into your existing stack — not the other way around.",
-            items: [
-                { icon: "manage_search", label: "SIEM", desc: "Feed XDR telemetry into your SIEM for centralized correlation and compliance reporting." },
-                { icon: "monitor_heart", label: "RMM", desc: "Native integration with remote monitoring and management platforms for unified endpoint visibility." },
-                { icon: "receipt_long", label: "PSA", desc: "Connect to professional services automation tools to auto-create tickets from XDR incidents." },
-            ],
-        },
-
         faq: [
-            {
-                q: "What is extended detection and response (XDR)?",
-                a: "XDR is a cybersecurity solution that delivers comprehensive protection by integrating and correlating telemetry data from multiple sources — endpoints, email, identity, network and cloud. It enables faster analysis, better context, and more complete remediation than endpoint-only tools.",
-            },
-            {
-                q: "Why is XDR important for my organization?",
-                a: "Modern threats no longer stop at the endpoint. With SaaS proliferation and remote work, the attack surface has expanded dramatically. XDR gives you visibility across all these vectors in a single view, enabling faster, more effective response to sophisticated attacks.",
-            },
-            {
-                q: "What are the key benefits of XDR?",
-                a: "Broader visibility beyond the endpoint, AI-guided analysis that reduces investigation time from hours to minutes, cross-surface remediation (block emails, suspend accounts, isolate endpoints — in one workflow), and built-in compliance support with MITRE ATT&CK framework alignment.",
-            },
-            {
-                q: "What is the difference between EDR and XDR?",
-                a: "EDR focuses on endpoint events and threats. XDR extends this by integrating telemetry from email, identity, cloud apps and network — showing how an attack originated, progressed, and what actions to take across all surfaces simultaneously.",
-            },
+            { q: "What is extended detection and response (XDR)?", a: "XDR is a cybersecurity solution that delivers comprehensive protection by integrating and correlating telemetry data from multiple sources." },
+            { q: "Why is XDR important for my organization?", a: "Modern threats no longer stop at the endpoint. XDR gives you visibility across all vectors in a single view." },
+            { q: "What are the key benefits of XDR?", a: "Broader visibility, AI-guided analysis, cross-surface remediation, and built-in MITRE ATT&CK alignment." },
         ],
     },
     fr: {
@@ -196,129 +100,67 @@ const content = {
         tag: "MODULE CYBERSÉCURITÉ",
         heroTitle: "Détection & Réponse\nÉtendue (XDR)",
         heroDesc:
-            "Les cyberattaques ne s'arrêtent plus aux endpoints. Avec Stigma XDR, corrèlez la télémétrie des endpoints, emails, identité, Microsoft 365 et réseau en une vue unifiée des menaces — guidée par l'IA pour répondre en minutes, pas en heures.",
+            "Les cyberattaques ne s'arrêtent plus aux endpoints. Avec Stigma XDR, corrèlez la télémétrie des endpoints, emails, identité, Microsoft 365 et réseau en une vue unifiée — guidée par l'IA pour répondre en quelques minutes.",
         cta1: "Réserver une Démo Gratuite",
         cta2: "Retour à la Plateforme",
         stats: [
             { value: "IA", label: "Analyse Guidée" },
             { value: "NIST", label: "Cadre Aligné" },
             { value: "M365", label: "Intégration Native" },
-            { value: "Minutes", label: "Temps Moyen de Réponse" },
+            { value: "Mins.", label: "Temps de Réponse" },
         ],
-
         whatIsTitle: "Qu'est-ce que le XDR ?",
-        whatIsText:
-            "La Détection et Réponse Étendue (XDR) est une approche de cybersécurité qui va au-delà des endpoints — en intégrant et corrélant les données de télémétrie de multiples sources : endpoints, email, identité, réseau et applications cloud. Cette visibilité holistique permet une analyse plus rapide, un meilleur contexte et une remédiation plus complète que les outils de sécurité cloisonnés.",
-
-        xdrVsEdr: {
-            title: "XDR vs EDR — Quelle différence ?",
-            edr: {
-                label: "EDR",
-                title: "Détection & Réponse sur Endpoints",
-                points: [
-                    "Focalisé exclusivement sur les endpoints (laptops, serveurs, postes)",
-                    "Corrélation d'événements dans le périmètre endpoint",
-                    "Isoler et remédier les menaces sur l'appareil",
-                    "Forensique approfondie et chasse aux menaces sur endpoint",
-                ],
-            },
-            xdr: {
-                label: "XDR",
-                title: "Détection & Réponse Étendue",
-                points: [
-                    "Toutes les capacités EDR — plus email, identité, réseau, cloud",
-                    "Corrélation de télémétrie multi-surface en une seule vue d'incident",
-                    "Bloquer emails, suspendre comptes, isoler endpoints — en un seul flux",
-                    "Analyse guidée par IA alignée sur le cadre MITRE ATT&CK",
-                    "Résolution plus rapide : minutes, pas heures",
-                ],
-            },
-        },
-
+         whatIsText:
+            "La Détection et Réponse Étendue (XDR) est une approche de cybersécurité qui va au-delà des endpoints — en intégrant et corrélant les données de télémétrie de multiples sources : endpoints, email, identité, réseau et applications cloud. Cette visibilité holistique permet une analyse plus rapide et une remédiation plus complète.",
         nist: {
             title: "Protection Complète sur le Cycle de Vie NIST",
             subtitle:
                 "Stigma XDR couvre chaque phase du Cadre de Cybersécurité NIST — vous êtes protégé avant, pendant et après un incident.",
             phases: [
-                { icon: "policy", label: "Gouverner", color: "slate", desc: "Établissez rapidement des stratégies, définissez les rôles, appliquez les politiques et maintenez une surveillance continue depuis une plateforme intégrée." },
-                { icon: "search", label: "Identifier", color: "blue", desc: "Identifiez les actifs et données vulnérables sur tous les endpoints de votre organisation. Comprenez votre exposition avant les attaquants." },
-                { icon: "security", label: "Protéger", color: "indigo", desc: "Protégez proactivement les actifs IT avec la sauvegarde intégrée, le DLP comportemental, la gestion des patchs et des endpoints." },
-                { icon: "radar", label: "Détecter", color: "violet", desc: "Surveillance continue via la détection des menaces basée sur l'IA et le ML, et l'analyse comportementale pour détecter les menaces avancées." },
-                { icon: "crisis_alert", label: "Répondre", color: "red", desc: "L'IA vous guide dans l'analyse des incidents en quelques minutes. Automatisez les actions : isoler endpoint, bloquer emails, suspendre comptes." },
-                { icon: "settings_backup_restore", label: "Récupérer", color: "green", desc: "Continuité d'activité sans perte de données — la reprise intégrée fait partie de la réponse, pas une étape séparée." },
+                { icon: "policy", label: "Gouverner", color: "slate", desc: "Établissez des stratégies, définissez les rôles et appliquez les politiques depuis une plateforme intégrée." },
+                { icon: "search", label: "Identifier", color: "blue", desc: "Identifiez les actifs vulnérables sur tous les postes. Comprenez votre exposition avant les attaquants." },
+                { icon: "security", label: "Protéger", color: "indigo", desc: "Protégez proactivement les actifs IT avec la sauvegarde intégrée et le DLP comportemental." },
+                { icon: "radar", label: "Détecter", color: "violet", desc: "Surveillance continue via la détection basée sur l'IA pour détecter les menaces avancées." },
+                { icon: "crisis_alert", label: "Répondre", color: "red", desc: "L'IA vous guide dans l'analyse en quelques minutes. Automatisez les actions : isoler, bloquer, suspendre." },
+                { icon: "settings_backup_restore", label: "Récupérer", color: "green", desc: "Continuité d'activité sans perte de données — la reprise intégrée fait partie de la réponse." },
             ],
         },
-
         ai: {
             title: "L'IA au Cœur du XDR",
-            subtitle: "Réduisez le temps moyen de réponse de heures à minutes — sans avoir besoin d'un doctorat en sécurité.",
+            subtitle: "Réduisez le temps moyen de réponse de heures à minutes — sans équipe de sécurité massive.",
             capabilities: [
-                { icon: "smart_toy", title: "Copilote IA", desc: "Menez des investigations plus riches et répondez plus vite en langage naturel. Interrogez votre assistant IA sur un incident et obtenez une réponse claire et actionnable." },
-                { icon: "analytics", title: "Analyse d'Incidents Guidée par l'IA", desc: "Exploitez les résumés d'incidents générés par l'IA alignés sur le cadre MITRE ATT&CK. Comprenez l'origine, la progression et l'impact d'une attaque en un coup d'œil." },
-                { icon: "low_priority", title: "File d'Incidents Priorisée par l'IA", desc: "Ne ratez jamais l'essentiel. L'IA classe les incidents par niveau de risque pour que votre équipe se concentre sur les menaces les plus prioritaires." },
-                { icon: "bolt", title: "Actions de Réponse Automatisées", desc: "Automatisez les playbooks de remédiation pour une atténuation instantanée. Isoler endpoints, bloquer domaines, suspendre comptes — déclenchés automatiquement." },
+                { icon: "smart_toy", title: "Copilote IA", desc: "Menez des investigations plus riches et répondez plus vite en langage naturel avec votre assistant IA." },
+                { icon: "analytics", title: "Analyse d'Incidents Guidée par l'IA", desc: "Exploitez les résumés générés par l'IA alignés sur le cadre MITRE ATT&CK en un coup d'œil." },
+                { icon: "low_priority", title: "File d'Incidents Priorisée", desc: "L'IA classe les incidents par niveau de risque pour que votre équipe se concentre sur les menaces prioritaires." },
+                { icon: "bolt", title: "Actions Automatisées", desc: "Automatisez les playbooks de remédiation pour une atténuation instantanée. Déclenchement automatique." },
             ],
         },
-
         surfaces: {
-            title: "Visibilité sur Vos Surfaces d'Attaque les Plus Vulnérables",
+            title: "Visibilité sur Vos Surfaces d'Attaque",
             items: [
-                { icon: "mail", label: "Email", desc: "Détectez phishing, BEC, pièces jointes malveillantes et mouvement latéral via email. Bloquez les menaces à la source." },
-                { icon: "fingerprint", label: "Identité / Entra ID", desc: "Surveillez Azure Active Directory pour la compromission de comptes, l'escalade de privilèges et les connexions suspectes." },
-                { icon: "apps", label: "Microsoft 365", desc: "Protégez SharePoint, OneDrive, Teams et Exchange — détectez les menaces internes, la propagation de malwares et l'exfiltration de données." },
-                { icon: "devices", label: "Endpoints", desc: "Windows, macOS, Linux — serveurs et postes. Toutes les capacités EDR intégrées dans le XDR." },
-                { icon: "lan", label: "Réseau", desc: "Télémétrie réseau et intégration FortiGate pour la détection de mouvements latéraux et l'analyse de trafic anormal." },
-                { icon: "cloud", label: "Charges Cloud", desc: "Étendez la détection aux instances cloud et environnements SaaS — visualisez la chaîne d'attaque complète du cloud à l'endpoint." },
+                { icon: "mail", label: "Email", desc: "Détectez phishing et mouvement latéral via email. Bloquez les menaces à la source." },
+                { icon: "fingerprint", label: "Identité / Entra ID", desc: "Surveillez Azure AD pour la compromission de comptes et les connexions suspectes." },
+                { icon: "apps", label: "Microsoft 365", desc: "Protégez Teams, SharePoint et OneDrive — détectez les menaces internes." },
+                { icon: "devices", label: "Endpoints", desc: "Windows, macOS, Linux — toutes les capacités EDR intégrées dans le XDR." },
+                { icon: "lan", label: "Réseau", desc: "Télémétrie réseau et intégration FortiGate pour la détection de mouvements latéraux." },
+                { icon: "cloud", label: "Charges Cloud", desc: "Étendez la détection aux instances cloud et SaaS — chaîne d'attaque complète." },
             ],
         },
-
-        integrations: {
-            title: "300+ Intégrations. Zéro Dispersion d'Outils.",
-            subtitle: "XDR s'intègre dans votre stack existante — pas l'inverse.",
-            items: [
-                { icon: "manage_search", label: "SIEM", desc: "Alimentez votre SIEM avec la télémétrie XDR pour une corrélation centralisée et des rapports de conformité." },
-                { icon: "monitor_heart", label: "RMM", desc: "Intégration native avec les plateformes de surveillance à distance pour une visibilité unifiée des endpoints." },
-                { icon: "receipt_long", label: "PSA", desc: "Connectez vos outils PSA pour créer automatiquement des tickets depuis les incidents XDR." },
-            ],
-        },
-
         faq: [
-            {
-                q: "Qu'est-ce que le XDR ?",
-                a: "Le XDR est une solution de cybersécurité qui offre une protection complète en intégrant et corrélant les données de télémétrie de multiples sources — endpoints, email, identité, réseau et cloud. Il permet une analyse plus rapide, un meilleur contexte et une remédiation plus complète.",
-            },
-            {
-                q: "Pourquoi le XDR est-il important pour mon organisation ?",
-                a: "Les menaces modernes ne s'arrêtent plus aux endpoints. Avec la prolifération des SaaS et le travail à distance, la surface d'attaque s'est considérablement étendue. Le XDR vous donne une visibilité sur tous ces vecteurs en une seule vue.",
-            },
-            {
-                q: "Quels sont les principaux avantages du XDR ?",
-                a: "Visibilité étendue au-delà des endpoints, analyse guidée par l'IA qui réduit le temps d'investigation de heures à minutes, remédiation multi-surface (bloquer emails, suspendre comptes, isoler endpoints) et alignement MITRE ATT&CK.",
-            },
-            {
-                q: "Quelle est la différence entre EDR et XDR ?",
-                a: "L'EDR se concentre sur les événements et menaces sur les endpoints. Le XDR étend cela en intégrant la télémétrie de l'email, l'identité, les apps cloud et le réseau — montrant comment une attaque a démarré, progressé, et quelles actions entreprendre sur toutes les surfaces simultanément.",
-            },
+            { q: "Qu'est-ce que le XDR ?", a: "Le XDR est une solution qui offre une protection complète en intégrant et corrélant les données de multiples sources." },
+            { q: "Pourquoi le XDR est-il important ?", a: "Les menaces ne s'arrêtent plus aux endpoints. Le XDR vous donne une visibilité sur tous ces vecteurs en une seule vue." },
+            { q: "Quels sont les avantages ?", a: "Visibilité étendue, analyse guidée par l'IA, remédiation multi-surface et alignement MITRE ATT&CK." },
         ],
     },
 };
 
 const nistColors: Record<string, string> = {
-    slate: "bg-slate-100 text-slate-700 border-slate-200",
-    blue: "bg-blue-50 text-blue-700 border-blue-100",
-    indigo: "bg-indigo-50 text-indigo-700 border-indigo-100",
-    violet: "bg-violet-50 text-violet-700 border-violet-100",
-    red: "bg-red-50 text-red-700 border-red-100",
-    green: "bg-green-50 text-green-700 border-green-100",
-};
-
-const nistIconColors: Record<string, string> = {
-    slate: "text-slate-600",
-    blue: "text-blue-600",
-    indigo: "text-indigo-600",
-    violet: "text-violet-600",
-    red: "text-red-600",
-    green: "text-green-600",
+    slate: "text-slate-400 border-slate-400/20 bg-slate-400/5",
+    blue: "text-blue-400 border-blue-400/20 bg-blue-400/5",
+    indigo: "text-indigo-400 border-indigo-400/20 bg-indigo-400/5",
+    violet: "text-violet-400 border-violet-400/20 bg-violet-400/5",
+    red: "text-red-400 border-red-400/20 bg-red-400/5",
+    green: "text-green-400 border-green-400/20 bg-green-400/5",
 };
 
 export default async function XDRPage(props: {
@@ -326,244 +168,224 @@ export default async function XDRPage(props: {
 }) {
     const params = await props.params;
     const lang = params.lang as Locale;
+    const isFr = lang === "fr";
     const dictionary = await getDictionary(lang);
     const d = lang === "fr" ? content.fr : content.en;
 
     return (
-        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white pt-24">
+        <div className="min-h-screen bg-slate-950 selection:bg-violet-500/30 ">
             <Navbar lang={lang} dictionary={dictionary.common.nav} />
 
-            <main>
-                {/* ─── Hero ─────────────────────────────────────────── */}
-                <section className="bg-[#060b1f] text-white pt-14 lg:pt-16 pb-0 relative overflow-hidden">
-                    <div className="absolute inset-0 pointer-events-none" style={{
-                        backgroundImage: "radial-gradient(circle at 2px 2px, rgba(99,102,241,0.12) 1px, transparent 0)",
-                        backgroundSize: "40px 40px",
-                    }} />
-                    <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-violet-600/10 blur-[150px] rounded-none pointer-events-none" />
-                    <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-blue-600/10 blur-[120px] rounded-none pointer-events-none" />
+            <main className="relative overflow-hidden">
+                {/* Hero Section */}
+                <section className="bg-slate-950 text-white pt-12 lg:pt-20 pb-0 relative overflow-hidden">
+                    {/* ELITE ANIMATION: SCAN LINE */}
+                    <div className="absolute top-0 left-0 w-full h-px bg-white/10 animate-[scan_4s_linear_infinite] shadow-[0_0_15px_rgba(255,255,255,0.2)] z-20"></div>
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes scan {
+                            0% { transform: translateY(-100%); opacity: 0; }
+                            5% { opacity: 1; }
+                            95% { opacity: 1; }
+                            100% { transform: translateY(100vh); opacity: 0; }
+                        }
+                        @keyframes marquee-xdr {
+                            0% { transform: translateX(0); }
+                            100% { transform: translateX(-50%); }
+                        }
+                        .animate-marquee-xdr {
+                            animation: marquee-xdr 40s linear infinite;
+                            display: flex;
+                            width: fit-content;
+                        }
+                    `}} />
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-16">
-                        {/* Breadcrumb */}
-                        <div className="flex items-center gap-2 text-white/30 text-xs font-bold uppercase tracking-widest mb-6">
-                            <Link href={`/${lang}/products/cyber-protect-cloud`} className="hover:text-white/60 transition-colors">{d.breadcrumb}</Link>
-                            <span className="material-symbols-outlined text-[14px]">chevron_right</span>
-                            <span className="text-white/60">XDR</span>
-                        </div>
+                    {/* NOISE OVERLAY */}
+                    <div className="absolute inset-0 pointer-events-none z-30 opacity-[0.05]" 
+                         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+                    />
 
-                        {/* Tag */}
-                        <span className="inline-flex items-center gap-2 border border-violet-500/40 text-violet-400 text-[10px] font-bold tracking-[0.25em] uppercase px-3 py-1 mb-8 bg-violet-500/10">
-                            <span className="material-symbols-outlined text-[12px]">verified_user</span>
-                            {d.tag}
-                        </span>
-
-                        <h1 className="text-5xl lg:text-7xl font-display font-extrabold tracking-tight leading-tight mb-8 max-w-4xl whitespace-pre-line">
-                            {d.heroTitle}
-                        </h1>
-                        <p className="text-xl text-violet-100/60 font-light leading-relaxed mb-10 max-w-3xl">{d.heroDesc}</p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Link href={`/${lang}/contact`} className="inline-flex items-center gap-2 bg-violet-600 text-white font-bold uppercase tracking-wider text-xs px-8 py-4 hover:bg-violet-700 transition-colors shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-                                {d.cta1}
-                                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="max-w-4xl">
+                            {/* Elite Breadcrumb Badge */}
+                            <Link href={`/${lang}/products/cyber-protect-cloud`} className="group inline-flex items-center gap-4 bg-white/5 border border-white/10 px-4 py-2 mb-10 backdrop-blur-3xl hover:bg-white/10 transition-all">
+                                <span className="text-white/40 group-hover:text-violet-400 transition-colors">
+                                    <span className="material-symbols-outlined text-[14px]">arrow_back</span>
+                                </span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 group-hover:text-white transition-colors">{d.breadcrumb}</span>
                             </Link>
-                            <Link href={`/${lang}/products/cyber-protect-cloud`} className="inline-flex items-center gap-2 border border-white/20 text-white/70 font-bold uppercase tracking-wider text-xs px-8 py-4 hover:bg-white/5 transition-colors">
-                                <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-                                {d.cta2}
-                            </Link>
-                        </div>
-                    </div>
 
-                    {/* Stats bar */}
-                    <div className="border-t border-white/5 bg-black/30 backdrop-blur-sm">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
-                                {d.stats.map((s, i) => (
-                                    <div key={i} className="py-5 px-6 text-center">
-                                        <div className="text-2xl font-bold text-violet-400 font-mono">{s.value}</div>
-                                        <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold mt-1">{s.label}</div>
-                                    </div>
-                                ))}
+                            <div className="flex flex-wrap items-center gap-4 mb-10">
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                                    <span className="w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse"></span>
+                                    {d.tag}
+                                </span>
+                                <span className="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-black tracking-[0.4em] uppercase px-5 py-2 backdrop-blur-3xl">
+                                    {isFr ? "XDR PROPULSÉ PAR L'IA" : "AI-POWERED XDR"}
+                                </span>
+                            </div>
+                            
+                            <h1 className="text-6xl md:text-8xl font-display font-black tracking-tighter uppercase leading-[0.9] text-white mb-10 whitespace-pre-line">
+                                {d.heroTitle.split('\n')[0]}<span className="text-slate-500 block">{d.heroTitle.split('\n')[1]}</span>
+                            </h1>
+                            
+                            <p className="text-xl text-slate-400 font-light leading-relaxed mb-12 max-w-2xl tracking-tight">
+                                {d.heroDesc}
+                            </p>
+                            
+                            <div className="flex flex-col sm:flex-row gap-6 mb-20">
+                                <Button asChild size="lg" className="rounded-none px-10 py-7 text-[10px] uppercase tracking-[0.3em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none shadow-[0_20px_60px_-15px_rgba(255,255,255,0.1)]">
+                                    <Link href={`/${lang}/contact`}>{d.cta1}</Link>
+                                </Button>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                {/* ─── What is XDR ─────────────────────────────────── */}
-                <section className="py-20 bg-gray-50 border-b border-gray-100">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <span className="text-[10px] font-bold text-violet-600 uppercase tracking-widest mb-3 block">Definition</span>
-                        <h2 className="text-3xl font-display font-bold text-[#0b0c10] mb-6">{d.whatIsTitle}</h2>
-                        <p className="text-gray-600 leading-relaxed text-lg">{d.whatIsText}</p>
-                    </div>
-                </section>
-
-                {/* ─── XDR vs EDR ──────────────────────────────────── */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-3xl font-display font-bold text-[#0b0c10] mb-12 text-center">{d.xdrVsEdr.title}</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* EDR */}
-                            <div className="border-2 border-gray-100 p-8">
-                                <div className="inline-block bg-gray-100 text-gray-600 text-[10px] font-black px-2 py-0.5 tracking-widest uppercase mb-4">{d.xdrVsEdr.edr.label}</div>
-                                <h3 className="text-xl font-bold text-[#0b0c10] mb-6">{d.xdrVsEdr.edr.title}</h3>
-                                <ul className="space-y-3">
-                                    {d.xdrVsEdr.edr.points.map((p, i) => (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <span className="material-symbols-outlined text-gray-400 text-[16px] mt-0.5 shrink-0">remove</span>
-                                            <span className="text-gray-500 text-sm leading-relaxed">{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            {/* XDR */}
-                            <div className="border-2 border-violet-200 bg-violet-50/30 p-8 relative">
-                                <div className="absolute top-4 right-4 bg-violet-600 text-white text-[9px] font-black px-2 py-0.5 tracking-widest uppercase">RECOMMENDED</div>
-                                <div className="inline-block bg-violet-100 text-violet-600 text-[10px] font-black px-2 py-0.5 tracking-widest uppercase mb-4">{d.xdrVsEdr.xdr.label}</div>
-                                <h3 className="text-xl font-bold text-[#0b0c10] mb-6">{d.xdrVsEdr.xdr.title}</h3>
-                                <ul className="space-y-3">
-                                    {d.xdrVsEdr.xdr.points.map((p, i) => (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <span className="material-symbols-outlined text-violet-500 text-[16px] mt-0.5 shrink-0">check_circle</span>
-                                            <span className="text-gray-700 text-sm leading-relaxed font-medium">{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ─── NIST Lifecycle ──────────────────────────────── */}
-                <section className="py-24 bg-[#060b1f] text-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-14">
-                            <span className="text-[10px] font-bold text-violet-400 uppercase tracking-widest mb-3 block">NIST Framework</span>
-                            <h2 className="text-4xl font-display font-bold mb-4">{d.nist.title}</h2>
-                            <p className="text-violet-100/50 max-w-2xl mx-auto leading-relaxed">{d.nist.subtitle}</p>
-                        </div>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            {d.nist.phases.map((phase, i) => (
-                                <div key={i} className="bg-white/5 border border-white/5 p-7 hover:bg-white/8 transition-colors">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <span className={`material-symbols-outlined text-[22px] ${nistIconColors[phase.color]}`}>{phase.icon}</span>
-                                        <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-0.5 border ${nistColors[phase.color]}`}>{phase.label}</span>
-                                    </div>
-                                    <p className="text-white/50 text-sm leading-relaxed">{phase.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ─── AI Capabilities ─────────────────────────────── */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-14">
-                            <span className="text-[10px] font-bold text-violet-600 uppercase tracking-widest mb-3 block">AI-Powered</span>
-                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-4">{d.ai.title}</h2>
-                            <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">{d.ai.subtitle}</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {d.ai.capabilities.map((cap, i) => (
-                                <div key={i} className="flex gap-5 border border-gray-100 bg-gray-50/50 p-7 hover:border-violet-100 hover:shadow-sm transition-all">
-                                    <div className="w-11 h-11 bg-violet-50 rounded-none flex items-center justify-center shrink-0">
-                                        <span className="material-symbols-outlined text-violet-600 text-[22px]">{cap.icon}</span>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-base font-bold text-[#0b0c10] mb-2">{cap.title}</h3>
-                                        <p className="text-sm text-gray-500 leading-relaxed">{cap.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ─── Attack Surfaces ─────────────────────────────── */}
-                <section className="py-24 bg-gray-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-14">
-                            <span className="text-[10px] font-bold text-violet-600 uppercase tracking-widest mb-3 block">Coverage</span>
-                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-4">{d.surfaces.title}</h2>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {d.surfaces.items.map((s, i) => (
-                                <div key={i} className="bg-white border border-gray-100 p-7 hover:shadow-md hover:-translate-y-0.5 transition-all">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <div className="w-9 h-9 bg-violet-50 rounded-none flex items-center justify-center">
-                                            <span className="material-symbols-outlined text-violet-600 text-[18px]">{s.icon}</span>
+                    {/* Elite Stats Marquee */}
+                    <div className="mt-16 border-y border-white/5 py-4 bg-white/5 backdrop-blur-3xl overflow-hidden relative">
+                        <div className="animate-marquee-xdr items-center">
+                            {[...Array(4)].map((_, arrayIndex) => (
+                                <div key={arrayIndex} className="flex items-center">
+                                    {d.stats.map((stat, index) => (
+                                        <div key={`${arrayIndex}-${index}`} className="flex items-center space-x-6 mx-16 whitespace-nowrap">
+                                            <span className="text-white font-display text-2xl font-black tracking-tighter italic">{stat.value}</span>
+                                            <span className="text-slate-500 text-[9px] uppercase tracking-[0.4em] font-black">{stat.label}</span>
+                                            <div className="w-1 h-1 bg-white/20 rotate-45"></div>
                                         </div>
-                                        <span className="font-bold text-[#0b0c10] text-base">{s.label}</span>
-                                    </div>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
+                                    ))}
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* ─── Integrations ────────────────────────────────── */}
-                <section className="py-20 bg-[#060b1f] text-white">
+                {/* What is XDR Section - Elite Light Treatment */}
+                <section className="py-32 bg-white relative selection:bg-violet-500/30">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-display font-bold mb-3">{d.integrations.title}</h2>
-                            <p className="text-white/40">{d.integrations.subtitle}</p>
+                        <div className="max-w-4xl mx-auto text-center">
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 block font-sans">{isFr ? "ARCHITECTURE DE SÉCURITÉ" : "SECURITY ARCHITECTURE"}</span>
+                            <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter leading-none mb-10 italic">
+                                {d.whatIsTitle}
+                            </h2>
+                            <p className="text-2xl text-slate-500 font-light leading-relaxed tracking-tight italic border-l-4 border-slate-100 pl-10 max-w-3xl mx-auto text-left">
+                                {d.whatIsText}
+                            </p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {d.integrations.items.map((item, i) => (
-                                <div key={i} className="flex gap-5 bg-white/5 border border-white/5 p-6">
-                                    <div className="w-10 h-10 bg-violet-600/20 flex items-center justify-center shrink-0">
-                                        <span className="material-symbols-outlined text-violet-400 text-[20px]">{item.icon}</span>
+                    </div>
+                </section>
+
+                {/* Vertical Surfaces - Elite Light Interactive */}
+                <section className="py-32 bg-slate-50 border-y border-slate-100 relative">
+                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-4xl mx-auto mb-24">
+                            <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter mb-8 leading-none italic">
+                                {d.surfaces.title}
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {d.surfaces.items.map((surface, i) => (
+                                <div key={i} className="group bg-white p-12 hover:bg-slate-950 transition-all duration-500 relative flex flex-col justify-between min-h-[380px] border border-slate-100 shadow-sm">
+                                    <div className="grow space-y-8">
+                                        <div className="w-16 h-16 bg-slate-50 group-hover:bg-white/5 border border-slate-100 group-hover:border-white/10 flex items-center justify-center transition-all duration-500">
+                                            <span className="material-symbols-outlined text-[32px] text-slate-400 group-hover:text-violet-500 transition-colors">{surface.icon}</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl font-black text-slate-950 group-hover:text-white transition-colors uppercase tracking-tight mb-4 italic font-sans">
+                                                {surface.label}
+                                            </h3>
+                                            <p className="text-base text-slate-500 group-hover:text-slate-400 leading-relaxed font-light transition-colors font-sans">
+                                                {surface.desc}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-bold text-white mb-1">{item.label}</p>
-                                        <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
-                                    </div>
+                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-violet-500 group-hover:w-full transition-all duration-700" />
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* ─── FAQ ─────────────────────────────────────────── */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-3xl font-display font-bold text-[#0b0c10] mb-12 text-center">FAQ</h2>
-                        <div className="space-y-6">
-                            {d.faq.map((item, i) => (
-                                <div key={i} className="border-b border-gray-100 pb-6">
-                                    <h3 className="text-base font-bold text-[#0b0c10] mb-3 flex items-start gap-2">
-                                        <span className="text-violet-500 font-mono text-sm mt-0.5 shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                                        {item.q}
-                                    </h3>
-                                    <p className="text-gray-500 text-sm leading-relaxed pl-7">{item.a}</p>
+                <PartnersMarquee dictionary={dictionary.home.partners} />
+
+                {/* NIST Framework - Elite Dark Framework */}
+                <section className="py-32 bg-slate-950 text-white relative overflow-hidden">
+                    <div className="absolute inset-0 pointer-events-none z-0 opacity-10">
+                        <div className="absolute inset-0 font-sans" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`, backgroundSize: '40px 40px' }}></div>
+                    </div>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-24">
+                            <span className="text-white/40 font-black uppercase tracking-[0.5em] text-[9px] mb-6 block italic font-sans">{lang === "fr" ? "ALIGNEMENT SUR LES CADRES" : "FRAMEWORK ALIGNMENT"}</span>
+                            <h2 className="text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter italic">{d.nist.title}</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                            {d.nist.phases.map((phase, i) => (
+                                <div key={i} className="group bg-white/5 p-10 border border-white/5 backdrop-blur-3xl hover:bg-white/10 transition-all duration-500 relative overflow-hidden font-sans">
+                                    <div className="flex items-center gap-5 mb-8">
+                                        <div className="w-12 h-12 bg-slate-950 border border-white/10 flex items-center justify-center group-hover:border-white transition-all">
+                                            <span className="material-symbols-outlined text-[24px] text-white/40 group-hover:text-white">{phase.icon}</span>
+                                        </div>
+                                        <span className={`text-[10px] font-black uppercase tracking-[0.3em] px-4 py-1.5 border ${nistColors[phase.color as keyof typeof nistColors]}`}>{phase.label}</span>
+                                    </div>
+                                    <p className="text-slate-400 text-[15px] leading-relaxed font-light group-hover:text-slate-200 transition-colors">{phase.desc}</p>
+                                    <div className="absolute top-0 right-0 w-16 h-16 border-r border-t border-white/5 group-hover:border-white/20 transition-colors"></div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* ─── CTA ─────────────────────────────────────────── */}
-                <section className="py-24 bg-violet-600 text-white text-center">
-                    <div className="max-w-2xl mx-auto px-4">
-                        <span className="material-symbols-outlined text-5xl text-white/40 mb-6 block">manage_search</span>
-                        <h2 className="text-4xl font-display font-bold mb-6">
+                {/* AI capabilities - Elite Light interaction */}
+                <section className="py-32 bg-white relative overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-4xl mx-auto mb-24 font-sans">
+                            <h2 className="text-5xl lg:text-7xl font-display font-black text-slate-950 uppercase tracking-tighter mb-8 leading-none italic">
+                                {d.ai.title}
+                            </h2>
+                            <p className="text-xl text-slate-500 font-light tracking-tight">{d.ai.subtitle}</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            {d.ai.capabilities.map((cap, i) => (
+                                <div key={i} className="group bg-slate-50 p-12 border border-slate-100 relative overflow-hidden transition-all duration-700 hover:bg-slate-950 hover:border-slate-800 font-sans">
+                                    <div className="flex gap-10 items-start">
+                                        <div className="w-20 h-20 bg-white border border-slate-200 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-all duration-700 group-hover:bg-violet-600 group-hover:border-violet-500 shadow-sm">
+                                            <span className="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white">{cap.icon}</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl font-black text-slate-950 group-hover:text-white uppercase tracking-tight mb-4 italic leading-tight">
+                                                {cap.title}
+                                            </h3>
+                                            <p className="text-slate-500 group-hover:text-slate-400 font-light leading-relaxed tracking-tight">
+                                                {cap.desc}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="absolute -top-1 -right-1 w-4 h-4 border-r border-t border-slate-200 group-hover:border-violet-500 transition-colors"></div>
+                                    <div className="absolute -bottom-1 -left-1 w-4 h-4 border-l border-b border-slate-200 group-hover:border-violet-500 transition-colors"></div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Final CTA - Elite Minimal Dark */}
+                <section className="py-32 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
+                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`, backgroundSize: '40px 40px' }}></div>
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 font-sans">
+                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-violet-400 mb-12 block italic">{isFr ? "CONSOLE UNIFIÉE XDR" : "XDR UNIFIED CONSOLE"}</span>
+                        <h2 className="text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter leading-none mb-10 italic">
                             {lang === "fr" ? "Prêt à voir en dehors des endpoints ?" : "Ready to see beyond the endpoint?"}
                         </h2>
-                        <p className="text-violet-100/70 leading-relaxed mb-10">
-                            {lang === "fr"
-                                ? "Réservez une démo XDR de 30 minutes avec nos experts en cybersécurité."
-                                : "Book a 30-minute XDR demo with our cybersecurity experts."}
+                        <p className="text-xl text-slate-400 font-light leading-relaxed mb-16 max-w-2xl mx-auto tracking-tight">
+                            {lang === "fr" ? "Réservez une démo XDR de 30 minutes avec nos experts." : "Book a 30-minute XDR demo with our experts."}
                         </p>
-                        <Link href={`/${lang}/contact`} className="inline-flex items-center gap-2 bg-white text-violet-700 font-bold uppercase tracking-wider text-xs px-10 py-5 hover:bg-violet-50 transition-colors">
-                            {lang === "fr" ? "Réserver une Démo Gratuite" : "Book a Free Demo"}
-                            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                        </Link>
+                        <Button asChild size="lg" className="rounded-none px-12 py-8 text-[11px] uppercase tracking-[0.4em] font-black bg-white text-slate-950 hover:bg-slate-100 transition-all border-none">
+                            <Link href={`/${lang}/contact`}>{lang === "fr" ? "Demander une Démo" : "Book a Demo"}</Link>
+                        </Button>
                     </div>
                 </section>
 
-                <BookingSection dictionary={dictionary.services.booking} />
+                <BookingSection lang={lang} dictionary={dictionary.services.booking} />
                 <ContactForm lang={lang} dictionary={dictionary} />
             </main>
 

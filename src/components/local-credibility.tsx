@@ -81,9 +81,9 @@ export function LocalCredibility({ dictionary }: { dictionary: any }) {
                                 <div className="absolute -top-24 -right-12 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
 
                                 <div className="relative z-10 max-w-sm">
-                                    <div className="text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Ancrage Provincial</div>
+                                    <div className="text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">{dict.certifiedExpertise}</div>
                                     <div className="text-lg md:text-xl font-display font-medium leading-snug">
-                                        Une présence forte à <span className="text-white font-black">{dict.stats.presence.replace(/ \u2022 /g, ', ')}</span> pour vous accompagner partout.
+                                        {dict.strategicSupport}<span className="text-white font-black">{dict.acrossCanada}</span>{dict.forYourSuccess}
                                     </div>
                                 </div>
 
@@ -93,13 +93,13 @@ export function LocalCredibility({ dictionary }: { dictionary: any }) {
                                         {[1, 2, 3].map((i) => (
                                             <div
                                                 key={i}
-                                                className="w-14 h-14 rounded-full border-4 border-surface-dark bg-white/5 flex items-center justify-center text-[10px] font-bold text-white/30 backdrop-blur-sm shadow-inner"
+                                                className="w-14 h-14 rounded-full border-4 border-surface-dark bg-white/5 flex items-center justify-center text-[10px] font-bold text-white/40 backdrop-blur-sm shadow-inner"
                                             >
-                                                MTL
+                                                AI
                                             </div>
                                         ))}
-                                        <div className="w-14 h-14 rounded-full border-4 border-surface-dark bg-white flex items-center justify-center text-[12px] font-black text-background-dark shadow-2xl relative z-10">
-                                            +QC
+                                        <div className="w-14 h-14 rounded-full border-4 border-surface-dark bg-white flex items-center justify-center text-[11px] font-black text-background-dark shadow-2xl relative z-10">
+                                            99%
                                         </div>
                                     </div>
                                 </div>
@@ -111,4 +111,3 @@ export function LocalCredibility({ dictionary }: { dictionary: any }) {
         </section>
     );
 }
-

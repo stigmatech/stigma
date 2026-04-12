@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TurnstileWidget } from "./turnstile-widget";
+import { cn } from "@/lib/utils";
 
 type Props = {
     lang: string;
@@ -34,6 +35,7 @@ type Props = {
 };
 
 export function ContactFormWidget({ lang, dict }: Props) {
+    const isFr = lang === "fr";
     const [form, setForm] = useState({
         firstName: "",
         lastName: "",
@@ -55,7 +57,7 @@ export function ContactFormWidget({ lang, dict }: Props) {
         e.preventDefault();
 
         if (!turnstileToken) {
-            setStatus("error"); // Or a specific Turnstile error state if we want to be more granular
+            setStatus("error");
             return;
         }
 
@@ -79,34 +81,43 @@ export function ContactFormWidget({ lang, dict }: Props) {
 
     if (status === "success") {
         return (
-            <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-none flex items-center justify-center mb-6">
-                    <span className="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
+            <div className="bg-slate-950 p-12 lg:p-20 shadow-2xl relative overflow-hidden text-center border border-white/10">
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+                
+                <div className="w-20 h-20 bg-white flex items-center justify-center mx-auto mb-8 relative z-10">
+                    <span className="material-symbols-outlined text-slate-950 text-4xl">check_circle</span>
                 </div>
-                <h3 className="text-2xl font-bold text-[#0b0c10] mb-3">
-                    {lang === "fr" ? "Message envoyé !" : "Message sent!"}
+                
+                <h3 className="text-3xl lg:text-5xl font-display font-black text-white mb-6 relative z-10 uppercase tracking-tighter italic">
+                    {isFr ? "MESSAGE TRANSMIS." : "MESSAGE TRANSMITTED."}
                 </h3>
-                <p className="text-gray-500 max-w-sm leading-relaxed">
-                    {lang === "fr"
-                        ? "Merci de nous avoir contactés. Notre équipe vous répondra dans les 24 heures."
-                        : "Thanks for reaching out. Our team will get back to you within 24 hours."}
+                
+                <p className="text-slate-400 max-w-sm mx-auto relative z-10 text-lg font-light italic tracking-tight leading-relaxed">
+                    {isFr
+                        ? "Merci de nous avoir contactés. Notre équipe reviendra vers vous dans les prochaines 24 heures."
+                        : "Thanks for reaching out. Our team will get back to you within the next 24 hours."}
                 </p>
+                
                 <button
                     onClick={() => setStatus("idle")}
-                    className="mt-8 text-sm font-bold text-[#0b0c10] underline underline-offset-4 hover:text-gray-600 transition-colors"
+                    className="mt-12 text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-[0.5em] transition-all italic border-b border-transparent hover:border-white pb-1 relative z-10"
                 >
-                    {lang === "fr" ? "Envoyer un autre message" : "Send another message"}
+                    {isFr ? "ENVOYER UN AUTRE PROTOCOLE" : "SEND ANOTHER PROTOCOL"}
                 </button>
             </div>
         );
     }
 
     return (
-        <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="firstName" className="text-sm font-bold text-gray-700">
-                        {dict.firstName} <span className="text-red-500">*</span>
+        <form className="space-y-10 group relative" onSubmit={handleSubmit}>
+            {/* Industrial Accent Controls */}
+            <div className="absolute -top-1 -left-1 w-2 h-2 bg-slate-950"></div>
+            <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-slate-950 opacity-10"></div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div className="space-y-3 group/input">
+                    <label htmlFor="firstName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 italic group-hover/input:text-slate-950 transition-colors">
+                        {dict.firstName} <span className="text-amber-500">*</span>
                     </label>
                     <Input
                         id="firstName"
@@ -114,13 +125,13 @@ export function ContactFormWidget({ lang, dict }: Props) {
                         value={form.firstName}
                         onChange={handleChange}
                         placeholder={dict.firstNamePlaceholder}
-                        className="h-12 bg-gray-50 border-gray-100 focus-visible:ring-[#0b0c10] focus-visible:ring-offset-0 rounded-none transition-all"
+                        className="h-14 bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 border-slate-100 focus-visible:ring-0 focus-visible:border-slate-950 rounded-none px-0 text-xl font-black uppercase italic tracking-tighter transition-all placeholder:text-slate-200"
                         required
                     />
                 </div>
-                <div className="space-y-2">
-                    <label htmlFor="lastName" className="text-sm font-bold text-gray-700">
-                        {dict.lastName} <span className="text-red-500">*</span>
+                <div className="space-y-3 group/input">
+                    <label htmlFor="lastName" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 italic group-hover/input:text-slate-950 transition-colors">
+                        {dict.lastName} <span className="text-amber-500">*</span>
                     </label>
                     <Input
                         id="lastName"
@@ -128,16 +139,16 @@ export function ContactFormWidget({ lang, dict }: Props) {
                         value={form.lastName}
                         onChange={handleChange}
                         placeholder={dict.lastNamePlaceholder}
-                        className="h-12 bg-gray-50 border-gray-100 focus-visible:ring-[#0b0c10] focus-visible:ring-offset-0 rounded-none transition-all"
+                        className="h-14 bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 border-slate-100 focus-visible:ring-0 focus-visible:border-slate-950 rounded-none px-0 text-xl font-black uppercase italic tracking-tighter transition-all placeholder:text-slate-200"
                         required
                     />
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-bold text-gray-700">
-                        {dict.email} <span className="text-red-500">*</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div className="space-y-3 group/input">
+                    <label htmlFor="email" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 italic group-hover/input:text-slate-950 transition-colors">
+                        {dict.email} <span className="text-amber-500">*</span>
                     </label>
                     <Input
                         id="email"
@@ -146,13 +157,13 @@ export function ContactFormWidget({ lang, dict }: Props) {
                         value={form.email}
                         onChange={handleChange}
                         placeholder={dict.emailPlaceholder}
-                        className="h-12 bg-gray-50 border-gray-100 focus-visible:ring-[#0b0c10] focus-visible:ring-offset-0 rounded-none transition-all"
+                        className="h-14 bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 border-slate-100 focus-visible:ring-0 focus-visible:border-slate-950 rounded-none px-0 text-xl font-black uppercase italic tracking-tighter transition-all placeholder:text-slate-200"
                         required
                     />
                 </div>
-                <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-bold text-gray-700">
-                        {dict.phone} <span className="text-red-500">*</span>
+                <div className="space-y-3 group/input">
+                    <label htmlFor="phone" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 italic group-hover/input:text-slate-950 transition-colors">
+                        {dict.phone} <span className="text-amber-500">*</span>
                     </label>
                     <Input
                         id="phone"
@@ -161,14 +172,14 @@ export function ContactFormWidget({ lang, dict }: Props) {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder={dict.phonePlaceholder}
-                        className="h-12 bg-gray-50 border-gray-100 focus-visible:ring-[#0b0c10] focus-visible:ring-offset-0 rounded-none transition-all"
+                        className="h-14 bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 border-slate-100 focus-visible:ring-0 focus-visible:border-slate-950 rounded-none px-0 text-xl font-black uppercase italic tracking-tighter transition-all placeholder:text-slate-200"
                         required
                     />
                 </div>
             </div>
 
-            <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-bold text-gray-700">
+            <div className="space-y-3 group/input">
+                <label htmlFor="subject" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 italic group-hover/input:text-slate-950 transition-colors">
                     {dict.subject}
                 </label>
                 <Input
@@ -177,13 +188,13 @@ export function ContactFormWidget({ lang, dict }: Props) {
                     value={form.subject}
                     onChange={handleChange}
                     placeholder={dict.subjectPlaceholder}
-                    className="h-12 bg-gray-50 border-gray-100 focus-visible:ring-[#0b0c10] focus-visible:ring-offset-0 rounded-none transition-all"
+                    className="h-14 bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 border-slate-100 focus-visible:ring-0 focus-visible:border-slate-950 rounded-none px-0 text-xl font-black uppercase italic tracking-tighter transition-all placeholder:text-slate-200"
                 />
             </div>
 
-            <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-bold text-gray-700">
-                    {dict.message} <span className="text-red-500">*</span>
+            <div className="space-y-3 group/input">
+                <label htmlFor="message" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1 italic group-hover/input:text-slate-950 transition-colors">
+                    {dict.message} <span className="text-amber-500">*</span>
                 </label>
                 <textarea
                     id="message"
@@ -191,74 +202,81 @@ export function ContactFormWidget({ lang, dict }: Props) {
                     rows={6}
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full flex min-h-[80px] rounded-none border border-gray-100 bg-gray-50 px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b0c10] focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 transition-all"
+                    className="w-full h-40 bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 border-slate-100 focus-visible:outline-none focus:border-slate-950 px-0 py-4 text-xl font-light italic tracking-tight transition-all placeholder:text-slate-200 resize-none"
                     placeholder={dict.messagePlaceholder}
                     required
                 />
             </div>
 
             {status === "error" && (
-                <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-100 px-4 py-3 rounded text-sm">
-                    <span className="material-symbols-outlined text-[18px]">error</span>
-                    {!turnstileToken
-                        ? (lang === "fr" ? "Veuillez compléter le test de sécurité." : "Please complete the security check.")
-                        : (lang === "fr"
-                            ? "Une erreur est survenue. Veuillez réessayer ou nous contacter directement."
-                            : "Something went wrong. Please try again or contact us directly.")
-                    }
+                <div className="flex items-center gap-4 bg-red-50 p-6 border border-red-100">
+                    <span className="material-symbols-outlined text-red-600">report</span>
+                    <p className="text-[11px] font-black text-red-600 uppercase tracking-widest italic">
+                        {!turnstileToken
+                            ? (isFr ? "VEUILLEZ COMPLÉTER LE TEST DE SÉCURITÉ." : "PLEASE COMPLETE THE SECURITY CHECK.")
+                            : (isFr
+                                ? "UNE ERREUR EST SURVENUE. VEUILLEZ RÉESSAYER."
+                                : "SOMETHING WENT WRONG. PLEASE TRY AGAIN.")
+                        }
+                    </p>
                 </div>
             )}
 
-            <TurnstileWidget
-                lang={lang}
-                onVerify={(token) => setTurnstileToken(token)}
-                onExpire={() => setTurnstileToken(null)}
-                onError={() => setTurnstileToken(null)}
-            />
+            <div className="bg-slate-50 p-6 border border-slate-100">
+                <TurnstileWidget
+                    lang={lang}
+                    onVerify={(token) => setTurnstileToken(token)}
+                    onExpire={() => setTurnstileToken(null)}
+                    onError={() => setTurnstileToken(null)}
+                />
+            </div>
 
             <Button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full h-14 bg-[#0b0c10] hover:bg-[#111827] text-white rounded-none font-bold uppercase tracking-widest text-xs transition-colors disabled:opacity-60 shadow-lg shadow-[#0b0c10]/10"
+                className="w-full h-20 bg-slate-950 hover:bg-slate-900 text-white rounded-none font-black uppercase tracking-[0.5em] text-[11px] transition-all disabled:opacity-40 shadow-2xl group border-none"
             >
                 {status === "loading" ? (
-                    <span className="flex items-center gap-2">
-                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                    <span className="flex items-center gap-4">
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                         </svg>
-                        {lang === "fr" ? "Envoi en cours..." : "Sending..."}
+                        {isFr ? "TRANSMISSION..." : "TRANSMITTING..."}
                     </span>
                 ) : dict.submit}
             </Button>
 
-            {/* Security Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-2">
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                    <span className="material-symbols-outlined text-[14px] text-[#0b0c10]">lock</span>
-                    {dict.badges.secure}
+            {/* Security Badges - Technical Styling */}
+            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 pt-6 opacity-30 border-t border-slate-50">
+                <div className="flex items-center gap-3 text-slate-500 group/badge">
+                    <span className="material-symbols-outlined text-[18px] font-light group-hover/badge:text-slate-950 transition-colors">encrypted</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] italic leading-none">{dict.badges.secure}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                    <span className="material-symbols-outlined text-[14px] text-[#0b0c10]">verified_user</span>
-                    {dict.badges.confidential}
+                <div className="flex items-center gap-3 text-slate-500 group/badge">
+                    <span className="material-symbols-outlined text-[18px] font-light group-hover/badge:text-slate-950 transition-colors">verified_user</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] italic leading-none">{dict.badges.confidential}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                    <span className="material-symbols-outlined text-[14px] text-[#0b0c10]">gavel</span>
-                    {dict.badges.compliance}
+                <div className="flex items-center gap-3 text-slate-500 group/badge">
+                    <span className="material-symbols-outlined text-[18px] font-light group-hover/badge:text-slate-950 transition-colors">gavel</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] italic leading-none">{dict.badges.compliance}</span>
                 </div>
             </div>
 
-            {/* Urgent Link */}
-            <div className="pt-8 border-t border-gray-100 text-center">
-                <p className="text-[11px] text-gray-400 font-bold uppercase tracking-widest mb-3">{dict.urgent.text}</p>
+            {/* Urgent Link - Technical Industrial CTA */}
+            <div className="pt-12 border-t border-slate-100 text-center">
+                <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.4em] mb-6 italic">{dict.urgent.text}</p>
                 <div
                     data-cal-link="stigmatech/30min"
-                    className="inline-flex items-center gap-2 text-[11px] font-bold text-gray-600 hover:text-[#0b0c10] transition-colors cursor-pointer group uppercase tracking-widest"
+                    className="inline-flex items-center gap-6 text-[11px] font-black text-slate-500 hover:text-slate-950 transition-all cursor-pointer group uppercase tracking-[0.4em] italic"
                 >
-                    <span className="material-symbols-outlined text-[18px]">calendar_today</span>
-                    <span className="border-b border-gray-600/30 group-hover:border-[#0b0c10]/30 pb-0.5">{dict.urgent.cta}</span>
+                    <div className="w-12 h-12 bg-slate-50 flex items-center justify-center group-hover:bg-amber-500 transition-colors">
+                        <span className="material-symbols-outlined text-[20px] group-hover:text-slate-950 transition-colors">calendar_month</span>
+                    </div>
+                    <span className="border-b border-transparent group-hover:border-slate-950 pb-1">{dict.urgent.cta}</span>
                 </div>
             </div>
         </form>
     );
 }
+

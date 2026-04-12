@@ -14,6 +14,7 @@ interface CaseStudiesGridProps {
 
 export default function CaseStudiesGrid({ caseStudies, dict, lang }: CaseStudiesGridProps) {
     const [activeCategory, setActiveCategory] = useState("all");
+    const [activeIndustry, setActiveIndustry] = useState("all");
 
     const categories = [
         "all",
@@ -24,49 +25,93 @@ export default function CaseStudiesGrid({ caseStudies, dict, lang }: CaseStudies
         "AI / ML"
     ];
 
+    const industries = [
+        "all",
+        ...Array.from(new Set(caseStudies.map(cs => cs.industry)))
+    ];
+
     const t = (field: { en: string; fr: string }) =>
         lang === "fr" ? field.fr : field.en;
 
-    const filteredStudies = activeCategory === "all"
-        ? caseStudies
-        : caseStudies.filter(study => study.category === activeCategory);
+    const filteredStudies = caseStudies.filter(study => {
+        const categoryMatch = activeCategory === "all" || study.category === activeCategory;
+        const industryMatch = activeIndustry === "all" || study.industry === activeIndustry;
+        return categoryMatch && industryMatch;
+    });
 
     return (
         <div className="container mx-auto px-4 md:px-6">
             {/* Filter Tabs */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-                {categories.map((cat) => (
-                    <button
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`px-6 py-2.5 rounded-none text-xs font-bold tracking-widest uppercase transition-all duration-300 border ${activeCategory === cat
-                                ? "bg-background-dark text-white border-background-dark shadow-xl"
-                                : "bg-white text-neutral-500 border-neutral-200 hover:border-background-dark hover:text-background-dark"
-                            }`}
-                    >
-                        {dict.categories[cat] || cat}
-                    </button>
-                ))}
+            <div className="space-y-8 mb-16">
+                {/* Category Filter */}
+                <div className="flex flex-col items-center gap-4">
+                    <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em]">
+                        {lang === 'fr' ? 'Par Solution' : 'By Solution'}
+                    </span>
+                    <div className="flex flex-wrap items-center justify-center gap-2">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveCategory(cat)}
+                                className={`px-5 py-2 rounded-none text-[10px] font-bold tracking-widest uppercase transition-all duration-300 border ${activeCategory === cat
+                                        ? "bg-background-dark text-white border-background-dark shadow-lg scale-105"
+                                        : "bg-white text-neutral-500 border-neutral-100 hover:border-neutral-300"
+                                    }`}
+                            >
+                                {dict.categories[cat] || cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Industry Filter */}
+                <div className="flex flex-col items-center gap-4">
+                    <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em]">
+                        {lang === 'fr' ? 'Par Industrie' : 'By Industry'}
+                    </span>
+                    <div className="flex flex-wrap items-center justify-center gap-2">
+                        {industries.map((ind) => (
+                            <button
+                                key={ind}
+                                onClick={() => setActiveIndustry(ind)}
+                                className={`px-5 py-2 rounded-none text-[10px] font-bold tracking-widest uppercase transition-all duration-300 border ${activeIndustry === ind
+                                        ? "bg-background-dark text-white border-background-dark shadow-lg scale-105"
+                                        : "bg-white text-neutral-500 border-neutral-100 hover:border-neutral-300"
+                                    }`}
+                            >
+                                {dict.industries[ind] || ind}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 gap-y-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 gap-y-24">
                 <AnimatePresence mode="popLayout">
                     {filteredStudies.map((project) => (
                         <motion.div
                             key={project.slug}
                             layout
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            transition={{ 
+                                duration: 0.8, 
+                                ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for "Fortune 500" smoothness
+                                delay: filteredStudies.indexOf(project) * 0.1 
+                            }}
                             className="group flex flex-col items-start h-full"
                         >
                             <Link href={`/${lang}/case-studies/${project.slug}`} className="w-full block">
                                 <div className="w-full h-[450px] overflow-hidden mb-10 bg-neutral-50 border border-neutral-100 shadow-sm relative group-hover:shadow-2xl transition-all duration-700">
-                                    <div className="absolute top-6 left-6 z-10">
-                                        <span className="bg-white/95 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold text-background-dark tracking-widest uppercase shadow-sm">
+                                    <div className="absolute top-6 left-6 z-10 flex flex-col gap-2">
+                                        <span className="bg-background-dark text-white px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
                                             {dict.categories[project.category] || project.category}
+                                        </span>
+                                        <span className="bg-white/95 backdrop-blur-md px-3 py-1 text-[9px] font-bold text-background-dark tracking-widest uppercase shadow-sm">
+                                            {dict.industries[project.industry] || project.industry}
                                         </span>
                                     </div>
                                     <img

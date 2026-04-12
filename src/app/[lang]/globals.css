@@ -194,4 +194,23 @@
   .animation-delay-2000 {
     animation-delay: 2s;
   }
+
+  /* Dashboard Premium Utilities */
+  .dashboard-card {
+    @apply relative bg-[#0d0e14]/80 backdrop-blur-2xl border border-white/5 transition-all duration-500 overflow-hidden;
+  }
+
+  .dashboard-card:hover {
+    @apply border-white/10 bg-[#0d0e14];
+    box-shadow: 0 20px 40px -20px rgba(147, 51, 234, 0.1);
+  }
+
+  .glowing-dot {
+    @apply w-2 h-2 rounded-full;
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  .premium-gradient-text {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-white via-white/80 to-white/40;
+  }
 }

@@ -212,7 +212,7 @@ const content = {
             steps: [
                 {
                     title: "Audit & Conformité",
-                    description: "Évaluation complète de votre parc et de vos vulnérabilités sous l'angle des réglementations locales."
+                    description: "Évaluation complète de votre parc et de vos vulnérables sous l'angle des réglementations locales."
                 },
                 {
                     title: "Intégration Canadienne",
@@ -227,183 +227,175 @@ const content = {
     },
 };
 
-export default async function Support360ConsistentPage(props: {
+export default async function Support360Page(props: {
     params: Promise<{ lang: string }>;
 }) {
     const params = await props.params;
     const lang = params.lang as Locale;
+    const isFr = lang === 'fr';
     const dictionary = await getDictionary(lang);
-    const d = lang === "fr" ? content.fr : content.en;
+    const d = isFr ? content.fr : content.en;
 
     return (
-        <div className="min-h-screen bg-white selection:bg-blue-600 selection:text-white pt-24">
+        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white ">
             <Navbar lang={lang} dictionary={dictionary.common.nav} />
 
             <main>
-                {/* ─── Hero Section (Restored Pattern) ──────────────── */}
-                <section className="bg-[#050816] text-white py-14 lg:py-16 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-20 background-grid pointer-events-none"></div>
-                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-500/50 animate-[scan_4s_linear_infinite] shadow-[0_0_15px_rgba(37,99,235,0.5)] z-20"></div>
-                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/20 blur-[120px] rounded-none rotate-45"></div>
+                {/* ─── Hero ─────────────────────────────────────────── */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-[#0b0c10] border-b border-white/5 flex flex-col items-center text-center">
+                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                        <div className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-indigo-600/15 blur-[120px] rounded-none rotate-12 transform" />
+                        <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] border border-white/5 rotate-45 transform" />
+                        <div className="absolute top-[20%] left-[-10%] w-[400px] h-[400px] border border-white/5 rotate-[-15deg] transform" />
+                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_80%,transparent_100%)]" />
+                    </div>
 
-                    <style dangerouslySetInnerHTML={{
-                        __html: `
-                        @keyframes scan {
-                            0% { transform: translateY(-100%); opacity: 0; }
-                            5% { opacity: 1; }
-                            95% { opacity: 1; }
-                            100% { transform: translateY(100vh); opacity: 0; }
-                        }
-                        @keyframes marquee-support-cons {
-                            0% { transform: translateX(0); }
-                            100% { transform: translateX(-50%); }
-                        }
-                        .animate-marquee-support-cons {
-                            animation: marquee-support-cons 40s linear infinite;
-                            display: flex;
-                            width: fit-content;
-                        }
-                    `}} />
+                    <div className="container relative z-10 mx-auto px-6 flex flex-col items-center">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex justify-center mb-8">
+                                <span className="inline-flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold tracking-[0.2em] text-indigo-400 uppercase bg-indigo-900/30 border border-indigo-500/30 rounded-none backdrop-blur-sm">
+                                    <span className="w-1.5 h-1.5 bg-indigo-400 shadow-[0_0_8px_rgba(99,102,241,0.8)] animate-pulse" />
+                                    {d.tag}
+                                </span>
+                            </div>
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                        <div className="max-w-3xl">
-                            <span className="inline-block border border-blue-500/50 text-blue-400 text-[11px] font-bold tracking-[0.2em] uppercase px-3 py-1 mb-6 rounded-none bg-blue-500/5">
-                                [ {d.tag} ]
-                            </span>
-                            <h1 className="text-5xl lg:text-7xl font-display font-extrabold tracking-tight mb-8">
-                                {d.heroTitle.split(' ').map((word, i) =>
-                                    i === d.heroTitle.split(' ').length - 1 ? <span key={i} className="text-blue-500 block md:inline">{word}</span> : word + ' '
-                                )}
+                            <h1 className="mb-8 text-6xl md:text-8xl lg:text-[6rem] font-display font-medium tracking-tight text-white leading-[1.05] uppercase">
+                                {d.heroTitle}
+                                <br />
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-300 to-indigo-200 text-3xl md:text-5xl lg:text-6xl mt-4 block p-2">
+                                    {d.heroSubtitle}
+                                </span>
                             </h1>
-                            <p className="text-xl text-gray-400 font-light leading-relaxed mb-10 max-w-2xl">
+
+                            <p className="text-xl md:text-2xl text-indigo-100/60 leading-relaxed font-light mb-12 max-w-3xl mx-auto">
                                 {d.heroDesc}
                             </p>
-                            <Button asChild className="bg-blue-600 text-white hover:bg-blue-700 rounded-none px-8 py-6 uppercase tracking-wider text-xs font-bold shadow-[0_0_20px_rgba(37,99,235,0.3)]">
-                                <a href="#booking">{d.cta}</a>
-                            </Button>
+
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <Button asChild className="rounded-none bg-indigo-600 text-white font-bold uppercase tracking-wider text-xs px-10 py-5 h-auto hover:bg-indigo-700 transition-all duration-300 shadow-[0_0_30px_rgba(79,70,229,0.3)] hover:shadow-[0_0_40px_rgba(79,70,229,0.5)] border border-indigo-500/50">
+                                    <a href="#booking" className="flex items-center gap-2">
+                                        {d.cta}
+                                        <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                    </a>
+                                </Button>
+                            </div>
                         </div>
                     </div>
-                </section>
 
-                {/* ─── Stats Marquee (Restored Pattern) ──────────────── */}
-                <div className="border-b border-gray-100 py-6 bg-gray-50/50 overflow-hidden">
-                    <div className="animate-marquee-support-cons items-center">
-                        {[...Array(4)].map((_, arrayIndex) => (
-                            <div key={arrayIndex} className="flex items-center">
-                                {d.stats.map((stat, index) => (
-                                    <div key={`${arrayIndex}-${index}`} className="flex items-center space-x-4 mx-12 text-[#0b0c10]">
-                                        <span className="text-blue-600 font-mono text-xl font-bold">{stat.value}</span>
-                                        <span className="text-gray-500 text-[10px] uppercase tracking-widest font-bold whitespace-nowrap">{stat.label}</span>
-                                        <div className="w-1.5 h-1.5 rounded-none bg-blue-600/20 rotate-45"></div>
+                    <div className="absolute bottom-0 left-0 w-full border-t border-white/5 bg-black/40 backdrop-blur-md z-20">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+                                {d.stats.map((stat, i) => (
+                                    <div key={i} className="py-6 px-6 text-center group">
+                                        <div className="text-3xl font-display font-bold text-indigo-300 group-hover:text-indigo-400 transition-colors">{stat.value}</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold mt-2">{stat.label}</div>
                                     </div>
                                 ))}
                             </div>
-                        ))}
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                {/* ─── Benefits Section (Image + Text Side-by-Side) ──── */}
+                {/* ─── Benefits Section ────────────────────────────────────────── */}
+                <section className="py-24 bg-white border-b border-gray-100">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[#0b0c10]">
+                        <h2 className="text-4xl font-display font-bold mb-8 uppercase tracking-tight">{d.benefits.title}</h2>
+                        <div className="space-y-6 text-gray-500 leading-relaxed text-lg text-left">
+                            <p>{d.benefits.p1}</p>
+                            <p>{d.benefits.p2}</p>
+                            <p className="font-bold border-l-4 border-indigo-500 pl-4 bg-indigo-50/50 py-4 px-4">{d.benefits.p3}</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ─── Pillars Grid ────────────────────────────────────────── */}
+                <section className="py-24 bg-gray-50 border-y border-gray-100">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-2xl mx-auto mb-16">
+                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-4 uppercase tracking-tight">{d.capabilities.title}</h2>
+                            <p className="text-gray-500 leading-relaxed px-4">{d.capabilities.description}</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {d.capabilities.items.map((mod, i) => (
+                                <div key={i} className="bg-white border border-gray-100 p-8 hover:-translate-y-1 hover:shadow-xl hover:border-indigo-200 transition-all duration-300 group">
+                                    <div className="w-12 h-12 bg-gray-50 border border-gray-100 flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:border-indigo-600 transition-colors">
+                                        <span className="material-symbols-outlined text-gray-400 group-hover:text-white text-[20px] transition-colors">{mod.icon}</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold text-[#0b0c10] mb-3 uppercase tracking-tight">{mod.title}</h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed">{mod.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ─── Methodology Grid ────────────────────────────────────────── */}
                 <section className="py-24 bg-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                            <div>
-                                <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-8">{d.benefits.title}</h2>
-                                <div className="space-y-6">
-                                    <p className="text-gray-600 text-lg leading-relaxed">{d.benefits.p1}</p>
-                                    <p className="text-gray-600 leading-relaxed">{d.benefits.p2}</p>
-                                    <p className="text-gray-600 leading-relaxed">{d.benefits.p3}</p>
-                                </div>
-                            </div>
-                            <div className="relative">
-                                <div className="aspect-4/3 bg-white border border-gray-100 shadow-2xl relative overflow-hidden group rounded-none">
-                                    <Image
-                                        src="/images/it-expert-v2.png"
-                                        alt="Support 360 Canadian Focus"
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                </div>
-                                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/5 rounded-none border border-blue-600/10 -z-10"></div>
-                                <div className="absolute -top-6 -left-6 w-32 h-32 bg-gray-100 rounded-none border border-gray-200 -z-10"></div>
-                            </div>
+                        <div className="text-center max-w-2xl mx-auto mb-16">
+                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-4 uppercase tracking-tight">{d.process.title}</h2>
                         </div>
-                    </div>
-                </section>
-
-                {/* ─── Capabilities Grid (Standard 3-Column) ────────── */}
-                <section className="py-24 bg-gray-50 border-y border-gray-100">
-                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center max-w-3xl mx-auto mb-20">
-                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-6 uppercase tracking-tight">{d.capabilities.title}</h2>
-                            <p className="text-lg text-gray-600 leading-relaxed">{d.capabilities.description}</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {d.capabilities.items.map((feature, index) => (
-                                <div key={index} className="group bg-white p-10 border border-gray-100 hover:border-blue-600 transition-all duration-500 hover:shadow-2xl rounded-none">
-                                    <div className="w-16 h-16 bg-gray-50 text-blue-600 flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 rounded-none">
-                                        <span className="material-symbols-outlined text-3xl">{feature.icon}</span>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {d.process.steps.map((feature, i) => (
+                                <div key={i} className="flex gap-6 border border-gray-100 bg-gray-50/50 p-8 hover:shadow-md hover:border-indigo-200 transition-all duration-300 group">
+                                    <div className="w-14 h-14 rounded-none bg-indigo-50 flex items-center justify-center shrink-0 border border-indigo-100 group-hover:bg-indigo-600 transition-colors">
+                                        <span className="text-indigo-600 text-xl font-bold group-hover:text-white transition-colors">0{i + 1}</span>
                                     </div>
-                                    <h3 className="text-xl font-bold text-[#0b0c10] mb-4">{feature.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
+                                    <div className="grow">
+                                        <h3 className="text-xl font-bold text-[#0b0c10] mb-3 uppercase">{feature.title}</h3>
+                                        <p className="text-gray-500 leading-relaxed text-sm">{feature.description}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                <PartnersMarquee />
-
-                {/* ─── Expertise Section (Standard 3-Column Circle) ─── */}
-                <section className="py-24 bg-white relative overflow-hidden">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-4xl mx-auto text-center mb-16">
-                            <h2 className="text-4xl font-display font-bold text-[#0b0c10] mb-4 uppercase tracking-tight">{d.expertise.title}</h2>
-                            <p className="text-lg text-gray-600">{d.expertise.description}</p>
+                {/* ─── Why Stigma ────────────────────────────────── */}
+                <section className="py-24 bg-[#0b0c10] text-white overflow-hidden relative">
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px] opacity-20" />
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center max-w-2xl mx-auto mb-16">
+                            <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-3 block">{isFr ? "SUPPORT PREMIUM" : "PREMIUM SUPPORT"}</span>
+                            <h2 className="text-4xl font-display font-bold uppercase tracking-tight">{d.expertise.title}</h2>
+                            <p className="text-indigo-100/50 mt-4 leading-relaxed">{d.expertise.description}</p>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                            <div className="absolute top-16 left-0 w-full h-px bg-gray-200 hidden md:block z-0"></div>
-                            {d.expertise.items.map((item, index) => (
-                                <div key={index} className="relative z-10 flex flex-col items-center text-center group">
-                                    <div className="w-20 h-20 rounded-none bg-white border-2 border-gray-100 flex items-center justify-center mb-8 shadow-sm group-hover:border-blue-600 transition-all duration-500 scale-100 group-hover:scale-110">
-                                        <span className="material-symbols-outlined text-[32px] text-gray-400 group-hover:text-blue-600 transition-colors duration-500">{item.icon}</span>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                            {d.expertise.items.map((item, i) => (
+                                <div key={i} className="flex flex-col items-center text-center gap-6 bg-white/5 border border-white/5 p-8 hover:bg-white/10 transition-all">
+                                    <div className="w-16 h-16 bg-indigo-600/20 border border-indigo-500/20 flex items-center justify-center shrink-0 rounded-full">
+                                        <span className="material-symbols-outlined text-indigo-400 text-[28px]">{item.icon}</span>
                                     </div>
-                                    <h3 className="text-lg font-bold text-[#0b0c10] mb-3">{item.title}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed px-4">{item.description}</p>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-white mb-4 uppercase">{item.title}</h3>
+                                        <p className="text-indigo-100/60 leading-relaxed text-sm">{item.description}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* ─── Process Section (Standard Numbered Circular) ─── */}
-                <section className="py-24 bg-gray-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 space-y-4 md:space-y-0">
-                            <div>
-                                <span className="text-blue-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block font-sans">IMPARTITION FRAMEWORK</span>
-                                <h2 className="text-3xl font-display font-bold text-[#0b0c10] uppercase">{d.process.title}</h2>
-                            </div>
+                {/* ─── Final CTA ─────────────────────────────────────── */}
+                <section className="py-24 bg-white text-center border-t border-gray-100">
+                    <div className="max-w-3xl mx-auto px-4 text-[#0b0c10]">
+                        <div className="w-20 h-20 bg-indigo-50 border border-indigo-100 mx-auto flex items-center justify-center mb-8">
+                            <span className="material-symbols-outlined text-indigo-600 text-4xl">headphones</span>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                            <div className="absolute top-1/2 left-0 w-full h-px bg-gray-200 -translate-y-1/2 hidden md:block z-0"></div>
-                            {d.process.steps.map((step, index) => (
-                                <div key={index} className="relative z-10 flex flex-col items-center text-center bg-gray-50">
-                                    <div className="w-16 h-16 rounded-none bg-white border-2 border-blue-600 text-blue-600 flex items-center justify-center text-xl font-bold mb-6 shadow-md transition-transform group hover:scale-110">
-                                        {index + 1}
-                                    </div>
-                                    <h3 className="text-xl font-bold text-[#0b0c10] mb-3">{step.title}</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed px-4">{step.description}</p>
-                                </div>
-                            ))}
-                        </div>
+                        <h2 className="text-5xl font-display font-bold mb-6 tracking-tight">{d.heroTitle}</h2>
+                        <p className="text-gray-500 leading-relaxed mb-12 text-lg px-4">{d.heroDesc}</p>
+                        <Button asChild className="rounded-none bg-[#0b0c10] text-white font-bold uppercase tracking-wider text-xs px-12 py-6 h-auto hover:bg-indigo-600 transition-colors shadow-xl shadow-indigo-600/10">
+                            <a href="#booking" className="flex items-center gap-2">
+                                {d.cta}
+                                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </Button>
                     </div>
                 </section>
 
                 <div id="booking">
-                    <BookingSection dictionary={dictionary.services.booking} />
+                    <BookingSection lang={lang} dictionary={dictionary.services.booking} />
                 </div>
                 <ContactForm lang={lang} dictionary={dictionary} />
             </main>

@@ -236,11 +236,12 @@ export default async function SentinelOne(props: {
 }) {
     const params = await props.params;
     const lang = params.lang as Locale;
+    const isFr = lang === 'fr';
     const dictionary = await getDictionary(lang);
     const d = lang === "fr" ? content.fr : content.en;
 
     return (
-        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white pt-24">
+        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white ">
             <Navbar lang={lang} dictionary={dictionary.common.nav} />
 
             <main>
@@ -272,7 +273,7 @@ export default async function SentinelOne(props: {
                             {/* SentinelOne Logo */}
                             <div className="flex justify-center mb-10">
                                 <img
-                                    src="/Logos/Sentinel One.png"
+                                    src="/Logos/Partners/sentinelOne.png"
                                     alt="SentinelOne Logo"
                                     className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                                 />
@@ -373,7 +374,7 @@ export default async function SentinelOne(props: {
                 <section className="py-24 bg-[#0b0c10] text-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center max-w-2xl mx-auto mb-16">
-                            <span className="text-[10px] font-bold text-purple-400 uppercase tracking-widest mb-3 block">Premium Support</span>
+                            <span className="text-[10px] font-bold text-purple-400 uppercase tracking-widest mb-3 block">{lang === 'fr' ? "SUPPORT PREMIUM" : "PREMIUM SUPPORT"}</span>
                             <h2 className="text-4xl font-display font-bold">{d.whyTitle}</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -410,7 +411,7 @@ export default async function SentinelOne(props: {
                     </div>
                 </section>
 
-                <BookingSection dictionary={dictionary.services.booking} />
+                <BookingSection lang={lang} dictionary={dictionary.services.booking} />
                 <ContactForm lang={lang} dictionary={dictionary} />
             </main>
 

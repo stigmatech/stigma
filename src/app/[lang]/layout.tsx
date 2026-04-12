@@ -4,6 +4,8 @@ import { i18n, type Locale } from "@/i18n-config";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/json-ld";
+import { Analytics } from "@vercel/analytics/next";
+import { PostHogContextProvider } from "@/components/posthog-provider";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -31,8 +33,8 @@ export default async function RootLayout(props: {
   children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }) {
-  const params = await props.params;
-  const lang = params.lang as Locale;
+  const { lang: langParam } = await props.params;
+  const lang = langParam as Locale;
   const { children } = props;
 
   return (
@@ -42,13 +44,16 @@ export default async function RootLayout(props: {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
+        <JsonLd />
       </head>
       <body
         className={cn(manrope.variable, spaceGrotesk.variable, "font-sans antialiased")}
         suppressHydrationWarning
       >
-        <JsonLd />
-        {children}
+        <PostHogContextProvider>
+            {children}
+            <Analytics />
+        </PostHogContextProvider>
       </body>
     </html>
   );

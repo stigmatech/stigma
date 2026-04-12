@@ -10,8 +10,12 @@ interface EventCardProps {
     event: {
         id: string;
         slug: string;
-        title: string;
-        description: string;
+        title_en?: string;
+        title_fr?: string;
+        description_en?: string;
+        description_fr?: string;
+        title: string; // fallback
+        description: string; // fallback
         event_date: string;
         location: string;
         type: string;
@@ -19,20 +23,24 @@ interface EventCardProps {
         category?: string;
     };
     lang: string;
+    dictionary: any;
 }
 
-export function EventCard({ event, lang }: EventCardProps) {
+export function EventCard({ event, lang, dictionary }: EventCardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [imgSrc, setImgSrc] = useState(event.image_url || "/images/event-placeholder.webp");
     const date = new Date(event.event_date);
     const isFr = lang === "fr";
+
+    const title = isFr ? (event.title_fr || event.title) : (event.title_en || event.title);
+    const description = isFr ? (event.description_fr || event.description) : (event.description_en || event.description);
 
     const formattedDate = date.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
     const formattedTime = date.toLocaleTimeString(isFr ? 'fr-FR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
 
     const handleImageError = () => {
         if (imgSrc !== "/images/event-placeholder.webp") {
-            console.warn(`Failed to load image for event "${event.title}": ${event.image_url}`);
+            console.warn(`Failed to load image for event "${title}": ${event.image_url}`);
             setImgSrc("/images/event-placeholder.webp");
         }
     };
@@ -50,7 +58,7 @@ export function EventCard({ event, lang }: EventCardProps) {
                     />
                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/80 to-transparent" />
                     <Badge className="absolute top-4 left-4 bg-white/10 backdrop-blur-md text-white border-white/20 capitalize font-black tracking-widest text-[10px]">
-                        {event.type}
+                        {isFr ? event.type : (event.type === 'Webinaire' ? 'Webinar' : event.type)}
                     </Badge>
                 </div>
 
@@ -59,11 +67,11 @@ export function EventCard({ event, lang }: EventCardProps) {
                     <div className="grow space-y-4">
                         <Link href={`/${lang}/events/${event.slug}`} className="block group/title">
                             <h3 className="text-2xl font-display font-bold text-background-dark dark:text-white leading-tight group-hover/title:text-surface-dark transition-colors">
-                                {event.title}
+                                {title}
                             </h3>
                         </Link>
                         <p className="text-gray-500 dark:text-gray-400 font-light line-clamp-3 leading-relaxed">
-                            {event.description}
+                            {description}
                         </p>
 
                         <div className="space-y-3 pt-4 border-t border-gray-100 dark:border-white/5">
@@ -89,7 +97,7 @@ export function EventCard({ event, lang }: EventCardProps) {
                         >
                             {lang === "fr" ? "Détails" : "Details"}
                         </Link>
-                        <RegistrationModal eventId={event.id} eventTitle={event.title} lang={lang}>
+                        <RegistrationModal eventId={event.id} eventTitle={event.title} lang={lang} dictionary={dictionary}>
                             <button 
                                 className="w-full bg-surface-dark text-white px-4 py-3 text-[10px] font-black uppercase tracking-widest hover:bg-surface-dark/90 transition-all shadow-lg shadow-surface-dark/10"
                             >

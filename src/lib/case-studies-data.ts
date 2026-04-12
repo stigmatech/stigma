@@ -2,6 +2,7 @@ export type CaseStudy = {
     slug: string;
     title: { en: string; fr: string };
     category: string;
+    industry: string;
     categoryIcon: string;
     description: { en: string; fr: string };
     heroImage: string;
@@ -22,6 +23,12 @@ export type CaseStudy = {
         company: string;
     };
     tags: string[];
+    chart?: {
+        type: 'line' | 'bar' | 'area';
+        data: { label: string; value: number }[];
+        title: { en: string; fr: string };
+        valueSuffix?: string;
+    };
     relatedSlugs?: string[];
     relatedBlogPosts?: string[];
     ctaOverride?: {
@@ -33,6 +40,8 @@ export type CaseStudy = {
         titleHighlight: { en: string; fr: string };
         description: { en: string; fr: string };
     };
+    websiteUrl?: string;
+    linkedinUrl?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -43,20 +52,20 @@ export const caseStudies: CaseStudy[] = [
             fr: "Architecture de Prévention des Pertes par l'IA",
         },
         category: "DIGITAL TRANSFORMATION",
+        industry: "RETAIL",
         categoryIcon: "dynamic_feed",
         description: {
             en: "In-store video surveillance is essential for shoplifting prevention. Discover our software, which detects shoplifting incidents automatically in real-time.",
             fr: "La vidéosurveillance en magasin est essentielle pour la prévention du vol à l'étalage. Découvrez notre logiciel qui détecte automatiquement les incidents en temps réel.",
         },
-        heroImage:
-            "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop",
+        heroImage: "/images/case-studies/retail_realistic.png",
         result: {
             en: "45% reduction in shrinkage within the first 6 months of deployment.",
             fr: "Réduction de 45 % des pertes au cours des 6 premiers mois de déploiement.",
         },
         challenge: {
-            en: "A major retail chain with 120+ stores across Canada faced an estimated $12M annual shrinkage problem. Traditional CCTV systems required enormous manpower to review footage and could only report incidents after the fact, making real-time prevention impossible.",
-            fr: "Une grande chaîne de vente au détail avec plus de 120 magasins au Canada faisait face à un problème de perte estimé à 12 M$ par an. Les systèmes de vidéosurveillance traditionnels nécessitaient une main-d'œuvre considérable et ne permettaient que des rapports après les faits.",
+            en: "A global retail leader with 1,200+ multinational locations faced an estimated $120M annual shrinkage problem across its international operations. Traditional CCTV systems required enormous manpower to review footage and could only report incidents after the fact, making real-time prevention impossible at this scale.",
+            fr: "Un leader mondial de la vente au détail avec plus de 1 200 sites multinationaux faisait face à un problème de démarque inconnue estimé à 120 M$ par an. Les systèmes de vidéosurveillance traditionnels nécessitaient une main-d'œuvre colossale et ne permettaient pas de prévention en temps réel à cette échelle.",
         },
         solution: {
             en: "We architected a real-time computer vision platform built on edge-computing nodes installed directly in each store. The system uses advanced convolutional neural networks (CNNs) trained on proprietary shoplifting behavior datasets to identify and flag suspicious activity within milliseconds — sending instant alerts to loss prevention staff without requiring central cloud processing.",
@@ -66,11 +75,27 @@ export const caseStudies: CaseStudy[] = [
             en: "Beyond the direct 45% reduction in shrinkage, the platform freed up over 2,000 hours per month previously spent reviewing CCTV footage, allowing loss prevention teams to focus on proactive strategies. The client also saw a dramatic improvement in store morale and customer experience as incidents were handled more discretely and effectively.",
             fr: "Au-delà de la réduction directe de 45 % des pertes, la plateforme a libéré plus de 2 000 heures par mois auparavant consacrées à la révision des enregistrements, permettant aux équipes de se concentrer sur des stratégies proactives.",
         },
+        chart: {
+            type: 'line',
+            title: {
+                en: "Shrinkage Rate Reduction Post-Deployment",
+                fr: "Réduction du Taux de Démarque Inconnue"
+            },
+            valueSuffix: "%",
+            data: [
+                { label: "Month 1", value: 4.2 },
+                { label: "Month 2", value: 3.8 },
+                { label: "Month 3", value: 3.2 },
+                { label: "Month 4", value: 2.8 },
+                { label: "Month 5", value: 2.5 },
+                { label: "Month 6", value: 2.3 },
+            ]
+        },
         stats: [
             { value: "45%", label: { en: "Reduction in shrinkage", fr: "Réduction des pertes" } },
-            { value: "120+", label: { en: "Stores deployed", fr: "Magasins déployés" } },
+            { value: "1,200+", label: { en: "International locations", fr: "Sites internationaux" } },
             { value: "<200ms", label: { en: "Incident detection time", fr: "Temps de détection" } },
-            { value: "$5.4M", label: { en: "Annual savings", fr: "Économies annuelles" } },
+            { value: "$54M", label: { en: "Annual savings", fr: "Économies annuelles" } },
         ],
         timeline: [
             {
@@ -85,8 +110,8 @@ export const caseStudies: CaseStudy[] = [
                 phase: { en: "Phase 2", fr: "Phase 2" },
                 title: { en: "Edge Infrastructure Deployment", fr: "Déploiement de l'infrastructure" },
                 description: {
-                    en: "Installed edge computing nodes across 120 stores without disrupting daily operations. Integrated with existing CCTV hardware.",
-                    fr: "Installation des nœuds en périphérie dans 120 magasins sans perturber les opérations quotidiennes. Intégration avec le matériel existant.",
+                    en: "Deployed edge computing nodes across 1,200 locations worldwide without disrupting daily operations. Integrated with existing global CCTV hardware.",
+                    fr: "Installation de nœuds de traitement dans 1 200 sites à travers le monde sans perturber les opérations. Intégration avec le matériel existant.",
                 },
             },
             {
@@ -104,8 +129,8 @@ export const caseStudies: CaseStudy[] = [
                 fr: "Ce système a transformé notre façon de penser la prévention des pertes. Nous sommes passés du réactif au proactif en un rien de temps.",
             },
             author: "Michael Chen",
-            role: "VP of Operations",
-            company: "National Retail Group",
+            role: "Global VP of Operations",
+            company: "Global Retail Operations",
         },
         tags: ["AI / ML", "Computer Vision", "Edge Computing", "Retail"],
     },
@@ -116,6 +141,7 @@ export const caseStudies: CaseStudy[] = [
             fr: "Modernisation de l'Infrastructure d'Entreprise",
         },
         category: "MANAGED IT",
+        industry: "PROFESSIONAL SERVICES",
         categoryIcon: "settings_suggest",
         description: {
             en: "The combination of trusted Microsoft Office applications, professional email services, cloud storage, intelligent tools for streamlining operations and advanced analytics.",
@@ -189,20 +215,20 @@ export const caseStudies: CaseStudy[] = [
             fr: "Refonte de la Sécurité du Secteur Financier",
         },
         category: "CYBERSECURITY",
+        industry: "FINANCE",
         categoryIcon: "shield_lock",
         description: {
             en: "Implementing a Zero Trust architecture for a major regional bank to protect sensitive financial data and ensure regulatory compliance.",
             fr: "Mise en œuvre d'une architecture Zero Trust pour une grande banque régionale afin de protéger les données financières sensibles.",
         },
-        heroImage:
-            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
+        heroImage: "/images/case-studies/banking_realistic.png",
         result: {
             en: "Achievement of SOC2 compliance and 100% success rate in external penetration tests.",
             fr: "Obtention de la conformité SOC2 et taux de réussite de 100 % aux tests d'intrusion externes.",
         },
         challenge: {
-            en: "A regional bank with $4.2B in assets faced increasing regulatory pressure after a near-miss security incident exposed vulnerabilities in their flat network architecture. Their perimeter-based security model was obsolete against modern threat actors, and an upcoming regulatory audit threatened significant penalties.",
-            fr: "Une banque régionale avec 4,2 milliards $ d'actifs faisait face à une pression réglementaire croissante après un incident de sécurité qui avait exposé des vulnérabilités dans leur architecture réseau plate.",
+            en: "A global financial institution with $42B in assets under management (AUM) faced increasing regulatory pressure after a near-miss security incident exposed vulnerabilities in their fragmented network architecture. Their perimeter-based security model was obsolete against modern threat actors, and an international regulatory audit threatened significant systemic risks.",
+            fr: "Une institution financière mondiale gérant 42 G$ d'actifs (AUM) faisait face à une pression réglementaire croissante après un incident de sécurité ayant exposé des vulnérabilités dans son architecture réseau fragmentée.",
         },
         solution: {
             en: "We designed and implemented a complete Zero Trust Network Architecture (ZTNA) from the ground up — eliminating implicit trust and requiring continuous verification for every user and device. This included microsegmentation of all network zones, privileged identity management (PIM), and implementation of a full SIEM stack with 24/7 SOC monitoring.",
@@ -251,7 +277,7 @@ export const caseStudies: CaseStudy[] = [
             },
             author: "Robert Gallant",
             role: "Chief Risk Officer",
-            company: "Laurentian Capital Bank",
+            company: "Equitas Global Finance",
         },
         tags: ["Zero Trust", "SOC2", "SIEM", "PCI-DSS", "Banking"],
         relatedBlogPosts: ["zero-trust-evolution-2024", "managed-security-101"],
@@ -263,6 +289,7 @@ export const caseStudies: CaseStudy[] = [
             fr: "Migration Cloud pour la Vente au Détail",
         },
         category: "CLOUD COMPUTING",
+        industry: "RETAIL",
         categoryIcon: "cloud_upload",
         description: {
             en: "Scaling infrastructure for a global retail brand to handle peak holiday traffic without performance degradation.",
@@ -336,19 +363,20 @@ export const caseStudies: CaseStudy[] = [
             fr: "Inspection IA Haute Précision pour les Composants Aérospatiaux",
         },
         category: "AI / ML",
+        industry: "AEROSPACE",
         categoryIcon: "visibility",
         description: {
             en: "Implementing multi-spectral computer vision to detect micro-fractures in critical engine components with 99.8% accuracy.",
             fr: "Mise en œuvre de la vision par ordinateur multi-spectrale pour détecter les micro-fissures dans les composants critiques des moteurs.",
         },
-        heroImage: "/images/vision-systems-hero.png",
+        heroImage: "/images/case-studies/aerospace_realistic.png",
         result: {
             en: "99.8% detection rate of sub-millimeter defects, reducing recall risks by 85%.",
             fr: "Taux de détection de 99,8 % des défauts submillimétriques, réduisant les risques de rappel de 85 %.",
         },
         challenge: {
-            en: "A leading Canadian aerospace manufacturer faced significant recall risks due to micro-fractures in titanium engine blades that were invisible to the human eye. Manual inspection was slow and prone to fatigue-induced errors.",
-            fr: "Un chef de file canadien de l'aérospatiale faisait face à des risques de rappel importants dus à des micro-fissures dans les aubes de moteur en titane, invisibles à l'œil nu. L'inspection manuelle était lente et sujette à l'erreur.",
+            en: "An international aerospace leader faced significant production risks due to micro-fractures in titanium engine blades that were invisible to the human eye. Manual inspection was slow and prone to fatigue-induced errors at high production volumes.",
+            fr: "Un leader international de l'aérospatiale faisait face à des risques de production importants dus à des micro-fissures dans les aubes de moteur en titane, invisibles à l'œil nu.",
         },
         solution: {
             en: "We developed a proprietary multi-spectral computer vision system using thermal and UV imaging. The system utilizes real-time deep learning to analyze surface anomalies and subsurface stress patterns, flagging defects within 500ms.",
@@ -396,8 +424,8 @@ export const caseStudies: CaseStudy[] = [
                 fr: "Stigma Technologies ne nous a pas seulement donné un outil ; ils ont donné un cerveau et des yeux à notre ligne de fabrication.",
             },
             author: "André Boucher",
-            role: "Head of Quality Assurance",
-            company: "Aerovance Industries",
+            role: "Global Head of Quality Assurance",
+            company: "AeroDynamics International",
         },
         tags: ["Vision Systems", "Aerospace", "AI / ML", "Quality Control"],
         ctaOverride: {
@@ -425,12 +453,13 @@ export const caseStudies: CaseStudy[] = [
             fr: "Recherche Sémantique pour la Découverte Juridique",
         },
         category: "AI / ML",
+        industry: "LEGAL",
         categoryIcon: "manage_search",
         description: {
             en: "We created a tool that helps lawyers find specific information in thousands of documents by understanding what they are looking for, rather than just matching exact words. It's like having a super-intelligent assistant that knows the meaning of every sentence.",
             fr: "Nous avons créé un outil qui aide les avocats à trouver des informations précises parmi des milliers de documents en comprenant ce qu'ils cherchent, et pas seulement en vérifiant les mots exacts. C'est comme avoir un assistant super-intelligent qui connaît la signification de chaque phrase.",
         },
-        heroImage: "/images/semantic-search-hero.png",
+        heroImage: "/images/case-studies/legal_realistic.png",
         result: {
             en: "Research time dropped from 40 hours to 12 minutes per case, making information discovery nearly instant.",
             fr: "Le temps de recherche est passé de 40 heures à 12 minutes par dossier, rendant la découverte d'informations presque instantanée.",
@@ -446,6 +475,18 @@ export const caseStudies: CaseStudy[] = [
         impact: {
             en: "Lawyers can now find critical evidence in minutes instead of days. One firm reduced their research time from 40 hours to just 12 minutes. This gives them more time to focus on their clients and winning their cases, knowing they haven't missed any important information.",
             fr: "Les avocats peuvent désormais trouver des preuves critiques en quelques minutes. Un cabinet a réduit son temps de recherche de 40 heures à seulement 12 minutes. Cela leur laisse plus de temps pour s'occuper de leurs clients et gagner leurs procès, avec la certitude de n'avoir rien oublié.",
+        },
+        chart: {
+            type: 'bar',
+            title: {
+                en: "Research Time Comparison (Hours per case)",
+                fr: "Comparaison du Temps de Recherche (Heures par dossier)"
+            },
+            valueSuffix: "h",
+            data: [
+                { label: "Traditional Search", value: 40 },
+                { label: "Stigma AI Search", value: 0.2 },
+            ]
         },
         stats: [
             { value: "40h → 12m", label: { en: "Search speedup", fr: "Accélération recherche" } },
@@ -514,12 +555,13 @@ export const caseStudies: CaseStudy[] = [
             fr: "Chaîne d'Approvisionnement Prédictive pour la Pharma",
         },
         category: "AI / ML",
+        industry: "HEALTHCARE",
         categoryIcon: "trending_up",
         description: {
             en: "AI-driven forecasting predicting vaccine demand with 92% accuracy, reducing waste by incorporating 50+ external data signals.",
             fr: "Prévisions basées sur l'IA prédisant la demande de vaccins avec une précision de 92 %, réduisant le gaspillage.",
         },
-        heroImage: "/images/demand-forecasting-hero.png",
+        heroImage: "/images/case-studies/pharma_realistic.png",
         result: {
             en: "30% reduction in medicine waste and 22% improvement in regional drug availability.",
             fr: "Réduction de 30 % du gaspillage de médicaments et amélioration de 22 % de la disponibilité régionale.",
@@ -535,6 +577,22 @@ export const caseStudies: CaseStudy[] = [
         impact: {
             en: "Over-stocking was reduced by 30% while stock-out events dropped by 22%. The system now automates 80% of regional ordering, allowing logistical teams to focus on emergency response.",
             fr: "Le surstockage a été réduit de 30 % tandis que les ruptures de stock ont chuté de 22 %. Le système automatise désormais 80 % des commandes.",
+        },
+        chart: {
+            type: 'area',
+            title: {
+                en: "Drug Availability Index Improvement",
+                fr: "Amélioration de l'Indice de Disponibilité"
+            },
+            valueSuffix: "%",
+            data: [
+                { label: "W1", value: 72 },
+                { label: "W2", value: 75 },
+                { label: "W3", value: 82 },
+                { label: "W4", value: 88 },
+                { label: "W5", value: 91 },
+                { label: "W6", value: 94 },
+            ]
         },
         stats: [
             { value: "92%", label: { en: "Forecast Accuracy", fr: "Précision Prévisions" } },
@@ -595,6 +653,82 @@ export const caseStudies: CaseStudy[] = [
         },
         relatedSlugs: ["aerospace-vision-inspection", "retail-cloud-migration"],
         relatedBlogPosts: ["ai-frontier-business"],
+    },
+    {
+        slug: "fleurarome-erp",
+        title: {
+            en: "Digital Transformation & ERP Implementation for Fleurarôme",
+            fr: "Transformation Numérique & Implémentation ERP pour Fleurarôme",
+        },
+        category: "DIGITAL TRANSFORMATION",
+        industry: "MANUFACTURING",
+        categoryIcon: "precision_manufacturing",
+        description: {
+            en: "Consolidating fragmented manufacturing, inventory, and accounting processes into a single, unified ERP platform for a premium essential oils producer.",
+            fr: "Consolidation des processus fragmentés de fabrication, d'inventaire et de comptabilité dans une plateforme ERP unique pour un producteur d'huiles essentielles.",
+        },
+        heroImage: "/images/case-studies/fleurarome_realistic.png",
+        result: {
+            en: "100% batch traceability achieved and 35% improvement in production efficiency.",
+            fr: "Traçabilité des lots à 100 % et amélioration de 35 % de l'efficacité de la production.",
+        },
+        challenge: {
+            en: "Founded in Laval by Jean-Roch Piché, Fleurarôme has been a cornerstone of Quebec's manufacturing industry for 50 years, producing high-quality artificial flavors and concentrated fragrances. However, the company was relying on an obsolete management system over 40 years old, with technology that was no longer supported or updated. The technical experts capable of maintaining the system had retired, making ongoing support impossible. The critical challenge was to preserve this 50-year heritage and migrate 30 years of historical data legacy to a modern, future-proof platform.",
+            fr: "Fondée à Laval par Jean-Roch Piché, Fleurarôme est un pilier de l'industrie manufacturière québécoise depuis 50 ans, produisant des saveurs artificielles et des fragrances concentrées de haute qualité. Cependant, l'entreprise s'appuyait sur un logiciel de gestion obsolète datant de plus de 40 ans dont la technologie n'était plus mise à jour. Les techniciens capables d'en assurer la maintenance étaient à la retraite. Le défi était de préserver cet héritage de 50 ans et de migrer 30 ans de données historiques vers une plateforme moderne.",
+        },
+        solution: {
+            en: "We architected and implemented a comprehensive, open-source inspired ERP platform tailored for precision manufacturing. The system automates Bill of Materials (BOM) management, multi-warehouse inventory tracking with automated batch numbering, and integrated financial reporting — providing a 'single source of truth' that connects the production floor directly to the back office.",
+            fr: "Nous avons conçu et implémenté une plateforme ERP complète adaptée à la fabrication de précision. Le système automatise la gestion de la nomenclature (BOM), le suivi d'inventaire multi-entrepôts avec numérotation automatique des lots et le reporting financier intégré.",
+        },
+        impact: {
+            en: "The transformation enabled real-time visibility into production costs and stock levels for the first time. With automated quality control checkpoints and seamless accounting integration, Fleurarôme reduced administrative overhead by 40% and achieved full regulatory compliance for their expanding export markets in Europe and North America.",
+            fr: "La transformation a permis une visibilité en temps réel sur les coûts de production et les niveaux de stock. Fleurarôme a réduit ses frais administratifs de 40 % et a atteint une conformité réglementaire totale pour ses marchés d'exportation.",
+        },
+        stats: [
+            { value: "100%", label: { en: "Batch Traceability", fr: "Traçabilité des lots" } },
+            { value: "35%", label: { en: "Production Efficiency", fr: "Efficacité Production" } },
+            { value: "40%", label: { en: "Admin Overhead Reduc.", fr: "Réduction Frais Admin." } },
+            { value: "Global", label: { en: "Export Compliance", fr: "Conformité Export" } },
+        ],
+        timeline: [
+            {
+                phase: { en: "Phase 1", fr: "Phase 1" },
+                title: { en: "Process Mapping & Discovery", fr: "Cartographie des processus" },
+                description: {
+                    en: "Deep-dive workshops to map every stage of the aromatic extraction process and plan the massive 30-year data legacy preservation.",
+                    fr: "Ateliers approfondis pour cartographier chaque étape du processus d'extraction aromatique et planifier la préservation de 30 ans d'historique de données.",
+                },
+            },
+            {
+                phase: { en: "Phase 2", fr: "Phase 2" },
+                title: { en: "Legacy Data Extraction & ERP Migration", fr: "Extraction des données héritées & Migration ERP" },
+                description: {
+                    en: "Extracted and sanitized nearly 30 years of historical manufacturing records from the legacy 40-year-old system, migrating it into a modern relational database.",
+                    fr: "Extraction et assainissement de près de 30 ans de registres de fabrication historiques du système âgé de 40 ans, migrate vers une base de données relationnelle moderne.",
+                },
+            },
+            {
+                phase: { en: "Phase 3", fr: "Phase 3" },
+                title: { en: "Go-Live & Quality Modernization", fr: "Lancement & Modernisation Qualité" },
+                description: {
+                    en: "Deployed the unified production system, connecting 30 years of heritage with real-time modern manufacturing analytics.",
+                    fr: "Déploiement du système de production unifié, reliant 30 ans d'héritage avec des analyses de fabrication modernes en temps réel.",
+                },
+            },
+        ],
+        testimonial: {
+            quote: {
+                en: "Stigma Technologies didn't just install software; they unified our entire business. We now have the digital backbone needed to scale our aromatic heritage globally.",
+                fr: "Stigma Technologies n'a pas seulement installé un logiciel ; ils ont unifié toute notre entreprise. Nous avons maintenant l'épine dorsale numérique pour croître.",
+            },
+            author: "Director of Operations",
+            company: "Fleurarôme",
+            role: "Strategy & Growth",
+        },
+        tags: ["ERP", "Digital Transformation", "Manufacturing", "Inventory Management"],
+        relatedSlugs: ["pharma-demand-forecasting", "retail-cloud-migration"],
+        websiteUrl: "https://fleurarome.com/",
+        linkedinUrl: "https://www.linkedin.com/company/fleurarome/",
     },
 ];
 

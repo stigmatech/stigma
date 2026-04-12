@@ -1,272 +1,364 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { TurnstileWidget } from "./turnstile-widget";
+import { AiAuditPdfReport } from "./ai-audit-pdf-report";
+import { AiAuditChatbot } from "./ai-audit-chatbot";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
+import { Download, Loader2 } from "lucide-react";
 
-export function AIAuditForm({ dictionary, lang }: { dictionary: any; lang: string }) {
-    const dict = dictionary.home.aiAudit.form;
-    const [step, setStep] = useState(0);
-    const [answers, setAnswers] = useState<Record<number, string | string[]>>({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [contact, setContact] = useState({ name: "", email: "", phone: "", company: "" });
+interface AIAuditFormProps {
+    lang: string;
+    dictionary: any;
+}
+
+
+export function AIAuditForm({ lang, dictionary }: AIAuditFormProps) {
+    const [step, setStep] = useState(0); // 0: Start, 1-5: Questions, 6: Lead Form, 7: Results
+    const [answers, setAnswers] = useState<Record<string, number>>({});
+    const [leadData, setLeadData] = useState({ email: "", company: "" });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const pdfRef = useRef<HTMLDivElement>(null);
+    const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
-    const totalSteps = dict.steps.length;
-    const isLastStep = step === totalSteps;
+    if (!dictionary) return null;
 
-    const isMultiSelect = step === 1; // "Quelle est votre priorité actuelle?" is step 1
+    const dict = dictionary.home.aiAudit;
+    const questions = dict.questions;
+    const totalQuestions = questions.length;
 
-    const handleOptionSelect = (option: string) => {
-        if (isMultiSelect) {
-            setAnswers(prev => {
-                const current = (prev[step] as string[]) || [];
-                if (current.includes(option)) {
-                    return { ...prev, [step]: current.filter(o => o !== option) };
-                }
-                return { ...prev, [step]: [...current, option] };
-            });
-        } else {
-            setAnswers(prev => ({ ...prev, [step]: option }));
-            setTimeout(() => setStep(step + 1), 300);
-        }
-    };
-
-    const handleNextStep = () => {
-        if (step < totalSteps) {
-            setStep(step + 1);
-        }
-    };
-
-    const handleContactChange = (field: string, value: string) => {
-        setContact(prev => ({ ...prev, [field]: value }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        if (!turnstileToken) {
-            setError(lang === 'fr' ? "Veuillez compléter le test de sécurité." : "Please complete the security check.");
-            return;
-        }
-
-        setLoading(true);
-        setError(null);
+    const generatePDF = async () => {
+        if (!pdfRef.current) return;
+        setIsGeneratingPdf(true);
         try {
-            // Include survey answers and turnstile token in the payload
-            const payload = {
-                firstName: contact.name.split(' ')[0] || contact.name,
-                lastName: contact.name.split(' ').slice(1).join(' ') || ' ',
-                email: contact.email,
-                phone: contact.phone,
-                company: contact.company,
-                service: "Audit IA",
-                message: JSON.stringify(answers),
-                turnstileToken
-            };
+            const canvas = await html2canvas(pdfRef.current, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+            });
+            const imgData = canvas.toDataURL('image/jpeg', 1.0);
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'px',
+                format: [canvas.width / 2, canvas.height / 2]
+            });
+            pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width / 2, canvas.height / 2);
+            pdf.save(`stigmatech-ai-audit-${leadData.company.replace(/\s+/g, '-').toLowerCase() || 'report'}.pdf`);
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+        } finally {
+            setIsGeneratingPdf(false);
+        }
+    };
 
-            const res = await fetch("/api/send", {
+    const handleAnswer = (questionId: string, score: number) => {
+
+        setAnswers(prev => ({ ...prev, [questionId]: score }));
+        if (step < totalQuestions) {
+            setStep(step + 1);
+        } else {
+            setStep(totalQuestions + 1);
+        }
+    };
+
+    const calculateTotalScore = () => {
+        return Object.values(answers).reduce((acc, curr) => acc + curr, 0);
+    };
+
+    const getResultTier = () => {
+        const score = calculateTotalScore();
+        if (score >= 24) return "gold";
+        if (score >= 15) return "silver";
+        return "bronze";
+    };
+
+    const getHighImpactCategories = () => {
+        return Object.entries(answers)
+            .filter(([_, score]) => score >= 4)
+            .map(([id, _]) => id);
+    };
+
+    const handleLeadSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitError(null);
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch("/api/audit-submit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
+                body: JSON.stringify({
+                    email: leadData.email,
+                    company: leadData.company,
+                    score: calculateTotalScore(),
+                    tier: getResultTier(),
+                    answers: answers,
+                    lang: lang,
+                    turnstileToken
+                }),
             });
 
-            if (!res.ok) throw new Error("Submission failed");
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to submit audit.");
+            }
 
-            setIsSubmitted(true);
-        } catch (err) {
-            setError(lang === 'fr' ? "Une erreur est survenue. Veuillez réessayer." : "An error occurred. Please try again.");
+            setStep(totalQuestions + 2);
+        } catch (error: any) {
+            console.error("Submission error:", error);
+            setSubmitError(error.message || "An unexpected error occurred.");
         } finally {
-            setLoading(false);
+            setIsSubmitting(false);
         }
     };
 
-    if (isSubmitted) {
-        return (
-            <div className="text-center py-12 animate-in fade-in duration-700">
-                <div className="w-20 h-20 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                </div>
-                <h3 className="text-3xl font-display font-black text-[#0b0c10] mb-4">
-                    {dict.success.title}
-                </h3>
-                <p className="text-gray-500 max-w-md mx-auto leading-relaxed">
-                    {dict.success.message}
-                </p>
-                <div className="mt-10">
-                    <Button
-                        onClick={() => window.location.href = `/${lang}`}
-                        className="bg-[#0b0c10] text-white px-8 py-4 rounded-none uppercase text-[10px] tracking-widest font-bold"
-                    >
-                        {lang === 'fr' ? 'Retour à l\'accueil' : 'Back to Home'}
-                    </Button>
-                </div>
-            </div>
-        );
-    }
+    const progress = (step / (totalQuestions + 1)) * 100;
 
     return (
-        <div className="max-w-3xl mx-auto">
-            {/* Progress Bar */}
-            {!isLastStep && (
-                <div className="mb-12">
-                    <div className="flex justify-between text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400 mb-2 font-display">
-                        <span>Question {step + 1} / {totalSteps}</span>
-                        <span>{Math.round(((step + 1) / totalSteps) * 100)}%</span>
-                    </div>
-                    <div className="h-1 bg-gray-100 w-full overflow-hidden">
-                        <div
-                            className="h-full bg-indigo-600 transition-all duration-500 ease-out"
-                            style={{ width: `${((step + 1) / totalSteps) * 100}%` }}
-                        ></div>
-                    </div>
-                </div>
-            )}
+        <div className="w-full">
+            <AnimatePresence mode="wait">
+                {/* Step 0: Welcome */}
+                {step === 0 && (
+                    <motion.div 
+                        key="start"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="text-center space-y-8"
+                    >
+                        <span className="inline-block bg-blue-600/10 text-blue-600 text-[10px] font-black tracking-[0.2em] uppercase px-4 py-1.5 border border-blue-600/20 rounded-none">
+                            {dict.tag}
+                        </span>
+                        <h1 className="text-5xl md:text-7xl font-display font-black text-[#0b0c10] tracking-tighter uppercase leading-none">
+                            {dict.title}
+                        </h1>
+                        <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto">
+                            {dict.description}
+                        </p>
+                        <Button 
+                            onClick={() => setStep(1)}
+                            className="bg-[#0b0c10] hover:bg-blue-600 text-white rounded-none px-12 py-8 text-xs font-black uppercase tracking-widest transition-all hover:scale-105"
+                        >
+                            {dict.cta_start}
+                        </Button>
+                    </motion.div>
+                )}
 
-            {step < totalSteps ? (
-                /* Question Step */
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                    <div className="mb-10 text-center md:text-left">
-                        <h3 className="text-2xl md:text-3xl font-display font-black text-[#0b0c10] mb-2">
-                            {dict.steps[step].question}
-                        </h3>
-                        {isMultiSelect && (
-                            <p className="text-indigo-600/60 text-xs font-bold uppercase tracking-widest">
-                                {lang === 'fr' ? '(Plusieurs choix possibles)' : '(Multiple choices possible)'}
-                            </p>
-                        )}
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {dict.steps[step].options.map((option: string) => {
-                            const isSelected = isMultiSelect
-                                ? (answers[step] as string[] || []).includes(option)
-                                : answers[step] === option;
+                {/* Steps 1-5: Questions */}
+                {step >= 1 && step <= totalQuestions && (
+                    <motion.div 
+                        key={`q-${step}`}
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        className="space-y-12"
+                    >
+                        <div className="w-full bg-gray-100 h-1 overflow-hidden">
+                            <motion.div 
+                                className="h-full bg-blue-600"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${progress}%` }}
+                            />
+                        </div>
+                        
+                        <div className="space-y-6">
+                            <p className="text-blue-600 font-black text-xs uppercase tracking-widest">Question {step} / {totalQuestions}</p>
+                            <h2 className="text-3xl md:text-5xl font-display font-black text-[#0b0c10] tracking-tight leading-tight">
+                                {questions[step - 1].text}
+                            </h2>
+                        </div>
 
-                            return (
+                        <div className="grid grid-cols-1 gap-4">
+                            {questions[step - 1].options.map((option: any, idx: number) => (
                                 <button
-                                    key={option}
-                                    onClick={() => handleOptionSelect(option)}
-                                    className={`p-6 text-left border transition-all duration-300 group hover:border-indigo-600 hover:shadow-lg ${isSelected ? 'border-indigo-600 bg-indigo-50/50' : 'border-gray-200 bg-white'
-                                        }`}
+                                    key={idx}
+                                    onClick={() => handleAnswer(questions[step - 1].id, option.score)}
+                                    className="group relative text-left p-8 border border-gray-100 hover:border-[#0b0c10] hover:bg-[#0b0c10] transition-all duration-300 rounded-none overflow-hidden"
                                 >
-                                    <div className="flex items-center justify-between">
-                                        <span className={`text-sm font-medium transition-colors ${isSelected ? 'text-indigo-600 font-bold' : 'text-[#0b0c10]'
-                                            }`}>
-                                            {option}
-                                        </span>
-                                        <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${isSelected ? 'border-indigo-600 bg-indigo-600' : 'border-gray-300'
-                                            }`}>
-                                            {isSelected && <div className="w-1.5 h-1.5 bg-white rounded-full"></div>}
-                                        </div>
+                                    <div className="relative z-10 flex items-center justify-between">
+                                        <span className="text-lg text-gray-700 group-hover:text-white transition-colors font-medium">{option.text}</span>
+                                        <span className="material-symbols-outlined text-gray-200 group-hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">arrow_forward</span>
                                     </div>
                                 </button>
-                            );
-                        })}
-                    </div>
-                    <div className="mt-12 flex items-center justify-between">
-                        {step > 0 ? (
-                            <button
-                                onClick={() => setStep(step - 1)}
-                                className="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#0b0c10] transition-colors flex items-center gap-2"
-                            >
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" />
-                                </svg>
-                                {dict.back}
-                            </button>
-                        ) : <div></div>}
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
 
-                        {isMultiSelect && (
-                            <Button
-                                onClick={handleNextStep}
-                                disabled={!answers[step] || (answers[step] as string[]).length === 0}
-                                className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-none uppercase text-[10px] tracking-widest font-bold shadow-lg"
-                            >
-                                {dict.next}
-                            </Button>
-                        )}
-                    </div>
-                </div>
-            ) : (
-                /* Contact Step */
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <div className="text-center mb-10">
-                        <h3 className="text-3xl font-display font-black text-[#0b0c10] mb-4">
-                            {dict.contact.title}
-                        </h3>
-                        <p className="text-gray-500 font-light">
-                            {dict.contact.description}
-                        </p>
-                    </div>
-                    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
-                        <Input
-                            required
-                            placeholder={dict.contact.namePlaceholder}
-                            value={contact.name}
-                            onChange={(e) => handleContactChange('name', e.target.value)}
-                            className="h-14 rounded-none border-gray-200 focus:border-indigo-600 focus:ring-0"
-                        />
-                        <Input
-                            required
-                            type="email"
-                            placeholder={dict.contact.emailPlaceholder}
-                            value={contact.email}
-                            onChange={(e) => handleContactChange('email', e.target.value)}
-                            className="h-14 rounded-none border-gray-200 focus:border-indigo-600 focus:ring-0"
-                        />
-                        <Input
-                            required
-                            type="tel"
-                            placeholder={dict.contact.phonePlaceholder}
-                            value={contact.phone}
-                            onChange={(e) => handleContactChange('phone', e.target.value)}
-                            className="h-14 rounded-none border-gray-200 focus:border-indigo-600 focus:ring-0"
-                        />
-                        <Input
-                            required
-                            placeholder={dict.contact.companyPlaceholder}
-                            value={contact.company}
-                            onChange={(e) => handleContactChange('company', e.target.value)}
-                            className="h-14 rounded-none border-gray-200 focus:border-indigo-600 focus:ring-0"
-                        />
-
-                        {error && (
-                            <p className="text-red-500 text-[10px] font-bold uppercase text-center mb-4 animate-in fade-in slide-in-from-top-1">
-                                {error}
+                {/* Step: Lead Form */}
+                {step === totalQuestions + 1 && (
+                    <motion.div 
+                        key="lead"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="max-w-md mx-auto w-full space-y-10 text-center"
+                    >
+                        <div className="space-y-4">
+                            <h2 className="text-4xl font-display font-black text-[#0b0c10] uppercase tracking-tighter">
+                                {dict.lead_form.title}
+                            </h2>
+                            <p className="text-gray-500 font-light italic text-sm">
+                                {dict.lead_form.description}
                             </p>
+                        </div>
+
+                        <form onSubmit={handleLeadSubmit} className="space-y-6 text-left">
+                            <div className="space-y-2">
+                                <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-[#0b0c10]">{dict.lead_form.email}</Label>
+                                <Input 
+                                    id="email" 
+                                    type="email" 
+                                    required 
+                                    className="rounded-none border-gray-200 focus:border-blue-600 h-12"
+                                    placeholder="vous@entreprise.ca"
+                                    value={leadData.email}
+                                    onChange={e => setLeadData(prev => ({ ...prev, email: e.target.value }))}
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="company" className="text-[10px] font-black uppercase tracking-widest text-[#0b0c10]">{dict.lead_form.company}</Label>
+                                <Input 
+                                    id="company" 
+                                    type="text" 
+                                    required 
+                                    className="rounded-none border-gray-200 focus:border-blue-600 h-12"
+                                    placeholder="Nom de votre PME"
+                                    value={leadData.company}
+                                    onChange={e => setLeadData(prev => ({ ...prev, company: e.target.value }))}
+                                />
+                            </div>
+                            <div className="py-2">
+                                <TurnstileWidget 
+                                    onVerify={setTurnstileToken}
+                                    onExpire={() => setTurnstileToken(null)}
+                                    onError={() => setTurnstileToken(null)}
+                                    lang={lang === "fr" ? "fr" : "en"}
+                                />
+                            </div>
+
+                            {submitError && (
+                                <p className="text-red-500 text-[10px] font-bold uppercase tracking-wider bg-red-50 p-3 border-l-4 border-red-500">
+                                    {submitError}
+                                </p>
+                            )}
+                            
+                            <Button 
+                                type="submit"
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-none h-14 font-black uppercase tracking-[0.2em] text-xs shadow-xl shadow-blue-100"
+                                disabled={isSubmitting || !turnstileToken}
+                            >
+                                {isSubmitting ? "Processing..." : dict.lead_form.cta}
+                            </Button>
+                        </form>
+                    </motion.div>
+                )}
+
+                {/* Step: Final Results */}
+                {step === totalQuestions + 2 && (
+                    <motion.div 
+                        key="result"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-center space-y-10"
+                    >
+                        <div className="space-y-4">
+                            <div className="w-24 h-24 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-blue-200">
+                                <span className="text-3xl font-black">{(calculateTotalScore() / (totalQuestions * 4) * 100).toFixed(0)}%</span>
+                            </div>
+                            <p className="text-blue-600 font-bold uppercase tracking-[0.3em] text-[10px]">Maturité IA Détectée</p>
+                            <h2 className="text-5xl md:text-7xl font-display font-black text-[#0b0c10] uppercase tracking-tighter">
+                                {dict.results[getResultTier()].title}
+                            </h2>
+                            <p className="text-xl text-gray-500 font-light max-w-xl mx-auto italic">
+                                {dict.results[getResultTier()].description}
+                            </p>
+                        </div>
+
+                        {getHighImpactCategories().length > 0 && (
+                            <div className="max-w-4xl mx-auto text-left space-y-6">
+                                <div className="h-px w-20 bg-blue-600 mb-8 mx-auto" />
+                                <h3 className="text-sm font-black uppercase tracking-[0.2em] text-[#0b0c10] text-center mb-8">
+                                    Vos Priorités Stratégiques IA
+                                </h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
+                                    {getHighImpactCategories().map((catId) => (
+                                        <motion.div 
+                                            key={catId}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            className="p-6 bg-white border border-gray-100 shadow-sm border-l-4 border-l-blue-600"
+                                        >
+                                            <h4 className="font-black text-blue-600 uppercase text-xs tracking-widest mb-2">
+                                                {dict.recommendations[catId].title}
+                                            </h4>
+                                            <p className="text-sm text-gray-600 leading-relaxed font-light">
+                                                {dict.recommendations[catId].description}
+                                            </p>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
                         )}
 
-                        <TurnstileWidget
-                            lang={lang}
-                            onVerify={(token) => setTurnstileToken(token)}
-                            onExpire={() => setTurnstileToken(null)}
-                            onError={() => setTurnstileToken(null)}
-                        />
+                        {/* Contextual AI Chatbot */}
+                        <div className="w-full py-8 text-left">
+                            <AiAuditChatbot 
+                                dict={dictionary}
+                                contextData={{
+                                    score: calculateTotalScore(),
+                                    company: leadData.company,
+                                    weakness: getHighImpactCategories().length > 0 
+                                        ? dict.recommendations[getHighImpactCategories()[0]].title 
+                                        : "optimisation globale"
+                                }}
+                            />
+                        </div>
 
-                        <div className="pt-4">
-                            <Button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full h-16 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase tracking-[0.2em] text-[10px] rounded-none shadow-xl transition-all"
+                        {/* PDF Download Action */}
+                        <div className="flex justify-center pt-2 pb-6">
+                            <Button 
+                                onClick={generatePDF}
+                                disabled={isGeneratingPdf}
+                                className="bg-blue-600 hover:bg-blue-700 text-white rounded-none px-8 py-6 font-black uppercase tracking-widest text-xs shadow-xl shadow-blue-200"
                             >
-                                {loading ? (lang === 'fr' ? 'Analyse en cours...' : 'Analyzing...') : dict.contact.submit}
+                                {isGeneratingPdf ? (
+                                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> {dict.pdf_report.downloading}</>
+                                ) : (
+                                    <><Download className="w-4 h-4 mr-2" /> {dict.pdf_report.download_button}</>
+                                )}
                             </Button>
                         </div>
 
-                        <button
-                            type="button"
-                            onClick={() => setStep(step - 1)}
-                            className="w-full text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#0b0c10] transition-colors"
-                        >
-                            {dict.back}
-                        </button>
-                    </form>
-                </div>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                            <Button className="bg-[#0b0c10] hover:bg-gray-800 text-white rounded-none px-10 py-7 font-black uppercase tracking-widest text-xs">
+                                {dict.results[getResultTier()].action}
+                            </Button>
+                            <Button variant="outline" className="border-[#0b0c10] text-[#0b0c10] hover:bg-gray-50 rounded-none px-10 py-7 font-black uppercase tracking-widest text-xs" asChild>
+                                <Link href={`/${lang}/solutions/managed-ai-agents`}>Voir les Agents</Link>
+                            </Button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Hidden PDF Canvas Component */}
+            {step === totalQuestions + 2 && (
+                <AiAuditPdfReport 
+                    ref={pdfRef}
+                    score={calculateTotalScore()}
+                    tier={getResultTier()}
+                    answers={answers}
+                    dict={dictionary}
+                    company={leadData.company}
+                />
             )}
         </div>
     );

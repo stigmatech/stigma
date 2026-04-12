@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
-import { getCourseData, getAllCourseSlugs } from "@/data/ai-training-courses";
+import { getCourseData, getAllCourseParams } from "@/data/ai-training-courses";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,7 +49,7 @@ export default async function CourseDetailPage(props: {
     const isFr = lang === "fr";
 
     return (
-        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white pt-24">
+        <div className="min-h-screen bg-white selection:bg-[#0b0c10] selection:text-white">
             <Navbar lang={lang as Locale} dictionary={dictionary.common.nav} />
 
             {/* Sticky Header Mini-Bar */}
@@ -67,7 +67,7 @@ export default async function CourseDetailPage(props: {
 
             <main>
                 {/* Hero Section */}
-                <section className="bg-[#0b0c10] text-white py-14 lg:py-16 relative overflow-hidden">
+                <section className="bg-[#0b0c10] text-white pt-36 lg:pt-40 pb-14 lg:pb-16 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 background-grid pointer-events-none"></div>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <nav className="flex items-center space-x-2 text-[10px] font-bold tracking-widest text-white/60 uppercase mb-8 relative z-10">
@@ -210,11 +210,7 @@ export default async function CourseDetailPage(props: {
                                                     </div>
                                                     <p className={`text-sm leading-relaxed ${isLunch ? 'text-blue-600/80 font-medium' : 'text-gray-500'}`}>{module.description}</p>
                                                     {isLunch && (
-                                                        <div className="mt-3 flex items-center gap-2">
-                                                            <div className="h-px flex-1 bg-blue-100"></div>
-                                                            <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest px-2 bg-white">Bon Appétit</span>
-                                                            <div className="h-px flex-1 bg-blue-100"></div>
-                                                        </div>
+                                                             <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest px-2 bg-white">{isFr ? "Bon Appétit" : "Enjoy your Lunch"}</span>
                                                     )}
                                                 </div>
                                             );
@@ -345,14 +341,5 @@ export default async function CourseDetailPage(props: {
 }
 
 export async function generateStaticParams() {
-    const langs = ["en", "fr"];
-    const slugs = getAllCourseSlugs();
-
-    const params = [];
-    for (const lang of langs) {
-        for (const slug of slugs) {
-            params.push({ lang, slug });
-        }
-    }
-    return params;
+    return getAllCourseParams();
 }
