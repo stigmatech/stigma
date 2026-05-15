@@ -63,7 +63,7 @@ export function AIAuditForm({ lang, dictionary }: AIAuditFormProps) {
         scale: 2,
         useCORS: true,
         logging: false,
-        onclone: (clonedDoc) => {
+        onclone: (clonedDoc: Document) => {
           const elements = clonedDoc.getElementsByTagName('*');
           for (let i = 0; i < elements.length; i++) {
             const el = elements[i] as HTMLElement;

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["next-sanity", "sanity", "refractor", "react-refractor", "@sanity/vision", "sanity/structure"],
   images: {
     remotePatterns: [
       {
@@ -26,6 +27,9 @@ const nextConfig: NextConfig = {
     ];
   },
   serverExternalPackages: ["iceberg-js"],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

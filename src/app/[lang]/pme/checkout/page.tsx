@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
+import { Suspense } from "react";
 import { CheckoutFunnel } from "@/components/pme/checkout-funnel";
 
 export default async function PMECheckoutPage(props: {
@@ -16,7 +17,9 @@ export default async function PMECheckoutPage(props: {
       <Navbar lang={lang} dictionary={dictionary} forceSolid={true} />
       
       <main className="pt-24 pb-32">
-        <CheckoutFunnel lang={lang} dictionary={dictionary} />
+        <Suspense fallback={<div className="flex items-center justify-center min-h-[400px]">Loading...</div>}>
+          <CheckoutFunnel lang={lang} dictionary={dictionary} />
+        </Suspense>
       </main>
 
       <Footer lang={lang} dictionary={dictionary} />
