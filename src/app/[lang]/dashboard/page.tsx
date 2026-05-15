@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage({
-  params,
+ params,
 }: {
-  params: Promise<{ lang: string }>;
+ params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
-  redirect(`/${lang}/dashboard/subscriptions`);
+ const { lang } = await params;
+ redirect(`/${lang}/dashboard/subscriptions`);
 }

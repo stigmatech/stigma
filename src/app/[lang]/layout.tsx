@@ -4,24 +4,26 @@ import { i18n, type Locale } from "@/i18n-config";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/json-ld";
+import { ConsentManager } from "@/components/consent-manager";
 import { Analytics } from "@vercel/analytics/next";
 import { PostHogContextProvider } from "@/components/posthog-provider";
 
 export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
+ return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
 const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
+ variable: "--font-manrope",
+ subsets: ["latin"],
 });
 
 const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+ variable: "--font-space-grotesk",
+ subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://stigmatech.ca"),
   title: "Stigma Technologies - Solutions de Cybersécurité Avancées",
   description: "Libérez le potentiel de votre infrastructure technologique avec des solutions simples, sûres et innovantes conçues pour l'avenir.",
   icons: {
@@ -30,31 +32,33 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout(props: {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
+ children: React.ReactNode;
+ params: Promise<{ lang: string }>;
 }) {
-  const { lang: langParam } = await props.params;
-  const lang = langParam as Locale;
-  const { children } = props;
+ const { lang: langParam } = await props.params;
+ const lang = langParam as Locale;
+ const { children } = props;
 
-  return (
-    <html lang={lang} suppressHydrationWarning>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-        <JsonLd />
-      </head>
-      <body
-        className={cn(manrope.variable, spaceGrotesk.variable, "font-sans antialiased")}
-        suppressHydrationWarning
-      >
-        <PostHogContextProvider>
-            {children}
-            <Analytics />
-        </PostHogContextProvider>
-      </body>
-    </html>
-  );
+ return (
+ <html lang={lang} suppressHydrationWarning>
+ <head>
+ <link
+ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+ rel="stylesheet"
+ />
+ <JsonLd />
+ </head>
+ <body
+ className={cn(manrope.variable, spaceGrotesk.variable, "font-sans antialiased")}
+ suppressHydrationWarning
+ >
+ <ConsentManager lang={lang}>
+ <PostHogContextProvider>
+ {children}
+ <Analytics />
+ </PostHogContextProvider>
+ </ConsentManager>
+ </body>
+ </html>
+ );
 }

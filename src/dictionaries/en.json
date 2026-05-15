@@ -45,6 +45,12 @@
       "cyberAuditTitle": "Cybersecurity & Infrastructure Audit",
       "cyberAuditDesc": "Get a comprehensive assessment of your vulnerabilities and a definitive roadmap aligned with your business goals.",
       "requestAudit": "Request Audit",
+      "isPme": "Are you an SME? →",
+      "stigmaEnterprise": "Stigma Enterprise →",
+      "pmeOverview": "SME Overview",
+      "pmePlans": "Plans",
+      "pmeDiagnostic": "Free Diagnostic",
+      "pmeFaq": "Law 25 FAQ",
       "productsLabel": "Products",
       "trainingItems": {
         "discovery": "AI Discovery",
@@ -56,10 +62,21 @@
         "cyber": "Cyber Awareness",
         "governance": "Privacy & Governance"
       },
+      "hub": {
+        "title": "Strategic Diagnostic Suite",
+        "description": "Evaluate your technical maturity and security posture in minutes.",
+        "cta": "Access Diagnostics",
+        "ai_title": "AI & Agent Strategy",
+        "ai_desc": "Identify your opportunities for high-impact agentic automation.",
+        "cyber_title": "Cybersecurity & Infra",
+        "cyber_desc": "Measure your resilience against modern threats and technical debt.",
+        "loi25_title": "Law 25 & Compliance",
+        "loi25_desc": "Verify your alignment with Quebec's data privacy framework."
+      },
       "marketplace": {
         "label": "Marketplace",
         "title": "Cloud Marketplace",
-        "subtitle": "Explore and manage your market-leading technology solutions through our Pax8 ecosystem.",
+        "subtitle": "Explore and manage your market-leading technology solutions through our cloud ecosystem.",
         "alpha": "Alpha",
         "filters": {
           "searchPlaceholder": "SEARCH FOR A SOLUTION...",
@@ -80,8 +97,19 @@
           "getStarted": "Request a Demo",
           "startingAt": "Starting at",
           "perMonth": "/ month",
-          "managedBy": "Powered by Pax8",
-          "priceDisclaimer": "* Estimated price based on base MSRP rates."
+          "managedBy": "Official License",
+          "priceDisclaimer": "* Estimated price based on MSRP base rates.",
+          "seats": "Seats"
+        },
+        "detail": {
+          "back": "Back to catalog",
+          "description": "Product Details",
+          "features": "Key Features",
+          "msrpLabel": "Suggested Retail Price (MSRP)",
+          "provisioningNote": "Provisioning fees and NCE commitments may apply during final checkout.",
+          "subscribe": "Subscribe Now",
+          "secureIntegration": "Secure Integration",
+          "instantDelivery": "Instant Delivery"
         },
         "products": {
           "m365": {
@@ -144,10 +172,344 @@
         }
       }
     },
+    "auth": {
+      "login": {
+        "portal": "Secure Client Portal",
+        "title": "Sign In",
+        "resetTitle": "Reset Password",
+        "access": "Access your licenses and subscriptions",
+        "resetAccess": "Enter your email to receive a reset link",
+        "emailSent": "Email sent!",
+        "checkInbox": "Check your inbox to reset your password.",
+        "backToLogin": "← Back to login",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "you@company.com",
+        "passwordLabel": "Password",
+        "signIn": "Sign In",
+        "signingIn": "Signing in...",
+        "sendReset": "Send Reset Link",
+        "forgotPassword": "Forgot your password?",
+        "restricted": "Restricted access for Stigma Technologies clients. ",
+        "createAccount": "Create an account",
+        "invalidCredentials": "Invalid credentials. Please check your email and password."
+      },
+      "register": {
+        "title": "Create a Business Account",
+        "subtitle": "Join the Stigma client portal to order and manage your software licenses.",
+        "nameLabel": "Full Name",
+        "companyLabel": "Company Name",
+        "emailLabel": "Work Email",
+        "phoneLabel": "Phone Number",
+        "passwordLabel": "Password",
+        "confirmPasswordLabel": "Confirm Password",
+        "addressLabel": "Full Address (Required for billing)",
+        "addressPlaceholder": "123 Main St, Montreal, QC, H1A 2B3",
+        "signUp": "Sign Up",
+        "signingUp": "Signing up...",
+        "alreadyClient": "Already a client?",
+        "login": "Log in",
+        "errorCreating": "Error creating account.",
+        "profileError": "Your account was created but the profile could not be saved. Please contact support.",
+        "successTitle": "Account Created!",
+        "redirecting": "Redirecting to Marketplace..."
+      }
+    },
+    "onboarding": {
+      "title": "One Last Step!",
+      "subtitle": "Microsoft shared your email, but we need your company details for the license registry.",
+      "companyLabel": "Company Name",
+      "phoneLabel": "Phone Number",
+      "addressLabel": "Full Address",
+      "submitBtn": "Complete Registration",
+      "saving": "Saving...",
+      "error": "Error saving profile."
+    },
+    "dashboard": {
+      "subscriptions": {
+        "title": "Client Dashboard",
+        "performance": "Performance Overview",
+        "manageBilling": "Manage Billing",
+        "billingError": "Billing access error.",
+        "activeProducts": "Active Products",
+        "totalUsers": "Total Users",
+        "lastSync": "Last Sync",
+        "listTitle": "Subscriptions",
+        "connectionError": "Connection error",
+        "retry": "Retry",
+        "emptyState": {
+          "title": "Activate your tech power",
+          "description": "Your space is ready, but no subscriptions are active. Explore our cloud solutions to power up your business.",
+          "cta": "Explore Marketplace"
+        },
+        "categories": {
+          "security": "Security",
+          "compute": "Compute",
+          "apps": "Apps",
+          "draas": "DRaaS"
+        },
+        "footer": {
+          "certified": "Official Cloud Partner",
+          "support": "Tech Support",
+          "status": "API Status",
+          "operational": "Operational"
+        },
+        "pendingOrder": {
+          "title": "Finalize your order",
+          "details": "Plan: {plan} • Seats: {quantity}",
+          "cancel": "Cancel",
+          "confirm": "Confirm and Pay",
+          "loading": "Loading...",
+          "success": "Order successful",
+          "syncNote": "Your plan has been activated. Synchronization of your licenses may take a few minutes."
+        },
+        "stigmaPlans": {
+          "title": "Support 360 Solutions",
+          "subtitle": "Cybersecurity & Compliance",
+          "perSeat": "/ seat / month",
+          "minSeats": "Minimum 5 seats",
+          "subscribe": "Subscribe",
+          "live": "Live",
+          "bestValue": "Best Value",
+          "seats": "Seats",
+          "seat": "Seat",
+          "plans": {
+            "essentiel": "Essential",
+            "pro": "Pro",
+            "elite": "Elite"
+          }
+        },
+        "upsell": {
+          "recommended": "RECOMMENDED",
+          "title": "Activate your Support 360 protection",
+          "description": "Power your business with our complete managed services. Adaptive cybersecurity, 24/7 priority support, and automated compliance.",
+          "startingAt": "Starting at",
+          "cta": "Discover Plans"
+        },
+        "customPlan": {
+          "title": "Custom Plan",
+          "price": "Custom",
+          "description": "Have specific needs or a team of 50+ users? We design tailored architectural and cybersecurity solutions adapted to your business reality.",
+          "cta": "Propose a Plan"
+        }
+      },
+      "card": {
+        "active": "Active",
+        "cancelled": "Cancelled",
+        "pending": "Pending",
+        "suspended": "Suspended",
+        "deployedCapacity": "Deployed Capacity",
+        "seats": "Seats",
+        "banked": "Banked Licenses",
+        "billing": "Billing",
+        "activatedOn": "Activated on",
+        "manage": "Manage Instance",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "layout": {
+        "reviewTitle": "Account Under Review",
+        "reviewDescription": "Our engineers are currently verifying your corporate identity before provisioning your cloud catalog. You will receive an activation email shortly.",
+        "returnHome": "Return home"
+      },
+      "sidebar": {
+        "overview": "Overview",
+        "marketplace": "Marketplace",
+        "invoices": "Invoices",
+        "support": "Support",
+        "settings": "Settings",
+        "clientSpace": "Client Space",
+        "myCompany": "My Company",
+        "adminPanel": "Admin Panel",
+        "logout": "Log Out"
+      },
+      "seatAdjustment": {
+        "title": "Instance Management",
+        "currentStatus": "Current Status",
+        "units": "Units",
+        "capacityAdjustment": "Capacity Adjustment",
+        "provisioning": "Additional Provisioning",
+        "removal": "License Removal",
+        "nceWarning": "Note: For Microsoft NCE, reductions are subject to commitment windows. Our technical team will validate feasibility.",
+        "abort": "Abort",
+        "apply": "Apply Changes",
+        "syncing": "Syncing...",
+        "success": "Operation completed."
+      },
+      "profile": {
+        "title": "Company Settings",
+        "identity": "Identity",
+        "labels": {
+          "companyName": "Company Name",
+          "address": "HQ Address",
+          "phone": "Primary Phone"
+        },
+        "disclaimer": "Business identity is synced with the primary registry. Contact support to amend records.",
+        "teamTitle": "Team & Access",
+        "registry": "Registry",
+        "synchronized": "Synchronized",
+        "inviteBtn": "Invite",
+        "empty": "No members found.",
+        "emptyTitle": "Empty Team",
+        "emptyDesc": "Your organization's team is currently empty. Start by inviting your collaborators to give them access to the dashboard.",
+        "headers": {
+          "user": "User",
+          "contact": "Contact",
+          "roles": "Roles"
+        },
+        "inviteModal": {
+          "title": "Invite Team Member",
+          "description": "A secure invitation will be sent to their email to configure their access.",
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "email": "Email Address",
+          "role": "Access Role",
+          "cancel": "Cancel",
+          "send": "Send Invite",
+          "sending": "Sending...",
+          "roles": {
+            "admin": "Administrator (Full Access)",
+            "billing": "Billing Contact",
+            "technical": "Technical Contact"
+          }
+        },
+        "errors": {
+          "noCompany": "Your profile hasn't been linked to a company instance yet.",
+          "apiError": "Failed to retrieve team information (API Error)."
+        },
+        "orders": {
+          "title": "Order History",
+          "empty": "No orders yet.",
+          "status": {
+            "paid": "Paid",
+            "provisioning": "Provisioning",
+            "completed": "Active",
+            "failed": "Failed"
+          },
+          "table": {
+            "product": "Product",
+            "date": "Date",
+            "qty": "Qty",
+            "amount": "Amount",
+            "status": "Status"
+          },
+          "retry": "Retry",
+          "contactSupport": "Contact Support"
+        }
+      },
+      "invoices": {
+        "header": "Financial Center",
+        "title": "B2B Billing",
+        "description": "View billing history and open balances for {{companyName}}. Download your consolidated statements in PDF format.",
+        "openBalance": "Open Balance (Due)",
+        "payBtn": "Pay Balance",
+        "totalSpent": "Total Spent (YTD)",
+        "lastPayment": "Last payment",
+        "historyTitle": "Invoice History",
+        "table": {
+          "invoice": "Invoice #",
+          "date": "Date",
+          "details": "Details",
+          "amount": "Amount",
+          "status": "Status",
+          "action": "Action"
+        },
+        "status": {
+          "paid": "Paid",
+          "pending": "Pending"
+        },
+        "emptyState": "No invoices found",
+        "emptyStateTitle": "No Invoices Yet",
+        "emptyStateDesc": "You haven't generated any invoices yet. Once you subscribe to a service, your billing history will appear here.",
+        "exploreServices": "Explore Services"
+      },
+      "admin": {
+        "header": "Secure Zone",
+        "title": "Registration Control",
+        "description": "Review B2B portal access requests. Approval instantly provisions a tenant via the partner API.",
+        "tiles": {
+          "pending": "Pending Requests",
+          "total": "Total Processed",
+          "system": "System Status"
+        },
+        "empty": {
+          "title": "No pending requests",
+          "description": "You have processed all registrations."
+        },
+        "item": {
+          "potentialClient": "Potential Client",
+          "labels": {
+            "contact": "Contact",
+            "email": "Email",
+            "phone": "Phone",
+            "date": "Date"
+          },
+          "actions": {
+            "approve": "Approve & Create",
+            "reject": "Reject",
+            "processing": "Processing..."
+          }
+        },
+        "responses": {
+          "approveSuccess": "Company {{companyName}} successfully provisioned!",
+          "rejectSuccess": "Registration of {{companyName}} rejected.",
+          "error": "Action failed: {{error}}"
+        }
+      },
+      "support": {
+        "header": "Support Center",
+        "title": "Technical Assistance",
+        "description": "Have a question or a technical issue? Our engineering team is here to help. Open a ticket or contact us via our priority channels.",
+        "tiles": {
+          "tickets": "Active Tickets",
+          "responseTime": "Avg. Response",
+          "status": "Service Status"
+        },
+        "form": {
+          "title": "Open a Support Ticket",
+          "subject": "Subject",
+          "subjectPlaceholder": "Short summary of the issue",
+          "priority": "Priority",
+          "description": "Details",
+          "descriptionPlaceholder": "Please provide as much information as possible...",
+          "submit": "Submit Ticket",
+          "sending": "Processing...",
+          "success": "Ticket opened! Our team will contact you shortly."
+        },
+        "contact": {
+          "title": "Priority Channels",
+          "vip": "VIP Phone Line",
+          "email": "Direct Support Email"
+        },
+        "priorities": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "urgent": "Urgent"
+        }
+      }
+    },
+    "audit": {
+      "question": "Question",
+      "label_first_name": "First Name",
+      "label_last_name": "Last Name",
+      "label_email": "Work Email",
+      "label_phone": "Phone Number",
+      "placeholder_first_name": "John",
+      "placeholder_last_name": "Doe",
+      "placeholder_email": "john@company.com",
+      "placeholder_phone": "+1 514-555-0199",
+      "placeholder_company": "Your company name",
+      "error_generic_email": "Please enter a valid email address.",
+      "error_invalid_phone": "Please enter a valid phone number.",
+      "processing": "Analyzing...",
+      "resolve_vulnerabilities": "Resolve these vulnerabilities",
+      "investigation_required": "In-depth investigation required."
+    },
     "footer": {
       "description": "Premier IT Support and Cybersecurity for businesses. We simplify IT for a complex world, securing your future.",
       "solutions": "Solutions",
       "company": "Company",
+      "pme": "For SMEs",
       "stayConnected": "Stay Connected",
       "newsletterText": "Subscribe to our newsletter for the latest cyber threat insights and IT strategies.",
       "emailPlaceholder": "Email address",
@@ -303,6 +665,8 @@
       "title": "SECURITY",
       "titleMiddle": "INTELLIGENCE",
       "titleBold": "PERFORMANCE",
+      "description": "Trusted by industry leaders to turn strategic vision into high-performance execution.",
+      "clientImpact": "Client Impact",
       "items": [
         {
           "title": "Cognitive Intelligence",
@@ -315,6 +679,29 @@
         {
           "title": "Augmented Performance",
           "description": "Our next-generation managed services optimize your team's productivity through intelligent technological assistance."
+        }
+      ],
+      "testimonials": [
+        {
+          "id": 1,
+          "quote": "Thanks to Stigma's RegOps approach, we achieved our SOC2 Type II in record time.",
+          "author": "David Thorne",
+          "role": "Security Director",
+          "company": "Veritas FinTech"
+        },
+        {
+          "id": 2,
+          "quote": "The predictive maintenance model designed by Stigma has practically eliminated unplanned downtime. It's like a crystal ball.",
+          "author": "Elena Rodriguez",
+          "role": "Digital Transfo Manager",
+          "company": "Apex Manufacturing"
+        },
+        {
+          "id": 3,
+          "quote": "Stigma Technologies has transformed our approach to safety on our sites. A strategic partner who understands our real challenges.",
+          "author": "Jean-François Moreau",
+          "role": "Operations Director",
+          "company": "Constructions Elite"
         }
       ],
       "cta": {
@@ -453,6 +840,46 @@
         ]
       }
     },
+    "howItWorks": {
+      "tag": "OUR PROCESS",
+      "title": "How it",
+      "titleLight": "works",
+      "description": "A structured 4-phase journey to transform your infrastructure and secure your digital future.",
+      "cta": "START MY JOURNEY",
+      "steps": [
+        {
+          "tag": "PHASE 01",
+          "title": "Audit & Strategy",
+          "description": "Deep analysis of your existing infrastructure and definition of your AI roadmap.",
+          "deliverable": "Comprehensive audit report & Strategic roadmap"
+        },
+        {
+          "tag": "PHASE 02",
+          "title": "Agile Deployment",
+          "description": "Implementation of your sovereign infrastructure and deployment of your first AI agents.",
+          "deliverable": "Secure environment & Operational agents"
+        },
+        {
+          "tag": "PHASE 03",
+          "title": "Managed Care",
+          "description": "24/7 technical support and proactive monitoring of your digital ecosystem.",
+          "deliverable": "Guaranteed availability & Priority support"
+        },
+        {
+          "tag": "PHASE 04",
+          "title": "Continuous Optimization",
+          "description": "Constant adjustment of your AI models and scaling of your infrastructure.",
+          "deliverable": "Increased performance & Unlimited scalability"
+        }
+      ]
+    },
+    "trainingTeaser": {
+      "tag": "AI TRAINING",
+      "title": "Master the",
+      "titleLight": "Agentic Force",
+      "description": "Prepare your teams to collaborate with high-performance AI agents through our certified training programs.",
+      "cta": "EXPLORE CATALOG"
+    },
     "marketplaceSpotlight": {
       "tag": "SPOTLIGHT",
       "title": "Featured Cloud Solutions",
@@ -477,232 +904,6 @@
           "label": "Direct access to our MIP architects 24/7"
         },
         "presence": "Sovereignty & Presence"
-      }
-    },
-    "aiAudit": {
-      "badge": "FREE AI AUDIT",
-      "tag": "INTERACTIVE TOOL",
-      "title": "AI Maturity Audit",
-      "description": "Assess your enterprise's automation potential in 2 minutes.",
-      "cta_start": "Start Audit",
-      "questions": [
-        {
-          "id": "volume",
-          "text": "How would you describe your volume of unstructured data (emails, documents, reports)?",
-          "options": [
-            {
-              "text": "Low: Everything is handled manually without friction",
-              "score": 1
-            },
-            {
-              "text": "Moderate: We starting to lose time searching for info",
-              "score": 2
-            },
-            {
-              "text": "High: It's a daily bottleneck",
-              "score": 4
-            }
-          ]
-        },
-        {
-          "id": "repetition",
-          "text": "What portion of your team's time is dedicated to repetitive tasks?",
-          "options": [
-            {
-              "text": "Less than 25%",
-              "score": 1
-            },
-            {
-              "text": "Between 25% and 50%",
-              "score": 2
-            },
-            {
-              "text": "More than 50%",
-              "score": 4
-            }
-          ]
-        },
-        {
-          "id": "support",
-          "text": "Is your customer or internal support often overwhelmed?",
-          "options": [
-            {
-              "text": "Never, we are very responsive",
-              "score": 1
-            },
-            {
-              "text": "Sometimes, with stress peaks",
-              "score": 2
-            },
-            {
-              "text": "Yes, response times are too long",
-              "score": 4
-            }
-          ]
-        },
-        {
-          "id": "tools",
-          "text": "What is your level of Cloud tool usage (M365, Slack, Salesforce)?",
-          "options": [
-            {
-              "text": "Limited: We use little cloud software",
-              "score": 1
-            },
-            {
-              "text": "Standard: We use M365/Google Workspace",
-              "score": 2
-            },
-            {
-              "text": "Advanced: We use multiple interconnected SaaS",
-              "score": 4
-            }
-          ]
-        },
-        {
-          "id": "urgency",
-          "text": "Is your company ready to invest in AI this year?",
-          "options": [
-            {
-              "text": "We are just exploring",
-              "score": 1
-            },
-            {
-              "text": "It's a strategic priority",
-              "score": 4
-            }
-          ]
-        },
-        {
-          "id": "centralization",
-          "text": "Where is the majority of your operational data stored?",
-          "options": [
-            {
-              "text": "Local Silos (Excel files, physical hard drives)",
-              "score": 4
-            },
-            {
-              "text": "Mixed (Local server and some Cloud applications)",
-              "score": 2
-            },
-            {
-              "text": "Centralized Cloud ecosystem with API access",
-              "score": 1
-            }
-          ]
-        },
-        {
-          "id": "adoption",
-          "text": "What is the current level of AI adoption within your teams?",
-          "options": [
-            {
-              "text": "None: We do not use any AI tools",
-              "score": 4
-            },
-            {
-              "text": "Informal: Some employees use ChatGPT individually",
-              "score": 2
-            },
-            {
-              "text": "Structured: We have integrated AI policies and tools",
-              "score": 1
-            }
-          ]
-        },
-        {
-          "id": "complexity",
-          "text": "How would you describe the complexity of your core business processes?",
-          "options": [
-            {
-              "text": "Linear: Simple data entry and administrative tasks",
-              "score": 1
-            },
-            {
-              "text": "Variable: Requires basic sorting and human judgment",
-              "score": 2
-            },
-            {
-              "text": "Complex: Requires cross-analysis of multiple sources",
-              "score": 4
-            }
-          ]
-        }
-      ],
-      "results": {
-        "bronze": {
-          "title": "AI Explorer",
-          "description": "Your organization has optimization potential, but start with simple processes.",
-          "action": "Download Beginner's Guide"
-        },
-        "silver": {
-          "title": "AI Pioneer",
-          "description": "You are ready for your first Pilot Agent. Immediate time savings expected.",
-          "action": "Book a Pilot Demo"
-        },
-        "gold": {
-          "title": "Workforce Ready",
-          "description": "Your structure supports full multi-agent orchestration. Major ROI expected.",
-          "action": "Schedule Strategic Audit"
-        }
-      },
-      "recommendations": {
-        "volume": {
-          "title": "Semantic Search Agent",
-          "description": "Your data volume requires an AI capable of ingesting and retrieving information instantly via RAG (Retrieval-Augmented Generation)."
-        },
-        "repetition": {
-          "title": "Operational Workflow Agents",
-          "description": "Automate your repetitive processes by delegating task execution to autonomous agents connected to your tools."
-        },
-        "support": {
-          "title": "Intelligent Support Agent",
-          "description": "Offload your teams by deploying an agent capable of accurately answering 80% of common queries."
-        },
-        "tools": {
-          "title": "SaaS Orchestration Agent",
-          "description": "Maximize your Cloud ecosystem by synchronizing your tools via intelligent orchestration agents."
-        },
-        "centralization": {
-          "title": "Data Unification Agent",
-          "description": "Break down your silos by using agents capable of querying your various data sources to create a unified knowledge base."
-        },
-        "adoption": {
-          "title": "AI Literacy Program",
-          "description": "Transform informal usage into a competitive advantage with structured training on using AI Agents."
-        },
-        "complexity": {
-          "title": "Advanced Reasoning Agents",
-          "description": "Deploy agents capable of managing complex workflows requiring multi-step logic and decision-making."
-        }
-      },
-      "lead_form": {
-        "title": "Get your full report",
-        "description": "Enter your details to unlock your detailed score and AI recommendations.",
-        "email": "Business email",
-        "company": "Company Name",
-        "cta": "Get my Report"
-      },
-      "pdf_report": {
-        "download_button": "Download my PDF Report",
-        "downloading": "Generating PDF...",
-        "title": "AI Maturity Audit Report",
-        "subtitle": "Your Strategic Roadmap",
-        "radar_title": "Maturity Profile",
-        "radar": {
-          "volume": "Data Volume",
-          "repetition": "Repetitive Tasks",
-          "support": "Support Activity",
-          "tools": "Tool Ecosystem",
-          "centralization": "Infrastructure",
-          "adoption": "AI Culture",
-          "complexity": "Complexity"
-        },
-        "roadmap_title": "90-Day Action Plan",
-        "roadmap": {
-          "month1": "Month 1: Foundation. Map processes & clarify data architecture.",
-          "month2": "Month 2: Implementation. Deploy first autonomous agent or RAG pipeline.",
-          "month3": "Month 3: Scaling. Monitor impact & expand tool orchestrations."
-        },
-        "disclaimer": "This is a high-level strategic roadmap based on your audit score. Contact Stigmatech for a customized implementation."
       }
     }
   },
@@ -1656,6 +1857,247 @@
         ]
       }
     },
+    "loi25": {
+      "tag": "QUEBEC COMPLIANCE",
+      "description": "The sovereign infrastructure and governance framework to master your Law 25 obligations in record time.",
+      "hero": {
+        "badge": "DIGITAL SOVEREIGNTY",
+        "title": "Law 25 Compliance &"
+      },
+      "cta": {
+        "audit": "Start Maturity Audit",
+        "button": "Our Methodology"
+      },
+      "stats": [
+        {
+          "value": "$25M / 4%",
+          "label": "Max CAI Penalties"
+        },
+        {
+          "value": "Mandatory",
+          "label": "PIA (ÉFVP) Framework"
+        },
+        {
+          "value": "Strict Opt-In",
+          "label": "Cookies & Consent"
+        }
+      ],
+      "methodology": {
+        "tag": "OUR PROTOCOL",
+        "title": "The Maturity Framework",
+        "description": "A four-phase approach to audit, secure, and maintain your compliance without disrupting your operations.",
+        "steps": [
+          {
+            "id": "audit",
+            "number": "01",
+            "title": "Diagnostic & Gap Analysis",
+            "description": "Rigorous maturity assessment, identification of non-compliant data silos, and financial modeling of CAI regulatory exposure."
+          },
+          {
+            "id": "mapping",
+            "number": "02",
+            "title": "Mapping & Mandatory PIA",
+            "description": "Complete inventory of personal information, data flows, and mandatory execution of Privacy Impact Assessments (PIA/ÉFVP)."
+          },
+          {
+            "id": "hardening",
+            "number": "03",
+            "title": "Hardening & Consent UX",
+            "description": "Deployment of the Sentry Appliance, database isolation, and implementation of Law 25 compliant cookie consent (strict opt-in)."
+          },
+          {
+            "id": "governance",
+            "number": "04",
+            "title": "Governance & Fractional VPO",
+            "description": "Setting up mandatory breach registries (72h reporting threshold), privacy policies, and dedicated fractional Privacy Officer (RPRP) support."
+          }
+        ]
+      },
+      "stack": {
+        "tag": "OUR ECOSYSTEM",
+        "title": "The Sovereignty Stack",
+        "description": "An exclusive technological arsenal designed for data residency and granular control of personal information.",
+        "sentry": {
+          "title": "Vigilance Sentry Appliance",
+          "desc": "Physical and logical isolation of sensitive data with military-grade encryption at rest and in transit."
+        },
+        "v360": {
+          "title": "Vigilance 360 Dashboard",
+          "desc": "Unified view of your compliance posture, automated registries, and centralized consent management."
+        }
+      },
+      "features": {
+        "discovery": {
+          "title": "AI Discovery",
+          "desc": "Automatic identification of personal information across your servers and cloud."
+        },
+        "dsar": {
+          "title": "Rights Management",
+          "desc": "Automation of access and deletion requests (DSAR) for citizens."
+        },
+        "rprp": {
+          "title": "DPO Support",
+          "desc": "Support for your Person Responsible for the Protection of Personal Information (PRPPI)."
+        }
+      },
+      "deliverables": {
+        "tag": "TANGIBLE RESULTS",
+        "title": "Your Compliance Kit",
+        "description": "Documents and systems ready for the CAI (Commission d'accès à l'information) audit.",
+        "items": [
+          {
+            "name": "Maturity & Exposure Report",
+            "desc": "Rigorous gap analysis and financial risk modeling mapping out exposure to CAI administrative penalties."
+          },
+          {
+            "name": "Compliant Breach Registry",
+            "desc": "Mandatory incident logging system with a pre-configured 72-hour regulatory notification protocol."
+          },
+          {
+            "name": "Mandatory PIA Reports",
+            "desc": "Privacy Impact Assessment documents, legally required under Law 25 for any key IT system overhaul or purchase."
+          },
+          {
+            "name": "Governance Policies",
+            "desc": "Complete documentary framework including public privacy notices, cookie policies, and data retention schedules."
+          },
+          {
+            "name": "Fractional Privacy Officer",
+            "desc": "Continuous advisory from a certified external Data Protection Officer (RPRP) to shoulder your legal accountability."
+          },
+          {
+            "name": "Certification & Training",
+            "desc": "Employee security awareness workshops and an annual due diligence compliance certificate for partners."
+          }
+        ]
+      },
+      "training": {
+        "tag": "STIGMA ACADEMY",
+        "title": "Law 25 Training",
+        "description": "Empower your teams with the knowledge and tools to maintain compliance as a daily operational habit.",
+        "segments": [
+          {
+            "title": "Executive Briefing",
+            "desc": "Strategic oversight and liability management for leadership teams."
+          },
+          {
+            "title": "Operational Hardening",
+            "desc": "Practical workflows for data handlers and department heads."
+          }
+        ],
+        "quote": "Compliance is not a destination, it's a culture of vigilance."
+      },
+      "faq": {
+        "title": "Regulatory Intelligence",
+        "items": [
+          {
+            "question": "What is the deadline for Law 25 compliance?",
+            "answer": "Most provisions came into effect in September 2023. Since September 2024, all phases of Law 25 (including data portability and the right to be forgotten) are fully active, mandatory, and strictly enforceable by the CAI."
+          },
+          {
+            "question": "What are the financial penalties for non-compliance?",
+            "answer": "The Commission d'accès à l'information (CAI) can issue administrative monetary penalties of up to $10,000,000 or 2% of global annual turnover. For penal offenses, fines can rise up to $25,000,000 or 4% of global turnover, whichever is greater."
+          },
+          {
+            "question": "What is a Privacy Impact Assessment (PIA / ÉFVP)?",
+            "answer": "A PIA (ÉFVP in French) is a legally mandatory risk-assessment methodology. It must be performed prior to acquiring, developing, or redesigning any information system or electronic service delivery platform involving personal information."
+          },
+          {
+            "question": "How do cookie consent rules apply under Law 25?",
+            "answer": "Law 25 requires consent to be explicit, free, informed, and granular. Passive opt-out cookie banners or consent implied by simple scrolling are completely illegal. Users must actively opt-in before any tracking tags are deployed."
+          }
+        ]
+      },
+      "labels": {
+        "status": "STATUS: ACTIVE",
+        "sovereignty": "TOTAL SOVEREIGNTY",
+        "deliverable": "ELITE DELIVERABLE",
+        "academy": "ACADEMY CERTIFIED"
+      },
+      "industries_pages": {
+        "avocats": {
+          "hero": {
+            "tag": "LEGAL SOVEREIGNTY",
+            "title": "IT & Cybersecurity for Law Firms",
+            "subtitle": "Protect professional secrecy and automate your Law 25 compliance with a world-class managed IT infrastructure."
+          },
+          "services_summary": {
+            "title": "360° Solutions for Law",
+            "description": "We integrate cutting-edge cybersecurity and proactive IT management into the heart of your legal practice."
+          },
+          "urgency": {
+            "title": "Professional secrecy tolerates no flaws.",
+            "description": "Cyberattacks targeting law firms are on the rise. Law 25 and Bar requirements impose rigorous protection of your digital files."
+          },
+          "benefits": [
+            "Professional Secrecy Protection (AES-256 encryption and data isolation).",
+            "Law 25 Compliance (Automated generation of incident registers and policies).",
+            "Software Expertise (Full support for Maître, Jurismedia, iManage, and Wolters Kluwer).",
+            "Total Resilience (Immutable backups and tested disaster recovery plan)."
+          ],
+          "pricing_highlights": {
+            "essential": "Jurismedia & Maître support included",
+            "pro": "Law 25 Compliance & XDR",
+            "elite": "vCISO & Annual Security Audit"
+          },
+          "subsidy_note": "Your firm is eligible for an 85% subsidy."
+        },
+        "cliniques": {
+          "hero": {
+            "tag": "CONNECTED & SECURE HEALTH",
+            "title": "IT & Health Data Protection",
+            "subtitle": "Secure your patient records (EMR) and comply with Law 25 with our health-sector specialized MSP plans."
+          },
+          "services_summary": {
+            "title": "IT Expertise in Health",
+            "description": "A stable and secure infrastructure so you can focus on your patients."
+          },
+          "urgency": {
+            "title": "Your patient data is your most sensitive asset.",
+            "description": "Clinics are #1 targets for cyberattacks. Law 25 requires rigorous protection of health information under penalty of sanctions."
+          },
+          "benefits": [
+            "EMR Protection (Securing access to patient records like OmniMed and Dentitek).",
+            "Health Compliance (Strict adherence to Law 25 and Quebec health privacy standards).",
+            "Consent Management (Automating data access rights and data withdrawal requests).",
+            "24/7 Vigilance (Proactive monitoring of your critical medical systems)."
+          ],
+          "pricing_highlights": {
+            "essential": "EMR & Imaging support included",
+            "pro": "Law 25 Compliance & XDR",
+            "elite": "vCISO & Health Compliance Audit"
+          },
+          "subsidy_note": "Your clinic is eligible for an 85% subsidy."
+        },
+        "manufacturiers": {
+          "hero": {
+            "tag": "SECURE INDUSTRY 4.0",
+            "title": "Manufacturing IT & Cybersecurity",
+            "subtitle": "Ensure your production continuity and comply with Law 25 with a robust and highly available infrastructure."
+          },
+          "services_summary": {
+            "title": "Industrial Sovereignty",
+            "description": "Merge operational performance (OT) and information security (IT) for a resilient factory."
+          },
+          "urgency": {
+            "title": "Production shutdown is not an option.",
+            "description": "IT/OT convergence exposes factories to new risks. Law 25 also requires securing the data of your employees and customers."
+          },
+          "benefits": [
+            "Factory Governance (Automated personal information inventory in production environments).",
+            "Secure Remote Access (MFA and isolation for technicians and third-party vendors).",
+            "Operational Continuity (Tested disaster recovery plan to avoid costly factory shutdowns).",
+            "Security Culture (Employee training on phishing risks and social engineering)."
+          ],
+          "pricing_highlights": {
+            "essential": "OT/IT infrastructure support included",
+            "pro": "Law 25 Compliance & XDR",
+            "elite": "Penetration Tests & Dedicated vCISO"
+          },
+          "subsidy_note": "Your company is eligible for an 85% subsidy."
+        }
+      }
+    },
     "aiMachineLearning": {
       "tag": "AI Agents & Automation Expertise",
       "title": "Managed AI Workforce & Autonomous Agents",
@@ -1981,7 +2423,10 @@
       "cta": "Discover our Plans",
       "hero": {
         "title": "The Next Performance Model for SMEs",
-        "stats": ["Integrated AI", "Autonomous Agents"]
+        "stats": [
+          "Integrated AI",
+          "Autonomous Agents"
+        ]
       },
       "plans": {
         "title": "Invest in your AI Workforce",
@@ -2120,7 +2565,11 @@
             "title": "Multi-Channel Assistant",
             "mission": "Customer Success",
             "description": "Expert in autonomous ticket resolution and 24/7 support across Odoo and Zendesk.",
-            "tools": ["Odoo", "Zendesk", "Teams"],
+            "tools": [
+              "Odoo",
+              "Zendesk",
+              "Teams"
+            ],
             "highlight": "Immediate ROI"
           },
           {
@@ -2128,7 +2577,11 @@
             "title": "B2B Prospector",
             "mission": "Sales Intelligence",
             "description": "Automated lead qualification and meeting booking via HubSpot and LinkedIn.",
-            "tools": ["HubSpot", "LinkedIn", "Outlook"],
+            "tools": [
+              "HubSpot",
+              "LinkedIn",
+              "Outlook"
+            ],
             "highlight": "24/7 Growth"
           },
           {
@@ -2136,7 +2589,11 @@
             "title": "HR Concierge",
             "mission": "HR & Talent",
             "description": "Internal knowledge assistant for onboarding and document management via SharePoint.",
-            "tools": ["SharePoint", "Slack", "PDF"],
+            "tools": [
+              "SharePoint",
+              "Slack",
+              "PDF"
+            ],
             "highlight": "Internal Efficiency"
           },
           {
@@ -2144,7 +2601,11 @@
             "title": "Performance Analyst",
             "mission": "Operational Efficiency",
             "description": "Real-time reporting and anomaly detection on your QuickBooks financial flows.",
-            "tools": ["QuickBooks", "Excel", "SQL"],
+            "tools": [
+              "QuickBooks",
+              "Excel",
+              "SQL"
+            ],
             "highlight": "Decision Accuracy"
           },
           {
@@ -2152,7 +2613,11 @@
             "title": "Content & Social Assistant",
             "mission": "Marketing & Brand",
             "description": "Content generation, social planning, and 24/7 brand monitoring.",
-            "tools": ["LinkedIn", "Instagram", "Canva"],
+            "tools": [
+              "LinkedIn",
+              "Instagram",
+              "Canva"
+            ],
             "highlight": "Max Visibility"
           },
           {
@@ -2160,7 +2625,11 @@
             "title": "AI Financial Controller",
             "mission": "Finance & Billing",
             "description": "Invoice automation, unpaid tracking, and smart bank reconciliation.",
-            "tools": ["QuickBooks", "Odoo", "Stripe"],
+            "tools": [
+              "QuickBooks",
+              "Odoo",
+              "Stripe"
+            ],
             "highlight": "Cashflow Mastery"
           },
           {
@@ -2168,7 +2637,11 @@
             "title": "Flux Optimizer",
             "mission": "Logistics & Inventory",
             "description": "Order tracking, stock alerts, and delivery route optimization.",
-            "tools": ["Odoo", "Excel", "Maps"],
+            "tools": [
+              "Odoo",
+              "Excel",
+              "Maps"
+            ],
             "highlight": "Zero Stockouts"
           }
         ]
@@ -2177,11 +2650,31 @@
         "title": "Agent Objectives",
         "subtitle": "What are the priority results for your business?",
         "options": [
-          { "id": "admin-reduction", "label": "Admin Reduction", "desc": "Eliminate repetitive tasks" },
-          { "id": "response-speed", "label": "Response Speed", "desc": "Reply to clients in < 5 min" },
-          { "id": "data-quality", "label": "Data Quality", "desc": "Zero errors in CRM/ERP" },
-          { "id": "growth", "label": "Business Growth", "desc": "More qualified leads" },
-          { "id": "availability", "label": "24/7 Availability", "desc": "Service outside office hours" }
+          {
+            "id": "admin-reduction",
+            "label": "Admin Reduction",
+            "desc": "Eliminate repetitive tasks"
+          },
+          {
+            "id": "response-speed",
+            "label": "Response Speed",
+            "desc": "Reply to clients in < 5 min"
+          },
+          {
+            "id": "data-quality",
+            "label": "Data Quality",
+            "desc": "Zero errors in CRM/ERP"
+          },
+          {
+            "id": "growth",
+            "label": "Business Growth",
+            "desc": "More qualified leads"
+          },
+          {
+            "id": "availability",
+            "label": "24/7 Availability",
+            "desc": "Service outside office hours"
+          }
         ]
       }
     },
@@ -3125,6 +3618,11 @@
       "title": "Digital Transformation",
       "description": "Overcome stagnation and outpace the competition. We bridge the gap between where you are and where you need to be in the digital-first economy.",
       "cta": "Start Your Transformation",
+      "hero_subtitle": "Architecting Tomorrow's Enterprises",
+      "view_matrix": "View Transformation Matrix",
+      "modernization_tag": "Modernization",
+      "efficiency_label": "Efficiency Gain",
+      "read_protocol": "Read Protocol",
       "benefits": {
         "title": "Legacy is a Cost, Transformation is an Investment",
         "p1": "In the digital-first economy, the fastest-moving companies aren't just built on better ideas; they are built on more agile foundations.",
@@ -3240,6 +3738,17 @@
             "a": "ROI is found in three areas: direct cost savings through automation, increased revenue through better customer experiences, and long-term viability."
           }
         ]
+      },
+      "caseStudies": {
+        "tag": "Success Stories",
+        "title": "Transformation in Action",
+        "viewAll": "View All Projects",
+        "items": []
+      },
+      "booking": {
+        "tag": "Evolution",
+        "title": "Start Your Transformation",
+        "description": "Book a deep-dive session to audit your tech debt and map your modernization roadmap."
       }
     }
   },
@@ -3491,6 +4000,1095 @@
       "title": "Ready for Managed Intelligence?",
       "subtitle": "Speak with a MIP architect today.",
       "button": "Schedule a consultation"
+    }
+  },
+  "aiAudit": {
+    "badge": "FREE AI AUDIT",
+    "tag": "INTERACTIVE TOOL",
+    "title": "AI Maturity Audit",
+    "description": "Assess your enterprise's automation potential in 2 minutes.",
+    "cta_start": "Start Audit",
+    "questions": [
+      {
+        "id": "volume",
+        "text": "How would you describe your volume of unstructured data (emails, documents, reports)?",
+        "options": [
+          {
+            "text": "Low: Everything is managed manually without friction",
+            "score": 1
+          },
+          {
+            "text": "Moderate: We start losing time searching for info",
+            "score": 2
+          },
+          {
+            "text": "High: It's a daily bottleneck",
+            "score": 4
+          }
+        ]
+      },
+      {
+        "id": "repetition",
+        "text": "How much of your teams' time is dedicated to repetitive tasks?",
+        "options": [
+          {
+            "text": "Less than 25%",
+            "score": 1
+          },
+          {
+            "text": "Between 25% and 50%",
+            "score": 2
+          },
+          {
+            "text": "More than 50%",
+            "score": 4
+          }
+        ]
+      },
+      {
+        "id": "support",
+        "text": "Is your customer or internal support often overwhelmed?",
+        "options": [
+          {
+            "text": "Never, we are very responsive",
+            "score": 1
+          },
+          {
+            "text": "Sometimes, with stress peaks",
+            "score": 2
+          },
+          {
+            "text": "Yes, response times are too long",
+            "score": 4
+          }
+        ]
+      },
+      {
+        "id": "tools",
+        "text": "What is your level of Cloud tool usage (M365, Slack, Salesforce)?",
+        "options": [
+          {
+            "text": "Limited: We use little cloud",
+            "score": 1
+          },
+          {
+            "text": "Standard: We are on M365/Google Workspace",
+            "score": 2
+          },
+          {
+            "text": "Advanced: We use multiple interconnected SaaS",
+            "score": 4
+          }
+        ]
+      },
+      {
+        "id": "urgency",
+        "text": "Is your company ready to invest in AI this year?",
+        "options": [
+          {
+            "text": "We are only exploring",
+            "score": 1
+          },
+          {
+            "text": "It's a strategic priority",
+            "score": 4
+          }
+        ]
+      },
+      {
+        "id": "centralization",
+        "text": "Where is the majority of your operational data stored?",
+        "options": [
+          {
+            "text": "Local silos (Excel files, physical hard drives)",
+            "score": 4
+          },
+          {
+            "text": "Mixed (Local server and some Cloud apps)",
+            "score": 2
+          },
+          {
+            "text": "Centralized Cloud ecosystem with API access",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "id": "adoption",
+        "text": "What is the current level of AI adoption within your teams?",
+        "options": [
+          {
+            "text": "None: We don't use any AI tools",
+            "score": 4
+          },
+          {
+            "text": "Informal: Some employees use ChatGPT individually",
+            "score": 2
+          },
+          {
+            "text": "Structured: We have integrated AI policies and tools",
+            "score": 1
+          }
+        ]
+      },
+      {
+        "id": "complexity",
+        "text": "How would you describe the complexity of your main business processes?",
+        "options": [
+          {
+            "text": "Linear: Simple data entry and administrative tasks",
+            "score": 1
+          },
+          {
+            "text": "Variable: Requires sorting and basic human judgment",
+            "score": 2
+          },
+          {
+            "text": "Complex: Requires cross-analysis of multiple sources",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    "results": {
+      "bronze": {
+        "title": "AI Explorer",
+        "description": "Your company has optimization potential, but start with simple processes.",
+        "action": "Download Beginner's Guide"
+      },
+      "silver": {
+        "title": "AI Pioneer",
+        "description": "You are ready for your first Pilot Agent. Time savings will be immediate.",
+        "action": "Book a Pilot Demo"
+      },
+      "gold": {
+        "title": "Ready for Agent Workforce",
+        "description": "Your structure supports full multi-agent orchestration. Major ROI expected.",
+        "action": "Schedule a Strategic Audit"
+      }
+    },
+    "recommendations": {
+      "volume": {
+        "title": "Semantic Search Agent",
+        "description": "Your data volume requires an AI capable of ingesting and finding information instantly via RAG (Retrieval-Augmented Generation)."
+      },
+      "repetition": {
+        "title": "Operational Workflow Agents",
+        "description": "Automate your repetitive processes by delegating task execution to autonomous agents connected to your tools."
+      },
+      "support": {
+        "title": "Intelligent Support Agent",
+        "description": "Unclog your teams by deploying an agent capable of answering 80% of common queries accurately."
+      },
+      "tools": {
+        "title": "SaaS Orchestration Agent",
+        "description": "Maximize your Cloud ecosystem by synchronizing your tools via intelligent orchestration agents."
+      },
+      "centralization": {
+        "title": "Data Unification Agent",
+        "description": "Break your silos by using agents capable of querying your different data sources to create a unified knowledge base."
+      },
+      "adoption": {
+        "title": "AI Acculturation Program",
+        "description": "Transform informal usage into competitive advantage with structured training on AI Agent usage."
+      },
+      "complexity": {
+        "title": "Advanced Reasoning Agents",
+        "description": "Deploy agents capable of managing complex workflows requiring logic and multi-step decision making."
+      }
+    },
+    "lead_form": {
+      "title": "Receive your full report",
+      "description": "Enter your details below to unlock your detailed score and AI recommendations.",
+      "company": "Company Name",
+      "email": "Business Email",
+      "cta": "Get my Report"
+    },
+    "pdf_report": {
+      "download_button": "Download my PDF Report",
+      "downloading": "Generating...",
+      "title": "AI Maturity Audit Report",
+      "subtitle": "Your Strategic Roadmap",
+      "radar_title": "Maturity Profile",
+      "radar": {
+        "volume": "Data Volume",
+        "repetition": "Repetitive Tasks",
+        "support": "Support Load",
+        "tools": "Tool Ecosystem",
+        "centralization": "Infrastructure",
+        "adoption": "AI Culture",
+        "complexity": "Complexity"
+      },
+      "roadmap_title": "90-Day Action Plan",
+      "roadmap": {
+        "month1": "Month 1: Foundation. Process mapping and data architecture.",
+        "month2": "Month 2: Deployment. Launch of the first autonomous agent or RAG pipeline.",
+        "month3": "Month 3: Scale. Impact monitoring and advanced ecosystem integration."
+      },
+      "disclaimer": "This is a high-level strategic roadmap based on your audit score. Contact Stigmatech for a customized implementation."
+    }
+  },
+  "loi25Audit": {
+    "tag": "COMPLIANCE DIAGNOSTIC",
+    "title": "Law 25 Maturity Audit",
+    "description": "Evaluate your organization's alignment with Quebec's new privacy regulations.",
+    "cta_start": "Start Audit",
+    "questions": [
+      {
+        "id": "privacy_officer",
+        "question": "Has your company formally appointed a Privacy Officer?",
+        "description": "Law 25 requires a designated person responsible for data protection.",
+        "options": [
+          {
+            "text": "Yes, formally appointed",
+            "score": 4
+          },
+          {
+            "text": "Informally designated",
+            "score": 2
+          },
+          {
+            "text": "No appointment",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "inventory",
+        "question": "Do you have a personal data inventory?",
+        "description": "You must map all sensitive data flows across your infrastructure.",
+        "options": [
+          {
+            "text": "Complete cartography",
+            "score": 4
+          },
+          {
+            "text": "Partial inventory",
+            "score": 2
+          },
+          {
+            "text": "No formal inventory",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "incident_log",
+        "question": "Is there a protocol for security incidents?",
+        "description": "Immediate reporting of serious incidents is mandatory.",
+        "options": [
+          {
+            "text": "Automated log",
+            "score": 4
+          },
+          {
+            "text": "Manual process",
+            "score": 2
+          },
+          {
+            "text": "No protocol",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "consent",
+        "question": "Are your consent mechanisms granular?",
+        "description": "Consent must be manifest, free, and enlightened.",
+        "options": [
+          {
+            "text": "Granular digital consent",
+            "score": 4
+          },
+          {
+            "text": "Generic accept all",
+            "score": 1
+          },
+          {
+            "text": "No tracking",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "transparency",
+        "question": "Is your privacy policy up to date and accessible?",
+        "description": "Law 25 mandates total transparency on data usage.",
+        "options": [
+          {
+            "text": "Yes, compliant and clear",
+            "score": 4
+          },
+          {
+            "text": "Partial or poorly accessible",
+            "score": 2
+          },
+          {
+            "text": "Non-existent",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "impact_assessment",
+        "question": "Do you conduct Privacy Impact Assessments (PIA)?",
+        "description": "Mandatory for any new project involving personal data.",
+        "options": [
+          {
+            "text": "Systematically",
+            "score": 4
+          },
+          {
+            "text": "Sometimes, for major projects",
+            "score": 2
+          },
+          {
+            "text": "Never",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "retention",
+        "question": "Do you have a data retention and destruction policy?",
+        "description": "Data must not be kept longer than necessary.",
+        "options": [
+          {
+            "text": "Automated process",
+            "score": 4
+          },
+          {
+            "text": "Ad-hoc manual management",
+            "score": 2
+          },
+          {
+            "text": "No policy",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "training",
+        "question": "Are your employees trained in personal data protection?",
+        "description": "The human factor is the main cause of data breaches.",
+        "options": [
+          {
+            "text": "Certified annual training",
+            "score": 4
+          },
+          {
+            "text": "Informal awareness",
+            "score": 2
+          },
+          {
+            "text": "No training",
+            "score": 0
+          }
+        ]
+      }
+    ],
+    "results": {
+      "gold": {
+        "title": "ELITE COMPLIANCE",
+        "description": "Your organization demonstrates advanced maturity.",
+        "action": "Maintain Excellence"
+      },
+      "silver": {
+        "title": "ESTABLISHED POSTURE",
+        "description": "Key controls are in place, but some gaps remain.",
+        "action": "Close Gaps"
+      },
+      "bronze": {
+        "title": "CRITICAL RISK",
+        "description": "Your current posture exposes you to significant risks.",
+        "action": "Remediate Immediately"
+      }
+    },
+    "recommendations": {
+      "privacy_officer": {
+        "title": "Governance",
+        "shortcoming": "Lack of official data leadership.",
+        "remedy": "Appoint and train a Privacy Officer immediately."
+      },
+      "inventory": {
+        "title": "Mapping",
+        "shortcoming": "Data locations unknown.",
+        "remedy": "Conduct a deep data discovery audit."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "shortcoming": "Outdated or missing privacy policy.",
+        "remedy": "Draft a policy compliant with Law 25 requirements."
+      },
+      "impact_assessment": {
+        "title": "Assessment (PIA)",
+        "shortcoming": "Privacy risks not evaluated for new projects.",
+        "remedy": "Implement a systematic PIA process."
+      },
+      "retention": {
+        "title": "Life Cycle",
+        "shortcoming": "Data kept indefinitely without control.",
+        "remedy": "Establish a retention and destruction schedule."
+      },
+      "training": {
+        "title": "Privacy Culture",
+        "shortcoming": "Teams not aware of cyber and legal risks.",
+        "remedy": "Deploy a continuous training program."
+      }
+    },
+    "pdf_report": {
+      "download_button": "Download Law 25 Report (PDF)",
+      "downloading": "Generating...",
+      "title": "Law 25 Compliance Report",
+      "subtitle": "Privacy Maturity Analysis",
+      "radar_title": "Compliance Posture",
+      "radar": {
+        "privacy_officer": "Governance",
+        "inventory": "Mapping",
+        "incident_log": "Incidents",
+        "consent": "Consent",
+        "transparency": "Transparency",
+        "impact_assessment": "Assessment (PIA)",
+        "retention": "Life Cycle",
+        "training": "Culture"
+      },
+      "roadmap_title": "Remediation Priorities",
+      "disclaimer": "This report is a preliminary assessment based on your answers. A deep audit is recommended for full compliance.",
+      "division_label": "COMPLIANCE & PRIVACY DIVISION",
+      "organization_label": "EVALUATED ORGANIZATION",
+      "score_label": "MATURITY INDEX",
+      "posture_label": "GLOBAL POSTURE"
+    }
+  },
+  "cyberAudit": {
+    "tag": "CYBERSECURITY DIAGNOSTIC",
+    "title": "Cyber Posture Audit",
+    "description": "Evaluate your business resilience against modern threats and ransomware.",
+    "cta_start": "Start Cyber Audit",
+    "questions": [
+      {
+        "id": "mfa",
+        "question": "Do you use multi-factor authentication (MFA) on all your accounts?",
+        "description": "MFA is the most effective barrier against identity theft.",
+        "options": [
+          {
+            "text": "Yes, everywhere without exception",
+            "score": 4
+          },
+          {
+            "text": "Partially (Admin only)",
+            "score": 2
+          },
+          {
+            "text": "No, not yet",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "backups",
+        "question": "Are your backups immutable or offline?",
+        "description": "Ransomware often tries to encrypt your backups first.",
+        "options": [
+          {
+            "text": "Tested immutable backups",
+            "score": 4
+          },
+          {
+            "text": "Standard Cloud backups",
+            "score": 2
+          },
+          {
+            "text": "Manual backup or none",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "edr",
+        "question": "Do you have an EDR solution (SentinelOne, Crowdstrike)?",
+        "description": "A classic antivirus is no longer enough against fileless threats.",
+        "options": [
+          {
+            "text": "24/7 Managed EDR",
+            "score": 4
+          },
+          {
+            "text": "Standard Antivirus",
+            "score": 2
+          },
+          {
+            "text": "No central protection",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "training",
+        "question": "Are your employees trained in phishing?",
+        "description": "Humans are often the weakest link in the security chain.",
+        "options": [
+          {
+            "text": "Monthly training & simulations",
+            "score": 4
+          },
+          {
+            "text": "Annual training",
+            "score": 2
+          },
+          {
+            "text": "No training",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "patching",
+        "question": "Do you have a strict update policy?",
+        "description": "Known vulnerabilities are the gateway to 80% of attacks.",
+        "options": [
+          {
+            "text": "Automated updates < 48h",
+            "score": 4
+          },
+          {
+            "text": "Monthly manual management",
+            "score": 2
+          },
+          {
+            "text": "No defined policy",
+            "score": 0
+          }
+        ]
+      }
+    ],
+    "results": {
+      "gold": {
+        "title": "RESILIENT POSTURE",
+        "description": "Your organization has solid and modern defenses.",
+        "action": "Optimize Continuity"
+      },
+      "silver": {
+        "title": "VULNERABILITIES DETECTED",
+        "description": "Your perimeter is protected but attack vectors remain.",
+        "action": "Strengthen Defenses"
+      },
+      "bronze": {
+        "title": "CRITICAL EXPOSURE",
+        "description": "Your business is vulnerable to an imminent attack.",
+        "action": "Emergency Intervention"
+      }
+    },
+    "recommendations": {
+      "mfa": {
+        "title": "Access",
+        "shortcoming": "Lack of generalized MFA.",
+        "remedy": "Deploy MFA on all SaaS and VPN access."
+      },
+      "backups": {
+        "title": "Data",
+        "shortcoming": "Backups vulnerable to encryption.",
+        "remedy": "Implement a 3-2-1 immutable backup rule."
+      },
+      "edr": {
+        "title": "Endpoints",
+        "shortcoming": "Reactive rather than proactive detection.",
+        "remedy": "Migrate to EDR with 24/7 monitoring."
+      }
+    },
+    "lead_form": {
+      "title": "Get your security report",
+      "description": "Receive your detailed score and a roadmap to close your gaps.",
+      "cta": "See my Cyber Score"
+    },
+    "dashboard": {
+      "title": "Cyber Dashboard",
+      "description": "Real-time analysis of your attack surface.",
+      "score_label": "Resilience Index",
+      "risk_label": "RISK",
+      "compliance_label": "RESILIENCE",
+      "diagnostic_label": "Strategic Cyber Assessment",
+      "priority_label": "PRIORITIES",
+      "shortcoming_label": "GAP",
+      "remedy_label": "SOLUTION",
+      "booking_title": "Need Remediation?",
+      "booking_desc": "Schedule a session with our cyber experts to fix these vulnerabilities."
+    },
+    "pdf_report": {
+      "download_button": "Download Cyber Audit (PDF)",
+      "downloading": "Generating report...",
+      "title": "Cybersecurity Audit Report",
+      "subtitle": "Corporate Risk Analysis",
+      "disclaimer": "This report is based on your declarations and constitutes a preliminary assessment of your security posture.",
+      "radar_title": "Risk Profile"
+    }
+  },
+  "grcAudit": {
+    "tag": "GOVERNANCE & COMPLIANCE",
+    "title": "GRC Maturity Audit",
+    "description": "Assess your governance, risks, and strategic compliance.",
+    "cta_start": "Start GRC Audit",
+    "questions": [
+      {
+        "id": "rppr",
+        "text": "Have you appointed a Privacy Officer (RPPR)?",
+        "options": [
+          {
+            "text": "Yes, official and public appointment",
+            "score": 4
+          },
+          {
+            "text": "Informal internal designation",
+            "score": 2
+          },
+          {
+            "text": "No appointment to date",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "inventory",
+        "text": "Do you have a complete inventory of your information assets?",
+        "options": [
+          {
+            "text": "Complete and up-to-date inventory",
+            "score": 4
+          },
+          {
+            "text": "Partial or manual inventory",
+            "score": 2
+          },
+          {
+            "text": "No structured inventory",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "consent",
+        "text": "Are your consent collection mechanisms compliant and granular?",
+        "options": [
+          {
+            "text": "Yes, total compliance",
+            "score": 4
+          },
+          {
+            "text": "Partially granular",
+            "score": 2
+          },
+          {
+            "text": "Lack of centralized management",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "incident",
+        "text": "Do you have a confidentiality incident log?",
+        "options": [
+          {
+            "text": "Active log and response process",
+            "score": 4
+          },
+          {
+            "text": "Informal incident tracking",
+            "score": 2
+          },
+          {
+            "text": "No incident log",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "pia",
+        "text": "Do you conduct Privacy Impact Assessments (PIA)?",
+        "options": [
+          {
+            "text": "Systematically for every project",
+            "score": 4
+          },
+          {
+            "text": "Only for major projects",
+            "score": 2
+          },
+          {
+            "text": "Never",
+            "score": 0
+          }
+        ]
+      },
+      {
+        "id": "training",
+        "text": "Does your staff receive annual training on GRC and privacy?",
+        "options": [
+          {
+            "text": "Yes, certified training program",
+            "score": 4
+          },
+          {
+            "text": "Occasional awareness",
+            "score": 2
+          },
+          {
+            "text": "No structured training",
+            "score": 0
+          }
+        ]
+      }
+    ],
+    "results": {
+      "gold": {
+        "title": "ELITE GOVERNANCE",
+        "description": "Your GRC structure is mature and resilient.",
+        "action": "Maintain Compliance"
+      },
+      "silver": {
+        "title": "ESTABLISHED STRUCTURE",
+        "description": "Solid foundation, but processes should be automated.",
+        "action": "Optimize Processes"
+      },
+      "bronze": {
+        "title": "HIGH EXPOSURE",
+        "description": "Critical gaps in governance and risk management.",
+        "action": "Remediate Immediately"
+      }
+    },
+    "recommendations": {
+      "rppr": {
+        "title": "GRC Leadership",
+        "shortcoming": "Lack of designated officer.",
+        "remedy": "Officialize the appointment of a RPPR."
+      },
+      "inventory": {
+        "title": "Asset Management",
+        "shortcoming": "Lack of visibility on data.",
+        "remedy": "Implement automated inventory."
+      },
+      "consent": {
+        "title": "Consent",
+        "shortcoming": "Non-compliant preference management.",
+        "remedy": "Deploy a Consent Management Platform (CMP)."
+      },
+      "incident": {
+        "title": "Incident Response",
+        "shortcoming": "No response protocol for leaks.",
+        "remedy": "Establish an incident response plan."
+      },
+      "pia": {
+        "title": "Risk Assessment",
+        "shortcoming": "New projects not assessed.",
+        "remedy": "Integrate PIAs into your project cycle."
+      },
+      "training": {
+        "title": "Privacy Culture",
+        "shortcoming": "Unaware staff.",
+        "remedy": "Launch a continuous training program."
+      }
+    },
+    "dashboard": {
+      "risk_label": "GRC RISK",
+      "compliance_label": "COMPLIANCE",
+      "diagnostic_label": "Strategic GRC Overview",
+      "priority_label": "GRC PRIORITIES",
+      "shortcoming_label": "GAP",
+      "remedy_label": "SOLUTION",
+      "booking_title": "Optimize your GRC?",
+      "booking_desc": "Strategic session to align your governance with your goals."
+    },
+    "pdf_report": {
+      "title": "GRC Maturity Report",
+      "subtitle": "Governance & Risk Analysis",
+      "division_label": "GRC & COMPLIANCE DIVISION",
+      "organization_label": "ASSESSED COMPANY",
+      "score_label": "GRC INDEX",
+      "posture_label": "GRC POSTURE",
+      "radar_title": "GRC Maturity Profile",
+      "radar": {
+        "rppr": "Leadership",
+        "inventory": "Inventory",
+        "consent": "Consent",
+        "incident": "Incident",
+        "pia": "Assessment",
+        "training": "Training"
+      },
+      "roadmap_title": "GRC Roadmap",
+      "disclaimer": "This document constitutes a preliminary assessment of your GRC maturity."
+    },
+    "lead_form": {
+      "title": "Get your GRC report",
+      "description": "Receive your complete analysis and strategic priorities.",
+      "cta": "See my GRC Score"
+    }
+  },
+  "pme": {
+    "hero": {
+      "eyebrow": "For Quebec SMEs with 10 to 50 employees",
+      "title": "Your SME Law 25 compliant, secure, without managing a single IT issue.",
+      "subtitle": "Managed IT support, advanced cybersecurity and Law 25 compliance — a complete service, transparent pricing, local Montreal team.",
+      "ctaPrimary": "Start free diagnostic",
+      "ctaSecondary": "See plans"
+    },
+    "whyNow": {
+      "title": "Three pressures hitting Quebec SMEs in 2026.",
+      "subtitle": "Law 25, cyber insurance and ransomware. Your clients, insurers and attackers won't let you wait.",
+      "cards": [
+        {
+          "title": "Law 25 in full force",
+          "description": "Since September 2023, every Quebec SME handling personal information must have a person in charge, a registry and an incident plan. Fines up to $25M or 4% of turnover."
+        },
+        {
+          "title": "Cyber insurance requirements",
+          "description": "Insurers refuse SMEs without MFA, EDR, immutable backups and training. Without these controls: tripled premium or refusal of coverage, regardless of your history."
+        },
+        {
+          "title": "Ransomware targeting SMEs",
+          "description": "43% of cyberattacks target SMEs. Average cost in Canada: $6.9M. Groups know you pay faster than large companies."
+        }
+      ]
+    },
+    "approach": {
+      "title": "Three steps. Zero jargon. Measurable results.",
+      "subtitle": "You know where you stand, what needs to be done and how much it costs. Before signing anything.",
+      "steps": [
+        {
+          "title": "Free Diagnostic",
+          "description": "60 minutes with an expert. We assess your Law 25 compliance, cyber risks and current infrastructure.",
+          "deliverable": "Custom 8-page report with compliance score, top 5 vulnerabilities, prioritized action plan and budget estimation."
+        },
+        {
+          "title": "Frictionless Onboarding",
+          "description": "We deploy your solution (backups, EDR, MFA, Law 25 compliance) without interrupting your operations. Typically 30 days.",
+          "deliverable": "Operational infrastructure, complete documentation and team training."
+        },
+        {
+          "title": "24/7 Operations",
+          "description": "Our team monitors, repairs and optimizes your systems. You call when you need. We answer.",
+          "deliverable": "Monthly reports, guaranteed SLA and quarterly review of your cyber posture."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "One price per seat. All inclusive.",
+      "subtitle": "No hidden fees, no surprises. A fixed monthly cost per employee that scales with your team.",
+      "note": "Monthly or annual commitment (–10%). Prices in CAD, taxes extra. Minimum 5 seats.",
+      "plans": [
+        {
+          "name": "Essential",
+          "price": "119",
+          "description": "To get started safely",
+          "features": [
+            "Unlimited IT Support (AI Agent, Phone, Remote & On-site)",
+            "EDR (Endpoint Detection & Response)",
+            "Daily cloud backups",
+            "24/7 proactive monitoring",
+            "Microsoft 365 management"
+          ],
+          "cta": "Get Started"
+        },
+        {
+          "name": "Pro",
+          "price": "179",
+          "description": "For Law 25 compliant SMEs",
+          "popular": true,
+          "features": [
+            "Everything in Essential +",
+            "XDR (Extended Detection & Response)",
+            "Multi-factor authentication",
+            "Employee cybersecurity training",
+            "Law 25 compliance (registry + policy)",
+            "Documented incident plan"
+          ],
+          "cta": "Choose Pro"
+        },
+        {
+          "name": "Elite",
+          "price": "249",
+          "description": "For firms, clinics and high standards",
+          "features": [
+            "Everything in Pro +",
+            "Annual complete Law 25 audit",
+            "DLP (Data Loss Prevention)",
+            "Dedicated vCISO (1h / month)",
+            "Priority support (1h SLA)",
+            "Annual penetration tests"
+          ],
+          "cta": "Choose Elite"
+        }
+      ]
+    },
+    "specializations": {
+      "title": "Designed for your sector's reality.",
+      "subtitle": "Each sector has its obligations, risks and tools. Our team speaks your language.",
+      "sectors": [
+        {
+          "title": "Professional Firms",
+          "description": "Accountants, lawyers, notaries. Ultra-sensitive client data, strong Law 25 obligation. Integration with Maître, Caseware, Taxprep, Jurismedia.",
+          "slug": "avocats"
+        },
+        {
+          "title": "Health Clinics",
+          "description": "Medical, dental, paramedical clinics. Law 25 + health law compliance. Integration with OmniMed, Dentitek, Logibec, Purkinje.",
+          "slug": "cliniques"
+        },
+        {
+          "title": "Manufacturing SMEs",
+          "description": "Primary targets for ransomware. Critical operational continuity. OT/IT security, network segmentation, immutable backups.",
+          "slug": "manufacturiers"
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "« We finally sleep soundly. One call when something is wrong, and it's fixed. And we know we are Law 25 compliant. »",
+      "author": "[Client Name]",
+      "role": "Admin Director, [Company Name], Montreal"
+    },
+    "faq": {
+      "title": "Law 25, cybersecurity, MSP — demystified.",
+      "items": [
+        {
+          "question": "Is my 15-person SME really affected by Law 25?",
+          "answer": "Yes. Law 25 applies to all private sector companies in Quebec, with no minimum threshold. You must have a person in charge of personal information protection, an incident registry, internal policies and a plan in case of a breach."
+        },
+        {
+          "question": "How long does it take to become compliant?",
+          "answer": "With our Pro or Elite plan, generally 30 to 45 days to reach the compliance baseline. Elite adds a full annual audit to go further and protect you in case of a CAI investigation."
+        },
+        {
+          "question": "Do you replace my internal IT team?",
+          "answer": "Not necessarily. We work as a complement if you have internal IT, or as a complete IT department if you don't. The majority of our SME clients (15-50 people) don't have dedicated internal IT."
+        },
+        {
+          "question": "What happens in case of a cyberattack?",
+          "answer": "Our Pro and Elite plans include a documented incident plan and our 24/7 response team. For Elite, a dedicated vCISO to manage the crisis and regulatory communication (Law 25 requires notification in some cases)."
+        },
+        {
+          "question": "Is the free diagnostic really free?",
+          "answer": "Yes. Our online evaluation tools are free and provide you with an immediate maturity score. You can also contact us for a deep-dive audit with an expert."
+        },
+        {
+          "question": "What is the duration of your contracts?",
+          "answer": "Monthly or annual. Monthly offers total flexibility (30-day notice). Annual offers a 10% discount and is required for the Elite plan."
+        }
+      ]
+    },
+    "ctaFinal": {
+      "title": "Your free diagnostic, in 5 minutes.",
+      "subtitle": "Access our interactive evaluation tools to measure your Law 25 compliance and cyber posture immediately.",
+      "button": "Start free diagnostic"
+    },
+    "diagnostic": {
+      "title": "Book your free diagnostic",
+      "subtitle": "Analyze your Law 25 compliance and security in 60 minutes.",
+      "steps": [
+        {
+          "title": "Technical & GRC Audit",
+          "description": "We analyze your backups, endpoint protection, and Law 25 registry."
+        },
+        {
+          "title": "Report in 5 Days",
+          "description": "You receive a clear action plan with risk score and precise budget."
+        },
+        {
+          "title": "Zero Pressure",
+          "description": "You decide the next steps. We won't call you ten times if you say no."
+        }
+      ],
+      "form": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Work Email",
+        "phone": "Phone",
+        "company": "Company Name",
+        "employees": "Number of Employees",
+        "sector": "Sector",
+        "format": "Preferred Format",
+        "concern": "Main Concern",
+        "submit": "Book my free diagnostic",
+        "options": {
+          "employees": [
+            "1-9",
+            "10-25",
+            "26-50",
+            "51+"
+          ],
+          "sectors": [
+            "Professional Firm",
+            "Health Clinic",
+            "Manufacturer",
+            "Services",
+            "Other"
+          ],
+          "formats": [
+            "In person in Montreal",
+            "Virtual"
+          ]
+        }
+      },
+      "thanks": {
+        "title": "Thank you!",
+        "message": "We have received your request. An expert will contact you shortly."
+      }
+    }
+  },
+  "training": {
+    "courseDetails": {
+      "capacityLimit": "* Train up to 15 employees per session",
+      "languages": "100% French & English",
+      "lunch": "Lunch included (Uber Eats / Doordash)",
+      "certificate": "Stigma Technologies Certificate",
+      "offeredBy": "Offered by",
+      "subsidiesTitle": "Eligible Subsidies",
+      "seeAllSubsidies": "See all grants",
+      "whatYouWillLearn": "What you will learn",
+      "syllabus": "Course Syllabus",
+      "skills": "Skills you will gain",
+      "prerequisites": "Prerequisites",
+      "recommendedPrereq": "Recommended Prerequisite",
+      "requiresFundamentals": "This course requires the fundamentals of ",
+      "whoIsItFor": "Who it is for",
+      "financialAid": "Available Financial Aid",
+      "reduceCost": "Reduce your net cost by up to 85%",
+      "subsidyIntro": "This training program is eligible for several Canadian and Quebec government grants. Stigma Technologies guides you through the application process.",
+      "subsidyDetails": "Subsidy Details",
+      "diagnostic": "Stigma Technologies helps you identify and submit grant applications. Request your free subsidy diagnostic.",
+      "checkEligibility": "Check my eligibility",
+      "bonAppetit": "Enjoy your Lunch",
+      "enrollNow": "Enroll Now",
+      "bookForMyTeam": "Book for my team",
+      "level": "Level",
+      "duration": "Duration"
+    },
+    "formSection": {
+      "takeAction": "Take Action",
+      "bookOrFund": "Book or",
+      "fundHighlight": "Fund",
+      "yourTraining": "Your Training",
+      "subtitle": "Train your teams at ${price}/day, or let us handle your grant applications to reduce your net cost by up to 85%.",
+      "tabBooking": "Book a Session",
+      "tabSubsidy": "Grant Information",
+      "bookingTitle": "Book for Your Team",
+      "bookingDesc": "Choose your format: up to 15 employees or a minimum of 5 executives. The session takes place at your premises or online.",
+      "featEmployeesTitle": "Employees",
+      "featEmployeesDesc": "Up to 15 per session",
+      "featExecsTitle": "Executives",
+      "featExecsDesc": "Strategic format (min. 5)",
+      "featLunchTitle": "Lunch included",
+      "featLunchDesc": "Uber Eats / Doordash",
+      "featCertTitle": "Certification",
+      "featCertDesc": "Stigma Technologies",
+      "featPriceTitle": "Fixed rate",
+      "featPriceDesc": "${price} / day, all-inclusive",
+      "bookingNotice": "Need help with funding? Select 'Grant Assistance' in the form. Please note that eligibility is subject to approval by the relevant authorities and does not depend on Stigma Technologies.",
+      "subsidyTitle": "Let Us Manage Your Grants",
+      "subsidyDesc": "As an accredited provider, we manage your entire grant application with Investissement Québec and Scale AI.",
+      "subScaleAIDesc": "Reimbursement up to 85%",
+      "subEssorDesc": "Component 1: up to $20,000",
+      "subPacmeDesc": "Skills support 50%+",
+      "subDecDesc": "Regions: 50% of costs",
+      "subPariDesc": "AI context: up to 100%",
+      "subsidyNotice": "📋 No application fees. We are paid on success. If you don't receive the grant, we adjust our services."
     }
   }
 }

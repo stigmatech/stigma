@@ -6,5 +6,5 @@ import { solutionType } from './solutionType'
 import { caseStudyType } from './caseStudyType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [authorType, categoryType, postType, solutionType, caseStudyType],
+ types: [authorType, categoryType, postType, solutionType, caseStudyType],
 }
